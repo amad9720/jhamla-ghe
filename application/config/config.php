@@ -60,12 +60,12 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Localhost
  */
 
-	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-	// $server = $url["host"];
-	// $username = $url["user"];
-	// $password = $url["pass"];
-	// $db = substr($url["path"], 1);
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$db = substr($url["path"], 1);
 
 
 /**
@@ -73,10 +73,10 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Uncomment before Testing  to Localhost
  * Comment the configuration for  Heroku
  */
-	$server = "localhost";
-	$username = "root";
-	$password = "root";
-	$db = "mydb";
+// 	$server = "localhost";
+// 	$username = "root";
+// 	$password = "root";
+// 	$db = "mydb";
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $server);
