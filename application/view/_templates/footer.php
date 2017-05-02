@@ -1,9 +1,5 @@
 
     <!-- backlink to repo on GitHub, and affiliate link to Rackspace if you want to support the project -->
-    <div class="footer">
-        Find <a href="https://github.com/amad9720/jhamla-ghe">Egghome on GitHub</a>.
-    </div>
-
     <!-- jQuery, loaded in the recommended protocol-less way -->
     <!-- more http://www.paulirish.com/2010/the-protocol-relative-url/ -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -15,5 +11,10 @@
 
     <!-- our JavaScript -->
     <script src="<?php echo URL; ?>js/application.js"></script>
+</div>
+<footer>
+        <p class="brand">EggHome 2017</p>
+</footer>
+</div>
 </body>
 </html>

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 header {
@@ -13,15 +14,47 @@ header {
 
 header * {
     display: inline-block;
-    color: black;
+    color: white;
 }
 
 header nav {
     float: right;
 }
 
-
-.brand {
-    float: left;
+header nav a {
+    margin: 0 5px 0 5px;
+    text-decoration: none;
 }
 
+
+header .brand {
+    float: left;
+}
+body {
+    margin-bottom: -40px;
+    margin: 0 0 40px; 
+}
+.container {
+    width: 1024px;
+    margin: auto;
+    padding: 20px;
+
+}
+
+footer {
+    height: 40px;
+    background-color: #ccc;
+    line-height: 40px;
+    padding: 0 20px 0 20px;
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}

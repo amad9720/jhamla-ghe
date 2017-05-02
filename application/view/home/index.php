@@ -1,4 +1,2 @@
 <div class="container">
-    <h2>You are in the View: application/view/home/index.php (everything in the box comes from this file)</h2>
-    <p>In a real application this could be the homepage.</p>
-</div>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales felis vel nulla congue, eu suscipit felis pellentesque. Nunc nulla elit, egestas nec elementum vitae, mollis nec nisl. Quisque bibendum mattis eleifend. Curabitur orci risus, dignissim sed nulla in, vehicula vestibulum orci. Vestibulum sit amet arcu mollis urna maximus pretium. Sed porttitor mattis erat non malesuada. Phasellus nec sapien vel urna gravida tempus at et ipsum.
