@@ -5,14 +5,14 @@
  *
  * Please note:
  * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
- * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
+ * This is really weird behaviour, but documented here: http://php.net/manual/fr/language.oop5.decon.php
  *
  */
 class Admin extends Controller
 {
     /**
      * PAGE: index
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
+     * This method handles what happens when you move to http://yourproject/home/index (which is the default page)
      */
     public function index()
     {
@@ -26,8 +26,8 @@ class Admin extends Controller
     }
 
     /**
-     * PAGE: exampleone
-     * This method handles what happens when you move to http://yourproject/home/exampleone
+     * PAGE: page_qui_gere_admin (just an exemple for iluustration)
+     * This method handles what happens when you move to http://yourproject/home/page_qui_gere_admin
      */
     public function administrateur()
     {
@@ -35,7 +35,7 @@ class Admin extends Controller
         if (isset($_POST['create'])) {
 
             
-            $this->loadModel("Model");
+            $this->loadModel("Admin");
             $new_user = $this->model;
             echo "new_user";
             
@@ -55,7 +55,7 @@ class Admin extends Controller
 
         // load views
         require APP . 'view/_templates/header.php';
-        require APP . 'view/home/example_one.php';
+        //require APP . 'view/home/page_qui_gere_admin.php';
         require APP . 'view/_templates/footer.php';
     }
 

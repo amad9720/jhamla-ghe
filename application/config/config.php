@@ -3,7 +3,7 @@
 /**
  * Configuration
  *
- * For more info about constants please @see http://php.net/manual/en/function.define.php
+ * For more info about constants please @see http://php.net/manual/fr/function.define.php
  */
 
 /**
@@ -60,7 +60,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Localhost
  */
 //
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 	//$server = $url["host"];
 	//$username = $url["user"];
@@ -73,19 +73,22 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Uncomment before Testing  to Localhost
  * Comment the configuration for  Heroku
  */
-// 	$server = "localhost";
-// 	$username = "root";
-// 	$password = "root";
-// 	$db = "mydb";
+
+//config Amadou
+
+	$server = "localhost";
+	$username = "root";
+	$password = "root";
+	$db = "mydb";
 
 //config Hugo
 
-$server = "localhost";
-$username = "root";
-$password = "";
-$db = "mydb";
+	// $server = "localhost";
+	// $username = "root";
+	// $password = "";
+	// $db = "mydb";
 
-//
+
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $server);

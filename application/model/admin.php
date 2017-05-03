@@ -1,6 +1,6 @@
 <?php
 
-class Model extends Db_object
+class Admin extends Db_object
 {
     public $id;
     public $nom_utilisateur;
