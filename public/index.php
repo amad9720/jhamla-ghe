@@ -31,6 +31,10 @@ require APP . 'config/config.php';
 // If you want to load pdoDebug via Composer, then have a look here: https://github.com/panique/pdo-debug
 require APP . 'libs/helper.php';
 
+//This load lib function (for dev and prod)
+
+require APP . 'libs/lib.php';
+
 //load application Database and base query functions
 require APP . 'core/database/database.php';
 require APP . 'core/database/database_object.php';

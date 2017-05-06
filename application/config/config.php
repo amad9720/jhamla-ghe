@@ -62,10 +62,10 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 //
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-	$server = $url["host"];
-	$username = $url["user"];
-	$password = $url["pass"];
-	$db = substr($url["path"], 1);
+	// $server = $url["host"];
+	// $username = $url["user"];
+	// $password = $url["pass"];
+	// $db = substr($url["path"], 1);
 
 
 /**
@@ -83,10 +83,10 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 //config Hugo
 
-	// $server = "localhost";
-	// $username = "root";
-	// $password = "";
-	// $db = "mydb";
+	$server = "localhost";
+	$username = "root";
+	$password = "";
+	$db = "mydb";
 
 
 
