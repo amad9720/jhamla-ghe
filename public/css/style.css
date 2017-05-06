@@ -187,3 +187,92 @@ html {
     letter-spacing: 1.05px;
     color: #595959;
 }
+
+
+/*
+* 
+*
+*
+Dashboard Start 
+*
+*
+*
+*/
+
+.sidebar {
+    width: 140px;
+    min-height: 100%;
+    position: absolute;
+    color: white;
+    background-color: #34495e;
+    padding: 10px;
+    display: inline-block;
+}
+
+.sidebar h3 {
+    
+}
+
+.sidebar-menu {
+    margin-top: 25px;
+}
+
+.sidebar-menu p {
+    margin-bottom: 20px;
+}
+
+
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.dashboard-content {
+    padding: 10px;
+    padding-left: 150px;
+}
+
+.spacer-small {
+    margin-top: 12px;
+}
+
+.spacer-large {
+    margin-top: 30px;
+}
+
+.form input {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;
+}
+
+.form input[type="submit"] {
+    background-color: #ccc;
+    border: none;
+}
+
+.form select {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;
+}
+
+.table th {
+    margin: 0;
+    min-width: 140px;
+    padding: 5px;
+    border: none;
+}
+
+.table .first {
+    background-color: #ccc;
+}

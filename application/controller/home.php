@@ -20,9 +20,15 @@ class Home extends Controller
         //$this->loadModel("modelName");
 
         // load views
+        require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
+    }
+
+    public function dashboard(){
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/dashboard/objets.php';
     }
 
 }
