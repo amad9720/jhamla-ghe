@@ -2,10 +2,28 @@
 
 class Db_object {
 
+	public $errors = array(); //for feedback to us or our customers
+	public $upload_errors_array = array(
+
+		UPLOAD_ERR_OK => "There is no error, the file uploaded with success.",
+	    UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize directive in php.ini.",
+	    UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.",
+	    UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
+	    UPLOAD_ERR_NO_FILE => "No file was uploaded.",
+	    UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder. Introduced in PHP 5.0.3.",
+	    UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk. Introduced in PHP 5.1.0.",
+	    UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
+	);
+
+	public $tmp_path;
+    public $upload_directory = "img";
+
+
+
 	/**
 	 * Basically, in many methods, we will write a query and return the result of the sent query in a $result variable...
-	 * 	It is better to declare it static so that we will not need to instanciate it anytime just in order to find records
-	 * 	@return [PDOStatement] return the object constructed from the query
+	 * It is better to declare it static so that we will not need to instanciate it anytime just in order to find records
+	 * @return [PDOStatement] return the object constructed from the query
 	 */
 	static public function find_all() { 
 
@@ -139,5 +157,39 @@ class Db_object {
 
 		return ($query->rowCount() == 1) ? true : false;
 		
+	}
+
+	/**
+	 * This method Handle All the uploaded files (images) and help managing it in the database 
+	 * @param [String] $file [the name of the file to be saved]
+	 * @return [Boolean] [true if the file was saved, false if not]
+	 */
+	public function set_file($file) {
+
+		//first we check if a file is uploaded (if the super_global $_FILES isnt empty)
+		if (empty($file) || !$file || !is_array($file)) {
+
+			$this->errors[] = "There was no file uploaded here";
+			return false;
+
+		//if it's not empty we check if there is no error while uploading it (for that we check the error field of the $_FILES[])
+		}elseif ($file['error'] != 0) {
+
+			//If there is an error, we collect it inside our custom error array
+			$this->errors[] = $upload_errors_array($file['error']);
+			return false;
+
+		}else {
+
+			//If there is no error we collect all the properties of the file in our object properties (by using the $_FILES fields)
+
+			//basename return the name of a file when given the complete path of the file. (see dash for exemples)
+			$this->user_image = basename($file['name']); 
+			$this->tmp_path = $file['tmp_name'];
+			$this->type = $file['type'];
+			$this->size = $file['size'];
+
+		}
+
 	}
 }

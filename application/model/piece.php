@@ -19,4 +19,6 @@ class Piece extends Db_object
         
     }
 
+    
+
 }
