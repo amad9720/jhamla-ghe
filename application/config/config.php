@@ -60,7 +60,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Localhost
  */
 //
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 	// $server = $url["host"];
 	// $username = $url["user"];
@@ -76,17 +76,17 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 //config Amadou
 
-	//$server = "localhost";
-	//$username = "root";
-	//$password = "root";
-	//$db = "mydb";
+	$server = "localhost";
+	$username = "root";
+	$password = "root";
+	$db = "mydb";
 
 //config Hugo
 
-	$server = "localhost";
-	$username = "root";
-	$password = "";
-	$db = "mydb";
+	// $server = "localhost";
+	// $username = "root";
+	// $password = "";
+	// $db = "mydb";
 
 
 

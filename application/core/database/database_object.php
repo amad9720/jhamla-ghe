@@ -47,7 +47,7 @@ class Db_object {
 	static public function find_by_query($sql) {
 		
 		//Here we return an array of objects, each of them has all the columns of one of our db rows as it's properties
-		return static::instanciate();
+		return static::instanciate($sql);
 	}
 
 
@@ -55,7 +55,7 @@ class Db_object {
 	 * this function will automate the instanciation of a $record object for us and assign the values fetched from rows to the the object properties...
 	 * @return [Array]      [return an Array of PDOStatement Object]
 	 */
-	static public function instanciate() {
+	static public function instanciate($sql) {
 		global $database;
 
 		//we have to create the array so that it's not undefined when the while loop is not entered
@@ -68,7 +68,7 @@ class Db_object {
 		while ($row = $result_set->fetchObject($calling_class))
 			$object_array[] = $row;
 
-		return $boject_array;
+		return $object_array;
 		
 	}
 

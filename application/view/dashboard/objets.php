@@ -1,7 +1,3 @@
-<?php
-	include('sidebar.php');
-?>
-
 <div class="dashboard-content">
 	<h3>Gestion des objets</h3>
 	<p class="spacer-small">Cette page vous permet d'ajouter / retirer / editer les objets connectés présent dans votre domicile</p>

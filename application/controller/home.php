@@ -17,7 +17,17 @@ class Home extends Controller
     public function index()
     {
         //to load a model use :
-        //$this->loadModel("modelName");
+        $this->loadModel("Nouveaute");
+        $nouveautes = Nouveaute::find_all();
+        $nouveaute_id = Nouveaute::find_by_id(1);
+
+        // echo $nouveaute_id->image;
+
+        // foreach ($nouveautes as $nouveaute) :
+        //     echo $nouveaute->image;
+        //     echo $nouveaute->filename;
+        //     echo $nouveaute->description;
+        // endforeach; 
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -26,8 +36,10 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    public function dashboard(){
+    public function dashboard()
+    {
         require APP . 'view/_templates/head.php';
+        require APP . 'view/dashboard/sidebar.php';
         require APP . 'view/dashboard/objets.php';
     }
 
