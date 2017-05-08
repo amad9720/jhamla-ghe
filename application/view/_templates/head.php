@@ -8,13 +8,3 @@
     <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/f07fad4092.js"></script>
 </head>
-<body>
-<div class="wrap">
-<header>
-        <h3 class="brand">EggHome</h3>
-        <nav>
-                <a href="#">Link1</a>
-                <a href="#">Link2</a>
-                <a href="#">Link3</a>
-        </nav>
-</header>

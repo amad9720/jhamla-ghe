@@ -7,9 +7,11 @@
 
 header {
     height: 60px;
-    background-color: #ccc;
+    background-color: #34495e;
     line-height: 60px;
     padding: 0 20px 0 20px;
+    position: relative;
+    z-index: 10;
 }
 
 header * {
@@ -32,18 +34,42 @@ header .brand {
 }
 body {
     margin-bottom: -40px;
-    margin: 0 0 40px; 
+    margin: 0 0 40px;
 }
 .container {
-    width: 1024px;
+    width: 100%;
     margin: auto;
     padding: 20px;
+    min-width: 440px;
 
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 1024px!important;
+    }
+    .feature {
+        display: inline-block!important;
+        width: 33%!important;
+        height: 230px;
+        margin-top: 0px!important;
+    }
+    .public-index-description {
+        margin-top: 50px;
+    }
+
+    .index-img {
+        height: 500px!important;
+    }
+
+    .public-index-form {
+        margin-top: 40px!important;
+    }
 }
 
 footer {
     height: 40px;
-    background-color: #ccc;
+    background-color: #34495e;
     line-height: 40px;
     padding: 0 20px 0 20px;
     color: white;
@@ -57,4 +83,196 @@ footer {
 html {
     position: relative;
     min-height: 100%;
+}
+
+.full-image-wrapper {
+    width: 100%;
+    color: white;
+}
+
+.index-img {
+    background-image: url('../img/villa-index.jpg');
+    background-size: cover;
+    height: 875px;
+}
+
+.public-index-title {
+    margin-top: 50px;
+}
+.public-index-sub-title {
+    margin-top: 10px;
+}
+
+
+.public-index-description {
+    margin-top: 25px;
+}
+
+.public-index-form {
+    margin-top: 0px;
+}
+.btn-flat-big {
+    width: 140px;
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    color: white;
+}
+
+.subscribe {
+    margin-left: 5px;
+    background-color: #2980b9;
+}
+
+.learnmore {
+    background-color: #088282;
+}
+
+.features {
+    margin-top: 40px;
+}
+.feature {
+    width: 100%;
+    display: block;
+    height: 180px;
+}
+
+.feature * {
+    display: inline-block;
+    margin-top: 10px;   
+}
+
+.feature-icon {
+    float: left;
+    margin-left: 40px;
+}
+
+.feature-title {
+    margin-top: 0px;
+}
+
+.feature-left{
+    float: left;
+    width: 45%;
+    height: 100%;
+}
+
+.feature-right {
+    width: 55%;
+    height: 100%;
+    float:right;
+}
+
+.feature-right p {
+    margin-top: 10px;
+    letter-spacing: 0.4;
+    font-weight: 300;
+}
+
+
+.feature-detail {
+    background-color: #EEE;
+    height: 400px;
+    border-bottom: 1px rgba(0, 0, 0, 0.19) solid;
+}
+
+.feature-detail h3 {
+    font-size: 3em;
+    color: #bcbcbc;
+}
+
+.feature-detail p {
+    margin-top: 15px;
+    font-weight: 300;
+    letter-spacing: 1.05px;
+    color: #595959;
+}
+
+
+/*
+* 
+*
+*
+Dashboard Start 
+*
+*
+*
+*/
+
+.sidebar {
+    width: 140px;
+    min-height: 100%;
+    position: absolute;
+    color: white;
+    background-color: #34495e;
+    padding: 10px;
+    display: inline-block;
+}
+
+.sidebar h3 {
+    
+}
+
+.sidebar-menu {
+    margin-top: 25px;
+}
+
+.sidebar-menu p {
+    margin-bottom: 20px;
+}
+
+
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.dashboard-content {
+    padding: 10px;
+    padding-left: 150px;
+}
+
+.spacer-small {
+    margin-top: 12px;
+}
+
+.spacer-large {
+    margin-top: 30px;
+}
+
+.form input {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;
+}
+
+.form input[type="submit"] {
+    background-color: #ccc;
+    border: none;
+}
+
+.form select {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;
+}
+
+.table th {
+    margin: 0;
+    min-width: 140px;
+    padding: 5px;
+    border: none;
+}
+
+.table .first {
+    background-color: #ccc;
 }
