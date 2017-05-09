@@ -20,10 +20,10 @@ USE `mydb` ;
 -- -----------------------------------------------------
 -- Table `mydb`.`Offre`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Offre` (
+CREATE TABLE IF NOT EXISTS `mydb`.`offre` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NULL,
-  `détail` VARCHAR(45) NULL,
+  `detail` VARCHAR(45) NULL,
   `prix` INT NULL,
   `titre` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -43,7 +43,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Utilisateur`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Utilisateur` (
+CREATE TABLE IF NOT EXISTS `mydb`.`utilisateur` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
   `prenom` VARCHAR(45) NULL,
@@ -73,15 +73,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Pièce`
+-- Table `mydb`.`Piece`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Pièce` (
+CREATE TABLE IF NOT EXISTS `mydb`.`piece` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
   `id_client` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Pièce_Client1_idx` (`id_client` ASC),
-  CONSTRAINT `fk_Pièce_Client1`
+  INDEX `fk_Piece_Client1_idx` (`id_client` ASC),
+  CONSTRAINT `fk_Piece_Client1`
     FOREIGN KEY (`id_client`)
     REFERENCES `mydb`.`Utilisateur` (`id`)
     ON DELETE NO ACTION
@@ -92,7 +92,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Type_capteurs`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Type_capteurs` (
+CREATE TABLE IF NOT EXISTS `mydb`.`type_capteurs` (
   `id` INT NOT NULL,
   `type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -102,17 +102,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Capteur`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Capteur` (
+CREATE TABLE IF NOT EXISTS `mydb`.`capteur` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `état` TINYINT NULL,
-  `id_pièce` INT NOT NULL,
+  `etat` TINYINT NULL,
+  `id_piece` INT NOT NULL,
   `id_type` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Capteur_Pièce1_idx` (`id_pièce` ASC),
+  INDEX `fk_Capteur_Piece1_idx` (`id_piece` ASC),
   INDEX `fk_Capteur_Type_capteurs1_idx` (`id_type` ASC),
-  CONSTRAINT `fk_Capteur_Pièce1`
-    FOREIGN KEY (`id_pièce`)
-    REFERENCES `mydb`.`Pièce` (`id`)
+  CONSTRAINT `fk_Capteur_Piece1`
+    FOREIGN KEY (`id_piece`)
+    REFERENCES `mydb`.`Piece` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Capteur_Type_capteurs1`
@@ -126,7 +126,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Technicien`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Technicien` (
+CREATE TABLE IF NOT EXISTS `mydb`.`technicien` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
   `prenom` VARCHAR(45) NULL,
@@ -146,11 +146,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Mission`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Mission` (
+CREATE TABLE IF NOT EXISTS `mydb`.`mission` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date début` DATETIME NULL,
+  `date debut` DATETIME NULL,
   `date fin` DATETIME NULL,
-  `état` TINYINT NULL,
+  `etat` TINYINT NULL,
   `Motif` VARCHAR(45) NULL,
   `id_technicien` INT NOT NULL,
   `id_client` INT NOT NULL,
@@ -171,16 +171,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Données énergétiques`
+-- Table `mydb`.`Donnees energetiques`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Données énergétiques` (
+CREATE TABLE IF NOT EXISTS `mydb`.`donnee_energetique` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `valeur` FLOAT NULL,
   `date` DATETIME NULL,
   `id_client` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Données énergétiques_Client1_idx` (`id_client` ASC),
-  CONSTRAINT `fk_Données énergétiques_Client1`
+  INDEX `fk_Donnees energetiques_Client1_idx` (`id_client` ASC),
+  CONSTRAINT `fk_Donnees energetiques_Client1`
     FOREIGN KEY (`id_client`)
     REFERENCES `mydb`.`Utilisateur` (`id`)
     ON DELETE NO ACTION
@@ -191,7 +191,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Facture`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Facture` (
+CREATE TABLE IF NOT EXISTS `mydb`.`facture` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NULL,
   `pdf` VARCHAR(45) NULL,
@@ -207,16 +207,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Donnée`
+-- Table `mydb`.`Donnee`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Donnée` (
+CREATE TABLE IF NOT EXISTS `mydb`.`donnee` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NULL,
   `valeur` FLOAT NULL,
   `id_capteur` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Donnée_Capteur1_idx` (`id_capteur` ASC),
-  CONSTRAINT `fk_Donnée_Capteur1`
+  INDEX `fk_Donnee_Capteur1_idx` (`id_capteur` ASC),
+  CONSTRAINT `fk_Donnee_Capteur1`
     FOREIGN KEY (`id_capteur`)
     REFERENCES `mydb`.`Capteur` (`id`)
     ON DELETE NO ACTION
@@ -225,9 +225,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Nouveauté`
+-- Table `mydb`.`Nouveaute`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Nouveauté` (
+CREATE TABLE IF NOT EXISTS `mydb`.`nouveaute` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `image` VARCHAR(45) NULL,
   `titre` VARCHAR(45) NULL,
@@ -239,7 +239,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`EggHome`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`EggHome` (
+CREATE TABLE IF NOT EXISTS `mydb`.`eggHome` (
   `id` INT NOT NULL,
   `presentation` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -249,7 +249,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Contact`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Contact` (
+CREATE TABLE IF NOT EXISTS `mydb`.`contact` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tel` INT NULL,
   `email` VARCHAR(45) NULL,
@@ -260,7 +260,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Noctification`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Noctification` (
+CREATE TABLE IF NOT EXISTS `mydb`.`noctification` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_dashboard` INT NOT NULL,
   `id_client` INT NOT NULL,
