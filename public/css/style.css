@@ -206,11 +206,13 @@ Dashboard Start
     color: white;
     background-color: #34495e;
     padding: 10px;
+    padding-top: 15px;
     display: inline-block;
 }
 
-.sidebar h3 {
-    
+.sidebar a {
+    text-decoration: none;
+    color: white;
 }
 
 .sidebar-menu {
@@ -234,7 +236,8 @@ Dashboard Start
 
 .dashboard-content {
     padding: 10px;
-    padding-left: 150px;
+    padding-top: 15px;
+    padding-left: 160px;
 }
 
 .spacer-small {

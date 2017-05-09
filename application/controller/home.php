@@ -26,9 +26,4 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    public function dashboard(){
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/dashboard/objets.php';
-    }
-
 }

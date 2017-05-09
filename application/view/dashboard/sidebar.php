@@ -3,8 +3,8 @@
 	<nav class="sidebar-menu">
 		<p>Menu</p>
 		<ul>
-			<li>Objets</li>
-			<li>Pièces</li>
+			<li><a href="<?php echo URL; ?>dashboard/objets/">Objets</a></li>
+			<li><a href="<?php echo URL; ?>dashboard/pieces/">Pièces</a></li>
 			<li>Paramètres</li>
 		</ul>
 	</nav>
