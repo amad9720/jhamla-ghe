@@ -1,24 +1,24 @@
 <div class="dashboard-content">
-	<h3>Gestion des objets</h3>
+	<h3>Gestion des capteurs</h3>
 	<p class="spacer-small">Cette page vous permet d'ajouter / retirer / editer les capteurs connectés présent dans votre domicile</p>
-	<h4 class="spacer-large">Ajouter un objet</h4>
+	<h4 class="spacer-large">Ajouter un capteur</h4>
 	<form class="form spacer-small">
-		<input type="text" placeholder="Nom objet"/><br/>
-		<select>
-			<option disabled selected>Type objet</option>
-			<option>Thermomètre</option>
-			<option>Capteur humidité</option>
-			<option>Capteur de présence</option>
+		<input type="text" placeholder="Nom capteur"/><br/>
+		<select name="type_capteurs">
+			<option disabled selected>Type capteur</option>
+			<?php foreach ($type_capteurs as $capteur): ?>
+			<option value=<?php echo $capteur->type; ?> ><?php echo $capteur->type; ?></option>	
+			<?php endforeach ?>
 		</select><br/>
 		<select>
 			<option disabled selected>Pièce</option>
-			<option>Salon</option>
-			<option>Chambre 1</option>
-			<option>Chambre 2</option>
+			<?php foreach ($type_capteurs as $capteur): ?>
+			<option value=<?php echo $capteur->type; ?> ><?php echo $capteur->type; ?></option>	
+			<?php endforeach ?>
 		</select><br/>
 		<input type="submit" name="">
 	</form>
-	<h4 class="spacer-large">Liste des objets</h4>
+	<h4 class="spacer-large">Liste des capteurs</h4>
 	<table class="table spacer-large">
 		<tr class="first">
 			<th>Nom</th>

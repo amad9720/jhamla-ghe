@@ -11,7 +11,7 @@ class Client extends Controller {
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-        require APP . 'view/client/gestion_capteurs.php';
+        require APP . 'view/client/acceuil.php';
     }
     
     /**
@@ -35,43 +35,43 @@ class Client extends Controller {
         // load views
     	require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-    	require APP . 'view/client/pieces.php';
+    	require APP . 'view/client/ma_maison.php';
     }
 
     /**
-     * PAGE: ma maison
-     * This method handles what happens when you move to http://egghome/client/ma_maison 
+     * PAGE: contact
+     * This method handles what happens when you move to http://egghome/client/contact 
      */
     public function contact(){
 
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-        require APP . 'view/client/pieces.php';
+        require APP . 'view/client/contact.php';
     }
 
     /**
-     * PAGE: ma maison
-     * This method handles what happens when you move to http://egghome/client/ma_maison 
+     * PAGE: suivi Energetique
+     * This method handles what happens when you move to http://egghome/client/suivi_energetique 
      */
-    public function statistique(){
+    public function suivi_energetique(){
 
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-        require APP . 'view/client/pieces.php';
+        require APP . 'view/client/suivi_energetique.php';
     }
 
     /**
-     * PAGE: ma maison
-     * This method handles what happens when you move to http://egghome/client/ma_maison 
+     * PAGE: profil
+     * This method handles what happens when you move to http://egghome/client/profil 
      */
     public function profil(){
 
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-        require APP . 'view/client/pieces.php';
+        require APP . 'view/client/profil.php';
     }
 }
 
