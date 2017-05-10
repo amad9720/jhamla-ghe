@@ -1,6 +1,6 @@
 <div class="dashboard-content">
 	<h3>Gestion des objets</h3>
-	<p class="spacer-small">Cette page vous permet d'ajouter / retirer / editer les objets connectés présent dans votre domicile</p>
+	<p class="spacer-small">Cette page vous permet d'ajouter / retirer / editer les capteurs connectés présent dans votre domicile</p>
 	<h4 class="spacer-large">Ajouter un objet</h4>
 	<form class="form spacer-small">
 		<input type="text" placeholder="Nom objet"/><br/>

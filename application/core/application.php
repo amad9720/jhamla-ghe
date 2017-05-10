@@ -23,8 +23,8 @@ class Application
         // check for controller: no controller given ? then load start-page
         if (!$this->url_controller) {
 
-            require APP . 'controller/home.php';
-            $page = new Home();
+            require APP . 'controller/invite.php';
+            $page = new Invite();
             $page->index();
 
         } elseif (file_exists(APP . 'controller/' . $this->url_controller . '.php')) {
@@ -42,7 +42,7 @@ class Application
                     // Call the method and pass arguments to it
                     call_user_func_array(array($this->url_controller, $this->url_action), $this->url_params);
                 } else {
-                    // If no parameters are given, just call the method without parameters, like $this->home->method();
+                    // If no parameters are given, just call the method without parameters, like $this->invite->method();
                     $this->url_controller->{$this->url_action}();
                 }
 
