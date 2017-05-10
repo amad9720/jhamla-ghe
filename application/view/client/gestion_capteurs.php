@@ -10,51 +10,38 @@
 			<option value=<?php echo $capteur->type; ?> ><?php echo $capteur->type; ?></option>	
 			<?php endforeach ?>
 		</select><br/>
-		<select>
+		<select name="piece">
 			<option disabled selected>Pièce</option>
-			<?php foreach ($type_capteurs as $capteur): ?>
-			<option value=<?php echo $capteur->type; ?> ><?php echo $capteur->type; ?></option>	
+			<?php foreach ($pieces as $piece): ?>
+			<option value=<?php echo $piece->nom; ?> ><?php echo $piece->nom; ?></option>	
 			<?php endforeach ?>
 		</select><br/>
 		<input type="submit" name="">
 	</form>
 	<h4 class="spacer-large">Liste des capteurs</h4>
 	<table class="table spacer-large">
+		<thead>
 		<tr class="first">
-			<th>Nom</th>
-			<th>Pièce</th>
 			<th>Type</th>
+			<th>Pièce</th>
 			<th>Etat</th>
 			<th>Données</th>
 			<th>Editer</th>
 			<th>Supprimer</th>
 		</tr>
+		</thead>
+
+		<tbody>
+		<?php foreach ($capteurs as $capteur): ?>
 		<tr>
-			<th>Temperature 1</th>
-			<th>Salon</th>
-			<th>1</th>
-			<th>On</th>
-			<th>22°</th>
-			<th>X</th>
-			<th>X</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
 		</tr>
-		<tr>
-			<th>Humidité 1</th>
-			<th>Salon</th>
-			<th>2</th>
-			<th>On</th>
-			<th>40%</th>
-			<th>X</th>
-			<th>X</th>
-		</tr>	
-		<tr>
-			<th>Caméra</th>
-			<th>Chambre 1</th>
-			<th>1</th>
-			<th>Off</th>
-			<th>/</th>
-			<th>X</th>
-			<th>X</th>
-		</tr>							
+		<?php endforeach ?>
+		</tbody>							
 	</table>
 </div>

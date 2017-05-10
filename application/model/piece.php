@@ -19,6 +19,7 @@ class Piece extends Db_object
         
     }
 
+    
     public function add_room() {
         if (!empty($this->nom) /*&& !empty($this->id_client)*/ )
             return $this->create() ? true : false;
