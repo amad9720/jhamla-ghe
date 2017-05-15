@@ -2,8 +2,8 @@
 config/
 vendor/
 .vscode/
-jhamla-ghe.iml
-modules.xml
-vcs.xml
-workspace.xml
-.idea/
+.idea/jhamla-ghe.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+
