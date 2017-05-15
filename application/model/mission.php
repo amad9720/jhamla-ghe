@@ -24,20 +24,21 @@ class Mission extends Db_object
     }
     
     public function fetch_missions($id_technicien){
-        $sql = 
-        $missions_en_cours = instanciate('SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = $id_technicien');
-        $missions_finies = instanciate(SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = $id_technicien);
+        $sql = 'SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = $id_technicien';
+        $missions_en_cours = find_by_query($sql);
+        $sql = 'SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = $id_technicien';
+        $missions_finies = find_by_query($sql);
     }
     
-    public function formulaire(){
-        /*return an array with different information : date_debut,motif,nom_client, prenom_client*/
+    public function add_missions($id_technicien,$motif,$nom_client,$prenom_client){
+        $sql = "SELECT id FROM Client WHERE nom = $nom_client AND prenom = $prenom_client";
+        $id_client = find_by_query($sql);
+        
+        $sql = "INSERT INTO mission(id,date_debut,date_fin,etat,motif,id_technicien,id_client) VALUES ('',$date_debut,NULL,'en cours',$motif,$id_technicien,$id_client)";
+        $database->query($sql);       
     }
     
-    public function add_missions($id_technicien){
-        $info = formulaire();
-        
-        $sql = INSERT INTO mission(id,date_debut,date_fin,etat,motif,id_technicien,id_client) VALUES ('',
-        $database->query($sql);
-        
-
+    public function finished_mission($id_technicien,$date_fin){
+        $sql = "INSERT INTO mission(id,date_debut,date_fin,etat,motif,id_technicien,id_client) VALUES ('','',$date_fin,'fini','',$id_technicien,'')";
+        $database->query($sql); 
 }
