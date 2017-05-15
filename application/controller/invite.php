@@ -35,12 +35,12 @@ class Invite extends Controller
         require APP . 'view/invite/index.php';
         require APP . 'view/_templates/footer.php';
     }
-<<<<<<< HEAD:application/controller/home.php
+
     public function offre()
     {
         require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
-        require APP . 'view/home/offres.php';
+        require APP . 'view/invite/offres.php';
         require APP . 'view/_templates/footer.php';
     }
 
@@ -50,7 +50,5 @@ class Invite extends Controller
         require APP . 'view/dashboard/sidebar.php';
         require APP . 'view/dashboard/objets.php';
     }
-=======
->>>>>>> 36d5132d3874f471cda8c7223b23ea7ddedeefb7:application/controller/invite.php
 
 }
