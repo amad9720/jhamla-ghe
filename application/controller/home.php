@@ -35,7 +35,13 @@ class Home extends Controller
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
-
+    public function offre()
+    {
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/offres.php';
+        require APP . 'view/_templates/footer.php';
+    }
 
     public function dashboard()
     {
