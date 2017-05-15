@@ -17,5 +17,7 @@ class Contact extends Db_object
     {
         
     }
+    
+    //Travail pour Azénor
 
 }
