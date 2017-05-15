@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 /**
  * Egghome - an  simple naked PHP application for Class work
  *
