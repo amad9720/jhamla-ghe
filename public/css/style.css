@@ -256,12 +256,19 @@ Dashboard Start
     height: 30px;
 }
 
-.form input[type="submit"] {
-    background-color: #ccc;
-    border: none;
+
+select {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;
 }
 
-.form select {
+button, input[type='submit'] {
+    background-color: #34495e;
+    border-radius: 3px;
+    border-width: 1px;
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;

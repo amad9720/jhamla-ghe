@@ -5,14 +5,14 @@ class Db_object {
 	public $errors = array(); //for feedback to us or our customers
 	public $upload_errors_array = array(
 
-		UPLOAD_ERR_OK => "There is no error, the file uploaded with success.",
-	    UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize directive in php.ini.",
-	    UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.",
-	    UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
-	    UPLOAD_ERR_NO_FILE => "No file was uploaded.",
-	    UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder. Introduced in PHP 5.0.3.",
-	    UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk. Introduced in PHP 5.1.0.",
-	    UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
+		// UPLOAD_ERR_OK => "There is no error, the file uploaded with success.",
+	 //    UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize directive in php.ini.",
+	 //    UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.",
+	 //    UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
+	 //    UPLOAD_ERR_NO_FILE => "No file was uploaded.",
+	 //    UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder. Introduced in PHP 5.0.3.",
+	 //    UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk. Introduced in PHP 5.1.0.",
+	 //    UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
 	);
 
 	public $tmp_path;
@@ -62,11 +62,13 @@ class Db_object {
 		$object_array = array();
 
 		$calling_class = get_called_class();
-		$result_set = $database->query($sql);
 
+
+		$result_set = $database->query($sql);
 		
 		while ($row = $result_set->fetchObject($calling_class))
 			$object_array[] = $row;
+
 
 		return $object_array;
 		
