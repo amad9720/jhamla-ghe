@@ -20,7 +20,36 @@ class Mission extends Db_object
      */
     function __construct()
     {
-        
+       
     }
-
+    
+    public static function fetch_missions($id_technicien){
+        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = {$id_technicien}";
+        $results = Mission::find_by_query($sql);
+        return $results;
+    }
+    
+    public static function fetch_end_missions($id_technicien){
+        $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = {$id_technicien}";
+        $results = Mission::find_by_query($sql);
+        return $results;
+    }
+    
+    public static function add_missions(){
+        $sql = "SELECT id FROM mission WHERE date_fin = NULL AND id_client = {$id_client}";
+        $results = Mission::find_by_query($sql);
+        if($results==NULL){
+            $this->create();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public static function finished_missions($date_fin){
+        $this->date_fin=$date_fin;
+        $this->update();
+    }
+   
 }
