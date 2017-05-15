@@ -17,4 +17,14 @@ class TypeCapteur extends Db_object
         
     }
 
+    public function add_type_capteurs {
+        if (empty($this->id))
+            return $this->create();
+        else return false;
+    }
+
+    public function remove_type_capteurs {
+        if (!empty($this->id))
+            return $this->delete();
+    }
 }

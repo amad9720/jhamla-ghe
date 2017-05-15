@@ -86,6 +86,5 @@ class Capteur extends Db_object
         return false;
     }
 
-    
 
 }

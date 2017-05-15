@@ -286,3 +286,7 @@ button, input[type='submit'] {
 .table .first {
     background-color: #ccc;
 }
+
+block{
+    display.flex
+}

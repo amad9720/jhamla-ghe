@@ -23,27 +23,30 @@ class Mission extends Db_object
        
     }
     
-    static public function fetch_missions($id_technicien){
-        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = {$id_technicien}";
-        $results = Mission::find_by_query($sql);
-        
+    public static function fetch_missions($id_technicien){
+        return $results;
     }
-
+    
     public static function fetch_end_missions($id_technicien){
         $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = {$id_technicien}";
         $results = Mission::find_by_query($sql);
+        return $results;
     }
     
-    public function add_missions($id_technicien,$motif,$nom_client,$prenom_client){
-        $sql = "SELECT id FROM Client WHERE nom = $nom_client AND prenom = $prenom_client";
-        $id_client = find_by_query($sql);
-        
-        $sql = "INSERT INTO mission(id,date_debut,date_fin,etat,motif,id_technicien,id_client) VALUES ('',$date_debut,NULL,'en cours',$motif,$id_technicien,$id_client)";
-        $database->query($sql);       
+    public static function add_missions(){
+        $sql = "SELECT id FROM mission WHERE date_fin = NULL AND id_client = {$id_client}";
+        $results = Mission::find_by_query($sql);
+        if($results==NULL){
+            $this->create();
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
-    public function finished_mission($id_technicien,$date_fin){
-        $sql = "INSERT INTO mission(id,date_debut,date_fin,etat,motif,id_technicien,id_client) VALUES ('','',$date_fin,'fini','',$id_technicien,'')";
-        $database->query($sql); 
-    }
+    public static function finished_missions($date_fin){
+        $this->date_fin=$date_fin;
+        $this->update();
+   
 }
