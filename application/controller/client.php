@@ -46,7 +46,7 @@ class Client extends Controller {
 
         // load views
     	require APP . 'view/_templates/head.php';
-        //require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/gestion_capteurs.php';
         require APP . 'view/_templates/footer.php';
 
