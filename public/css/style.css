@@ -91,7 +91,7 @@ html {
 }
 
 .index-img {
-    background-image: url('../../../../../../Users/johannaprevost/PhpstormProjects/untitled/ma_maison/images/villa-index.jpg');
+    background-image: url('../img/villa-index.jpg');
     background-size: cover;
     height: 875px;
 }
@@ -287,77 +287,3 @@ button, input[type='submit'] {
     background-color: #ccc;
 }
 
-<<<<<<< HEAD
-section
-{
-    background-color : lightgrey;
-    color : white;
-}
-
-.conteneur
-{
-    display : flex;
-    flex-wrap : wrap;
-    justify-content: space-around;
-}
-h1
-{
-    background-color: #34495e;
-    font-size : x-large;
-    text-align: center;
-}
-
-
-h2
-{
-    font-size : medium;
-}
-
-aside, .v, .x
-{
-    border : 1px black solid;
-}
-
-aside
-{
-    background-color: cadetblue ;
-    width: 20%;
-    margin : 15px;
-    padding : 10px;
-    text-align : center;
-}
-
-.v, .x
-{
-    width: 60px;
-    margin : auto;
-    border-radius : 5px;
-}
-
-img
-{
-    float : left;
-    width: 25%;
-    height:25%;
-}
-
-figure
-{
-    display :flex;
-    align-items : center;
-    justify-content : space-around;
-}
-
-.v
-{
-    background-color : springgreen;
-}
-
-.x
-{
-    background-color: red;
-=======
-block{
-    display.flex
-}
->>>>>>> 61116794a5ecaa2315c658dbcdaf854e540ec408
