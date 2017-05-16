@@ -82,10 +82,10 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 //	$db = "mydb";
 
 ////config Hugo
-//	 $server = "localhost";
-//	 $username = "root";
-//	 $password = "";
-//	 $db = "mydb";
+$server = "localhost";
+$username = "root";
+$password = "";
+$db = "mydb";
 
 
 
