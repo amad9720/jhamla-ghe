@@ -37,7 +37,10 @@ class Capteur extends Db_object
 
         return array_shift($result)->type;
     }
-
+    /**
+     * Find only one data row for the capteur, later on we have to make another function to fetch all the data related to one capteur
+     * @return [Donne] [one object of the Donnee class]
+     */
     public function find_donnee() {
 
         $sql = "SELECT d.date, d.valeur
@@ -81,10 +84,23 @@ class Capteur extends Db_object
     }
 
     public function remove_capteur() {
-        if (!empty($this->id))
-            return $this->delete();
-        return false;
+
+        //find and delete all the data related to this capteur
+        $donne_to_delete = $this->find_donnee();
+        $donnee_to_delete->delete();
+
+        //then delete the capteur
+        $this->delete();
     }
+
+    public function activer_capteur() {
+
+    }
+
+    public function desactiver_capteur() {
+
+    }
+
 
 
 }

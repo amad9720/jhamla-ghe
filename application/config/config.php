@@ -74,18 +74,18 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Heroku
  */
 
-//config Amadou
-//	$server = "localhost";
-//	$username = "root";
-//	$password = "root";
-//	$db = "mydb";
+// config Amadou
+	$server = "localhost";
+	$username = "root";
+	$password = "root";
+	$db = "mydbC";
 
 
-//config Hugo
-	 $server = "localhost";
-	 $username = "root";
-	 $password = "";
-	 $db = "mydb";
+// //config Hugo
+// 	 $server = "localhost";
+// 	 $username = "root";
+// 	 $password = "";
+// 	 $db = "mydb";
 
 
 

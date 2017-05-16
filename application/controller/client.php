@@ -58,14 +58,19 @@ class Client extends Controller {
                 //we are looping around the checkbox array and processing it's values
                 foreach($array_id as $value_id ){
 
-                    //find and delete all the data related to this capteur
-                    $id_donne_to_delete = Donnee::find_donnee_by_capteur_id($value_id);
-                    $donnee_to_delete = Donnee::find_by_id($id_donne_to_delete);
-                    $donnee_to_delete->delete();
+                    // //find and delete all the data related to this capteur
+                    // $id_donne_to_delete = Donnee::find_donnee_by_capteur_id($value_id);
+                    // $donnee_to_delete = Donnee::find_by_id($id_donne_to_delete);
+                    // $donnee_to_delete->delete();
 
-                    //find and delete the capteur
+                    // //find and delete the capteur
+                    // $capteur_to_delete = Capteur::find_by_id($value_id);
+                    // $capteur_to_delete->delete();
+                    
                     $capteur_to_delete = Capteur::find_by_id($value_id);
-                    $capteur_to_delete->delete();
+                    $capteur_to_delete->remove_capteur();
+                    
+                    
                 }
             }
 
@@ -101,10 +106,47 @@ class Client extends Controller {
      */
     public function ma_maison(){
 
+        // loadModels
+        
+        //Piece
+        $this->loadModel('Piece');
+        $pieces_client = Piece::get_room_client(1); // pour linstant on urilise le client 1 pour test
+
         // load views
     	require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
     	require APP . 'view/client/ma_maison.php';
+
+        //code to manage the actions
+        if(isset($_POST['deleteRoom'])) {
+
+            $room_id = $_POST['room'];
+            $room_to_delete = Piece::find_by_id($room_id);
+            $room_to_delete->delete();
+
+            header("Location: ".URL."client/gestion_capteurs");
+
+        }
+
+        if (isset($_POST['addCapteur'])) {
+
+            // Save new capteur
+            $new_capteur = new Capteur();
+            $new_capteur->etat = 0 ;
+            $new_capteur->id_piece = $_POST['piece'] ;
+            $new_capteur->id_type = $_POST['type_capteur'];
+            $new_capteur->create();
+
+            //save data for the new capteur
+            $new_donnee = new Donnee();
+            $new_donnee->valeur = $_POST['donnee'];
+            $new_donnee->date = date('Y-m-d H:i:s');
+            $new_donnee->id_capteur = $database->the_insert_id();
+            $new_donnee->create();
+
+            header("Location: ".URL."client/gestion_capteurs");
+        }
+
     }
 
     /**
