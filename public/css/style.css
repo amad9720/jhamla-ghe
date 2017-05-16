@@ -231,8 +231,6 @@ Dashboard Start
     margin-bottom: 20px;
 }
 
-
-
 .sidebar ul {
     list-style-type: none;
 }
@@ -341,4 +339,82 @@ button, input[type='submit'] {
 
 .green-text {
     color:#3cc33c;
+}
+
+section
+{
+    background-color : lightgrey ;
+    color : white;
+
+}
+
+.conteneur
+{
+    display : flex;
+    flex-wrap : wrap;
+    justify-content: space-around;
+}
+h1
+{
+    background-color: #34495e;
+    font-size : x-large;
+    text-align: center;
+}
+
+
+h2
+{
+    font-size : medium;
+}
+
+aside, .v, .x
+{
+    border : 1px black solid;
+}
+
+aside
+{
+    background-color: cadetblue ;
+    width: 20%;
+    margin : 15px;
+    padding : 10px;
+    text-align : center;
+
+}
+
+.v, .x
+{
+    width: 60px;
+    margin : auto;
+    border-radius : 5px;
+}
+
+img
+{
+    float : left;
+    width: 25%;
+    height:25%;
+}
+
+figure
+{
+    display :flex;
+    align-items : center;
+    justify-content : space-around;
+}
+
+.v
+{
+    background-color : springgreen;
+}
+
+.x
+{
+    background-color: red;
+}
+
+#nouveauté
+{
+    width: 100%;
+    height: 750px;
 }
