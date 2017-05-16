@@ -74,6 +74,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Heroku
  */
 
+
 //config Amadou
 	$server = "localhost";
 	$username = "root";
@@ -86,6 +87,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 //	 $username = "root";
 //	 $password = "";
 //	 $db = "mydb";
+
 
 
 

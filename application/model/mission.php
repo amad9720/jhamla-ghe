@@ -12,7 +12,7 @@ class Mission extends Db_object
 
 
     protected static $db_table = "mission"; 
-    protected static $db_table_fields = array("id", "date_debut", "date_fin", "etat", "motif", "id_technicien", "id_client");
+    protected static $db_table_fields = array("date_debut", "date_fin", "etat", "motif", "id_technicien", "id_client");
 
 
     /**
@@ -23,13 +23,11 @@ class Mission extends Db_object
        
     }
     
-    public static function fetch_missions($id_technicien){
-        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = {$id_technicien}";
-        $results = Mission::find_by_query($sql);
+    public static function fetch_missions($id_technicien) {
         return $results;
     }
     
-    public static function fetch_end_missions($id_technicien){
+    public static function fetch_end_missions($id_technicien) {
         $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = {$id_technicien}";
         $results = Mission::find_by_query($sql);
         return $results;
@@ -38,7 +36,7 @@ class Mission extends Db_object
     public static function add_missions(){
         $sql = "SELECT id FROM mission WHERE date_fin = NULL AND id_client = {$id_client}";
         $results = Mission::find_by_query($sql);
-        if($results==NULL){
+        if(empty($results)){
             $this->create();
             return true;
         }
@@ -47,9 +45,8 @@ class Mission extends Db_object
         }
     }
     
-    public static function finished_missions($date_fin){
+    public static function finished_missions($date_fin) {
         $this->date_fin=$date_fin;
         $this->update();
-    }
-   
+   }
 }

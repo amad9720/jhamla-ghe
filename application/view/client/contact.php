@@ -1,37 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-
-     .Contact_info{
-         background-color: #bcbcbc;
-         box-shadow: 5px 5px 5px black;
-     }
-        .capteur_panne{
-            text-align: left;
-            position: absolute;
-
-
-        }
-
-        .capteur_panne,.info_egghome{
-            display: inline-block;
-            margin-left: 22%;
-
-        }
-
-        .info_egghome,.capteur_panne p {
-            font-size: medium;
-            color: white;
-        }
-
-
-    </style>
-
-
-</head>
-<body>
 
 <div class="Contact_info">
 
@@ -107,7 +74,5 @@
 <p>Texte après le formulaire</p>
 
 
-</body>
 
-</html>
 
