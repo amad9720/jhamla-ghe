@@ -78,7 +78,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 	$server = "localhost";
 	$username = "root";
 	$password = "root";
-	$db = "mydbC";
+	$db = "mydb";
 
 
 // //config Hugo
