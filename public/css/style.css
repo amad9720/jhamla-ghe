@@ -287,6 +287,7 @@ button, input[type='submit'] {
     background-color: #ccc;
 }
 
+<<<<<<< HEAD
 section
 {
     background-color : lightgrey;
@@ -355,3 +356,8 @@ figure
 .x
 {
     background-color: red;
+=======
+block{
+    display.flex
+}
+>>>>>>> 61116794a5ecaa2315c658dbcdaf854e540ec408

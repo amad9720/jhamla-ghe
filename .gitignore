@@ -2,4 +2,4 @@
 config/
 vendor/
 .vscode/
-.idea/php.xml
+.idea/
