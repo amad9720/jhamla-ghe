@@ -11,9 +11,10 @@ class Capteur extends Db_object
     public $type;
     public $date;
     public $valeur;
+    public $piece;
 
     protected static $db_table = "capteur"; 
-    protected static $db_table_fields = array("id", "etat", "id_piece", "id_type");
+    protected static $db_table_fields = array("etat", "id_piece", "id_type");
 
 
     /**
@@ -25,7 +26,6 @@ class Capteur extends Db_object
     }
 
     public function find_type_capteur() {
-        global $database;
 
         $sql = "SELECT t.type
                 FROM type_capteurs t
@@ -35,11 +35,10 @@ class Capteur extends Db_object
         // $result contains an array of objects which has properties the columns fetched from the BD by the previous query
         $result = self::find_by_query($sql);
 
-        return $result->type;
+        return array_shift($result)->type;
     }
 
     public function find_donnee() {
-        global $database;
 
         $sql = "SELECT d.date, d.valeur
                 FROM donnee d
@@ -49,7 +48,22 @@ class Capteur extends Db_object
         // $result contains an array of objects which has properties the columns fetched from the BD by the previous query
         $result = self::find_by_query($sql);
 
-        return $result;
+        return array_shift($result);
+    }
+
+    public function find_capteur_room() {
+        if ($this->id_piece) {
+            $sql = "SELECT p.nom
+                    FROM piece p
+                    WHERE p.id = '{$this->id_piece}'
+                    LIMIT 1 ";
+
+            $result = self::find_by_query($sql);
+
+            return array_shift($result)->nom;
+        }
+
+        return false;
     }
 
     public function add_capteur_to_room($id_piece) {
@@ -71,5 +85,7 @@ class Capteur extends Db_object
             return $this->delete();
         return false;
     }
+
+    
 
 }

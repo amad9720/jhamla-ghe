@@ -19,4 +19,18 @@ class Donnee extends Db_object
         
     }
 
+    public static function find_donnee_by_capteur_id($capteur_id) {
+        if (!empty($capteur_id)) {
+            $sql = "SELECT d.id
+                    FROM donnee d
+                    WHERE d.id_capteur = '{$capteur_id}'
+                    LIMIT 1 ";
+
+            $results = self::find_by_query($sql);
+            return array_shift($results)->id;
+        }
+
+        return false;
+    }
+
 }
