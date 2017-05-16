@@ -65,6 +65,14 @@ body {
     .public-index-form {
         margin-top: 40px!important;
     }
+    .card {
+        display: inline-block!important;
+        margin-top: 0px!important;
+    }
+    .medium.card {
+        width: 250px!important
+    }
+
 }
 
 footer {
@@ -287,11 +295,6 @@ button, input[type='submit'] {
     background-color: #ccc;
 }
 
-.block {
-    display:flex
-}
-
-
  .Contact_info{
      background-color: #bcbcbc;
      box-shadow: 5px 5px 5px black;
@@ -314,3 +317,28 @@ button, input[type='submit'] {
     color: white;
 }
 
+.card {
+    background-color: #f0f0f0;
+    padding: 10px 10px;
+    position: relative;
+}
+
+.card-main-info {
+    font-size: 2em;
+    color: #767676;
+}
+
+.card-bottom-text {
+    position: absolute;
+    bottom: 5px;
+    color: #767676;
+}
+.medium.card {
+    height: 250px;
+    width: 95%;
+    margin: 20px 0px;
+}
+
+.green-text {
+    color:#3cc33c;
+}
