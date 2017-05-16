@@ -24,15 +24,16 @@
 			</select><br/>
 
 			<input type="text" name="donnee" placeholder="Donnee">
-
+			<br/>
 			<input type="submit" name="addCapteur">
 
 		</form>
 	</div>
 
 	<h4 class="spacer-large">Liste des capteurs</h4>
-
-	<table class="table spacer-large">
+	<div class="spacer-small"></div>
+	<button name="addCapteur" class="addCapteur_btn">Ajouter Capteur</button>
+	<table class="table spacer-small">
 
 		<!-- <div class="" id="bulkOptionContainer">
             <select class="" name="bulk_options" id="">
@@ -40,9 +41,6 @@
                 <option value="deleted">Delete</option>
             </select>
         </div> -->
-
-        <button name="addCapteur" class="addCapteur_btn">Ajouter Capteur</button>
-
 		<thead>
 		<tr class="first">
 			<td><input type="checkbox" id="selectAllBoxes"></td>
@@ -53,7 +51,7 @@
 		</tr>
 		</thead>
 
-		<form method="POST" action="<?php echo URL; ?>client/gestion_capteurs">
+		<form class="form" method="POST" action="<?php echo URL; ?>client/gestion_capteurs">
 			<tbody>
 			<?php foreach ($capteurs as $capteur): ?>
 			<tr>
@@ -65,8 +63,8 @@
 			</tr>
 			<?php endforeach ?>
 			</tbody>
-
-			<input type="submit" name="deleteCapteur" >
+				
+			<input type="submit" name="deleteCapteur" id="submitgestioncapteur" >
 		</form>
 
 	</table>

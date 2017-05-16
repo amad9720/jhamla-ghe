@@ -251,7 +251,6 @@ Dashboard Start
 .spacer-small {
     margin-top: 12px;
 }
-
 .spacer-large {
     margin-top: 30px;
 }
@@ -264,8 +263,23 @@ Dashboard Start
     height: 30px;
 }
 
+button {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px; 
+}
 
-select {
+ .form select {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;   
+}
+
+.form input[type="submit"] {
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;
@@ -273,16 +287,15 @@ select {
     height: 30px;
 }
 
-button, input[type='submit'] {
-    background-color: #34495e;
-    border-radius: 3px;
-    border-width: 1px;
+#submitgestioncapteur {
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;
     padding: 4px;
-    height: 30px;
+    height: 30px; 
 }
+
+
 
 .table th {
     margin: 0;
