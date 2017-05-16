@@ -86,7 +86,7 @@ class Capteur extends Db_object
     public function remove_capteur() {
 
         //find and delete all the data related to this capteur
-        $donne_to_delete = $this->find_donnee();
+        $donnee_to_delete = $this->find_donnee();
         $donnee_to_delete->delete();
 
         //then delete the capteur
@@ -94,7 +94,7 @@ class Capteur extends Db_object
     }
 
     public function activer_capteur() {
-
+        
     }
 
     public function desactiver_capteur() {
