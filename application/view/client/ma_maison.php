@@ -1,43 +1,257 @@
-<div class="dashboard-content">
-	<h3>Gestion des pièces</h3>
-	<p class="spacer-small">Cette page vous permet d'ajouter / retirer / editer des pièces présent dans votre domicile</p>
-	<p class="spacer-small">Pour voir la liste des objets présents dans une pièce veuillez éditer cette dernière.</p>
-	<h4 class="spacer-large">Ajouter une pièce</h4>
-	<form class="form spacer-small">
-		<input type="text" placeholder="Nom pièce"/><br/>
-		<input type="submit" name="">
-	</form>
-	<h4 class="spacer-large">Liste des pièces</h4>
-	<table class="table spacer-large">
-		<tr class="first">
-			<th>Nom</th>
-			<th>Nombre objets</th>
-			<th>Editer</th>
-			<th>Supprimer</th>
-		</tr>
-		<tr>
-			<th>Chambre 1</th>
-			<th>5</th>
-			<th>X</th>
-			<th>X</th>
-		</tr>
-		<tr>
-			<th>Salon</th>
-			<th>9</th>
-			<th>X</th>
-			<th>X</th>
-		</tr>
-		<tr>
-			<th>Chambre 2</th>
-			<th>3</th>
-			<th>X</th>
-			<th>X</th>
-		</tr>	
-		<tr>
-			<th>Salle de bain</th>
-			<th>2</th>
-			<th>X</th>
-			<th>X</th>
-		</tr>					
-	</table>
-</div>
+<?php include("head.php"); ?>
+
+<?php include("header.php"); >
+
+<?php include("footer.php"); >
+
+<body>
+    <section>
+        <h1> Salon </h1>
+
+        <div class="conteneur">
+        <aside >
+            <h2> Présence </h2>
+            <figure>
+                <img src ="img/MaMaison/presence.png" alt="présence"/>
+                <figcaption>
+                    <p class = "v "> YES </p> <br>
+                    <p class = "x" > NO </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Luminosité </h2>
+            <figure>
+                <img src ="img/MaMaison/luminosite.png" alt="luminosité"/>
+                <figcaption> 70 % </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Caméra </h2>
+            <figure>
+                <img src ="img/MaMaison/camera.png" alt="caméra"/>
+                <figcaption>
+                    <p class = "v"> ON </p> <br>
+                    <p class = "x"> OFF </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Volet </h2>
+            <figure>
+                <img src ="img/MaMaison/volet.png" alt="volet"/>
+                <figcaption>
+                    <p class = "v"> OPEN </p> <br>
+                    <p class = "x"> CLOSE </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Température </h2>
+            <figure>
+                <img src ="img/MaMaison/temperature.png" alt="température"/>
+                <figcaption> 15°C </figcaption>
+        </aside>
+
+        <aside>
+            <h2> Pollution </h2>
+            <figure>
+                <img src ="img/MaMaison/pollution.png" alt="pollution"/>
+                <figcaption> 70% </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Lumière </h2>
+            <figure>
+                <img src ="img/MaMaison/lumiere.png" alt="lumière"/>
+                <figcaption>
+                    <p class = "v"> ON </p> <br>
+                    <p class = "x"> OFF </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Porte </h2>
+            <figure>
+                <img src ="img/MaMaison/porte.png" alt="porte"/>
+                <figcaption>
+                    <p class = "v"> OPEN </p> <br>
+                    <p class = "x"> CLOSE </p>
+                </figcaption>
+            </figure>
+        </aside>
+        </div>
+
+    </section>
+
+    <section>
+        <h1> Chambre </h1>
+
+        <div class ="conteneur">
+        <aside>
+            <h2> Température </h2>
+            <figure>
+                <img src ="images/MaMaison/temperature.png" alt="température"/>
+                <figcaption> 20°C </figcaption>
+        </aside>
+
+        <aside>
+            <h2> Luminosité </h2>
+            <figure>
+                <img src ="img/MaMaison/luminosite.png" alt="luminosité"/>
+                <figcaption> 70 % </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Caméra </h2>
+            <figure>
+                <img src ="img/MaMaison/camera.png" alt="caméra"/>
+                <figcaption>
+                    <p class = "v"> ON </p> <br>
+                    <p class = "x"> OFF </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Volet </h2>
+            <figure>
+                <img src ="img/MaMaison/volet.png" alt="volet"/>
+                <figcaption>
+                    <p class = "v"> OPEN </p> <br>
+                    <p class ="x"> CLOSE </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Humidité </h2>
+            <figure>
+                <img src ="img/MaMaison/humidite.png" alt="humidité"/>
+                <figcaption> 70% </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Pollution </h2>
+            <figure>
+                <img src ="img/MaMaison/pollution.png" alt="pollution"/>
+                <figcaption> 70% </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Lumière </h2>
+            <figure>
+                <img src ="img/MaMaison/lumiere.png" alt="lumière"/>
+                <figcaption>
+                    <p class = "v"> ON </p> <br>
+                    <p class = "x" > OFF </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Porte </h2>
+            <figure>
+                <img src ="img/MaMaison/porte.png" alt="porte"/>
+                <figcaption>
+                    <p class = "v"> OPEN </p> <br>
+                    <p class = "x"> CLOSE </p>
+                </figcaption>
+            </figure>
+        </aside>
+        </div>
+    </section>
+
+    <section>
+        <h1> Cuisine </h1>
+
+        <div class = "conteneur">
+        <aside>
+            <h2> Présence </h2>
+            <figure>
+                <img src ="img/MaMaison/presence.png" alt="présence"/>
+                <figcaption>
+                    <p class = "v"> YES </p> <br>
+                    <p class = "x"> NO </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Luminosité </h2>
+            <figure>
+                <img src ="img/MaMaison/luminosite.png" alt="luminosité"/>
+                <figcaption> 70 % </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Température </h2>
+            <figure>
+                <img src ="img/MaMaison/temperature.png" alt="température"/>
+                <figcaption> 15°C </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Volet </h2>
+            <figure>
+                <img src ="img/MaMaison/volet.png" alt="volet"/>
+                <figcaption>
+                    <p class = "v"> OPEN </p> <br>
+                    <p class = "x"> CLOSE </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Humidité </h2>
+            <figure>
+                <img src ="img/MaMaison/humidite.png" alt="humidité"/>
+                <figcaption> 70 % </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Pollution </h2>
+            <figure>
+                <img src ="img/MaMaison/pollution.png" alt="pollution"/>
+                <figcaption> 70 % </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Lumière </h2>
+            <figure>
+                <img src ="img/MaMaison/lumiere.png" alt="lumière"/>
+                <figcaption>
+                    <p class = "v"> ON </p> <br>
+                    <p class = "x"> OFF </p>
+                </figcaption>
+            </figure>
+        </aside>
+
+        <aside>
+            <h2> Porte </h2>
+            <figure>
+                <img src ="img/MaMaison/porte.png" alt="porte"/>
+                <figcaption>
+                    <p class = "v"> OPEN </p> <br>
+                    <p class = "x"> CLOSE </p>
+                </figcaption>
+            </figure>
+        </aside>
+        </div>
+
+    </section>
+</body>
+</html>
