@@ -1,3 +1,5 @@
+
+
 <?php
 
 class Capteur extends Db_object
@@ -6,17 +8,13 @@ class Capteur extends Db_object
     public $etat;
     public $id_piece;
     public $id_type;
-
     // add others attributes for the JOIN
     public $type;
     public $date;
     public $valeur;
     public $piece;
-
     protected static $db_table = "capteur"; 
     protected static $db_table_fields = array("etat", "id_piece", "id_type");
-
-
     /**
      * @param object $db A PDO database connection
      */
@@ -25,50 +23,77 @@ class Capteur extends Db_object
         
     }
 
-    public function find_type_capteur() {
+    public static function find_all_capteur() {
 
+        $capteurs = Capteur::find_all();
+
+        foreach ($capteurs as $capteur) {
+            $capteur->type = $capteur->find_type_capteur()->type;
+            $capteur->valeur = $capteur->find_donnee()->valeur;
+            $capteur->date = $capteur->find_donnee()->date;
+            $capteur->piece = $capteur->find_capteur_room($capteur->id_piece)->nom;
+        }
+
+        return $capteurs;
+    }
+
+    /**
+     * Find only one data row for the capteur, later on we have to make another function to fetch all the data related to one capteur
+     * @return [Donne] [one object of the Donnee class]
+     */
+    public function find_type_capteur() {
         $sql = "SELECT t.type
                 FROM type_capteurs t
                 WHERE t.id = '{$this->id_type}'
                 LIMIT 1 ";
-
         // $result contains an array of objects which has properties the columns fetched from the BD by the previous query
         $result = self::find_by_query($sql);
-
-        return array_shift($result)->type;
+        return array_shift($result);
     }
+
     /**
      * Find only one data row for the capteur, later on we have to make another function to fetch all the data related to one capteur
      * @return [Donne] [one object of the Donnee class]
      */
     public function find_donnee() {
-
         $sql = "SELECT d.date, d.valeur
                 FROM donnee d
                 WHERE d.id_capteur = '{$this->id}'
                 LIMIT 1 ";
-
         // $result contains an array of objects which has properties the columns fetched from the BD by the previous query
         $result = self::find_by_query($sql);
-
         return array_shift($result);
     }
 
+    /**
+     * Find the room of the capteur
+     * @return [Piece] [one object of the Piece class]
+     */
     public function find_capteur_room() {
         if ($this->id_piece) {
             $sql = "SELECT p.nom
                     FROM piece p
                     WHERE p.id = '{$this->id_piece}'
                     LIMIT 1 ";
-
             $result = self::find_by_query($sql);
-
-            return array_shift($result)->nom;
+            return array_shift($result);
         }
-
         return false;
     }
 
+    /**
+     * remove_capteur_to_room removes a capteur from a room by setting it's id_capteur to NULL (if not working we will try to have a row specialy for capteurs without room)]
+     * @return [type] [description]
+     */
+    public function remove_capteur_to_room() {
+        $this->id_piece = NULL;
+            return $this->update();
+    }
+
+    /**
+     * Add an already existing capteur to a room (just by changing it's id_piece)
+     * @param [int] $id_piece [the id of the room]
+     */
     public function add_capteur_to_room($id_piece) {
         if ($id_piece) {
             $this->id_piece = $id_piece;
@@ -77,14 +102,29 @@ class Capteur extends Db_object
         return false;
     }
 
-    public function add_new_capteur() {
-        if (empty($this->id))
+    /**
+     * add_new_capteur description Adds a new capteur which are not in a room
+     * @return [type] [description]
+     */
+    public function add_new_capteur($id_piece, $id_type) {
+
+        if (empty($this->id)) {
+
+            $this->etat = 0;
+            $this->id_piece = $id_piece;
+            $this->id_type = $id_type;
+
             return $this->create();
+        }
         else return false;
     }
-
+    
+    /**
+     * remove_capteur Removes a Capteur and all it's data
+     * @return [type] [description]
+     */
     public function remove_capteur() {
-
+        
         //find and delete all the data related to this capteur
         $donnee_to_delete = $this->find_donnee();
         $donnee_to_delete->delete();
@@ -93,14 +133,29 @@ class Capteur extends Db_object
         $this->delete();
     }
 
+    /**
+     * Change the state of a capteur to ON if OFF
+     * @return [type] [description]
+     */
     public function activer_capteur() {
-        
+        if ($this->etat === 0) {
+            $this->etat = 1;
+            $this->update();
+        }
+        return false;
     }
-
+    /**
+     * Change the state of a capteur to OFF if ON
+     * @return [type] [description]
+     */
     public function desactiver_capteur() {
+        if ($this->etat === 1) {
+            $this->etat = 0;
+            $this->update();
+        }
 
+        return false;
     }
-
-
-
 }
+
+
