@@ -7,6 +7,16 @@ $(document).ready(function(){
 		$(".addCapteur").toggle();
 	});
 
+    $(".paramCapteur_btn").click(function(event) {
+
+        var type = $("input:checked", "td").parent().siblings("#type").text();
+        var piece = $("input:checked", "td").parent().siblings("#piece").text();
+
+        $(".textHolder").html("<p>Capteur : <b>" + type + "</b></br> piece actuelle : <b>" + piece + "</b></p>");
+        $(".paramCapteur").toggle();
+
+    });
+
     $('#selectAllBoxes').click(function(event){
         if(this.checked){
             $('.checkBoxes').each(function() {
@@ -18,5 +28,7 @@ $(document).ready(function(){
             });
         }
     }); 
+
+
 
 }); 

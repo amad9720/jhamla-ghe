@@ -39,7 +39,7 @@ class Client extends Controller {
 
         // load views
         require APP . 'view/_templates/head.php';
-        //require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/gestion_capteurs.php';
         require APP . 'view/_templates/footer.php';
 
@@ -53,6 +53,24 @@ class Client extends Controller {
                 
                     $capteur_to_delete = Capteur::find_by_id($value_id);
                     $capteur_to_delete->remove_capteur(); 
+
+                }
+            }
+
+            header("Location: ".URL."client/gestion_capteurs");
+
+        }
+
+        if (isset($_POST['paramCapteur'])) {
+
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
+            
+                //we are looping around the checkbox array and processing it's values
+                foreach($array_id as $value_id ){
+                
+                    $capteur_to_param = Capteur::find_by_id($value_id);
+                    $capteur_to_param->add_capteur_to_room($_POST['piece']);
 
                 }
             }
