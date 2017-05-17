@@ -86,14 +86,14 @@ class Client extends Controller {
         // loadModels
         
         //Piece
-        // $this->loadModel('Piece');
-        // $pieces_client = Piece::get_room_client(1); // pour linstant on urilise le client 1 pour test
-
+        $this->loadModel('Piece');
+        $pieces_client = Piece::get_room_client(2); // pour linstant on urilise le client 2 pour test
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/ma_maison.php';
-
+            //aaazddazo
+            //test
         //code to manage the actions
         // if(isset($_POST['deleteRoom'])) {
 
