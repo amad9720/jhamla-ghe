@@ -7,91 +7,109 @@
 		<h3><?php echo $piece->nom ?></h3>
 		<?php $capteurs_piece = Capteur::get_room_capteurs($piece->id); ?>
 		<?php foreach ($capteurs_piece as $capteur): ?>
-			<form method="" action=""></form>
 			<?php $array_holder = array(
 
                 1 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur} °</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" , 
 
                 2 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur} Prt</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" ,
 
                 3 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
-                                <p class=\"card-main-info\">{$capteur->valeur} CO<sub>2</sub></p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
+                                <p class=\"card-main-info\">{$capteur->valeur} CO2</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" ,
 
                 4 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur} Watt</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" ,
 
                 5 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur}</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" ,
 
                 6 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur}</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" ,
 
                 7 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur} %</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" ,
 
                 8 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\">
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
                                 <p class=\"card-main-info\">{$capteur->valeur} Tox</p>
-                                <p class=\"card-main-info green-text\" data-idCapteur=\"{$capteur->id}\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
                         </div>" 
         		); 
         	?>
-        	<?php echo $array_holder[$capteur->id_type]; ?>
+       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
+    		<?php echo $array_holder[$capteur->id_type]; ?>
+    		</form>
+     
 		<?php endforeach ?>
 	<?php endforeach ?>
 </div>

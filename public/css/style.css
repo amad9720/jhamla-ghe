@@ -287,6 +287,33 @@ button, input[type='submit'] {
     height: 30px;
 }
 
+button[name="on"] {
+    display: block;
+    background-color: #3cc33c;
+    border-radius: 1px;
+    border-width: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 50px;
+    padding: 4px;
+    height: 30px;
+    
+}
+
+button[name="off"] {
+    display: block;
+    background-color: #ff0000;
+    border-radius: 1px;
+    border-width: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 50px;
+    padding: 4px;
+    height: 30px;
+    
+}
+
+
 #submitgestioncapteur {
     margin-top: 8px;
     margin-bottom: 8px;

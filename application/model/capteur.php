@@ -156,23 +156,27 @@ class Capteur extends Db_object
      * @return [type] [description]
      */
     public function activer_capteur() {
-        if ($this->etat === 0) {
+
             $this->etat = 1;
             $this->update();
-        }
-        return false;
     }
     /**
      * Change the state of a capteur to OFF if ON
      * @return [type] [description]
      */
     public function desactiver_capteur() {
-        if ($this->etat === 1) {
+        
             $this->etat = 0;
             $this->update();
-        }
+    }
 
-        return false;
+    public static function capteur_switch($id_capteur) {
+        $capteur = Capteur::find_by_id($id_capteur);
+
+        if ($capteur->etat === 0) $capteur->etat = 1;
+        else $capteur->etat = 0;
+
+        $capteur->update();
     }
 }
 

@@ -15,7 +15,7 @@ $(document).ready(function(){
         $(".textHolder").html("<p>Capteur : <b>" + type + "</b></br> piece actuelle : <b>" + piece + "</b></p>");
         $(".paramCapteur").toggle();
 
-        $("input:checked", "td").appendTo("#arrayCheckbox");
+        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
 
     });
 
@@ -30,6 +30,11 @@ $(document).ready(function(){
             });
         }
     });
+
+    // $(".green-text").click(function(event){
+    //     var idCapteur = $(this).attr('data-idcapteur');
+    //     $(".function_holder").html("<?php $Capteur::capteur_switch("+ idCapteur +")?>");
+    // });
     
     var off = $(".green-text", "div.card-content").filter(function() {
        return $(this).text() === String('OFF');

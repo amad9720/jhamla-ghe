@@ -123,6 +123,25 @@ class Client extends Controller {
         require APP . 'view/client/ma_maison.php';
         require APP . 'view/_templates/footer.php';
 
+        if (isset($_POST['on'])) {
+
+        
+            $capteur_to_on = Capteur::find_by_id($_POST['on']);
+            $capteur_to_on->activer_capteur();
+            
+            header("Location: " . URL . "client/ma_maison#card_{$_POST['on']}");
+
+        }
+
+        if (isset($_POST['off'])) {
+
+            $capteur_to_off = Capteur::find_by_id($_POST['off']);
+            $capteur_to_off->desactiver_capteur();
+
+            header("Location: " . URL . "client/ma_maison#card_{$_POST['off']}");
+            
+        }
+
         
     }
 
