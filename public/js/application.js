@@ -31,6 +31,7 @@ $(document).ready(function(){
         }
     });
 
+
     // $(".green-text").click(function(event){
     //     var idCapteur = $(this).attr('data-idcapteur');
     //     $(".function_holder").html("<?php $Capteur::capteur_switch("+ idCapteur +")?>");
@@ -42,3 +43,24 @@ $(document).ready(function(){
     
     off.css("color", "red");
 }); 
+
+//JS Louis
+
+function validateform() {
+    if (document.formulaire.prenom.value==""){
+        alert("Le champ prénom est vide");
+        return false;
+    }
+
+    if (document.formulaire.nom.value==""){
+        alert("Le champ nom est vide");
+        return false;
+    }
+
+    if (document.formulaire.message.value==""){
+        alert("Le champ message est vide");
+        return false;
+    }
+    return true;
+}
+

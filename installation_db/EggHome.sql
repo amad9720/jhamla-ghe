@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8880
+
 -- Généré le :  Mer 17 Mai 2017 à 14:41
+
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.1
 

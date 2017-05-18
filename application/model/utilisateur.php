@@ -38,6 +38,22 @@ class Utilisateur extends Db_object
         return empty($this->photo) ? $this->image_placeholder : $this->upload_directory. '/' .$this->photo;
     }
 
+     public static function show_users(){
+        $results = self::find_all();
+        return $results;
+    }
+    
+    public static function add_users(){
+        $sql = "SELECT * FROM Technicien WHERE nom={$this->nom} AND prenom={$this->prenom} AND adresse = {$this->adresse} GROUP BY ville HAVING ville = {$this-> ville}";
+        $results = self::find_by_query($sql);
+        if(empty($results)){
+            $this->create();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     /**
      * check if a user is existant in the db and return it, if not return NULL
