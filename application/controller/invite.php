@@ -51,4 +51,11 @@ class Invite extends Controller
         require APP . 'view/dashboard/objets.php';
     }
 
+    public function connexion() {
+
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/connexion.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
 }

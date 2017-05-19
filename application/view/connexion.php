@@ -3,7 +3,7 @@
 <style>
 
     $color: #000;
-    $color-bg: #c0c0c0;
+
 
 
     [class*="fontawesome-"]:before {
@@ -21,12 +21,7 @@
 
     }
 
-    body {
-        background: $color-bg;
-        color: $color;
-        font: 100%/1.5em "Varela Round", sans-serif;
-        margin: 0;
-    }
+
 
     input {
         background-image: none;
