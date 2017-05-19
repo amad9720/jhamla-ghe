@@ -120,7 +120,7 @@
                         </div>" 
         		); 
         	?>
-       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
+       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small form_mamaison">
     		<?php echo $array_holder[$capteur->id_type]; ?>
     		</form>    
 		<?php endforeach ?>

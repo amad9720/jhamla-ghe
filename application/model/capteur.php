@@ -90,7 +90,7 @@ class Capteur extends Db_object
      * @return [type] [description]
      */
     public function remove_capteur_to_room() {
-        $this->id_piece = NULL;
+        $this->id_piece = -1;
             return $this->update();
     }
 
