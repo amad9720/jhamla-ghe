@@ -8,11 +8,13 @@ class Capteur extends Db_object
     public $etat;
     public $id_piece;
     public $id_type;
+
     // add others attributes for the JOIN
     public $type;
     public $date;
     public $valeur;
     public $piece;
+
     protected static $db_table = "capteur"; 
     protected static $db_table_fields = array("etat", "id_piece", "id_type");
     /**
@@ -42,7 +44,7 @@ class Capteur extends Db_object
      * @return [Donne] [one object of the Donnee class]
      */
     public function find_type_capteur() {
-        $sql = "SELECT t.type
+        $sql = "SELECT *
                 FROM type_capteurs t
                 WHERE t.id = '{$this->id_type}'
                 LIMIT 1 ";
@@ -56,7 +58,7 @@ class Capteur extends Db_object
      * @return [Donne] [one object of the Donnee class]
      */
     public function find_donnee() {
-        $sql = "SELECT d.date, d.valeur
+        $sql = "SELECT *
                 FROM donnee d
                 WHERE d.id_capteur = '{$this->id}'
                 LIMIT 1 ";
@@ -71,7 +73,7 @@ class Capteur extends Db_object
      */
     public function find_capteur_room() {
         if ($this->id_piece) {
-            $sql = "SELECT p.nom
+            $sql = "SELECT *
                     FROM piece p
                     WHERE p.id = '{$this->id_piece}'
                     LIMIT 1 ";
@@ -95,11 +97,27 @@ class Capteur extends Db_object
      * @param [int] $id_piece [the id of the room]
      */
     public function add_capteur_to_room($id_piece) {
-        if ($id_piece) {
-            $this->id_piece = $id_piece;
-            return $this->update();
+        
+        $this->id_piece = $id_piece;
+        return $this->update();
+    }
+
+    public static function get_room_capteurs($id_piece) {
+        $sql = "SELECT *
+                FROM capteur c
+                WHERE c.id_piece = '{$id_piece}' ";
+
+        // $result contains an array of objects which has properties the columns fetched from the BD by the previous query
+        $results = self::find_by_query($sql);
+
+        foreach ($results as $result) {
+            $result->type = $result->find_type_capteur()->type;
+            $result->valeur = $result->find_donnee()->valeur;
+            $result->date = $result->find_donnee()->date;
+            $result->piece = $result->find_capteur_room($result->id_piece)->nom;
         }
-        return false;
+
+        return $results;
     }
 
     /**
@@ -138,23 +156,27 @@ class Capteur extends Db_object
      * @return [type] [description]
      */
     public function activer_capteur() {
-        if ($this->etat === 0) {
+
             $this->etat = 1;
             $this->update();
-        }
-        return false;
     }
     /**
      * Change the state of a capteur to OFF if ON
      * @return [type] [description]
      */
     public function desactiver_capteur() {
-        if ($this->etat === 1) {
+        
             $this->etat = 0;
             $this->update();
-        }
+    }
 
-        return false;
+    public static function capteur_switch($id_capteur) {
+        $capteur = Capteur::find_by_id($id_capteur);
+
+        if ($capteur->etat === 0) $capteur->etat = 1;
+        else $capteur->etat = 0;
+
+        $capteur->update();
     }
 }
 

@@ -34,9 +34,11 @@
 	<div class="paramCapteur" style="display: none;">
 
 		<h4 class="spacer-large">Parametrer un capteur</h4>
+
 		<div class="textHolder" ></div>
+		
 		<form method="POST" action="<?php echo URL; ?>client/gestion_capteurs" class="form spacer-small">
-			
+			<div id="arrayCheckbox" style="display: none" ></div>
 			<label>Changer de Piece</label>
 			<select name="piece">
 				<option disabled selected>Pièce</option>

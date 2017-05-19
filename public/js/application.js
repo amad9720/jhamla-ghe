@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//Allow us to activate the text editor anytime we use a textarea tag
-	tinymce.init({ selector:'textarea' });
+	tinymce.init({selector:'textarea'});
 
 	
 	$(".addCapteur_btn").click(function(event) {
@@ -15,6 +15,8 @@ $(document).ready(function(){
         $(".textHolder").html("<p>Capteur : <b>" + type + "</b></br> piece actuelle : <b>" + piece + "</b></p>");
         $(".paramCapteur").toggle();
 
+        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
     });
 
     $('#selectAllBoxes').click(function(event){
@@ -27,11 +29,20 @@ $(document).ready(function(){
                 this.checked = false;
             });
         }
-    }); 
+    });
 
 
-
-});
+    // $(".green-text").click(function(event){
+    //     var idCapteur = $(this).attr('data-idcapteur');
+    //     $(".function_holder").html("<?php $Capteur::capteur_switch("+ idCapteur +")?>");
+    // });
+    
+    var off = $(".green-text", "div.card-content").filter(function() {
+       return $(this).text() === String('OFF');
+    });
+    
+    off.css("color", "red");
+}); 
 
 //JS Louis
 
@@ -52,3 +63,4 @@ function validateform() {
     }
     return true;
 }
+
