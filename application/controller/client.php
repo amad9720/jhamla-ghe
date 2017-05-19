@@ -63,7 +63,6 @@ class Client extends Controller {
 
         if (isset($_POST['paramCapteur'])) {
 
-            //var_dump($_POST);
             if (isset($_POST['checkBoxArray'])) {
                 $array_id = $_POST['checkBoxArray'];
             
@@ -157,6 +156,19 @@ class Client extends Controller {
             
         }
 
+        if (isset($_POST['addRoom'])) {
+
+            // Save new room
+            $new_room = new Piece();
+            $new_room->nom = $_POST['piece'];
+            $new_room->id_client = 2;
+
+            
+            $new_room->add_room();
+
+            header("Location: " . URL . "client/ma_maison");
+            
+        }
 
         
     }

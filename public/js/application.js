@@ -7,6 +7,10 @@ $(document).ready(function(){
 		$(".addCapteur").toggle();
 	});
 
+    $(".addRoom_btn").click(function(event) {
+        $(".addRoom").toggle();
+    });
+
     $(".paramCapteur_btn").click(function(event) {
 
         var type = $("input:checked", "td").parent().siblings("#type").text();
@@ -31,11 +35,6 @@ $(document).ready(function(){
         }
     });
 
-
-    // $(".green-text").click(function(event){
-    //     var idCapteur = $(this).attr('data-idcapteur');
-    //     $(".function_holder").html("<?php $Capteur::capteur_switch("+ idCapteur +")?>");
-    // });
     
     var off = $(".green-text", "div.card-content").filter(function() {
        return $(this).text() === String('OFF');
@@ -49,23 +48,4 @@ $(document).ready(function(){
 
 }); 
 
-// //JS Louis
-
-// function validateform() {
-//     if (document.formulaire.prenom.value==""){
-//         alert("Le champ prénom est vide");
-//         return false;
-//     }
-
-//     if (document.formulaire.nom.value==""){
-//         alert("Le champ nom est vide");
-//         return false;
-//     }
-
-//     if (document.formulaire.message.value==""){
-//         alert("Le champ message est vide");
-//         return false;
-//     }
-//     return true;
-// }
 
