@@ -33,7 +33,9 @@ class Capteur extends Db_object
             $capteur->type = $capteur->find_type_capteur()->type;
             $capteur->valeur = $capteur->find_donnee()->valeur;
             $capteur->date = $capteur->find_donnee()->date;
-            $capteur->piece = $capteur->find_capteur_room($capteur->id_piece)->nom;
+            if ($room = $capteur->find_capteur_room($capteur->id_piece))
+                $capteur->piece = $room->nom;
+            else $capteur->piece = "PAS DE PIECE";
         }
 
         return $capteurs;

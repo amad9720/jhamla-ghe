@@ -75,6 +75,10 @@ body {
 
 }
 
+.medium.card{
+    display: inline-block;
+}
+
 footer {
     height: 40px;
     background-color: #34495e;
@@ -252,6 +256,7 @@ Dashboard Start
 .spacer-large {
     margin-top: 30px;
 }
+
 
 .form input {
     margin-top: 8px;

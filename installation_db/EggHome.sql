@@ -3,9 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8880
-
--- Généré le :  Mer 17 Mai 2017 à 14:41
-
+-- Généré le :  Ven 19 Mai 2017 à 09:48
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.1
 
@@ -35,9 +33,14 @@ CREATE TABLE `capteur` (
 
 INSERT INTO `capteur` (`id`, `etat`, `id_piece`, `id_type`) VALUES
 (1, 1, 5, 1),
-(5, 1, 2, 4),
-(8, 1, 1, 6),
-(9, 1, 6, 2);
+(5, 1, 3, 4),
+(8, 1, 5, 6),
+(9, 1, 6, 2),
+(10, 1, 3, 1),
+(11, 1, 5, 3),
+(13, 1, 2, 6),
+(14, 1, 0, 5),
+(15, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -60,7 +63,12 @@ INSERT INTO `donnee` (`id`, `date`, `valeur`, `id_capteur`) VALUES
 (1, '2017-05-15 10:00:00', 15, 1),
 (5, '2017-05-15 10:00:00', 80, 5),
 (8, '2017-05-15 10:00:00', 9, 9),
-(13, '2017-05-15 10:00:00', 77, 8);
+(13, '2017-05-15 10:00:00', 77, 8),
+(14, '2017-05-18 15:15:58', 10, 10),
+(15, '2017-05-18 15:17:29', 12, 11),
+(17, '2017-05-18 23:27:02', 5, 13),
+(18, '2017-05-18 23:28:11', 0, 14),
+(19, '2017-05-18 23:28:30', 9, 15);
 
 -- --------------------------------------------------------
 
@@ -207,10 +215,8 @@ CREATE TABLE `piece` (
 --
 
 INSERT INTO `piece` (`id`, `nom`, `id_client`) VALUES
-(1, 'Petit Salon', 2),
 (2, 'Chambre Johana', 2),
 (3, 'Chambre Marc', 2),
-(4, 'Cuisine Principale', 2),
 (5, 'Salle de bain', 2),
 (6, 'Salon', 3),
 (7, 'Chambre Louis', 3),
@@ -422,12 +428,12 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pour la table `donnee`
 --
 ALTER TABLE `donnee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `donnee_energetique`
 --
@@ -491,7 +497,6 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  ADD CONSTRAINT `fk_Capteur_Pièce1` FOREIGN KEY (`id_piece`) REFERENCES `piece` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Capteur_Type_capteurs1` FOREIGN KEY (`id_type`) REFERENCES `type_capteurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -542,5 +547,5 @@ ALTER TABLE `technicien`
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

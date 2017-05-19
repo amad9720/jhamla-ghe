@@ -1,11 +1,11 @@
 <h3>Mon profil</h3>
 <div class="infos">
-	<p>Nom : $nom</p>
+	<p>Nom : <?php echo $nom ?></p>
 	<p>Prénom :<?php echo $prenom ?></p>
-	<p>Email : $email</p>
-	<p>Adresse : $adresse</p>
-	<p>Ville : $ville</p>
-	<p>Pays : $pays</p>
+	<p>Email : <?php echo $email ?></p>
+	<p>Adresse : <?php echo $adresse ?></p>
+	<p>Ville : <?php echo $ville ?></p>
+	<p>Pays : <?php echo $pays ?></p>
 </div>
 <img src="photo.jpg" alt="Photo_Profil" height="100" width="100"> 
 <input type="button" value="Masquer"/>
@@ -73,7 +73,6 @@
 			<tr class="first">
 				<th>Date</th>
 				<th>PDF</th>
-				<th>Montant</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -81,7 +80,6 @@
 					<tr>
 						<td><?php echo $facture->date ?></td>
 						<td><a href="<?php echo $facture->pdf?>" target=_blank><?php echo $facture->pdf?></a></td>
-						<td><?php echo $facture->montant ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
