@@ -3,9 +3,9 @@
 	<p>Nom : <?php echo $nom ?></p>
 	<p>Prénom :<?php echo $prenom ?></p>
 	<p>Email : <?php echo $email ?></p>
-	<p>Adresse : <?php $adresse ?></p>
-	<p>Ville : <?php $ville ?></p>
-	<p>Pays : <?php $pays ?></p>
+	<p>Adresse : <?php echo $adresse ?></p>
+	<p>Ville : <?php echo $ville ?></p>
+	<p>Pays : <?php echo $pays ?></p>
 </div>
 <img src="photo.jpg" alt="Photo_Profil" height="100" width="100"> 
 <input type="button" value="Masquer"/>
