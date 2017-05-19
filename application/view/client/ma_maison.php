@@ -109,7 +109,7 @@
                         </div>" 
         		); 
         	?>
-       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small card_holder">
+       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small card_holder form_mamaison">
     		<?php echo $array_holder[$capteur->id_type]; ?>
     		</form>
      
