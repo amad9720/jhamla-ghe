@@ -42,25 +42,30 @@ $(document).ready(function(){
     });
     
     off.css("color", "red");
+
+    $(".piece_name").click(function(event) {
+        $(this).siblings(".card_holder").toggle();
+    });
+
 }); 
 
-//JS Louis
+// //JS Louis
 
-function validateform() {
-    if (document.formulaire.prenom.value==""){
-        alert("Le champ prénom est vide");
-        return false;
-    }
+// function validateform() {
+//     if (document.formulaire.prenom.value==""){
+//         alert("Le champ prénom est vide");
+//         return false;
+//     }
 
-    if (document.formulaire.nom.value==""){
-        alert("Le champ nom est vide");
-        return false;
-    }
+//     if (document.formulaire.nom.value==""){
+//         alert("Le champ nom est vide");
+//         return false;
+//     }
 
-    if (document.formulaire.message.value==""){
-        alert("Le champ message est vide");
-        return false;
-    }
-    return true;
-}
+//     if (document.formulaire.message.value==""){
+//         alert("Le champ message est vide");
+//         return false;
+//     }
+//     return true;
+// }
 

@@ -4,7 +4,10 @@
 	<p>Cette page vous permet de gérer votre domicile</p>
 	<div class="spacer-large"></div>
 	<?php foreach ($pieces_client as $piece): ?>
-		<h3><?php echo $piece->nom ?></h3>
+		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
+			<button type="submit" name="delete_room" value="<?php echo $piece->id ?>">Delete</button>
+		</form>
+		<h3 class="piece_name"><?php echo $piece->nom ?></h3>
 		<?php $capteurs_piece = Capteur::get_room_capteurs($piece->id); ?>
 		<?php foreach ($capteurs_piece as $capteur): ?>
 			<?php $array_holder = array(
@@ -106,7 +109,7 @@
                         </div>" 
         		); 
         	?>
-       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
+       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small card_holder">
     		<?php echo $array_holder[$capteur->id_type]; ?>
     		</form>
      

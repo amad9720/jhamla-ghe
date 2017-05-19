@@ -142,6 +142,22 @@ class Client extends Controller {
             
         }
 
+        if (isset($_POST['delete_room'])) {
+
+            $room_to_delete = Piece::find_by_id($_POST['delete_room']);
+            $room_capteurs = Capteur::get_room_capteurs($room_to_delete->id);
+
+            foreach ($room_capteurs as $room_capteur)
+                $room_capteur->remove_capteur_to_room();           
+            
+
+            $room_to_delete->remove_room();
+
+            header("Location: " . URL . "client/ma_maison");
+            
+        }
+
+
         
     }
 
