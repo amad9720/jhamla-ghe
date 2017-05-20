@@ -202,6 +202,21 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/profil 
      */
     public function profil() {
+        
+        global $database;
+
+        // load models
+        //Mission
+        $this->loadModel('Mission');
+        $end_missions = Mission::fetch_process_missions_client(2); //we take client 2 as an example
+        $process_missions = Mission::fetch_end_missions_client(2);
+
+        //Infos personnelles
+        $this->loadModel('Utilisateur');
+     
+        //Factures
+        $this->loadModel('Facture');
+        $factures = Facture::find_all();
 
         // load views
         require APP . 'view/_templates/head.php';
