@@ -29,12 +29,6 @@ class Piece extends Db_object
     public function remove_room() {
         if(!empty($this->id)){
 
-            // remove the capteurs of the room first
-            // $capteurs_room = $this->get_room_capteurs();
-            // foreach ($capteurs_room as $capteur) {
-            //     $capteur->remove_capteur();
-            // }
-
             return $this->delete();
         } else return false;
     }

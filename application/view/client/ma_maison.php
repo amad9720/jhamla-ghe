@@ -3,11 +3,22 @@
 	<div class="spacer-small"></div>
 	<p>Cette page vous permet de gérer votre domicile</p>
 	<div class="spacer-large"></div>
+	<button class="addRoom_btn">Ajouter</button>
+	<div class="addRoom" style="display: none;">
+		<h4 class="spacer-large">Ajouter une Piece</h4>
+		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
+			<input type="text" name="piece" placeholder="Nom Piece">
+			<br/>
+			<input type="submit" name="addRoom">
+		</form>
+	</div>
+	<div class="spacer-large"></div>
 	<?php foreach ($pieces_client as $piece): ?>
 		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
-			<button type="submit" name="delete_room" value="<?php echo $piece->id ?>">Delete</button>
+			<button type="submit" name="delete_room" value="<?php echo $piece->id ?>">Delete Piece</button>
 		</form>
 		<h3 class="piece_name"><?php echo $piece->nom ?></h3>
+		<div class="card_holder">
 		<?php $capteurs_piece = Capteur::get_room_capteurs($piece->id); ?>
 		<?php foreach ($capteurs_piece as $capteur): ?>
 			<?php $array_holder = array(
@@ -109,10 +120,10 @@
                         </div>" 
         		); 
         	?>
-       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small card_holder">
+       		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small form_mamaison">
     		<?php echo $array_holder[$capteur->id_type]; ?>
-    		</form>
-     
+    		</form>    
 		<?php endforeach ?>
+		</div>
 	<?php endforeach ?>
 </div>

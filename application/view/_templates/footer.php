@@ -11,10 +11,9 @@
     <!-- our JavaScript -->
     <script src="<?php echo URL; ?>js/application.js" type="text/javascript"></script>
 
-</div>
 <footer>
         <p class="brand">EggHome 2017</p>
 </footer>
-</div>
+
 </body>
 </html>
