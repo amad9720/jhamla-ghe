@@ -28,14 +28,15 @@ header nav a {
     text-decoration: none;
 }
 
-
 header .brand {
     float: left;
 }
+
 body {
     margin-bottom: -40px;
     margin: 0 0 40px;
 }
+
 .container {
     width: 100%;
     margin: auto;
@@ -46,36 +47,40 @@ body {
 
 @media (min-width: 1024px) {
     .container {
-        width: 1024px!important;
+        width: 1024px !important;
     }
+
     .feature {
-        display: inline-block!important;
-        width: 33%!important;
+        display: inline-block !important;
+        width: 33% !important;
         height: 230px;
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
+
     .public-index-description {
         margin-top: 50px;
     }
 
     .index-img {
-        height: 500px!important;
+        height: 500px !important;
     }
 
     .public-index-form {
-        margin-top: 40px!important;
+        margin-top: 40px !important;
     }
+
     .card {
-        display: inline-block!important;
-        margin-top: 0px!important;
+        display: inline-block !important;
+        margin-top: 0px !important;
     }
+
     .medium.card {
-        width: 250px!important
+        width: 250px !important
     }
 
 }
 
-.medium.card{
+.medium.card {
     display: inline-block;
 }
 
@@ -111,10 +116,10 @@ html {
 .public-index-title {
     margin-top: 50px;
 }
+
 .public-index-sub-title {
     margin-top: 10px;
 }
-
 
 .public-index-description {
     margin-top: 25px;
@@ -123,6 +128,7 @@ html {
 .public-index-form {
     margin-top: 0px;
 }
+
 .btn-flat-big {
     width: 140px;
     border: none;
@@ -143,6 +149,7 @@ html {
 .features {
     margin-top: 40px;
 }
+
 .feature {
     width: 100%;
     display: block;
@@ -151,7 +158,7 @@ html {
 
 .feature * {
     display: inline-block;
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 .feature-icon {
@@ -163,7 +170,7 @@ html {
     margin-top: 0px;
 }
 
-.feature-left{
+.feature-left {
     float: left;
     width: 45%;
     height: 100%;
@@ -172,7 +179,7 @@ html {
 .feature-right {
     width: 55%;
     height: 100%;
-    float:right;
+    float: right;
 }
 
 .feature-right p {
@@ -180,7 +187,6 @@ html {
     letter-spacing: 0.4;
     font-weight: 300;
 }
-
 
 .feature-detail {
     background-color: #EEE;
@@ -199,7 +205,6 @@ html {
     letter-spacing: 1.05px;
     color: #595959;
 }
-
 
 /*
 * 
@@ -253,10 +258,10 @@ Dashboard Start
 .spacer-small {
     margin-top: 12px;
 }
+
 .spacer-large {
     margin-top: 30px;
 }
-
 
 .form input {
     margin-top: 8px;
@@ -273,12 +278,12 @@ button {
     width: 100px;
 }
 
- .form select {
+.form select {
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;
     padding: 4px;
-    height: 30px;   
+    height: 30px;
 }
 
 button, input[type='submit'] {
@@ -302,7 +307,7 @@ button[name="on"] {
     min-width: 50px;
     padding: 4px;
     height: 30px;
-    
+
 }
 
 button[name="off"] {
@@ -315,19 +320,16 @@ button[name="off"] {
     min-width: 50px;
     padding: 4px;
     height: 30px;
-    
-}
 
+}
 
 #submitgestioncapteur {
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;
     padding: 4px;
-    height: 30px; 
+    height: 30px;
 }
-
-
 
 .table th {
     margin: 0;
@@ -340,24 +342,25 @@ button[name="off"] {
     background-color: #ccc;
 }
 
- .Contact_info{
-     background-color: #bcbcbc;
-     box-shadow: 5px 5px 5px black;
- }
-.capteur_panne{
-    text-align: left;
-    position: absolute;
-
+.Contact_info {
+    background-color: #bcbcbc;
+    margin-bottom: 50px;
 
 }
 
-.capteur_panne,.info_egghome{
+.capteur_panne {
+    text-align: left;
+    position: absolute;
+
+}
+
+.capteur_panne, .info_egghome {
     display: inline-block;
     margin-left: 22%;
 
 }
 
-.info_egghome,.capteur_panne p {
+.info_egghome, .capteur_panne p {
     font-size: medium;
     color: white;
 }
@@ -378,6 +381,7 @@ button[name="off"] {
     bottom: 5px;
     color: #767676;
 }
+
 .medium.card {
     height: 250px;
     width: 95%;
@@ -385,6 +389,6 @@ button[name="off"] {
 }
 
 .green-text {
-    color:#3cc33c;
+    color: #3cc33c;
 }
 

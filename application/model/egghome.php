@@ -18,4 +18,7 @@ class Egghome extends Db_object
         
     }
 
+    public static function find_titre(){
+
+    }
 }
