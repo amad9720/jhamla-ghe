@@ -17,5 +17,11 @@ class Facture extends Db_object
     {
         
     }
+    
+    
+    public static function show_facture(id_client){
+        $sql = "SELECT * FROM Facture WHERE id_client={$this->id_client}";
+        $results = Facture::find_by_query($sql);
+    }
 
 }
