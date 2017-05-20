@@ -287,8 +287,14 @@ button, input[type='submit'] {
     background-color: #ccc;
 }
 
-block{
-    display:flex
+#block{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.offre{
+     border: solid 1px;
 }
 
 
@@ -313,5 +319,3 @@ block{
     font-size: medium;
     color: white;
 }
-
-
