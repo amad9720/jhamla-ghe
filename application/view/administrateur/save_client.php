@@ -1,49 +1,49 @@
 <div class="dashboard-content">
 	<div class="form spacer-small">
-	<form action="" method="post" enctype="multipart/form-data">
+	<form method="post" enctype="multipart/form-data" action="<?php echo URL; ?>administrateur/save_client">
         
         <div class="form-batch">
-            <label for="post_tags">Nom</label>
+            <label for="post_tags">Nom</label><br>
             <input type="text"  name="user_nom" required>
         </div>
         
         <div class="form-batch">
-            <label for="post_tags">Prenom</label>
+            <label for="post_tags">Prenom</label><br>
             <input type="text"  name="user_prenom" required>
         </div>
         
         <div class="form-batch">
-            <label for="post_tags">Email</label>
+            <label for="post_tags">Email</label><br>
             <input type="email"  name="user_email" required>
         </div>
         
         <div class="form-batch">
-            <label for="author">Adresse</label>
+            <label for="author">Adresse</label><br>
             <input type="text"  name="user_address" required>
         </div>
 
         <div class="form-batch">
-            <label for="post_tags">Ville</label>
+            <label for="post_tags">Ville</label><br>
             <input type="text"  name="user_ville" required>
         </div>
         
         <div class="form-batch">
-            <label for="post_tags">Pays</label>
+            <label for="post_tags">Pays</label><br>
             <input type="text"  name="user_pays" required>
         </div>
 
         <div class="form-batch">
-            <label for="post_image">Photo</label>
+            <label for="post_image">Photo</label><br>
             <input type="file" name="user_image">
         </div>
         
         <div class="form-batch">
-            <label for="author">Nom d'utilisateur</label>
+            <label for="author">Nom d'utilisateur</label><br>
             <input type="text"  name="user_username" required>
         </div>
         
         <div class="form-batch">
-            <label for="post_status">Mot de Passe</label>
+            <label for="post_status">Mot de Passe</label><br>
             <input type="password"   name="user_password" required>
         </div>
         

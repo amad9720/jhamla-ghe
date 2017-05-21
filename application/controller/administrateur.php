@@ -42,7 +42,7 @@ class Administrateur extends Controller
 
         // load views
         require APP . 'view/_templates/head.php';
-        //require APP . 'view/administrateur/includes/sidebar.php';
+        require APP . 'view/administrateur/includes/sidebar.php';
         require APP . 'view/administrateur/save_client.php';
         require APP . 'view/_templates/footer.php';
 
@@ -63,12 +63,10 @@ class Administrateur extends Controller
             $user->id_role = $_POST['user_role'];
             $user->email = $_POST['user_email'];
 
-            echo "string";
-
             $user->save_user_and_image();
 
 
-            //header("Location: " . URL . "administrateur/save_client");
+            header("Location: " . URL . "administrateur/save_client");
             
         }
         
@@ -76,10 +74,28 @@ class Administrateur extends Controller
 
     public function add_pages()
     {
+        //loadModels
+        
+        //Page
+        $this->loadModel('Page');
+
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
         require APP . 'view/administrateur/add_pages.php';
         require APP . 'view/_templates/footer.php';
+
+         if (isset($_POST['create_content'])) {
+
+            $page = new Page();
+
+            $page->titre = $_POST['title'];
+            $page->contenu = $_POST['content'];
+            
+            $page->create();
+
+            //header("Location: " . URL . "administrateur/save_client");
+            
+        }
     }
 
 
