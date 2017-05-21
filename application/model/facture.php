@@ -23,11 +23,8 @@ class Facture extends Db_object
 
         $sql = "SELECT * FROM facture WHERE id_client={$id_client}"; 
         $results = Facture::find_by_query($sql);
-
-        //n'oublie pas de retourner le resultat je le corrige en dessous
         return $results;
     }
 
-    //escque c'est la seule methode necessaire ici ?
 
 }
