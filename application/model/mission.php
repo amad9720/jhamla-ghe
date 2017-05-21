@@ -23,13 +23,24 @@ class Mission extends Db_object
        
     }
     
-    public static function fetch_process_missions() { /* show missions of selectionned technician which are not finished yet*/
-        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = {$this->id_technicien}"; 
+    public static function fetch_process_missions_technicien($id_technicien) { /* show missions of selectionned technician which are not finished yet*/
+        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = {$id_technicien}"; 
+        return $results;
+    }
+
+    public static function fetch_process_missions_client($id_client) { /* show missions of selectionned client which are not finished yet*/
+        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_client = {$id_client}"; 
         return $results;
     }
     
-    public static function fetch_end_missions( { /* show missions of selectionned technician which are finished*/
-        $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = {$this->id_technicien}";
+    public static function fetch_end_missions_technicien($id_technicien) { /* show missions of selectionned technician which are finished*/
+        $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = {$id_technicien}";
+        $results = Mission::find_by_query($sql);
+        return $results;
+    }
+
+    public static function fetch_end_missions_client($id_client) { /* show missions of selectionned client which are finished*/
+        $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_client = {$id_client}";
         $results = Mission::find_by_query($sql);
         return $results;
     }
