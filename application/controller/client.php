@@ -184,4 +184,11 @@ class Client extends Controller {
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/profil.php';
     }
+
+    public function inscription()
+    {
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/client/inscription.php';
+        require APP . 'view/client/includes/sidebar.php';
+    }
 }
