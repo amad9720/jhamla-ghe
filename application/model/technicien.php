@@ -28,7 +28,7 @@ class Technicien extends Db_object
         return $results;
     }
     
-    //oft a chaque fois que tu met du $this-> dans ta function, ca signifie que c'est pas  
+     
     public static function add_technicians(){
 
         $sql = "SELECT * FROM technicien WHERE nom = {$this->nom} AND prenom = {$this->prenom}";
