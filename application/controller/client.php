@@ -19,7 +19,6 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/gestion_capteurs 
      */
     public function gestion_capteurs() {
-        global $database;
 
         // load models
         //Capteurs
@@ -122,6 +121,7 @@ class Client extends Controller {
         require APP . 'view/client/ma_maison.php';
         require APP . 'view/_templates/footer.php';
 
+        //code to manage the actions
         if (isset($_POST['on'])) {
 
         
@@ -203,8 +203,6 @@ class Client extends Controller {
      */
     public function profil() {
         
-        global $database;
-
         // load models
         //Mission
         $this->loadModel('Mission');
@@ -222,5 +220,7 @@ class Client extends Controller {
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/profil.php';
+
+        //code to manage the actions
     }
 }
