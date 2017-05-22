@@ -1,6 +1,8 @@
 <h3> Inscription</h3>
 
-<form method="post" action="traitement.php">
+
+
+<form class="form" method="post" action="traitement.php">
     <p> 
         <label for="nom">Nom:</label>
         <input type="text" name="nom" id="Nom" maxlength="20" placeholder="Dupont"/>
@@ -11,7 +13,7 @@
      </p> 
    <p> 
         <label for="photo">Photo:</label>
-        <input type="img" name="Photo" id="photo" />
+        <input type="url" name="Photo" id="photo" />
      </p>
   <p> 
         <label for="type">Type:</label>
@@ -65,6 +67,8 @@
      <!--<p> 
         <label for="telephone">Telephone:</label>
         <input type="tel" name="nom" id="Nom" maxlength="20" placeholder="0123456789"/>
-     </p>   -->   
+     </p>   -->
+
+     <input type="submit" value="Envoyer" />   
 </form>
 <div>

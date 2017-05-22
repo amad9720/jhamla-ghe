@@ -154,9 +154,6 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/contact 
      */
     public function contact(){
-
-        // load views
-        require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/contact.php';
     }
@@ -187,8 +184,8 @@ class Client extends Controller {
 
     public function inscription()
     {
+        require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/inscription.php';
-        require APP . 'view/client/includes/sidebar.php';
     }
 }
