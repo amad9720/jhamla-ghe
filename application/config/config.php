@@ -76,16 +76,16 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 
 //config Amadou
-	$server = "localhost";
-	$username = "root";
-	$password = "root";
-	$db = "mydbC";
+//	$server = "localhost";
+//	$username = "root";
+//	$password = "root";
+//	$db = "mydbC";
 
 //config Hugo
-	 // $server = "localhost";
-	 // $username = "root";
-	 // $password = "";
-	 // $db = "mydb";
+	 $server = "localhost";
+	 $username = "root";
+	 $password = "";
+	 $db = "mydb";
 
 //config Louis
 	// $server = "localhost";

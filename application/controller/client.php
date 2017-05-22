@@ -9,8 +9,9 @@ class Client extends Controller {
     public function index(){
 
         // load views
-        require APP . 'view/_templates/header.php';
-        //require APP . 'view/client/includes/sidebar.php';
+        //require APP . 'view/_templates/header.php';
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/index.php';
     }
     

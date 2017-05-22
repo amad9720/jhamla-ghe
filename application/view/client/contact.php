@@ -1,42 +1,15 @@
 <div class="dashboard-content">
-
-    <div class="Contact_info">
-
-        <h2 class="titre_contact"> Contact </h2>
-        </br>
-
-        <div class="info_egghome">
-
-            <p> <span class="titre_contact">
-                Informations sur Egghome
-            </span>
-                </br> </br> </br>
-
-                01 57 43 90 87
-                </br> </br> </br>
-
-                contact.electronique@egghome.fr
+    <h2 class="space-large">Contact</h2>
+    <div class="contact_info large card">
+        <h5 class="titre_contact">Informations de contact</h5>
+            <p>
+                Informations sur Egghome<br />
+                01 57 43 90 87<br />
+                contact.electronique@egghome.fr<br />
+                Un capteur en panne ?<br />
+                01 57 43 90 87<br />
+                contact.telecom@egghome.fr<br />
             </p>
-
-        </div>
-
-        <div class="capteur_panne">
-
-            <p> <span class="titre_contact">
-                Un capteur en panne ?
-            </span>
-                </br></br> </br>
-
-                01 57 43 90 87
-                </br></br> </br>
-
-                contact.telecom@egghome.fr
-
-            </p>
-
-
-        </div>
-
 
     </div>
 
