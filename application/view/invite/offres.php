@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <div classe="container">
 
         <div id="block">
