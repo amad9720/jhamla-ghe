@@ -8,7 +8,8 @@
 	<p>Pays : <?php echo $pays ?></p>
 </div>
 <img src="photo.jpg" alt="Photo_Profil" height="100" width="100"> 
-<input type="button" value="Masquer"/>
+<button class="Mission_btn">Suivi des missions</button>
+<button class="Modifier_btn">Modifier profil</button>
 <div class="form_profil">
 	<p>Modification du profil</p>
 	<form method="post" action="traitement.php">
