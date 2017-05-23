@@ -74,14 +74,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Heroku
  */
 
-<<<<<<< HEAD
-// config Amadou
-//	$server = "localhost";
-//	$username = "root";
-//	$password = "root";
-//	$db = "mydb";
-=======
->>>>>>> 7a237b8e7dbbcc474123488c603a40a77f937a08
+
 
 //config Amadou
 //	$server = "localhost";
@@ -95,21 +88,12 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 	 $password = "";
 	 $db = "mydb";
 
-<<<<<<< HEAD
-// //config Hugo
- 	 $server = "localhost";
-	 $username = "root";
-	 $password = "";
- 	 $db = "mydb";
-=======
+
 //config Louis
 	// $server = "localhost";
 	// $username = "root";
 	// $password = "";
 	// $db = "mydbC";
->>>>>>> 7a237b8e7dbbcc474123488c603a40a77f937a08
-
-
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $server);
