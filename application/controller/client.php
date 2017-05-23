@@ -178,7 +178,8 @@ class Client extends Controller {
      * PAGE: contact
      * This method handles what happens when you move to http://egghome/client/contact 
      */
-    public function contact() {
+
+    public function contact(){
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -223,5 +224,26 @@ class Client extends Controller {
         require APP . 'view/client/profil.php';
 
         //code to manage the actions
+        if (isset($_POST['Envoyer'])) {
+            $client = Utilisateur::find_utilisateur(2);
+            $client->nom = $_POST['nom'];
+            $client->prenom = $_POST['prenom'];
+            $client->email = $_POST['email'];
+            $client->adresse = $_POST['adresse'];
+            $client->pays = $_POST['pays'];
+            $client->type = $_POST['type'];
+            $client->nom_utilisateur = $_POST['nom_utilisateur'];
+            $client->mdp = $_POST['mdp'];
+            $client->photo = $_POST['photo'];
+            $client->update();
+
+        }
+    }
+
+    public function inscription()
+    {
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/client/inscription.php';
     }
 }

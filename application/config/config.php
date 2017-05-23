@@ -75,6 +75,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  */
 
 
+
 //config Amadou
 	$server = "localhost";
 	$username = "root";
@@ -87,13 +88,12 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 	 // $password = "";
 	 // $db = "mydb";
 
+
 //config Louis
 	// $server = "localhost";
 	// $username = "root";
 	// $password = "";
 	// $db = "mydbC";
-
-
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $server);
