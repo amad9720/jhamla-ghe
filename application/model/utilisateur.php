@@ -57,7 +57,7 @@ class Utilisateur extends Db_object
     }
     
     static function find_utilisateur($id_utilisateur){
-        $results = Utilisateur::find_by_id($id_utilisateur);
+        $results = self::find_by_id($id_utilisateur);
         return $results;
 
     /**
