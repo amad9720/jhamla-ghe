@@ -36,11 +36,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($process_missions as $mission): ?>
+			<?php foreach ($process_missions as $process_mission): ?>
 					<tr>
-						<td><?php echo $mission->date_fin ?></td>
-						<td><?php echo $mission->motif ?></td>
-						<td><?php echo $mission->nom_technicien ?></td>
+						<td><?php echo $process_mission->date_fin ?></td>
+						<td><?php echo $process_mission->motif ?></td>
+						<td><?php echo $process_mission->nom_technicien ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
@@ -55,11 +55,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($end_missions as $mission): ?>
+			<?php foreach ($end_missions as $end_mission): ?>
 					<tr>
-						<td><?php echo $mission->date_fin ?></td>
-						<td><?php echo $mission->motif ?></td>
-						<td><?php echo $mission->nom_technicien ?></td>
+						<td><?php echo $end_mission->date_fin ?></td>
+						<td><?php echo $end_mission->motif ?></td>
+						<td><?php echo $end_mission->nom_technicien ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
