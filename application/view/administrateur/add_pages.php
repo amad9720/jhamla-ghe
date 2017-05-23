@@ -3,7 +3,7 @@
 	<form action="<?php echo URL; ?>administrateur/add_pages" method="post" enctype="multipart/form-data" >
         
         <div class="form-batch">
-            <label for="title">Title</label><br>
+            <label for="title">Titre</label><br>
             <input type="text"  name="title" required>
         </div>               
         <div class="form-batch">

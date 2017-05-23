@@ -75,7 +75,6 @@ class Administrateur extends Controller
     public function add_pages()
     {
         //loadModels
-        
         //Page
         $this->loadModel('Page');
 
