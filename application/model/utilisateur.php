@@ -55,6 +55,10 @@ class Utilisateur extends Db_object
             return false;
         }
     }
+    
+    static function find_utilisateur($id_utilisateur){
+        $results = self::find_by_id($id_utilisateur);
+        return $results;
 
     /**
      * check if a user is existant in the db and return it, if not return NULL
@@ -69,6 +73,8 @@ class Utilisateur extends Db_object
         $user = self::find_by_query($sql);
         return $user = (!empty($user)) ? array_shift($user) : $user; //see find_user_by_id() method...
     }
+    
+   
 
     /**
      * [save_user_and_image description]
