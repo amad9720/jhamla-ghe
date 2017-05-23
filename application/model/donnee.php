@@ -33,4 +33,14 @@ class Donnee extends Db_object
         return false;
     }
 
+    public function create_donnee($value) {
+        global $database;
+
+        $this->valeur = $value;
+        $this->date = date('Y-m-d H:i:s');
+        $this->id_capteur = $database->the_insert_id();
+        
+        return $this->create();
+    }
+
 }

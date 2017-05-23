@@ -23,20 +23,23 @@ class Technicien extends Db_object
     
     
     public static function show_techniciens(){
-        $results = Technicien::find_all();
+        $results = self::find_all();
+
         return $results;
     }
     
+     
     public static function add_technicians(){
-        $sql = "SELECT * FROM Technicien WHERE nom={$nom} AND prenom={$prenom}"
-        $results = Technicien::find_by_query($sql);
+
+        $sql = "SELECT * FROM technicien WHERE nom = {$this->nom} AND prenom = {$this->prenom}";
+        $results = self::find_by_query($sql);
+
         if(empty($results)){
             $this->create();
             return true;
         }
-        else{
-            return false;
-        }
+        else return false;
+        
     }
        
 

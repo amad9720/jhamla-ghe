@@ -12,8 +12,8 @@
 <header>
         <h3 class="brand">EggHome</h3>
         <nav>
-                <a href="#">Link1</a>
-                <a href="#">Link2</a>
-                <a href="#">Link3</a>
+                <a href="#">Offres</a>
+                <a href="#">Contact</a>
+                <a href="<?php echo URL;?>invite/connexion">Connexion</a>
         </nav>
 </header>

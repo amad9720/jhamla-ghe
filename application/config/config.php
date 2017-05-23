@@ -60,12 +60,12 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Localhost
  */
 //
-	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-	// $server = $url["host"];
-	// $username = $url["user"];
-	// $password = $url["pass"];
-	// $db = substr($url["path"], 1);
+//	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+//
+//	$server = $url["host"];
+//	$username = $url["user"];
+//	$password = $url["pass"];
+//	$db = substr($url["path"], 1);
 
 
 /**
@@ -74,18 +74,40 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Comment the configuration for  Heroku
  */
 
+<<<<<<< HEAD
 // config Amadou
 //	$server = "localhost";
 //	$username = "root";
 //	$password = "root";
 //	$db = "mydb";
+=======
+>>>>>>> 7a237b8e7dbbcc474123488c603a40a77f937a08
 
+//config Amadou
+//	$server = "localhost";
+//	$username = "root";
+//	$password = "root";
+//	$db = "mydbC";
 
+//config Hugo
+	 $server = "localhost";
+	 $username = "root";
+	 $password = "";
+	 $db = "mydb";
+
+<<<<<<< HEAD
 // //config Hugo
  	 $server = "localhost";
 	 $username = "root";
 	 $password = "";
  	 $db = "mydb";
+=======
+//config Louis
+	// $server = "localhost";
+	// $username = "root";
+	// $password = "";
+	// $db = "mydbC";
+>>>>>>> 7a237b8e7dbbcc474123488c603a40a77f937a08
 
 
 

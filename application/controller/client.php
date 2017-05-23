@@ -6,12 +6,13 @@ class Client extends Controller {
      * PAGE: index (page d'acceuil)
      * This method handles what happens when you move to http://egghome/client/index (which is the default page)
      */
-	public function index(){
+    public function index(){
 
         // load views
+        //require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-        require APP . 'view/client/acceuil.php';
+        require APP . 'view/client/index.php';
     }
     
     /**
@@ -19,19 +20,11 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/gestion_capteurs 
      */
     public function gestion_capteurs() {
-        global $database;
 
         // load models
         //Capteurs
         $this->loadModel('Capteur');
-        $capteurs = Capteur::find_all();
-
-        foreach ($capteurs as $capteur) {
-            $capteur->type = $capteur->find_type_capteur();
-            $capteur->valeur = $capteur->find_donnee()->valeur;
-            $capteur->date = $capteur->find_donnee()->date;
-            $capteur->piece = $capteur->find_capteur_room($capteur->id_piece);
-        }
+        $capteurs = Capteur::find_all_capteur();
 
         //type_capteurs
         $this->loadModel('TypeCapteur');
@@ -45,7 +38,7 @@ class Client extends Controller {
         $this->loadModel('Donnee');
 
         // load views
-    	require APP . 'view/_templates/head.php';
+        require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/gestion_capteurs.php';
         require APP . 'view/_templates/footer.php';
@@ -57,24 +50,33 @@ class Client extends Controller {
             
                 //we are looping around the checkbox array and processing it's values
                 foreach($array_id as $value_id ){
-
-                    // //find and delete all the data related to this capteur
-                    // $id_donne_to_delete = Donnee::find_donnee_by_capteur_id($value_id);
-                    // $donnee_to_delete = Donnee::find_by_id($id_donne_to_delete);
-                    // $donnee_to_delete->delete();
-
-                    // //find and delete the capteur
-                    // $capteur_to_delete = Capteur::find_by_id($value_id);
-                    // $capteur_to_delete->delete();
-                    
+                
                     $capteur_to_delete = Capteur::find_by_id($value_id);
-                    $capteur_to_delete->remove_capteur();
-                    
-                    
+                    $capteur_to_delete->remove_capteur(); 
+
                 }
             }
 
-            header("Location: ".URL."client/gestion_capteurs");
+            header("Location: " . URL . "client/gestion_capteurs");
+
+        }
+
+        if (isset($_POST['paramCapteur'])) {
+
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
+            
+                //we are looping around the checkbox array and processing it's values
+                foreach($array_id as $value_id ){
+                
+                    $capteur_to_param = Capteur::find_by_id($value_id);
+                    echo $capteur_to_param->id_piece;
+                    $capteur_to_param->add_capteur_to_room($_POST['piece']);
+                    echo $capteur_to_param->id_piece;
+                }
+            }
+
+            header("Location: " . URL . "client/gestion_capteurs");
 
         }
 
@@ -82,19 +84,13 @@ class Client extends Controller {
 
             // Save new capteur
             $new_capteur = new Capteur();
-            $new_capteur->etat = 0 ;
-            $new_capteur->id_piece = $_POST['piece'] ;
-            $new_capteur->id_type = $_POST['type_capteur'];
-            $new_capteur->create();
+            $new_capteur->add_new_capteur($_POST['piece'], $_POST['type_capteur']);
 
             //save data for the new capteur
             $new_donnee = new Donnee();
-            $new_donnee->valeur = $_POST['donnee'];
-            $new_donnee->date = date('Y-m-d H:i:s');
-            $new_donnee->id_capteur = $database->the_insert_id();
-            $new_donnee->create();
+            $new_donnee->create_donnee($_POST['donnee']);
 
-            header("Location: ".URL."client/gestion_capteurs");
+            header("Location: " . URL . "client/gestion_capteurs");
 
         }
 
@@ -110,50 +106,86 @@ class Client extends Controller {
         
         //Piece
         $this->loadModel('Piece');
-        $pieces_client = Piece::get_room_client(1); // pour linstant on urilise le client 1 pour test
+        $pieces_client = Piece::get_room_client(2); // pour linstant on urilise le client 2 pour test
+        
+        //Capteur
+        $this->loadModel('Capteur');
+
+        //typeCapteur
+        $this->loadModel('TypeCapteur');
+
+        $array_etat = array(1 => "ON", 0 => "OFF");
 
         // load views
-    	require APP . 'view/_templates/head.php';
+        require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
-    	require APP . 'view/client/ma_maison.php';
+        require APP . 'view/client/ma_maison.php';
+        require APP . 'view/_templates/footer.php';
 
         //code to manage the actions
-        if(isset($_POST['deleteRoom'])) {
+        if (isset($_POST['on'])) {
 
-            $room_id = $_POST['room'];
-            $room_to_delete = Piece::find_by_id($room_id);
-            $room_to_delete->delete();
-
-            header("Location: ".URL."client/gestion_capteurs");
+        
+            $capteur_to_on = Capteur::find_by_id($_POST['on']);
+            $capteur_to_on->activer_capteur();
+            
+            header("Location: " . URL . "client/ma_maison#card_{$_POST['on']}");
 
         }
 
-        if (isset($_POST['addCapteur'])) {
+        if (isset($_POST['off'])) {
 
-            // Save new capteur
-            $new_capteur = new Capteur();
-            $new_capteur->etat = 0 ;
-            $new_capteur->id_piece = $_POST['piece'] ;
-            $new_capteur->id_type = $_POST['type_capteur'];
-            $new_capteur->create();
+            $capteur_to_off = Capteur::find_by_id($_POST['off']);
+            $capteur_to_off->desactiver_capteur();
 
-            //save data for the new capteur
-            $new_donnee = new Donnee();
-            $new_donnee->valeur = $_POST['donnee'];
-            $new_donnee->date = date('Y-m-d H:i:s');
-            $new_donnee->id_capteur = $database->the_insert_id();
-            $new_donnee->create();
-
-            header("Location: ".URL."client/gestion_capteurs");
+            header("Location: " . URL . "client/ma_maison#card_{$_POST['off']}");
+            
         }
 
+        if (isset($_POST['delete_room'])) {
+
+            $room_to_delete = Piece::find_by_id($_POST['delete_room']);
+            $room_capteurs = Capteur::get_room_capteurs($room_to_delete->id);
+
+            foreach ($room_capteurs as $room_capteur)
+                $room_capteur->remove_capteur_to_room();           
+            
+
+            $room_to_delete->remove_room();
+
+            header("Location: " . URL . "client/ma_maison");
+            
+        }
+
+        if (isset($_POST['addRoom'])) {
+
+            // Save new room
+            $new_room = new Piece();
+            $new_room->nom = $_POST['piece'];
+            $new_room->id_client = 2;
+
+            
+            $new_room->add_room();
+
+            header("Location: " . URL . "client/ma_maison");
+            
+        }
+
+        
     }
 
     /**
      * PAGE: contact
      * This method handles what happens when you move to http://egghome/client/contact 
      */
+<<<<<<< HEAD
     public function contact(){
+=======
+    public function contact() {
+
+        // load views
+        require APP . 'view/_templates/head.php';
+>>>>>>> 7a237b8e7dbbcc474123488c603a40a77f937a08
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/contact.php';
     }
@@ -162,7 +194,7 @@ class Client extends Controller {
      * PAGE: suivi Energetique
      * This method handles what happens when you move to http://egghome/client/suivi_energetique 
      */
-    public function suivi_energetique(){
+    public function suivi_energetique() {
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -174,12 +206,27 @@ class Client extends Controller {
      * PAGE: profil
      * This method handles what happens when you move to http://egghome/client/profil 
      */
-    public function profil(){
+    public function profil() {
+        
+        // load models
+        //Mission
+        $this->loadModel('Mission');
+        $end_missions = Mission::fetch_process_missions_client(2); /*we take client 2 as an example*/
+        $process_missions = Mission::fetch_end_missions_client(2);
+
+        //Infos personnelles
+        $this->loadModel('Utilisateur');
+     
+        //Factures
+        $this->loadModel('Facture');
+        $factures = Facture::show_facture(2); /*we take client 2 as an example*/
 
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/profil.php';
+
+        //code to manage the actions
     }
 
     public function inscription()

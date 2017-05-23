@@ -12,6 +12,7 @@ header {
     padding: 0 20px 0 20px;
     position: relative;
     z-index: 10;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
 header * {
@@ -28,14 +29,15 @@ header nav a {
     text-decoration: none;
 }
 
-
 header .brand {
     float: left;
 }
+
 body {
     margin-bottom: -40px;
     margin: 0 0 40px;
 }
+
 .container {
     width: 100%;
     margin: auto;
@@ -46,25 +48,41 @@ body {
 
 @media (min-width: 1024px) {
     .container {
-        width: 1024px!important;
+        width: 1024px !important;
     }
+
     .feature {
-        display: inline-block!important;
-        width: 33%!important;
+        display: inline-block !important;
+        width: 33% !important;
         height: 230px;
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
+
     .public-index-description {
         margin-top: 50px;
     }
 
     .index-img {
-        height: 500px!important;
+        height: 500px !important;
     }
 
     .public-index-form {
-        margin-top: 40px!important;
+        margin-top: 40px !important;
     }
+
+    .card {
+        display: inline-block !important;
+        margin-top: 0px !important;
+    }
+
+    .medium.card {
+        width: 250px !important
+    }
+
+}
+
+.medium.card {
+    display: inline-block;
 }
 
 footer {
@@ -99,10 +117,10 @@ html {
 .public-index-title {
     margin-top: 50px;
 }
+
 .public-index-sub-title {
     margin-top: 10px;
 }
-
 
 .public-index-description {
     margin-top: 25px;
@@ -111,6 +129,7 @@ html {
 .public-index-form {
     margin-top: 0px;
 }
+
 .btn-flat-big {
     width: 140px;
     border: none;
@@ -131,6 +150,7 @@ html {
 .features {
     margin-top: 40px;
 }
+
 .feature {
     width: 100%;
     display: block;
@@ -139,7 +159,7 @@ html {
 
 .feature * {
     display: inline-block;
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 .feature-icon {
@@ -151,7 +171,7 @@ html {
     margin-top: 0px;
 }
 
-.feature-left{
+.feature-left {
     float: left;
     width: 45%;
     height: 100%;
@@ -160,7 +180,7 @@ html {
 .feature-right {
     width: 55%;
     height: 100%;
-    float:right;
+    float: right;
 }
 
 .feature-right p {
@@ -168,7 +188,6 @@ html {
     letter-spacing: 0.4;
     font-weight: 300;
 }
-
 
 .feature-detail {
     background-color: #EEE;
@@ -188,7 +207,6 @@ html {
     color: #595959;
 }
 
-
 /*
 * 
 *
@@ -202,7 +220,7 @@ Dashboard Start
 .sidebar {
     width: 140px;
     min-height: 100%;
-    position: absolute;
+    position: fixed;
     color: white;
     background-color: #34495e;
     padding: 10px;
@@ -223,8 +241,6 @@ Dashboard Start
     margin-bottom: 20px;
 }
 
-
-
 .sidebar ul {
     list-style-type: none;
 }
@@ -238,6 +254,7 @@ Dashboard Start
     padding: 10px;
     padding-top: 15px;
     padding-left: 160px;
+    min-width: 100%;
 }
 
 .spacer-small {
@@ -256,8 +273,14 @@ Dashboard Start
     height: 30px;
 }
 
+button {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 30px;
+    width: 100px;
+}
 
-select {
+.form select {
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;
@@ -267,13 +290,51 @@ select {
 
 button, input[type='submit'] {
     background-color: #34495e;
-    border-radius: 3px;
-    border-width: 1px;
+    border-radius: 1px;
+    border-width: 0px;
     margin-top: 8px;
     margin-bottom: 8px;
     min-width: 160px;
     padding: 4px;
     height: 30px;
+    color: white;
+}
+
+button[name="on"] {
+    display: block;
+    background-color: #3cc33c;
+    border-radius: 1px;
+    border-width: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 50px;
+    padding: 4px;
+    height: 30px;
+    color: white: ;
+
+}
+
+button[name="off"] {
+    display: block;
+    background-color: #ff0000;
+    border-radius: 1px;
+    border-width: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 50px;
+    padding: 4px;
+    height: 30px;
+    color: white;
+
+}
+
+#submitgestioncapteur {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 160px;
+    padding: 4px;
+    height: 30px;
+    color: white;
 }
 
 .table th {
@@ -287,31 +348,109 @@ button, input[type='submit'] {
     background-color: #ccc;
 }
 
-block{
-    display:flex
-}
 
-
- .Contact_info{
-     background-color: #bcbcbc;
-     box-shadow: 5px 5px 5px black;
- }
-.capteur_panne{
+.capteur_panne {
     text-align: left;
     position: absolute;
 
-
 }
 
-.capteur_panne,.info_egghome{
+.capteur_panne, .info_egghome {
     display: inline-block;
     margin-left: 22%;
 
 }
 
-.info_egghome,.capteur_panne p {
+.info_egghome, .capteur_panne p {
     font-size: medium;
     color: white;
 }
 
+.card {
+    background-color: #f0f0f0;
+    padding: 10px 10px;
+    position: relative;
+}
 
+.card-main-info {
+    font-size: 2em;
+    color: #767676;
+}
+
+.card-bottom-text {
+    position: absolute;
+    bottom: 5px;
+    color: #767676;
+}
+
+.medium.card {
+    height: 250px;
+    width: 95%;
+    margin: 20px 0px;
+}
+
+.large.card {
+    height: 550px;
+    width: 98%;
+    margin: 20px auto;
+    display: block!important;
+}
+
+.large.card .card {
+    border: 1px solid rgba(0,0,0,0.2);
+    margin: 20px 20px;
+}
+
+.green-text {
+    color: #3cc33c;
+}
+.form_mamaison {
+    display: inline-block;
+}
+
+.slider {
+    height: 540px;
+    width: 98%;
+    position: relative;
+    background: url('../img/slide.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.control {
+    display: flex;
+    margin: auto;
+    width: 90px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+.round {
+    height: 10px;
+    width: 10px;
+    background-color: #ccc;
+    margin:  0px 10px;
+    border-radius: 50%;
+}
+
+.slide-title {
+    margin-left: 10px;
+}
+
+.form-batch {
+  margin-bottom: 15px;
+}
+
+
+.contact_info {
+    height: 250px!important;
+    color: black!important;
+}
+.needspace {
+    height: 455px;
+}
+
+.afterspace {
+    color: black;
+}

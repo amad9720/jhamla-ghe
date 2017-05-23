@@ -2,16 +2,16 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:8889
--- Généré le :  Lun 15 Mai 2017 à 09:46
+-- Client :  localhost:8880
+-- Généré le :  Ven 19 Mai 2017 à 09:48
 -- Version du serveur :  5.6.35
--- Version de PHP :  7.0.15
+-- Version de PHP :  7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de données :  `mydb`
+-- Base de données :  `mydbC`
 --
 
 -- --------------------------------------------------------
@@ -33,19 +33,14 @@ CREATE TABLE `capteur` (
 
 INSERT INTO `capteur` (`id`, `etat`, `id_piece`, `id_type`) VALUES
 (1, 1, 5, 1),
-(2, 1, 1, 1),
-(3, 1, 1, 2),
-(4, 1, 4, 3),
-(5, 1, 2, 4),
-(6, 1, 3, 4),
-(7, 1, 1, 5),
-(8, NULL, 1, 6),
+(5, 1, 3, 4),
+(8, 1, 5, 6),
 (9, 1, 6, 2),
-(10, 1, 6, 6),
-(11, 1, 8, 5),
-(12, NULL, 5, 7),
-(13, NULL, 4, 7),
-(14, NULL, 2, 8);
+(10, 1, 3, 1),
+(11, 1, 5, 3),
+(13, 1, 2, 6),
+(14, 1, 0, 5),
+(15, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -66,17 +61,14 @@ CREATE TABLE `donnee` (
 
 INSERT INTO `donnee` (`id`, `date`, `valeur`, `id_capteur`) VALUES
 (1, '2017-05-15 10:00:00', 15, 1),
-(2, '2017-05-15 10:00:00', 20, 2),
-(3, '2017-05-15 10:00:00', 1, 3),
-(4, '2017-05-15 10:00:00', 0, 4),
 (5, '2017-05-15 10:00:00', 80, 5),
-(6, '2017-05-15 10:00:00', 70, 6),
-(7, '2017-05-15 10:00:00', 1, 7),
-(8, '2017-05-15 10:00:00', 0, 9),
-(9, '2017-05-15 10:00:00', 0, 10),
-(10, '2017-05-15 10:00:00', 58, 12),
-(11, '2017-05-15 10:00:00', 77, 13),
-(12, '2017-05-15 10:00:00', 48, 14);
+(8, '2017-05-15 10:00:00', 9, 9),
+(13, '2017-05-15 10:00:00', 77, 8),
+(14, '2017-05-18 15:15:58', 10, 10),
+(15, '2017-05-18 15:17:29', 12, 11),
+(17, '2017-05-18 23:27:02', 5, 13),
+(18, '2017-05-18 23:28:11', 0, 14),
+(19, '2017-05-18 23:28:30', 9, 15);
 
 -- --------------------------------------------------------
 
@@ -223,14 +215,12 @@ CREATE TABLE `piece` (
 --
 
 INSERT INTO `piece` (`id`, `nom`, `id_client`) VALUES
-(1, 'Salon', 2),
-(2, 'Chambre', 2),
-(3, 'Chambre', 2),
-(4, 'Cuisine', 2),
+(2, 'Chambre Johana', 2),
+(3, 'Chambre Marc', 2),
 (5, 'Salle de bain', 2),
 (6, 'Salon', 3),
-(7, 'Chambre', 3),
-(8, 'Cuisine', 3);
+(7, 'Chambre Louis', 3),
+(8, 'Cuisine secondaire', 3);
 
 -- --------------------------------------------------------
 
@@ -443,7 +433,7 @@ ALTER TABLE `capteur`
 -- AUTO_INCREMENT pour la table `donnee`
 --
 ALTER TABLE `donnee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `donnee_energetique`
 --
@@ -507,14 +497,13 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  ADD CONSTRAINT `fk_Capteur_Pièce1` FOREIGN KEY (`id_piece`) REFERENCES `piece` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Capteur_Type_capteurs1` FOREIGN KEY (`id_type`) REFERENCES `type_capteurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `donnee`
 --
 ALTER TABLE `donnee`
-  ADD CONSTRAINT `fk_Donnée_Capteur1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Donnée_Capteur1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `donnee_energetique`
@@ -558,5 +547,5 @@ ALTER TABLE `technicien`
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

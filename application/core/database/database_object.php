@@ -3,22 +3,17 @@
 class Db_object {
 
 	public $errors = array(); //for feedback to us or our customers
+
 	public $upload_errors_array = array(
-
-		// UPLOAD_ERR_OK => "There is no error, the file uploaded with success.",
-	 //    UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize directive in php.ini.",
-	 //    UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.",
-	 //    UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
-	 //    UPLOAD_ERR_NO_FILE => "No file was uploaded.",
-	 //    UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder. Introduced in PHP 5.0.3.",
-	 //    UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk. Introduced in PHP 5.1.0.",
-	 //    UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
+		UPLOAD_ERR_OK => "There is no error, the file uploaded with success.",
+	    UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize directive in php.ini.",
+	    UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.",
+	    UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
+	    UPLOAD_ERR_NO_FILE => "No file was uploaded.",
+	    UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder. Introduced in PHP 5.0.3.",
+	    UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk. Introduced in PHP 5.1.0.",
+	    UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
 	);
-
-	public $tmp_path;
-    public $upload_directory = "img";
-
-
 
 	/**
 	 * Basically, in many methods, we will write a query and return the result of the sent query in a $result variable...
@@ -178,7 +173,7 @@ class Db_object {
 		}elseif ($file['error'] != 0) {
 
 			//If there is an error, we collect it inside our custom error array
-			$this->errors[] = $upload_errors_array($file['error']);
+			$this->errors[] = $this->upload_errors_array[$file['error']];
 			return false;
 
 		}else {
@@ -186,10 +181,8 @@ class Db_object {
 			//If there is no error we collect all the properties of the file in our object properties (by using the $_FILES fields)
 
 			//basename return the name of a file when given the complete path of the file. (see dash for exemples)
-			$this->user_image = basename($file['name']); 
+			$this->photo = basename($file['name']); 
 			$this->tmp_path = $file['tmp_name'];
-			$this->type = $file['type'];
-			$this->size = $file['size'];
 
 		}
 
