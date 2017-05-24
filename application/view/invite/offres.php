@@ -32,3 +32,7 @@
         </div>
 
 </div>
+
+<div class="offre"></div>
+	<!--<?php foreach ($offres as $offre); ?>-->
+	<?php $offres= offre::get_offres($offre->id); ?>
