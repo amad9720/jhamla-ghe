@@ -8,7 +8,6 @@
 					<td><input type="checkbox" id="selectAllBoxes"></td>
 					<th>Nom</th>
 					<th>Prénom</th>
-					<th>Localisation</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -16,17 +15,16 @@
 					<tr>
 						<td><input type="checkbox" class="checkBoxes" value = "<?php echo $technicien->id ?>" name="checkBoxArray[]"></td>
 						<td><?php echo $technicien->nom ?></td>
-						<td><?php echo $technicien->prenom ?></td>	
-						<td><?php echo $technicien->tel ?></td>
-						<td><?php echo $technicien->lieu ?></td>	
+						<td><?php echo $technicien->prenom ?></td>		
 					</tr>
 				<?php endforeach ?>
 			</tbody>
 		</table>
 	</div>
 	<button name ="Profil" class="Profil_btn">Afficher Profil</button>
-	<button name ="Add_mission" class="Add_mission_btn">Ajouter Mission</button>
 	<button name ="Modifier" class="Modifier_btn">Modifier Profil</button>
+	<button name ="Add_mission" class="Add_mission_btn">Ajouter Mission</button>
+	<button name ="End_mission" class="End_mission_btn">Fin Mission</button>
 
  	<div class="add_mission">
  		<form method="post" action="<?php echo URL; ?>invite/gestion_technicien">
@@ -52,16 +50,18 @@
  			<table class="process_missions">
  				<thead>
  					<tr class="first">
- 						<th>Date début</th>
+ 						<th>Date</th>
  						<th>Motif</th>
+ 						<th>Etat</th>
  						<th>Client</th>
  					</tr>
  				</thead>
  				<tbody>
  					<?php foreach ($process_missions as $process_mission) ?>
  						<tr>
- 							<td><?php echo $process_mission->date_debut ?></td>
+ 							<td><?php echo $process_mission->date ?></td>
  							<td><?php echo $process_mission->motif ?></td>
+ 							<td><?php echo $process_mission->etat ?></td>
  							<td><?php echo $process_mission->client ?></td>
  						</tr>
  					<?php endforeach ?>
@@ -71,9 +71,9 @@
  			<table class="end_missions">
  				<thead>
  					<tr class="first">
- 						<th>Date début</th>
- 						<th>Date Fin</th>
+ 						<th>Date</th> 						
  						<th>Motif</th>
+ 						<th>Etat</th>
  						<th>Client</th>
  					</tr>
  				</thead>
@@ -81,8 +81,8 @@
  					<?php foreach ($end_missions as $end_mission) ?>	
  						<tr>
  							<td><?php echo $end_mission->date_debut ?></td>
- 							<td><?php echo $end_mission->date_fin ?></td>
  							<td><?php echo $end_mission->motif ?></td>
+ 							<td><?php echo $end_mission->etat ?></td>
  							<td><?php echo $end_mission->client ?></td>
  						</tr>
  					<?php endforeach ?>
