@@ -3,11 +3,12 @@
 class Page extends Db_object
 {
     public $id;
+    public $nom;
     public $titre;
     public $contenu;
 
-    protected static $db_table = "page"; 
-    protected static $db_table_fields = array("titre", "contenu");
+    protected static $db_table = "page";
+    protected static $db_table_fields = array("nom", "titre", "contenu");
 
 
     /**
@@ -15,17 +16,25 @@ class Page extends Db_object
      */
     function __construct()
     {
-        
+
     }
 
-    function get_page_by_title($titre){
-        $sql="SELECT *
+    public static function get_page_par_nom($titre)
+    {
+        $sql = "SELECT *
               FROM page p
-              WHERE p.titre='{$titre}'
+              WHERE p.nom='{$nom}'
               LIMIT 1 ";
         $result = self::find_by_query($sql);
 
+        return array_shift($result);
+    }
+
+    public static function get_all_page()
+    {
+
+        $result = self::find_all();
         return $result;
     }
-    
+
 }
