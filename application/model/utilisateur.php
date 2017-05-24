@@ -59,6 +59,7 @@ class Utilisateur extends Db_object
     static function find_utilisateur($id_utilisateur){
         $results = self::find_by_id($id_utilisateur);
         return $results;
+    }
 
     /**
      * check if a user is existant in the db and return it, if not return NULL
@@ -66,7 +67,7 @@ class Utilisateur extends Db_object
      * @param  [type] $mdp             [description]
      * @return [type]                  [description]
      */
-    static public function verify_user($nom_utilisateur, $mdp) {
+    public static function verify_user($nom_utilisateur, $mdp) {
 
         $sql = "SELECT * FROM utilisateur WHERE nom_utilisateur = '{$nom_utilisateur}' AND mdp = '{$mdp}' LIMIT 1 ";
 

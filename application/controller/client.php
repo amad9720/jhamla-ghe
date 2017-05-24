@@ -208,15 +208,16 @@ class Client extends Controller {
         // load models
         //Mission
         $this->loadModel('Mission');
-        $end_missions = Mission::fetch_process_missions_client(2); /*we take client 2 as an example*/
-        $process_missions = Mission::fetch_end_missions_client(2);
+        $end_missions = Mission::fetch_process_missions_client(4); /*we take client 4 as an example*/
+        $process_missions = Mission::fetch_end_missions_client(4);
 
         //Infos personnelles
         $this->loadModel('Utilisateur');
+        $client = Utilisateur::find_utilisateur(4);
      
         //Factures
         $this->loadModel('Facture');
-        $factures = Facture::show_facture(2); /*we take client 2 as an example*/
+        $factures = Facture::show_facture(2); /*we take client 4 as an example*/
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -225,7 +226,7 @@ class Client extends Controller {
 
         //code to manage the actions
         if (isset($_POST['Envoyer'])) {
-            $client = Utilisateur::find_utilisateur(2);
+            $client = Utilisateur::find_utilisateur(4);
             $client->nom = $_POST['nom'];
             $client->prenom = $_POST['prenom'];
             $client->email = $_POST['email'];
