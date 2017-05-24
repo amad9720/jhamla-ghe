@@ -65,7 +65,7 @@ class Mission extends Db_object
         return this->create();
     }
     
-    public function set_date_fin() { 
+    public function set_end_mission() { 
         $this->etat = $Fini;
         return $this->update(); 
    }
