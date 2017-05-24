@@ -18,5 +18,14 @@ class Page extends Db_object
         
     }
 
+    function get_page_by_title($titre){
+        $sql="SELECT *
+              FROM page p
+              WHERE p.titre='{$titre}'
+              LIMIT 1 ";
+        $result = self::find_by_query($sql);
+
+        return $result;
+    }
     
 }
