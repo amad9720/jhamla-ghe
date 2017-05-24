@@ -36,7 +36,7 @@ class Invite extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    public function offre()
+    public function offres()
     {
         require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';

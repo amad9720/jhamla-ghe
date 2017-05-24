@@ -8,7 +8,8 @@
 	<p>Pays : <?php echo $pays ?></p>
 </div>
 <img src="photo.jpg" alt="Photo_Profil" height="100" width="100"> 
-<input type="button" value="Masquer"/>
+<button class="Mission_btn">Suivi des missions</button>
+<button class="Modifier_btn">Modifier profil</button>
 <div class="form_profil">
 	<p>Modification du profil</p>
 	<form method="post" action="traitement.php">
@@ -18,8 +19,9 @@
 		<p> <label for="adresse"> Adresse: </label> <input type="text" name="adresse" id="adresse" maxlength="100" size="40" placeholder="Votre adresse"/> </p>
 		<p> <label for="pays"> Pays: </label> <input type="text" name="pays" id="pays" maxlength="50" size="40" placeholder="Votre pays"  /> </p>
 		<p> <label for="type"> Type: </label> <input type="text" name="type" id="type" maxlength="50" size="40" placeholder="Votre type"  /> </p>
-		<p> <label for="pseudo"> Nom d'utilisateur: </label> <input type="text" name="pseudo" id="pseudo" maxlength="50" size="40" placeholder="Votre pseudo"/> </p>
+		<p> <label for="pseudo"> Nom d'utilisateur: </label> <input type="text" name="nom_utilisateur" id="nom_utilisateur" maxlength="50" size="40" placeholder="Votre pseudo"/> </p>
 		<p> <label for="mdp"> Mot de passe: </label> <input type="text" name="mdp" id="mdp" maxlength="50" size="40" placeholder="Votre mdp" autofocus /> </p>
+		<p> <label for="photo"> Photo: </label> <input type="text" name="photo" id="photo" maxlength="200" size="40" placeholder="Votre mdp" autofocus /> </p>
 	<input type="submit" value="Envoyer" />
 	</form>
 </div>
@@ -36,11 +38,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($process_missions as $mission): ?>
+			<?php foreach ($process_missions as $process_mission): ?>
 					<tr>
-						<td><?php echo $mission->date_fin ?></td>
-						<td><?php echo $mission->motif ?></td>
-						<td><?php echo $mission->nom_technicien ?></td>
+						<td><?php echo $process_mission->date_fin ?></td>
+						<td><?php echo $process_mission->motif ?></td>
+						<td><?php echo $process_mission->nom_technicien ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
@@ -55,11 +57,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($end_missions as $mission): ?>
+			<?php foreach ($end_missions as $end_mission): ?>
 					<tr>
-						<td><?php echo $mission->date_fin ?></td>
-						<td><?php echo $mission->motif ?></td>
-						<td><?php echo $mission->nom_technicien ?></td>
+						<td><?php echo $end_mission->date_fin ?></td>
+						<td><?php echo $end_mission->motif ?></td>
+						<td><?php echo $end_mission->nom_technicien ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>

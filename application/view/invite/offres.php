@@ -1,24 +1,34 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="style.css" />
-		<title>OFFRES</title>
-	</head>
-	<body>
-		<p> offre 1</p>
-		<p> offre 2</p>
-		<p> offre 3</p>
-		<p> offre 4</p>
 
-		<div id="block">
-			<div class="offre">offre 1</div>
-			<div class="offre">offre 2</div>
-			<div class="offre">offre 3</div>
-		</div>
+<div classe="container">
 
+        <div id="block">
+            <form method="post" action="traitement.php" >
+			<div class="offre">
+		
+                <h4>offre classique </h4>
+				<p>cette offre vous permet: </br>
+				-5 pieces </br>
+				-10 capteurs </br></p>
+				    <input type="submit" value="souscrir" />   
+                </div>
+			</form>
+			<form method="post" action="traitement.php" >
+            <div class="offre">
+				<p>cette offre vous permet: </br>
+				-10 pieces </br>
+				-25 capteurs </br></p> 
+                <h4>offre medium </h4>
+				    <input type="submit" value="souscrir" />   
+                </div>
+			</form method="post" action="traitement.php">
+			<form>
+            <div class="offre"><h4>offre prenium </h4>
+				<p>cette offre vous permet: </br>
+				- pieces ilimitées </br>
+				-capteurs illimités </br></p>
+			    <input type="submit" value="souscrir" />   
+                </div>
+			</form>
+        </div>
 
-	</body>
-	
-	<footer></footer>
-	
+</div>

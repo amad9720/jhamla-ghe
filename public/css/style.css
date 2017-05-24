@@ -12,6 +12,7 @@ header {
     padding: 0 20px 0 20px;
     position: relative;
     z-index: 10;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
 header * {
@@ -219,7 +220,7 @@ Dashboard Start
 .sidebar {
     width: 140px;
     min-height: 100%;
-    position: absolute;
+    position: fixed;
     color: white;
     background-color: #34495e;
     padding: 10px;
@@ -253,6 +254,7 @@ Dashboard Start
     padding: 10px;
     padding-top: 15px;
     padding-left: 160px;
+    min-width: 100%;
 }
 
 .spacer-small {
@@ -295,6 +297,7 @@ button, input[type='submit'] {
     min-width: 160px;
     padding: 4px;
     height: 30px;
+    color: white;
 }
 
 button[name="on"] {
@@ -307,6 +310,7 @@ button[name="on"] {
     min-width: 50px;
     padding: 4px;
     height: 30px;
+    color: white: ;
 
 }
 
@@ -320,6 +324,7 @@ button[name="off"] {
     min-width: 50px;
     padding: 4px;
     height: 30px;
+    color: white;
 
 }
 
@@ -329,6 +334,7 @@ button[name="off"] {
     min-width: 160px;
     padding: 4px;
     height: 30px;
+    color: white;
 }
 
 .table th {
@@ -342,11 +348,6 @@ button[name="off"] {
     background-color: #ccc;
 }
 
-.Contact_info {
-    background-color: #bcbcbc;
-    margin-bottom: 50px;
-
-}
 
 .capteur_panne {
     text-align: left;
@@ -439,4 +440,17 @@ button[name="off"] {
 
 .form-batch {
   margin-bottom: 15px;
+}
+
+
+.contact_info {
+    height: 250px!important;
+    color: black!important;
+}
+.needspace {
+    height: 455px;
+}
+
+.afterspace {
+    color: black;
 }
