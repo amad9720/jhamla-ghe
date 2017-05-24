@@ -82,18 +82,18 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 //	$password = "root";
 //	$db = "mydbC";
 
-//config Hugo
-//	 $server = "localhost";
-//	 $username = "root";
-//	 $password = "";
-//	 $db = "mydb";
-
-
-//config Louis
+// config Hugo
 	 $server = "localhost";
 	 $username = "root";
 	 $password = "";
-	 $db = "mydbC";
+	 $db = "mydb";
+
+
+// //config Louis
+// 	 $server = "localhost";
+// 	 $username = "root";
+// 	 $password = "";
+// 	 $db = "mydbC";
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $server);

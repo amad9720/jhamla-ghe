@@ -2,37 +2,18 @@
 <div classe="container">
 
         <div id="block">
+		<?php foreach ($offres as $offre) : ?>
             <form method="post" action="traitement.php" >
 			<div class="offre">
 		
-                <h4>offre classique </h4>
-				<p>cette offre vous permet: </br>
-				-5 pieces </br>
-				-10 capteurs </br></p>
-				    <input type="submit" value="souscrir" />   
+                <h4><?php echo $offre->titre ?></h4>
+				<p><?php echo $offre->detail ?></p></br>
+				<p><?php echo $offre->prix ?></p></br>
+	
+				<input type="submit" value="souscrir" />   
                 </div>
 			</form>
-			<form method="post" action="traitement.php" >
-            <div class="offre">
-				<p>cette offre vous permet: </br>
-				-10 pieces </br>
-				-25 capteurs </br></p> 
-                <h4>offre medium </h4>
-				    <input type="submit" value="souscrir" />   
-                </div>
-			</form method="post" action="traitement.php">
-			<form>
-            <div class="offre"><h4>offre prenium </h4>
-				<p>cette offre vous permet: </br>
-				- pieces ilimitées </br>
-				-capteurs illimités </br></p>
-			    <input type="submit" value="souscrir" />   
-                </div>
-			</form>
+		<?php endforeach ?>
         </div>
 
 </div>
-
-<div class="offre"></div>
-	<!--<?php foreach ($offres as $offre); ?>-->
-	<?php $offres= offre::get_offres($offre->id); ?>
