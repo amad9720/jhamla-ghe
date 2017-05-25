@@ -44,6 +44,12 @@ class Utilisateur extends Db_object
         return $results;
     }
     
+    public static function show_clients(){
+        $sql = "SELECT * FROM utilisateur WHERE role=1"; /*vérifier le numéro du role client*/
+        $results = self::find_by_query($sql);
+        return $results;
+    }
+    
     public static function add_users(){
         $sql = "SELECT * FROM technicien WHERE nom = {$this->nom} AND prenom = {$this->prenom} AND adresse = {$this->adresse} GROUP BY ville HAVING ville = {$this->ville}";
         $results = self::find_by_query($sql);
