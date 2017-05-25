@@ -8,7 +8,7 @@
 		
                 <h4><?php echo $offre->titre ?></h4>
 				<p><?php echo $offre->detail ?></p></br>
-				<p><?php echo $offre->prix ?></p></br>
+				<p><?php echo $offre->prix ?> €</p></br>
 	
 				<input type="submit" value="souscrir" />   
                 </div>
