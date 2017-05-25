@@ -24,14 +24,14 @@
 	<button name ="Profil" class="Profil_btn">Afficher Profil</button>
 	<button name ="Modifier" class="Modifier_btn">Modifier Profil</button>
 	<button name ="Add_mission" class="Add_mission_btn">Ajouter Mission</button>
-	<button name ="End_mission" class="End_mission_btn">Fin Mission</button>
+	
 
  	<div class="add_mission">
  		<form method="post" action="<?php echo URL; ?>invite/gestion_technicien">
- 			<select name="nom_client">
+ 			<select name="id_client">
  				<option selected disabled>Client</option>
  				<?php foreach ($clients as $client) ?>
- 					<option value=<?php echo $client->id ?>><?php echo $client->nom ?><?php echo $client->prenom ?></option>
+ 					<option value=<?php echo $client->id; ?>><?php echo $client->nom; ?><?php echo $client->prenom; ?></option>
  				<?php endforeach ?>
  			</select><br/>
  			<input name ="date" id="date" type="date">
@@ -46,7 +46,7 @@
  			<p>Prénom : <?php echo $technicien_selected->prenom ?></p>
  			<p>Lieu : <?php echo $technicien_selected->lieu ?></p>
  			<p>Téléphone : <?php echo $technicien_selected->telephone ?></p>
- 			<p>Missions en cours: </p>
+ 			<p>Missions en cours</p>
  			<table class="process_missions">
  				<thead>
  					<tr class="first">
@@ -71,6 +71,7 @@
  			<table class="end_missions">
  				<thead>
  					<tr class="first">
+ 						<td><input type="checkbox" id="selectAllBoxes"></td>
  						<th>Date</th> 						
  						<th>Motif</th>
  						<th>Etat</th>
@@ -80,6 +81,7 @@
  				<tbody>
  					<?php foreach ($end_missions as $end_mission) ?>	
  						<tr>
+ 							<td><input type="checkbox" class="checkBoxes" value = "<?php echo $mission->id ?>" name="small_checkBoxArray[]"></td>
  							<td><?php echo $end_mission->date_debut ?></td>
  							<td><?php echo $end_mission->motif ?></td>
  							<td><?php echo $end_mission->etat ?></td>
@@ -100,4 +102,6 @@
 	 		<p><label for="motif">Lieu: </label><input type="text" name="lieu" id="lieu" maxlenght="50" size="40" placeholder="Votre lieu"/></p>
 	 	</form>
 	 </div>
+
+	 <button name ="End_mission" class="End_mission_btn">Fin Mission</button>
 </div>
