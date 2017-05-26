@@ -21,7 +21,7 @@ class Administrateur extends Controller
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
-        require APP . 'view/administrateur/index.php';
+        //+require APP . 'view/administrateur/index.php';
         require APP . 'view/_templates/footer.php';
     }
 
@@ -97,6 +97,16 @@ class Administrateur extends Controller
             //header("Location: " . URL . "administrateur/save_client");
             
         }
+    }
+
+    public function gestion_nouveaute() {
+        $this->loadModel('Nouveaute');
+        $nouveautes = new Nouveaute();
+        $n = $nouveautes->get_last_nouveautes(10);
+        //echo '<pre>'; print_r($n); echo '</pre>';
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/administrateur/includes/sidebar.php';
+        require APP. 'view/administrateur/gestion_nouveaute.php';
     }
 
 

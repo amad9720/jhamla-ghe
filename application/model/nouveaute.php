@@ -4,11 +4,12 @@ class Nouveaute extends Db_object
 {
     public $id;
     public $image;
+    public $titre;
     public $filename;
     public $description;
 
     protected static $db_table = "nouveaute"; 
-    protected static $db_table_fields = array("id", "image", "filename", "description");
+    protected static $db_table_fields = array("id", "image", "titre", "description", "date");
 
 
     /**
@@ -130,4 +131,9 @@ class Nouveaute extends Db_object
         
     }
 
+    public function get_last_nouveautes($limit) {
+        $sql = "SELECT * FROM nouveaute LIMIT ".$limit;
+        $result = self::find_by_query($sql);
+        return $result;
+    }
 }
