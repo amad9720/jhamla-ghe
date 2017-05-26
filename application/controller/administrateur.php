@@ -77,6 +77,7 @@ class Administrateur extends Controller
         //loadModels
         //Page
         $this->loadModel('Page');
+        $pages = Page::get_all_page();
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';

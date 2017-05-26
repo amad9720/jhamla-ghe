@@ -36,8 +36,8 @@ class Piece extends Db_object
     
     public static function get_room_client($id_client) { //$id_client sera defini par rapport a la session ici (du coup a l'id du client connecte)
         $sql = "SELECT * 
-                FROM piece c
-                WHERE c.id_client = '{$id_client}' ";
+                FROM piece p
+                WHERE p.id_client = '{$id_client}' ";
 
         $result = self::find_by_query($sql);
 

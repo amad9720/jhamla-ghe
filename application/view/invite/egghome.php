@@ -6,6 +6,22 @@
         quae audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus
         egentium habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id
         observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero
+        supprimerent Caesaris, quas invitis conpluribus formido malorum inpendentium exprimebat.
+        Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad colligendos rumores per
+        Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et dissimulanter honoratorum
+        circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere poterant vel audire latenter
+        intromissi per posticas in regiam nuntiabant, id observantes conspiratione concordi, ut fingerent quaedam et
+        cognita duplicarent in peius, laudes vero supprimerent Caesaris, quas invitis conpluribus formido malorum
+        inpendentium exprimebat.Excogitatum est super his, ut homines quidam ignoti, vilitate ipsa parum cavendi ad
+        colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae audirent. hi peragranter et
+        dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium habitu quicquid noscere
+        poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id observantes conspiratione
+        concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero supprimerent Caesaris, quas invitis
+        conpluribus formido malorum inpendentium exprimebat.Excogitatum est super his, ut homines quidam ignoti,
+        vilitate ipsa parum cavendi ad colligendos rumores per Antiochiae latera cuncta destinarentur relaturi quae
+        audirent. hi peragranter et dissimulanter honoratorum circulis adsistendo pervadendoque divites domus egentium
+        habitu quicquid noscere poterant vel audire latenter intromissi per posticas in regiam nuntiabant, id
+        observantes conspiratione concordi, ut fingerent quaedam et cognita duplicarent in peius, laudes vero
         supprimerent Caesaris, quas invitis conpluribus formido malorum inpendentium exprimebat.</p>
 </div>
 
@@ -111,7 +127,7 @@
         background-color: #bcbcbc;
         margin-top: 25px;
         margin-bottom: 25px;
-        min-height: 250px;
+        min-height: 300px;
     }
 
     .egghome .equipe1 {
@@ -156,6 +172,7 @@
         justify-content: space-around;
         flex-flow: row no-wrap;
         margin-left: 175px;
+        min-height: 100px;
     }
 
 </style>
