@@ -6,20 +6,20 @@
 	<div class="addCapteur" style="display: none;">
 
 		<h4 class="spacer-large">Ajouter un capteur</h4>
-		
+
 		<form method="POST" action="<?php echo URL; ?>client/gestion_capteurs" class="form spacer-small">
 
 			<select name="type_capteur">
 				<option disabled selected>Type capteur</option>
 				<?php foreach ($type_capteurs as $type_capteur): ?>
-				<option value=<?php echo $type_capteur->id; ?> ><?php echo $type_capteur->type; ?></option>	
+				<option value=<?php echo $type_capteur->id; ?> ><?php echo $type_capteur->type; ?></option>
 				<?php endforeach ?>
 			</select><br/>
 
 			<select name="piece">
 				<option disabled selected>Pièce</option>
 				<?php foreach ($pieces as $piece): ?>
-				<option value=<?php echo $piece->id; ?> ><?php echo $piece->nom; ?></option>	
+				<option value=<?php echo $piece->id; ?> ><?php echo $piece->nom; ?></option>
 				<?php endforeach ?>
 			</select><br/>
 
