@@ -213,6 +213,7 @@ class Client extends Controller {
 
         //Infos personnelles
         $this->loadModel('Utilisateur');
+        $client = Utilisateur::find_utilisateur(2);
      
         //Factures
         $this->loadModel('Facture');
