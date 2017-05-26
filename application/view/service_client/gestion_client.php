@@ -28,6 +28,7 @@
         <h4 class="spacer-large">Envoyer une notification</h4>
 
         <form method="POST" action="<?php echo URL; ?>service_client/gestion_client" class="form spacer-small">
+            <div class="checkBoxTransfer" ></div>
             <div id="arrayCheckbox" style="display: none" ></div>
             <input type="text" name="titre" placeholder="Titre">
 
@@ -47,6 +48,7 @@
 
         <thead>
         <tr class="first">
+            <td><input type="checkbox" id="selectAllBoxes"></td>
             <th>Identifiant</th>
             <th>Nom</th>
             <th>Prenom</th>
@@ -63,7 +65,7 @@
                     <td id="identifiant"><?php echo $utilisateur->id ?></td>
                     <td id="nom"><?php echo $utilisateur->nom ?></td>
                     <td id="prenom"><?php echo $utilisateur->prenom ?></td>
-                    <td id="offre"><?php echo $utilisateur->id_offre ?></td>
+                    <td id="offre"><?php echo $utilisateur->offre ?></td>
                     <td id="statut"> <?php echo $utilisateur->statut ?></td>
                 </tr>
             <?php endforeach ?>
@@ -91,7 +93,7 @@
             <?php foreach ($notifications as $notification): ?>
                 <tr>
                     <td id="titre"><?php echo $notification->titre ?></td>
-                    <td id="id_client"><?php echo $notification->id_client ?></td>
+                    <td id="client"><?php echo $notification->nom . " " . $notification->prenom ?></td>
                 </tr>
             <?php endforeach ?>
             </tbody>

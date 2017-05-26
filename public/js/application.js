@@ -65,11 +65,9 @@ $(document).ready(function(){
 
     $(".notificationClient_btn").click(function(event) {
 
-        var titre = $("input:checked", "td").parent().siblings("#titre").text();
-        var contenu = $("input:checked", "td").parent().siblings("#contenu").text();
         $(".notificationClient").toggle();
 
-        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+        $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
 
     });
 }); 

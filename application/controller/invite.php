@@ -100,7 +100,7 @@ class Invite extends Controller
                     $mission->add_new_mission($value_id, $_POST['id_client'], $_POST['date'], $_POST['motif']);
                 }
             }
-            
+
 
             if (isset($_POST['small_checkBoxArray'])){
                 $array_id = $_POST['small_checkBoxArray'];
