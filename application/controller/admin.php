@@ -58,5 +58,9 @@ class Admin extends Controller
         //require APP . 'view/home/page_qui_gere_admin.php';
         require APP . 'view/_templates/footer.php';
     }
-
+    public function gestion_offre(){
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/administrateur/gestion_offre.php';
+        require APP . 'view/_templates/footer.php';
+    }
 }

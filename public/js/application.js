@@ -10,6 +10,14 @@ $(document).ready(function(){
     $(".addRoom_btn").click(function(event) {
         $(".addRoom").toggle();
     });
+	
+    $(".Mission_btn").click(function(event) {
+        $(".Suivi").toggle();
+    });
+	
+    $(".Modifier_btn").click(function(event) {
+        $(".form_profil").toggle();
+    });
 
     $(".paramCapteur_btn").click(function(event) {
 

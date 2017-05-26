@@ -50,6 +50,7 @@
             <th>Identifiant</th>
             <th>Nom</th>
             <th>Prenom</th>
+            <th>Offre</th>
             <th>Statut</th>
         </tr>
         </thead>
@@ -62,7 +63,8 @@
                     <td id="identifiant"><?php echo $utilisateur->id ?></td>
                     <td id="nom"><?php echo $utilisateur->nom ?></td>
                     <td id="prenom"><?php echo $utilisateur->prenom ?></td>
-                    <td><?php echo $utilisateur->statut ?></td>
+                    <td id="offre"><?php echo $utilisateur->id_offre ?></td>
+                    <td id="statut"> <?php echo $utilisateur->statut ?></td>
                 </tr>
             <?php endforeach ?>
             </tbody>

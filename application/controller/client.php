@@ -208,8 +208,8 @@ class Client extends Controller {
         // load models
         //Mission
         $this->loadModel('Mission');
-        $end_missions = Mission::fetch_process_missions_client(2); /*we take client 2 as an example*/
-        $process_missions = Mission::fetch_end_missions_client(2);
+        $end_missions = Mission::fetch_end_missions_client(2); /*we take client 2 as an example*/
+        $process_missions = Mission::fetch_process_missions_client(2);
 
         //Infos personnelles
         $this->loadModel('Utilisateur');
@@ -224,6 +224,20 @@ class Client extends Controller {
         require APP . 'view/client/profil.php';
 
         //code to manage the actions
+        if (isset($_POST['Envoyer'])) {
+            $client = Utilisateur::find_utilisateur(2);
+            $client->nom = $_POST['nom'];
+            $client->prenom = $_POST['prenom'];
+            $client->email = $_POST['email'];
+            $client->adresse = $_POST['adresse'];
+            $client->pays = $_POST['pays'];
+            $client->type = $_POST['type'];
+            $client->nom_utilisateur = $_POST['nom_utilisateur'];
+            $client->mdp = $_POST['mdp'];
+            $client->photo = $_POST['photo'];
+            $client->update();
+
+        }
     }
 
     public function inscription()

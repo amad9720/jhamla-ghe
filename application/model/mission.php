@@ -57,22 +57,16 @@ class Mission extends Db_object
     }
     
       
-    public function add_missions(){ /* allows to add a new mission to a technician*/
-
-        $sql = "SELECT id FROM mission WHERE date_fin = NULL AND id_client = {$this->id_client}";
-        $results = self::find_by_query($sql);
-
-        if(empty($results)){
-            $this->create();
-            return true;
-        }
-        else{
-            return false;
-        }
+    public function add_new_mission($id_technicien,$post_client,$post_date,$post_motif){ /* allows to add a new mission to a technician*/
+        $this->id_client = Utilisateur::find_by_name($post_client);	
+        $this->date_debut = $_POST['date'];
+        $this->motif = $_POST['motif'];
+        $this->etat ="Non Fini";
+        return this->create();
     }
     
-    public function set_date_fin($date_fin) { 
-        $this->date_fin = $date_fin;
+    public function set_end_mission() { 
+        $this->etat = $Fini;
         return $this->update(); 
    }
 }

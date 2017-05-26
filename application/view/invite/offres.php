@@ -2,18 +2,18 @@
 <div classe="container">
 
         <div id="block">
-            <div class="offre">
-			
-                <h4>offre classique </h4>
-				    <input type="submit" value="souscrir" />   
+		<?php foreach ($offres as $offre) : ?>
+            <form method="post" action="traitement.php" >
+			<div class="offre">
+		
+                <h4><?php echo $offre->titre ?></h4>
+				<p><?php echo $offre->detail ?></p></br>
+				<p><?php echo $offre->prix ?> €</p></br>
+	
+				<input type="submit" value="souscrir" />   
                 </div>
-            <div class="offre"> 
-                <h4>offre medium </h4>
-				    <input type="submit" value="souscrir" />   
-                </div>
-            <div class="offre"><h4>offre prenium </h4>
-			    <input type="submit" value="souscrir" />   
-                </div>
+			</form>
+		<?php endforeach ?>
         </div>
 
 </div>

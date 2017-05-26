@@ -45,6 +45,7 @@ class Utilisateur extends Db_object
         return $results;
     }
 
+
     /**
      * @return mixed
      */
@@ -80,7 +81,14 @@ class Utilisateur extends Db_object
         return array_shift($result);
     }
 
-    public static function add_users(){
+    
+    public static function show_clients(){
+        $sql = "SELECT * FROM utilisateur WHERE role=1"; /*vérifier le numéro du role client*/
+        $results = self::find_by_query($sql);
+        return $results;
+    }
+
+    public function add_users(){
         $sql = "SELECT * FROM technicien WHERE nom = {$this->nom} AND prenom = {$this->prenom} AND adresse = {$this->adresse} GROUP BY ville HAVING ville = {$this->ville}";
         $results = self::find_by_query($sql);
         if(empty($results)){
@@ -91,15 +99,21 @@ class Utilisateur extends Db_object
             return false;
         }
     }
+    
+    static function find_utilisateur($id_utilisateur)
+    {
+        $results = self::find_by_id($id_utilisateur);
+        return $results;
+    }
 
     // add user to offer
 
-    public function accept_customer() {
+    public function accept_customer()
+    {
+            if ($this->statut == 0)
+                $this->statut = 1;
 
-        if ($this->statut == 0)
-            $this->statut = 1;
-
-        return $this->update();
+            return $this->update();
     }
 
 
@@ -127,6 +141,8 @@ class Utilisateur extends Db_object
         $user = self::find_by_query($sql);
         return $user = (!empty($user)) ? array_shift($user) : $user; //see find_user_by_id() method...
     }
+    
+   
 
     /**
      * [save_user_and_image description]
