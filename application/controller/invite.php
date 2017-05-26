@@ -59,13 +59,13 @@ class Invite extends Controller
 
 
         if (isset($_POST['checkBoxArray'])){
-            array_id = $_POST['checkBoxArray'];
+            $array_id = $_POST['checkBoxArray'];
 
             if(isset($_POST['Profil'])){
                 foreach($array_id as $value_id){
                     $techniciens_selected = Technicien::find_by_id($value_id);
-                    $end_missions = Mission::fetch_end_missions_technicien($value_id)	
-                    $process_missions = Mission::fetch_process_missions_technicien($value_id)	
+                    $end_missions = Mission::fetch_end_missions_technicien($value_id);	
+                    $process_missions = Mission::fetch_process_missions_technicien($value_id);	
                 }
             }
 
@@ -97,10 +97,10 @@ class Invite extends Controller
 
 
             if (isset($_POST['small_checkBoxArray'])){
-                array_id = $_POST['small_checkBoxArray'];
+                $array_id = $_POST['small_checkBoxArray'];
                 if(isset($_POST['End_mission'])){	
                     foreach($small_array_id as $small_value_id){
-                        $end_mission = Mission::find_by_id($small_array_id) ;
+                        $end_mission = Mission::find_by_id($small_array_id);
                         $end_mission->set_end_mission();
                 }
             }
