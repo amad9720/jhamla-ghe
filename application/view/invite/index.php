@@ -3,7 +3,7 @@
 		<h1 class="public-index-title">Smart solutions for moderns homes</h1>
 		<p class="public-index-sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		<div class="features">
-				<div class="feature">
+				<div id="feature1">
 					<div class="feature-left">
 						<i class="fa fa-home fa-5x feature-icon"></i>
 					</div>
@@ -12,7 +12,7 @@
 						<p>In in ex sit amet lorem ullamcorper pellentesque. Integer ornare ac ante blandit dignissim. Morbi dapibus mi ut felis consectetur mattis.</p>
 					</div>
 				</div>
-				<div class="feature">
+				<div id="feature2">
 					<div class="feature-left">
 						<i class="fa fa-lock fa-5x feature-icon"></i>
 					</div>
@@ -21,7 +21,7 @@
 						<p>In in ex sit amet lorem ullamcorper pellentesque. Integer ornare ac ante blandit dignissim. Morbi dapibus mi ut felis consectetur mattis.</p>
 					</div>
 				</div>
-				<div class="feature">
+				<div id="feature3">
 					<div class="feature-left">
 						<i class="fa fa-usd fa-5x feature-icon"></i>
 					</div>
@@ -38,19 +38,19 @@
 	</div>				
 </div>
 <div class="feature-detail">
-		<div class="container">
+		<div class="container" id="container1">
 			<h3>Automate</h3>
 			<p>Quisque dignissim tortor laoreet, imperdiet nisi nec, lacinia odio. In luctus fermentum libero, id ullamcorper velit egestas vitae. Phasellus dapibus, velit id tristique mattis, lorem lorem commodo velit, vitae ullamcorper ipsum nisi commodo augue. </p>
 		</div>
 </div>
 <div class="feature-detail">
-		<div class="container">
+		<div class="container" id="container2">
 			<h3>Secure</h3>
 			<p>Quisque dignissim tortor laoreet, imperdiet nisi nec, lacinia odio. In luctus fermentum libero, id ullamcorper velit egestas vitae. Phasellus dapibus, velit id tristique mattis, lorem lorem commodo velit, vitae ullamcorper ipsum nisi commodo augue. </p>
 		</div>
 </div>
 <div class="feature-detail">
-		<div class="container">
+		<div class="container" id="container3">
 			<h3>Save</h3>
 			<p>Quisque dignissim tortor laoreet, imperdiet nisi nec, lacinia odio. In luctus fermentum libero, id ullamcorper velit egestas vitae. Phasellus dapibus, velit id tristique mattis, lorem lorem commodo velit, vitae ullamcorper ipsum nisi commodo augue. </p>
 		</div>

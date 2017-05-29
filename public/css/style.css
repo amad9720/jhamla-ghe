@@ -44,6 +44,7 @@ body {
     padding: 20px;
     min-width: 440px;
 
+
 }
 
 @media (min-width: 1024px) {
@@ -51,12 +52,15 @@ body {
         width: 1024px !important;
     }
 
-    .feature {
+    #feature1, #feature2, #feature3 {
         display: inline-block !important;
         width: 33% !important;
         height: 230px;
         margin-top: 0px !important;
+        zoom: 100%;
     }
+
+
 
     .public-index-description {
         margin-top: 50px;
@@ -67,7 +71,8 @@ body {
     }
 
     .public-index-form {
-        margin-top: 40px !important;
+        position: absolute;
+        margin-top: 0px !important;
     }
 
     .card {
@@ -462,3 +467,4 @@ button[name="off"] {
 #statut, #identifiant, #nom, #prenom, #offre, #titre, #client{
     text-align : center;
 }
+

@@ -46,10 +46,7 @@ class Invite extends Controller
         require APP . 'view/invite/offres.php';
         require APP . 'view/_templates/footer.php';
     }
-    
-<<<<<<< HEAD
-    
-=======
+
     public function gestion_technicien()
     {
         $this->loadModel('Mission');
@@ -117,7 +114,7 @@ class Invite extends Controller
             }
         }
     }
->>>>>>> 7822ca41e24c3ed77d6a09743c98232b90ff1aa4
+
 
 
     public function dashboard()

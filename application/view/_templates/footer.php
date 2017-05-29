@@ -7,6 +7,17 @@
 
     <!-- TinyMce -->
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
+<!--    Superscrollorama-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SuperScrollorama/1.0.3/jquery.superscrollorama.js"></script>
+
+<!--    Scroll Magic-->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+
+
     
     <!-- our JavaScript -->
     <script src="<?php echo URL; ?>js/application.js" type="text/javascript"></script>

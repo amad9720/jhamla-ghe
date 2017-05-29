@@ -73,7 +73,6 @@ $(document).ready(function(){
         $('#bouton_capteur').toggle();
 
     });
-<<<<<<< HEAD
 
     $(".Add_mission_btn").click(function(event){
         $(".add_mission").toggle();
@@ -84,12 +83,52 @@ $(document).ready(function(){
         $(".modifier").toggle();
     });
 
-    
-}); 
-=======
+
+
+    });
+
+$("#feature1").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#container1").offset().top
+    }, 1000);
+});
+
+$("#feature2").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#container2").offset().top
+    }, 1000);
 });
 
 
->>>>>>> fa91dd07d0bb797cfa820575297fba63d92e4ba9
+$("#feature3").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#container3").offset().top
+    }, 1000);
+});
 
+$('#feature1').hover(
+    function(){
+        $(this).animate({'top':'-=20px','left':'-=20px', 'height':'+=40px'});
+    },
+    function(){
+        $(this).animate({'top':'+=20px','left':'+=20px', 'height':'-=40px' });
+    }
+);
 
+$('#feature2').hover(
+    function(){
+        $(this).animate({'top':'-=20px','left':'-=20px', 'height':'+=40px'});
+    },
+    function(){
+        $(this).animate({'top':'+=20px','left':'+=20px', 'height':'-=40px' });
+    }
+);
+
+$('#feature3').hover(
+    function(){
+        $(this).animate({'top':'-=20px','left':'-=20px', 'height':'+=40px'});
+    },
+    function(){
+        $(this).animate({'top':'+=20px','left':'+=20px', 'height':'-=40px' });
+    }
+);
