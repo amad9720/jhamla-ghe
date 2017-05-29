@@ -41,5 +41,12 @@ class Offre extends Db_object
         }
     }
 
+        public function add_offre() {
+        if (empty($this->id) /*&& !empty($this->id_client)*/ )
+            return $this->create() ? true : false;
+        else
+            return false;
+    }
+
 
 }
