@@ -56,9 +56,12 @@ class Utilisateur extends Db_object
         }
     }
     
-    static function find_utilisateur($id_utilisateur){
+    static function find_utilisateur($id_utilisateur)
+    {
         $results = self::find_by_id($id_utilisateur);
         return $results;
+
+    }
 
     /**
      * check if a user is existant in the db and return it, if not return NULL

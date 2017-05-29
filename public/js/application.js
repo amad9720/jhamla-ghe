@@ -54,6 +54,27 @@ $(document).ready(function(){
         $(this).siblings(".card_holder").toggle();
     });
 
-}); 
+    $('#bouton_supprimer').hide();
+    $("select[name='nom_contenu']").change(function () {
+
+
+        $('#bouton_supprimer').show();
+
+        var num = String("#"+$(this).val());
+        var content = $(""+num+"").text();
+        var numero=String($(this).val());
+        console.log(content);
+        tinymce.activeEditor.setContent('<span>'+content+'</span>');
+
+    });
+
+
+    $("select[name='type_capteurs']").change(function () {
+        $('#bouton_capteur').toggle();
+
+    });
+});
+
+
 
 

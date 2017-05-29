@@ -87,16 +87,70 @@ class Administrateur extends Controller
 
          if (isset($_POST['create_content'])) {
 
-            $page = new Page();
-
+            $page = Page::find_by_id($_POST['nom_contenu']);
             $page->titre = $_POST['title'];
             $page->contenu = $_POST['content'];
             
-            $page->create();
+            $page->update();
 
-            //header("Location: " . URL . "administrateur/save_client");
+            header("Location: " . URL . "administrateur/add_pages");
             
         }
+        if (isset($_POST['delete_name'])) {
+
+            $page = Page::find_by_id($_POST['nom_contenu']);
+            $page->delete();
+
+            header("Location: " . URL . "administrateur/add_pages");
+
+        }
+
+        if (isset($_POST['create_name'])) {
+
+            $page = new Page();
+            $page->nom = $_POST['nom_page'];
+            $page->create();
+
+            header("Location: " . URL . "administrateur/add_pages");
+
+        }
+
+    }
+
+    public function save_capteurs(){
+
+        //loadModels
+
+        //Page
+        $this->loadModel('typecapteur');
+        $capteurs = typecapteur::get_all_capteurs();
+
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/administrateur/includes/sidebar.php';
+        require APP . 'view/administrateur/gestion_capteur.php';
+        require APP . 'view/_templates/footer.php';
+
+        if (isset($_POST['delete_capteur'])) {
+
+            $capteur = typecapteur::find_by_id($_POST['type_capteurs']);
+            $capteur->delete();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+        if (isset($_POST['add_capteur'])) {
+
+            $capteur = new TypeCapteur();
+            $capteur->type = $_POST['nom_du_capteur'];
+            $capteur->create();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+
+
     }
 
 
