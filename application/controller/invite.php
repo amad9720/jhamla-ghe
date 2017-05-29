@@ -47,31 +47,37 @@ class Invite extends Controller
         require APP . 'view/_templates/footer.php';
     }
     
-    public function gestion_technicien(){
-        $this-> loadModel('Mission');
+    public function gestion_technicien()
+    {
+        $this->loadModel('Mission');
 
 
-        $this-> loadModel('Utilisateur');
+        $this->loadModel('Utilisateur');
         $clients = Utilisateur::show_clients();
 
-        $this-> loadModel('Technicien');
+        $this->loadModel('Technicien');
         $clients = Technicien::show_techniciens();
 
 
-        if (isset($_POST['checkBoxArray'])){
-            array_id = $_POST['checkBoxArray'];
 
-            if(isset($_POST['Profil'])){
-                foreach($array_id as $value_id){
+        if (isset($_POST['checkBoxArray'])){
+
+            $array_id = $_POST['checkBoxArray'];
+
+            if (isset($_POST['Profil'])) {
+                foreach ($array_id as $value_id) {
                     $techniciens_selected = Technicien::find_by_id($value_id);
-                    $end_missions = Mission::fetch_end_missions_technicien($value_id)	
-                    $process_missions = Mission::fetch_process_missions_technicien($value_id)	
+
+                    $end_missions = Mission::fetch_end_missions_technicien($value_id);
+                    $process_missions = Mission::fetch_process_missions_technicien($value_id);
+
+
                 }
             }
 
 
-            if(isset($_POST['Modifier'])){
-                foreach($array_id as $value_id){
+            if (isset($_POST['Modifier'])) {
+                foreach ($array_id as $value_id) {
                     $technicien = Technicien::find_by_id($value_id);
                     $technicien->nom = $_POST['nom'];
                     $technicien->prenom = $_POST['prenom'];
@@ -81,31 +87,34 @@ class Invite extends Controller
                 }
             }
 
-            if(isset($_POST['Supprimer'])){
-                foreach($array_id as $value_id){
+            if (isset($_POST['Supprimer'])) {
+                foreach ($array_id as $value_id) {
                     $technicien = Technicien::find_by_id($value_id);
                     $technicien->delete();
                 }
             }
 
-            if(isset($_POST['Add_mission'])){
-                foreach($array_id as $value_id){
+            if (isset($_POST['Add_mission'])) {
+                foreach ($array_id as $value_id) {
                     $mission = new Mission();
-                    $mission->add_new_mission($value_id,$_POST['id_client'],$_POST['date'],$_POST['motif']);
+                    $mission->add_new_mission($value_id, $_POST['id_client'], $_POST['date'], $_POST['motif']);
                 }
             }
 
 
             if (isset($_POST['small_checkBoxArray'])){
-                array_id = $_POST['small_checkBoxArray'];
+                $array_id = $_POST['small_checkBoxArray'];
                 if(isset($_POST['End_mission'])){	
                     foreach($small_array_id as $small_value_id){
-                        $end_mission = Mission::find_by_id($small_array_id) ;
+
+                        $end_mission = Mission::find_by_id($small_array_id);
                         $end_mission->set_end_mission();
+                    }
                 }
             }
         }
     }
+
 
     public function dashboard()
     {

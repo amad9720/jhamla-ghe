@@ -54,6 +54,22 @@ $(document).ready(function(){
         $(this).siblings(".card_holder").toggle();
     });
 
+    $(".paramClient_btn").click(function(event) {
+
+        var offre = $("input:checked", "td").parent().siblings("#offre").text();
+        $(".paramClient").toggle();
+
+        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
+    });
+
+    $(".notificationClient_btn").click(function(event) {
+
+        $(".notificationClient").toggle();
+
+        $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
+
+    });
 }); 
 
 

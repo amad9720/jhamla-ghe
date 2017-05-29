@@ -454,3 +454,11 @@ button[name="off"] {
 .afterspace {
     color: black;
 }
+
+#submitgestionclient {
+    margin-left: 5px;
+}
+
+#statut, #identifiant, #nom, #prenom, #offre, #titre, #client{
+    text-align : center;
+}

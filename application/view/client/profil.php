@@ -1,13 +1,13 @@
 <h3>Mon profil</h3>
 <div class="infos">
-	<p>Nom : <?php echo $nom ?></p>
-	<p>Prénom :<?php echo $prenom ?></p>
-	<p>Email : <?php echo $email ?></p>
-	<p>Adresse : <?php echo $adresse ?></p>
-	<p>Ville : <?php echo $ville ?></p>
-	<p>Pays : <?php echo $pays ?></p>
+	<p>Nom : <?php echo $client->nom ?></p>
+	<p>Prénom :<?php echo $client->prenom ?></p>
+	<p>Email : <?php echo $client->email ?></p>
+	<p>Adresse : <?php echo $client->adresse ?></p>
+	<p>Ville : <?php echo $client->ville ?></p>
+	<p>Pays : <?php echo $client->pays ?></p>
 </div>
-<img src="photo.jpg" alt="Photo_Profil" height="100" width="100"> 
+<img src="<?php echo $client->photo ?>" alt="Photo_Profil" height="100" width="100"> 
 <button class="Mission_btn">Suivi des missions</button>
 <button class="Modifier_btn">Modifier profil</button>
 <div class="form_profil">
