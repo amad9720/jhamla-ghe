@@ -134,7 +134,6 @@ class Utilisateur extends Db_object
         $this->delete();
     }
 
-
     /**
      * check if a user is existant in the db and return it, if not return NULL
      * @param  [type] $nom_utilisateur [description]

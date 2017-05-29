@@ -54,22 +54,26 @@ $(document).ready(function(){
         $(this).siblings(".card_holder").toggle();
     });
 
-    $(".paramClient_btn").click(function(event) {
+    $('#bouton_supprimer').hide();
+    $("select[name='nom_contenu']").change(function () {
 
-        var offre = $("input:checked", "td").parent().siblings("#offre").text();
-        $(".paramClient").toggle();
 
-        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+        $('#bouton_supprimer').show();
 
-    });
-
-    $(".notificationClient_btn").click(function(event) {
-
-        $(".notificationClient").toggle();
-
-        $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
+        var num = String("#"+$(this).val());
+        var content = $(""+num+"").text();
+        var numero=String($(this).val());
+        console.log(content);
+        tinymce.activeEditor.setContent('<span>'+content+'</span>');
 
     });
+
+
+    $("select[name='type_capteurs']").change(function () {
+        $('#bouton_capteur').toggle();
+
+    });
+<<<<<<< HEAD
 
     $(".Add_mission_btn").click(function(event){
         $(".add_mission").toggle();
@@ -82,5 +86,10 @@ $(document).ready(function(){
 
     
 }); 
+=======
+});
+
+
+>>>>>>> fa91dd07d0bb797cfa820575297fba63d92e4ba9
 
 

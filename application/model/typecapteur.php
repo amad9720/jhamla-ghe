@@ -27,4 +27,13 @@ class TypeCapteur extends Db_object
         if (!empty($this->id))
             return $this->delete();
     }
+
+    public static function get_all_capteurs()
+    {
+
+        $result = self::find_all();
+        return $result;
+    }
+
+
 }
