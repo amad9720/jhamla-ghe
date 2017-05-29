@@ -19,7 +19,7 @@ class Offre extends Db_object
     {
         
     }
-
+//trouver toutes les offres
     public static function get_offres(){
         $offres = Offre::find_all();
 
@@ -27,7 +27,7 @@ class Offre extends Db_object
 
     }
     
-    
+    // trouver une offre grace à son id
     public static function get_offre($id_offre){
         $offre = Offre::find_by_id($id_offre);
 
@@ -39,10 +39,13 @@ class Offre extends Db_object
         if ($this->id){
             $this->update();
         }
-        
+    }
 
-
-
+        public function add_offre() {
+        if (empty($this->id) /*&& !empty($this->id_client)*/ )
+            return $this->create() ? true : false;
+        else
+            return false;
     }
 
 

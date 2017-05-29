@@ -208,11 +208,12 @@ class Client extends Controller {
         // load models
         //Mission
         $this->loadModel('Mission');
-        $end_missions = Mission::fetch_process_missions_client(2); /*we take client 2 as an example*/
-        $process_missions = Mission::fetch_end_missions_client(2);
+        $end_missions = Mission::fetch_end_missions_client(2); /*we take client 2 as an example*/
+        $process_missions = Mission::fetch_process_missions_client(2);
 
         //Infos personnelles
         $this->loadModel('Utilisateur');
+        $client = Utilisateur::find_utilisateur(2);
      
         //Factures
         $this->loadModel('Facture');
