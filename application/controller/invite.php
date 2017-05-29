@@ -38,11 +38,17 @@ class Invite extends Controller
 
     public function offres()
     {
+        $this->loadModel("Offre");
+        $offres = Offre::get_offres();
+
         require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/offres.php';
         require APP . 'view/_templates/footer.php';
     }
+    
+    
+
 
     public function dashboard()
     {

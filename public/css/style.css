@@ -454,3 +454,7 @@ button[name="off"] {
 .afterspace {
     color: black;
 }
+
+#submitgestionclient {
+    margin-left: 5px;
+}

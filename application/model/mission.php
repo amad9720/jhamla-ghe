@@ -24,25 +24,31 @@ class Mission extends Db_object
     }
 
     
-    public static function fetch_process_missions_technicien($id_technicien) { /* show missions of selectionned technician which are not finished yet*/
-        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_technicien = {$id_technicien}"; 
+    public static function fetch_process_missions_technicien($id) { /* show missions of selectionned technician which are not finished yet*/
+        $sql = $sql = "SELECT *
+                FROM mission
+                WHERE mission.id_technicien = '{$id}' AND etat=0";
         $results = self::find_by_query($sql); 
 
         return $results;
     }
 
     
-    public static function fetch_process_missions_client($id_client) { /* show missions of selectionned client which are not finished yet*/
+    public static function fetch_process_missions_client($id) { /* show missions of selectionned client which are not finished yet*/
 
-        $sql = "SELECT * FROM mission WHERE date_fin = NULL AND id_client = {$id_client}"; 
+        $sql = $sql = "SELECT *
+                FROM mission
+                WHERE mission.id_client = '{$id}' AND etat=0";
         $results = self::find_by_query($sql);
 
         return $results;
     }
     
-    public static function fetch_end_missions_technicien($id_technicien) { /* show missions of selectionned technician which are finished*/
+    public static function fetch_end_missions_technicien($id) { /* show missions of selectionned technician which are finished*/
 
-        $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_technicien = {$id_technicien}";
+        $sql = "SELECT *
+                FROM mission
+                WHERE mission.id_technicien = '{$id}' AND etat=1";
         $results = self::find_by_query($sql);
 
         return $results;
@@ -50,29 +56,29 @@ class Mission extends Db_object
 
     public static function fetch_end_missions_client($id_client) { /* show missions of selectionned client which are finished*/
 
-        $sql = "SELECT * FROM mission WHERE date_fin != NULL AND id_client = {$id_client}";
+        $sql = "SELECT *
+                FROM mission
+                WHERE mission.id_client = '{$id}' AND etat=1";
         $results = self::find_by_query($sql);
 
         return $results;
     }
     
       
-    public function add_missions(){ /* allows to add a new mission to a technician*/
+    public function add_new_mission($id_tech,$post_client,$post_date,$post_motif){ /* allows to add a new mission to a technician*/
+        
+        $this->id_technicien = $id_tech;
+        $this->id_client = $post_client;	
+        $this->date_debut = $post_date;
+        $this->date_fin = NULL;
+        $this->motif = $post_motif;
+        $this->etat = 0;
 
-        $sql = "SELECT id FROM mission WHERE date_fin = NULL AND id_client = {$this->id_client}";
-        $results = self::find_by_query($sql);
-
-        if(empty($results)){
-            $this->create();
-            return true;
-        }
-        else{
-            return false;
-        }
+        return $this->create();
     }
     
-    public function set_date_fin($date_fin) { 
-        $this->date_fin = $date_fin;
+    public function set_end_mission() { 
+        $this->etat = $Fini;
         return $this->update(); 
    }
 }
