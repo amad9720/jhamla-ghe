@@ -458,3 +458,7 @@ button[name="off"] {
 #submitgestionclient {
     margin-left: 5px;
 }
+
+#statut, #identifiant, #nom, #prenom, #offre, #titre, #client{
+    text-align : center;
+}

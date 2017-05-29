@@ -16,6 +16,8 @@ class Utilisateur extends Db_object
     public $email;
     public $statut;
 
+    public $offre;
+
     public $image_placeholder = "http://placehold.it/400x400&text=image";
 
     protected static $db_table = "utilisateur"; 
@@ -50,12 +52,15 @@ class Utilisateur extends Db_object
      * @return mixed
      */
     public static function find_all_customers() {
-        $sql = "SELECT * FROM utilisateur u WHERE u.id_role = 1 GROUP BY u.nom";
+        $sql = "SELECT * 
+                FROM utilisateur u 
+                WHERE u.id_role = 1 
+                GROUP BY u.nom";
+
         $clients = self::find_by_query($sql);
 
         foreach ($clients as $client) {
-            $client->role = $client->find_role()->role;
-            $client->id_offre = $client->find_offre()->id_offre;
+            $client->offre= $client->find_offre()->titre;
         }
 
         return $clients;

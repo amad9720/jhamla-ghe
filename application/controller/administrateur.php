@@ -14,14 +14,24 @@ class Administrateur extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://egghome/administrateur/index (which is the default page)
      */
-    public function index()
+    // public function index()
+    // {
+    //     // load a models
+        
+    //     // load views
+    //     require APP . 'view/_templates/head.php';
+    //     require APP . 'view/_templates/header.php';
+    //     require APP . 'view/administrateur/index.php';
+    //     require APP . 'view/_templates/footer.php';
+    // }
+        public function gestion_offre()
     {
         // load a models
         
         // load views
         require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
-        require APP . 'view/administrateur/index.php';
+        require APP . 'view/administrateur/gestion_offre.php';
         require APP . 'view/_templates/footer.php';
     }
 

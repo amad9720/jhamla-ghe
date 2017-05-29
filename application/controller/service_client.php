@@ -27,7 +27,7 @@ class Service_client extends Controller
 
         // load views
         require APP . 'view/_templates/head.php';
-        require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/service_client/includes/sidebar.php';
         require APP . 'view/service_client/gestion_client.php';
         require APP . 'view/_templates/footer.php';
 
@@ -71,7 +71,7 @@ class Service_client extends Controller
         if (isset($_POST['notificationClient'])) {
 
             $new_notification = new Notification();
-            $new_notification->send_notification($_POST['checkBoxArray[]'],$_POST['titre'], $_POST['contenu']);
+            $new_notification->send_notification($_POST['checkBoxArray'], $_POST['titre'], $_POST['contenu']);
 
 
             header("Location: " . URL . "service_client/gestion_client");

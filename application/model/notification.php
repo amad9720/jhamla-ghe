@@ -7,6 +7,9 @@ class Notification extends Db_object
     public $titre;
     public $contenu;
 
+    public $nom;
+    public $prenom;
+
     protected static $db_table = "notification"; 
     protected static $db_table_fields = array("id", "id_client", "titre", "contenu");
 
@@ -21,14 +24,15 @@ class Notification extends Db_object
 
     public static function find_all_notifications()
     {
-
         $notifications = Notification::find_all();
 
         foreach ($notifications as $notification) {
-            $notification->client = $notification->find_client()->client;
+            $notification->nom = $notification->find_client()->nom;
+            $notification->prenom = $notification->find_client()->prenom;
 
-            return $notifications;
         }
+
+        return $notifications;
     }
 
     public function find_client() {
