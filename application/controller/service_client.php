@@ -70,9 +70,16 @@ class Service_client extends Controller
 
         if (isset($_POST['notificationClient'])) {
 
-            $new_notification = new Notification();
-            $new_notification->send_notification($_POST['checkBoxArray'], $_POST['titre'], $_POST['contenu']);
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
 
+                //we are looping around the checkbox array and processing it's values
+                foreach ($array_id as $value_id) {
+                    $new_notification = new Notification();
+                    $new_notification->send_notification($value_id, $_POST['titre'], $_POST['contenu']);
+                }
+
+            }
 
             header("Location: " . URL . "service_client/gestion_client");
 

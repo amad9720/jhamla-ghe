@@ -3,16 +3,20 @@
 class Mission extends Db_object
 {
     public $id;
-    public $date_debut;
-    public $date_fin;
+    public $date;
     public $etat;
     public $motif;
     public $id_technicien;
     public $id_client;
 
+    public $prenom_client;
+    public $nom_client;
+    public $prenom_technicien;
+    public $nom_technicien;
+
 
     protected static $db_table = "mission"; 
-    protected static $db_table_fields = array("date_debut", "date_fin", "etat", "motif", "id_technicien", "id_client");
+    protected static $db_table_fields = array("date", "etat", "motif", "id_technicien", "id_client");
 
 
     /**
