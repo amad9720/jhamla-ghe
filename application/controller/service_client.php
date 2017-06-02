@@ -120,9 +120,15 @@ class Service_client extends Controller
                 }
             }
         }
+        if (isset($_POST['Voir'])) {
+            foreach ($array_id as $value_id) {
+                header("Location: " . URL . "service_client/technicien/". $_POST['Voir']);
+            }
+        }
+        
     }
 
-    public function technicien()
+    public function technicien($id_tech)
     {
         $this->loadModel('Mission');
 
@@ -130,6 +136,12 @@ class Service_client extends Controller
         $clients = Utilisateur::show_clients();
 
         $this->loadModel('Technicien');
+
+        $technicien_selected = Technicien::find_by_id($id_tech);
+
+        $process_missions = Mission::fetch_process_missions_technicien($id_tech);
+            
+        $end_missions = Mission::fetch_end_missions_technicien($id_tech);
         
 
         require APP . 'view/_templates/head.php';
@@ -141,18 +153,18 @@ class Service_client extends Controller
 
         if (isset($_POST['add_mission'])) {
             $mission = new Mission();
-            $mission->add_new_mission($_POST['id_technicien'], $_POST['id_client'], $_POST['date'], $_POST['motif']);
+            $mission->add_new_mission($id_tech, $_POST['id_client'], $_POST['date'], $_POST['motif']);
 
-            header("Location: " . URL . "service_client/technicien?id_technicien=" . $_POST['id_technicien']);
+            header("Location: " . URL . "service_client/technicien/" . $id_tech);
         }
             
 
         if (isset($_POST['small_checkBoxArray'])){
             $array_id = $_POST['small_checkBoxArray'];
             if(isset($_POST['End_mission'])){   
-                foreach($small_array_id as $small_value_id){
+                foreach($array_id as $small_value_id){
 
-                    $end_mission = Mission::find_by_id($small_array_id);
+                    $end_mission = Mission::find_by_id($small_value_id);
                     $end_mission->set_end_mission();
                 }
             }
@@ -160,14 +172,13 @@ class Service_client extends Controller
 
 
         if (isset($_POST['Modifier'])) {
-            foreach ($array_id as $value_id) {
-                $technicien = Technicien::find_by_id($value_id);
+                $technicien = Technicien::find_by_id($id_tech);
                 $technicien->nom = $_POST['nom'];
                 $technicien->prenom = $_POST['prenom'];
                 $technicien->tel = $_POST['tel'];
                 $technicien->lieu = $_POST['lieu'];
                 $technicien->update();
-            }
+            
         }
 
     }

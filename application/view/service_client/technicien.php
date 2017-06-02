@@ -2,20 +2,7 @@
 	<button name ="Modifier" class="Modifier_btn">Modifier Profil</button>
 	<button name ="Add_mission" class="Add_mission_btn">Ajouter Mission</button>
 
-	<?php  //Solution provisoire, ce bloc de php doit etre dans le controlleur mais ca ne marche pas ds le controlleur, on a un probleme de variables undéfinies
-
-	 	if(isset($_GET['id_technicien'])){
-            
-            $technicien_selected = Technicien::find_by_id($_GET['id_technicien']);
-
-            $process_missions = Mission::fetch_process_missions_technicien($_GET['id_technicien']);
-            
-            $end_missions = Mission::fetch_end_missions_technicien($_GET['id_technicien']);
-        }
-
-	?>
-	
- 	<?php if (isset($_GET['id_technicien'])): ?>
+ 	
  	<div class="profil">
  			<p>Nom : <?php echo $technicien_selected->nom ?></p>
  			<p>Prénom : <?php echo $technicien_selected->prenom ?></p>
@@ -99,7 +86,6 @@
  			<input type="submit" name="add_mission" value="Envoyer">
  		</form>
  	</div>
- 	<?php endif ?>
 </div>
 
 	

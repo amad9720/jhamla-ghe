@@ -10,7 +10,7 @@ class Technicien extends Db_object
     public $id_utilisateur;
 
     protected static $db_table = "technicien"; 
-    protected static $db_table_fields = array("id", "nom", "prenom", "localisation", "telephone", "id_utilisateur");
+    protected static $db_table_fields = array("nom", "prenom", "localisation", "telephone", "id_utilisateur");
 
 
     /**
