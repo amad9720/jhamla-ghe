@@ -85,6 +85,7 @@
         <tr class="first">
             <th>Titre</th>
             <th>Client</th>
+            <th>Contenu</th>
         </tr>
         </thead>
 
@@ -94,6 +95,7 @@
                 <tr>
                     <td id="titre"><?php echo $notification->titre ?></td>
                     <td id="client"><?php echo $notification->nom . " " . $notification->prenom ?></td>
+                    <td id="contenu"><?php echo $notification->contenu ?></td>
                 </tr>
             <?php endforeach ?>
             </tbody>
