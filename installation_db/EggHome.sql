@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
+
 -- Généré le :  Mer 31 Mai 2017 à 09:46
+
+-- Généré le :  Ven 02 Juin 2017 à 09:11
+
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.0.15
 
@@ -582,5 +586,10 @@ ALTER TABLE `technicien`
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
+<<<<<<< HEAD
   ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+=======
+ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTIO	N;
+

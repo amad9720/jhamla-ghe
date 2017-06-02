@@ -29,7 +29,7 @@ class Technicien extends Db_object
     }
     
      
-    public static function add_technicians(){
+    public function add_technicians(){
 
         $sql = "SELECT * FROM technicien WHERE nom = {$this->nom} AND prenom = {$this->prenom}";
         $results = self::find_by_query($sql);
