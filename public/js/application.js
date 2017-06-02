@@ -1,4 +1,5 @@
-$(document).ready(function(){
+$(document).ready(function()
+{
 	//Allow us to activate the text editor anytime we use a textarea tag
 	tinymce.init({selector:'textarea'});
 
@@ -43,6 +44,30 @@ $(document).ready(function(){
         }
     });
 
+    $(".paramClient_btn").click(function(event) {
+
+        var offre = $("input:checked", "td").parent().siblings("#offre").text();
+        $(".paramClient").toggle();
+
+        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
+    });
+
+    $(".notificationClient_btn").click(function(event) {
+
+        $(".notificationClient").toggle();
+
+        $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
+
+    });
+
+    $(".panneClient_btn").click(function(event) {
+
+        $(".panneClient").toggle();
+
+        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
+    });
     
     var off = $(".green-text", "div.card-content").filter(function() {
        return $(this).text() === String('OFF');
