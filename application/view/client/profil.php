@@ -18,12 +18,12 @@
 		<p> <label for="prenom"> Prénom: </label> <input type="text" name="prenom" id="prenom" maxlength="50" size="40" placeholder="Votre Prénom"  /> </p>
 		<p> <label for="email"> Email: </label> <input type="text" name="email" id="email" maxlength="150" size="40" placeholder="Votre email"/> </p>
 		<p> <label for="adresse"> Adresse: </label> <input type="text" name="adresse" id="adresse" maxlength="100" size="40" placeholder="Votre adresse"/> </p>
-		<p> <label for="pays"> Pays: </label> <input type="text" name="pays" id="pays" maxlength="50" size="40" placeholder="Votre pays"  /> </p>
-		<p> <label for="type"> Type: </label> <input type="text" name="type" id="type" maxlength="50" size="40" placeholder="Votre type"  /> </p>
+		<p> <label for="ville"> Pays: </label> <input type="text" name="ville" id="ville" maxlength="50" size="40" placeholder="Votre ville"  /> </p>
+		<p> <label for="pays"> Type: </label> <input type="text" name="pays" id="pays" maxlength="50" size="40" placeholder="Votre pays"  /> </p>
 		<p> <label for="pseudo"> Nom d'utilisateur: </label> <input type="text" name="nom_utilisateur" id="nom_utilisateur" maxlength="50" size="40" placeholder="Votre pseudo"/> </p>
 		<p> <label for="mdp"> Mot de passe: </label> <input type="text" name="mdp" id="mdp" maxlength="50" size="40" placeholder="Votre mdp" autofocus /> </p>
-		<p> <label for="photo"> Photo: </label> <input type="text" name="photo" id="photo" maxlength="200" size="40" placeholder="Votre mdp" autofocus /> </p>
-	<input type="submit" value="Envoyer" />
+		<p> <label for="photo"> Photo: </label> <input type="text" name="photo" id="photo" maxlength="200" size="40" placeholder="Votre photo" autofocus /> </p>
+	<input type="submit" name="modif_profil" value="Envoyer" />
 	</form>
 </div>
 

@@ -227,14 +227,14 @@ class Client extends Controller {
         require APP . 'view/client/profil.php';
 
         //code to manage the actions
-        if (isset($_POST['Envoyer'])) {
+        if (isset($_POST['modif_profil'])) {
             $client = Utilisateur::find_utilisateur(4);
             $client->nom = $_POST['nom'];
             $client->prenom = $_POST['prenom'];
             $client->email = $_POST['email'];
             $client->adresse = $_POST['adresse'];
             $client->pays = $_POST['pays'];
-            $client->type = $_POST['type'];
+            $client->ville = $_POST['ville'];
             $client->nom_utilisateur = $_POST['nom_utilisateur'];
             $client->mdp = $_POST['mdp'];
             $client->photo = $_POST['photo'];

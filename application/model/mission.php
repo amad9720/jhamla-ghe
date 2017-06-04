@@ -62,7 +62,7 @@ class Mission extends Db_object
 
         $sql = "SELECT *
                 FROM mission
-                WHERE mission.id_client = '{$id}' AND etat=1";
+                WHERE mission.id_client = '{$id_client}' AND etat='1'";
         $results = self::find_by_query($sql);
 
         return $results;
