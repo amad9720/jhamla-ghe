@@ -17,6 +17,7 @@ class Utilisateur extends Db_object
     public $statut;
 
     public $offre;
+    public $role;
 
     public $image_placeholder = "http://placehold.it/400x400&text=image";
 
@@ -191,4 +192,5 @@ class Utilisateur extends Db_object
         $this->id_offre = $id_offre;
         return $this->update();
     }
+
 }

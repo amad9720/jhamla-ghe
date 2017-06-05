@@ -14,18 +14,29 @@ class Administrateur extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://egghome/administrateur/index (which is the default page)
      */
-    // public function index()
-    // {
-    //     // load a models
-        
-    //     // load views
-    //     require APP . 'view/_templates/head.php';
-    //     require APP . 'view/_templates/header.php';
-    //     require APP . 'view/administrateur/index.php';
-    //     require APP . 'view/_templates/footer.php';
-    // }
-        public function gestion_offre()
+    public function index()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
+        // load a models
+        
+        // load views
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/administrateur/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
+    
+    public function gestion_offre()
+    {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         // load a models
         
         // load views
@@ -37,6 +48,10 @@ class Administrateur extends Controller
 
     public function save_client()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         //loadModels
         //Role
@@ -84,6 +99,11 @@ class Administrateur extends Controller
 
     public function add_pages()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         //loadModels
         //Page
         $this->loadModel('Page');
@@ -128,6 +148,10 @@ class Administrateur extends Controller
 
     public function save_capteurs(){
 
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         //loadModels
 
         //Page
@@ -157,8 +181,6 @@ class Administrateur extends Controller
             header("Location: " . URL . "administrateur/save_capteurs");
 
         }
-
-
 
     }
 

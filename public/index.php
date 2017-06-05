@@ -41,12 +41,18 @@ require APP . 'libs/lib.php';
 require APP . 'core/database/database.php';
 require APP . 'core/database/database_object.php';
 
+//load the session class
+require APP . 'core/session/session.php';
+
 // load application class
 require APP . 'core/application.php';
 require APP . 'core/controller.php';
 
 //lauching the database
 $database = new Database();
+
+//Start a Session
+$session = new Session();
 
 // start the application
 $app = new Application();
