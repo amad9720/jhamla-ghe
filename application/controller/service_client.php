@@ -162,6 +162,7 @@ class Service_client extends Controller
 
 
         if (isset($_POST['add_mission'])) {
+            echo "ok check";
             $mission = new Mission();
             $mission->add_new_mission($id_tech, $_POST['id_client'], $_POST['date'], $_POST['motif']);
 
@@ -170,6 +171,7 @@ class Service_client extends Controller
             
 
         if (isset($_POST['small_checkBoxArray'])){
+            
             $array_id = $_POST['small_checkBoxArray'];
             if(isset($_POST['End_mission'])){   
                 foreach($array_id as $small_value_id){
@@ -184,7 +186,6 @@ class Service_client extends Controller
         if (isset($_POST['modifier_profil'])) {
                 $technicien = Technicien::find_by_id($id_tech);
                 $technicien->nom = $_POST['nom'];
-                echo $_POST['nom'];
                 $technicien->prenom = $_POST['prenom'];
                 $technicien->tel = $_POST['tel'];
                 $technicien->lieu = $_POST['lieu'];
