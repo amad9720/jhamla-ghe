@@ -161,8 +161,7 @@ class Service_client extends Controller
 
 
 
-        if (isset($_POST['add_mission'])) {
-            echo "ok check";
+        if (isset($_POST['add_mission'])) { 
             $mission = new Mission();
             $mission->add_new_mission($id_tech, $_POST['id_client'], $_POST['date'], $_POST['motif']);
 
@@ -170,26 +169,28 @@ class Service_client extends Controller
         }
             
 
-        if (isset($_POST['small_checkBoxArray'])){
-            
-            $array_id = $_POST['small_checkBoxArray'];
-            if(isset($_POST['End_mission'])){   
+        if(isset($_POST['end_mission'])){                
+            if (isset($_POST['checkBoxArray'])){
+                $array_id = $_POST['checkBoxArray'];               
                 foreach($array_id as $small_value_id){
 
                     $end_mission = Mission::find_by_id($small_value_id);
                     $end_mission->set_end_mission();
+                    header("Location: " . URL . "service_client/technicien/" . $id_tech);
                 }
             }
         }
 
 
-        if (isset($_POST['modifier_profil'])) {
+        if (isset($_POST['modifier_profil'])) { 
                 $technicien = Technicien::find_by_id($id_tech);
                 $technicien->nom = $_POST['nom'];
                 $technicien->prenom = $_POST['prenom'];
-                $technicien->tel = $_POST['tel'];
-                $technicien->lieu = $_POST['lieu'];
+                $technicien->telephone = $_POST['tel'];
+                $technicien->localisation = $_POST['lieu'];
+                var_dump($technicien);
                 $technicien->update();
+                header("Location: " . URL . "service_client/technicien/" . $id_tech);
             
         }
 

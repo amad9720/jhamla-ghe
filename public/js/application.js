@@ -108,6 +108,13 @@ $(document).ready(function()
         $(".modifier").toggle();
     });
 
+    $(".Modifier_client_btn").click(function(event){
+        $(".form_profil").toggle();
+    });
+
+    $(".Modifier_btn").click(function(event){
+        $(".modifier").toggle();
+    });
 
 
     });
