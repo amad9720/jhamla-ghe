@@ -42,6 +42,8 @@ class Mission extends Db_object
 
         $sql = $sql = "SELECT *
                 FROM mission
+                INNER JOIN technicien
+                ON mission.id_technicien = technicien.id
                 WHERE mission.id_client = '{$id}' AND etat=0";
         $results = self::find_by_query($sql);
 
@@ -62,6 +64,8 @@ class Mission extends Db_object
 
         $sql = "SELECT *
                 FROM mission
+                INNER JOIN technicien
+                ON mission.id_technicien = technicien.id
                 WHERE mission.id_client = '{$id_client}' AND etat='1'";
         $results = self::find_by_query($sql);
 
@@ -73,16 +77,16 @@ class Mission extends Db_object
         
         $this->id_technicien = $id_tech;
         $this->id_client = $post_client;	
-        $this->date_debut = $post_date;
-        $this->date_fin = NULL;
+        $this->date = $post_date;
         $this->motif = $post_motif;
         $this->etat = 0;
-
-        return $this->create();
+        $this->create();
+        return $this;
     }
     
     public function set_end_mission() { 
-        $this->etat = $Fini;
-        return $this->update(); 
+        $this->etat = 1;
+        $this->update();
+        return $this;  
    }
 }

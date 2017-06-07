@@ -115,7 +115,17 @@ $(document).ready(function()
         $(".modifier").toggle();
     });
 
+    $(".Modifier_client_btn").click(function(event){
+        $(".form_profil").toggle();
+    });
 
+    $(".Mission_client_btn").click(function(event){
+        $(".Suivi").toggle();
+    });
+
+    $(".Facture_btn").click(function(event){
+        $(".Factures").toggle();
+    });
 
     });
 
