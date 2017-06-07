@@ -163,15 +163,26 @@ class Service_client extends Controller
         $this->loadModel('Mission');
 
         $this->loadModel('Utilisateur');
-        $clients = Utilisateur::show_clients();
+        
 
         $this->loadModel('Technicien');
 
 
+        $technicien_selected = Technicien::find_by_id($id_tech);
+
+        $process_missions = Mission::fetch_process_missions_technicien($id_tech);
+            
+        $end_missions = Mission::fetch_end_missions_technicien($id_tech);
+
+        $clients = Utilisateur::show_clients();
+
+
         require APP . 'view/_templates/head.php';
-        //require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/service_client/technicien.php';
         require APP . 'view/_templates/footer.php';
+
+
 
 
 
@@ -195,10 +206,10 @@ class Service_client extends Controller
         }
 
 
-        if (isset($_POST['Modifier'])) {
-            foreach ($array_id as $value_id) {
-                $technicien = Technicien::find_by_id($value_id);
+        if (isset($_POST['modifier_profil'])) {
+                $technicien = Technicien::find_by_id($id_tech);
                 $technicien->nom = $_POST['nom'];
+                echo $_POST['nom'];
                 $technicien->prenom = $_POST['prenom'];
                 $technicien->tel = $_POST['tel'];
                 $technicien->lieu = $_POST['lieu'];

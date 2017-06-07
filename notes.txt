@@ -1,0 +1,2 @@
+For generating our graphs in the "suivi energetique" page, we can use the folowing library
+https://www.highcharts.com/demo/grid-light
