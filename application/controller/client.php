@@ -242,7 +242,10 @@ class Client extends Controller {
         //Mission
         $this->loadModel('Mission');
 
+        $this->loadModel('Technicien');
+
         $end_missions = Mission::fetch_end_missions_client(2); /*we take client 2 as an example*/
+
         $process_missions = Mission::fetch_process_missions_client(2);
 
         //Infos personnelles

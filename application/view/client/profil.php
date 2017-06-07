@@ -9,8 +9,9 @@
 	<p>Pays : <?php echo $client->pays ?></p>
 </div>
 <img src="<?php echo $client->photo ?>" alt="Photo_Profil" height="100" width="100"> 
-<button class="Mission_btn">Suivi des missions</button>
-<button class="Modifier_btn">Modifier profil</button>
+<button name ="Mission_btn" class="Mission_btn">Suivi des missions</button>
+<button name="Modifier_client_btn" class="Modifier_client_btn">Modifier profil</button>
+<button name="Facture_btn" class="Facture_btn">Factures</button>
 <div class="form_profil">
 	<p>Modification du profil</p>
 	<form method="post" action="<?php echo URL; ?>client/profil">
@@ -28,8 +29,8 @@
 </div>
 
 <div class="Suivi">
-	<h3>Suivi des missions</h3>
-	<p>Missions en cours</p>
+	</br><h3>Suivi des missions</h3>
+	</br><p>Missions en cours</p>
 	<table class="process_missions">
 		<thead>
 			<tr class="first">
@@ -40,15 +41,16 @@
 		</thead>
 		<tbody>
 			<?php foreach ($process_missions as $process_mission): ?>
+
 					<tr>
-						<td><?php echo $process_mission->date_fin ?></td>
+						<td><?php echo $process_mission->date ?></td>
 						<td><?php echo $process_mission->motif ?></td>
-						<td><?php echo $process_mission->nom_technicien ?></td>
+						<td><?php echo $process_mission->nom ?><?php echo " " ?><?php echo $process_mission->prenom ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
 	</table>
-	<p>Missions terminées</p>
+	</br></br><p>Missions terminées</p>
 	<table class="end_missions">
 		<thead>
 			<tr class="first">
@@ -60,15 +62,15 @@
 		<tbody>
 			<?php foreach ($end_missions as $end_mission): ?>
 					<tr>
-						<td><?php echo $end_mission->date_fin ?></td>
+						<td><?php echo $end_mission->date ?></td>
 						<td><?php echo $end_mission->motif ?></td>
-						<td><?php echo $end_mission->nom_technicien ?></td>
+						<td><?php echo $end_mission->nom ?><?php echo " " ?><?php echo $end_mission->prenom ?></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
 	</table>
 </div>
- 
+</br></br> 
 <div class="Factures">
 	<h3>Mes Factures</h3>
 	<table class="factures">
