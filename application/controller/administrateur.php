@@ -183,9 +183,8 @@ class Administrateur extends Controller
             $nouveaute->set_file($_FILES['image']);
             $nouveaute->save_nouveaute_and_image();
 
-            
+            //header("Location: " . URL . "/administrateur/gestion_nouveaute/?state=inserted");
         }
-        //echo '<pre>'; print_r($n); echo '</pre>';
 
 
     }
