@@ -180,6 +180,21 @@ class Capteur extends Db_object
 
         $capteur->update();
     }
+
+    public static function get_capteurs_favoris() {
+        $sql = "SELECT * FROM capteur c WHERE c.favori = 1";
+        $capteurs = self::find_by_query($sql);
+        foreach ($capteurs as $capteur) {
+            $capteur->type = $capteur->find_type_capteur()->type;
+            $capteur->valeur = $capteur->find_donnee()->valeur;
+            $capteur->date = $capteur->find_donnee()->date;
+            if ($room = $capteur->find_capteur_room($capteur->id_piece))
+                $capteur->piece = $room->nom;
+            else $capteur->piece = "PAS DE PIECE";
+        }
+
+        return $capteurs;
+    }
 }
 
 
