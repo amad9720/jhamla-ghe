@@ -3,7 +3,7 @@ $(document).ready(function()
 	//Allow us to activate the text editor anytime we use a textarea tag
 	tinymce.init({selector:'textarea'});
 
-	
+
 	$(".addCapteur_btn").click(function(event) {
 		$(".addCapteur").toggle();
 	});
@@ -11,11 +11,11 @@ $(document).ready(function()
     $(".addRoom_btn").click(function(event) {
         $(".addRoom").toggle();
     });
-	
+
     $(".Mission_btn").click(function(event) {
         $(".Suivi").toggle();
     });
-	
+
     $(".Modifier_btn").click(function(event) {
         $(".form_profil").toggle();
     });
@@ -61,18 +61,18 @@ $(document).ready(function()
 
     });
 
-    $(".panneClient_btn").click(function(event) {
+    // $(".detail_btn").click(function(event) {
+    //
+    //     $(".detail").toggle();
+    //
+    //     $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+    //
+    // });
 
-        $(".panneClient").toggle();
-
-        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
-
-    });
-    
     var off = $(".green-text", "div.card-content").filter(function() {
        return $(this).text() === String('OFF');
     });
-    
+
     off.css("color", "red");
 
     $(".piece_name").click(function(event) {

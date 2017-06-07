@@ -9,6 +9,35 @@
 
 class Service_client extends Controller
 {
+    public function index()
+    {
+        // load models
+        //Panne
+        $this->loadModel('Panne');
+        $pannes = Panne::find_all_pannes();
+
+        //Mission
+        $this->loadModel('Mission');
+        $missions = Mission::find_all_last_missions();
+
+        // load views
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/service_client/includes/sidebar.php';
+        require APP . 'view/service_client/index.php';
+        require APP . 'view/_templates/footer.php';
+
+//        $array_id = $_POST['checkBoxArray'];
+//        $pannes_select = array();
+//        //we are looping around the checkbox array and processing it's values
+//        foreach ($array_id as $value_id) {
+//            $panne_select = Panne::find_by_id($value_id);
+//            $pannes_select[] = $panne_select;
+//
+//            header("Location: " . URL . "service_client/index");
+
+        //}
+
+    }
 
     public function gestion_client()
     {
@@ -116,7 +145,7 @@ class Service_client extends Controller
         require APP . 'view/service_client/gestion_technicien.php';
         require APP . 'view/_templates/footer.php';
 
-        
+
 
         if (isset($_POST['checkBoxArray'])){
             $array_id = $_POST['checkBoxArray'];
@@ -127,15 +156,9 @@ class Service_client extends Controller
                 }
             }
         }
-        if (isset($_POST['Voir'])) {
-            foreach ($array_id as $value_id) {
-                header("Location: " . URL . "service_client/technicien/". $_POST['Voir']);
-            }
-        }
-        
     }
 
-    public function technicien($id_tech)
+    public function technicien()
     {
         $this->loadModel('Mission');
 
@@ -144,12 +167,6 @@ class Service_client extends Controller
 
         $this->loadModel('Technicien');
 
-        $technicien_selected = Technicien::find_by_id($id_tech);
-
-        $process_missions = Mission::fetch_process_missions_technicien($id_tech);
-            
-        $end_missions = Mission::fetch_end_missions_technicien($id_tech);
-        
 
         require APP . 'view/_templates/head.php';
         //require APP . 'view/client/includes/sidebar.php';
@@ -160,18 +177,18 @@ class Service_client extends Controller
 
         if (isset($_POST['add_mission'])) {
             $mission = new Mission();
-            $mission->add_new_mission($id_tech, $_POST['id_client'], $_POST['date'], $_POST['motif']);
+            $mission->add_new_mission($_POST['id_technicien'], $_POST['id_client'], $_POST['date'], $_POST['motif']);
 
-            header("Location: " . URL . "service_client/technicien/" . $id_tech);
+            header("Location: " . URL . "service_client/technicien?id_technicien=" . $_POST['id_technicien']);
         }
-            
+
 
         if (isset($_POST['small_checkBoxArray'])){
             $array_id = $_POST['small_checkBoxArray'];
-            if(isset($_POST['End_mission'])){   
-                foreach($array_id as $small_value_id){
+            if(isset($_POST['End_mission'])){
+                foreach($small_array_id as $small_value_id){
 
-                    $end_mission = Mission::find_by_id($small_value_id);
+                    $end_mission = Mission::find_by_id($small_array_id);
                     $end_mission->set_end_mission();
                 }
             }
@@ -179,13 +196,14 @@ class Service_client extends Controller
 
 
         if (isset($_POST['Modifier'])) {
-                $technicien = Technicien::find_by_id($id_tech);
+            foreach ($array_id as $value_id) {
+                $technicien = Technicien::find_by_id($value_id);
                 $technicien->nom = $_POST['nom'];
                 $technicien->prenom = $_POST['prenom'];
                 $technicien->tel = $_POST['tel'];
                 $technicien->lieu = $_POST['lieu'];
                 $technicien->update();
-            
+            }
         }
 
     }

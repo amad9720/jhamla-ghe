@@ -464,7 +464,8 @@ button[name="off"] {
     margin-left: 5px;
 }
 
-#statut, #identifiant, #nom, #prenom, #offre, #titre, #client{
+#statut, #identifiant, #nom, #prenom, #offre, #titre, #client, #contenu, #motif, #technicien {
     text-align : center;
 }
+
 
