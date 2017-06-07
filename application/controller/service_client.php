@@ -173,7 +173,6 @@ class Service_client extends Controller
             if (isset($_POST['checkBoxArray'])){
                 $array_id = $_POST['checkBoxArray'];               
                 foreach($array_id as $small_value_id){
-
                     $end_mission = Mission::find_by_id($small_value_id);
                     $end_mission->set_end_mission();
                     header("Location: " . URL . "service_client/technicien/" . $id_tech);

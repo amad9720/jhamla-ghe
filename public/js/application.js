@@ -112,10 +112,13 @@ $(document).ready(function()
         $(".form_profil").toggle();
     });
 
-    $(".Modifier_btn").click(function(event){
-        $(".modifier").toggle();
+    $(".Mission_client_btn").click(function(event){
+        $(".Suivi").toggle();
     });
 
+    $(".Facture_btn").click(function(event){
+        $(".Factures").toggle();
+    });
 
     });
 
