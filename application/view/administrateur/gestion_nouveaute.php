@@ -5,7 +5,7 @@
 	<div class="spacer-small"></div>
 	<form enctype="multipart/form-data" class="form" action="" method="post">
 		<input type="text" name="titre" placeholder="Titre nouveaute"><br>
-		<input type="text" name="description" placeholder="description"><br>
+		<textarea name="description" placeholder="description"></textarea><br>
 		<select name="slider_id">
 			<option value="0">Slider Client</option>
 			<option value="1">Slider Invite</option>

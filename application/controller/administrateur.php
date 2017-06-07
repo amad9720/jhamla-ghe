@@ -167,12 +167,17 @@ class Administrateur extends Controller
         
         $this->loadModel('Nouveaute');
         $nouveautes = new Nouveaute();
-        $n = $nouveautes->get_last_nouveautes(10);
+        $n = $nouveautes->get_last_nouveautes(10, 0);
+
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/administrateur/includes/sidebar.php';
+        require APP. 'view/administrateur/gestion_nouveaute.php';
+        require APP . 'view/_templates/footer.php';
 
         if (isset($_POST['titre'])) {
             $nouveaute = new Nouveaute();
             $nouveaute->titre = htmlspecialchars($_POST['titre']);
-            $nouveaute->description = htmlspecialchars($_POST['description']);
+            $nouveaute->description = $_POST['description'];
             $nouveaute->slider_id = htmlspecialchars($_POST['slider_id']);
             $nouveaute->date = date("Y-m-d H:i:s");
             $nouveaute->set_file($_FILES['image']);
@@ -181,9 +186,7 @@ class Administrateur extends Controller
             
         }
         //echo '<pre>'; print_r($n); echo '</pre>';
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/administrateur/includes/sidebar.php';
-        require APP. 'view/administrateur/gestion_nouveaute.php';
+
 
     }
 

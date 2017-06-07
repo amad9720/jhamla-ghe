@@ -38,13 +38,14 @@ class Client extends Controller {
 
 
         $nouveautes = new Nouveaute();
-        $n = $nouveautes->get_last_nouveautes(10, 1);
+        $n = $nouveautes->get_last_nouveautes(10, 0);
 
         $capteurs = Capteur::get_capteurs_favoris();
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/index.php';
+        require APP . 'view/_templates/footer.php';
     }
     
     /**
