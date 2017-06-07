@@ -257,6 +257,11 @@ Dashboard Start
     min-width: 100%;
 }
 
+.no-dash-content {
+    margin-left: -20px;
+    margin-top: -15px;
+}
+
 .spacer-small {
     margin-top: 12px;
 }
@@ -465,7 +470,6 @@ button[name="off"] {
 
 .slides {
   height: 100%;
-  width: 300%;
   background-color: ;
   display: flex;
   position: relative;
@@ -474,6 +478,8 @@ button[name="off"] {
 .slide {
   flex: 1;
   background-size: cover;
+  background-attachment: fixed;
+  color: white;
 }
 
 .slider-controls {
@@ -494,4 +500,8 @@ button[name="off"] {
   margin: 5px;
   background-color: white;
   border-radius: 50%;
+}
+
+.content-box {
+    padding: 10px;
 }

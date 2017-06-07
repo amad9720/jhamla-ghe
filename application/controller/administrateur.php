@@ -100,13 +100,28 @@ class Administrateur extends Controller
     }
 
     public function gestion_nouveaute() {
+        require APP . 'core/modelform.php';
+        
         $this->loadModel('Nouveaute');
         $nouveautes = new Nouveaute();
         $n = $nouveautes->get_last_nouveautes(10);
+
+        if (isset($_POST['titre'])) {
+            $nouveaute = new Nouveaute();
+            $nouveaute->titre = htmlspecialchars($_POST['titre']);
+            $nouveaute->description = htmlspecialchars($_POST['description']);
+            $nouveaute->slider_id = htmlspecialchars($_POST['slider_id']);
+            $nouveaute->date = date("Y-m-d H:i:s");
+            $nouveaute->set_file($_FILES['image']);
+            $nouveaute->save_nouveaute_and_image();
+
+            
+        }
         //echo '<pre>'; print_r($n); echo '</pre>';
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
         require APP. 'view/administrateur/gestion_nouveaute.php';
+
     }
 
 

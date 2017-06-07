@@ -5,18 +5,17 @@ $(function(){
   var slider_width = $('.slider').width();
   var slide_nb = $('.slider .slide').length;
   var slides = $('.slides');
+  slides.css('width', slider_width * slide_nb);
   var auto_play = true;
   
  for (var i = 0; i < slide_nb; i++) {
-   slider_controls.append('<div class="slider-control" id="slide-control-i>' +  '"</div>')
+   slider_controls.append('<div class="slider-control" id="slide-control>' +  '"</div>')
  }
 
-  
   for (var i = 1; i < slide_nb; i++) {
     if (auto_play) {
      (function(ind) {
          setTimeout(function(){
-           console.log('next');
            slides.animate({
              left: - (slider_width * ind)
            }, 1000);
