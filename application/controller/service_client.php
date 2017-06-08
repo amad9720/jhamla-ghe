@@ -146,8 +146,7 @@ class Service_client extends Controller
         require APP . 'view/_templates/footer.php';
 
 
-
-        if (isset($_POST['checkBoxArray'])){
+        if (isset($_POST['checkBoxArray'])) {
             $array_id = $_POST['checkBoxArray'];
             if (isset($_POST['Supprimer'])) {
                 foreach ($array_id as $value_id) {
@@ -163,7 +162,7 @@ class Service_client extends Controller
         $this->loadModel('Mission');
 
         $this->loadModel('Utilisateur');
-        
+
 
         $this->loadModel('Technicien');
 
@@ -171,7 +170,7 @@ class Service_client extends Controller
         $technicien_selected = Technicien::find_by_id($id_tech);
 
         $process_missions = Mission::fetch_process_missions_technicien($id_tech);
-            
+
         $end_missions = Mission::fetch_end_missions_technicien($id_tech);
 
         $clients = Utilisateur::show_clients();
@@ -183,10 +182,7 @@ class Service_client extends Controller
         require APP . 'view/_templates/footer.php';
 
 
-
-
-
-        if (isset($_POST['add_mission'])) { 
+        if (isset($_POST['add_mission'])) {
             $mission = new Mission();
             $mission->add_new_mission($_POST['id_technicien'], $_POST['id_client'], $_POST['date'], $_POST['motif']);
 
@@ -194,10 +190,10 @@ class Service_client extends Controller
         }
 
 
-        if(isset($_POST['end_mission'])){                
-            if (isset($_POST['checkBoxArray'])){
-                $array_id = $_POST['checkBoxArray'];               
-                foreach($array_id as $small_value_id){
+        if (isset($_POST['end_mission'])) {
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
+                foreach ($array_id as $small_value_id) {
 
                     $end_mission = Mission::find_by_id($small_value_id);
                     $end_mission->set_end_mission();
@@ -207,18 +203,90 @@ class Service_client extends Controller
         }
 
 
-        if (isset($_POST['modifier_profil'])) { 
-                $technicien = Technicien::find_by_id($id_tech);
-                $technicien->nom = $_POST['nom'];
-                $technicien->prenom = $_POST['prenom'];
-                $technicien->telephone = $_POST['tel'];
-                $technicien->localisation = $_POST['lieu'];
-                var_dump($technicien);
-                $technicien->update();
+        if (isset($_POST['modifier_profil'])) {
+            $technicien = Technicien::find_by_id($id_tech);
+            $technicien->nom = $_POST['nom'];
+            $technicien->prenom = $_POST['prenom'];
+            $technicien->telephone = $_POST['tel'];
+            $technicien->localisation = $_POST['lieu'];
+            var_dump($technicien);
+            $technicien->update();
 
-                header("Location: " . URL . "service_client/technicien/" . $id_tech);
+            header("Location: " . URL . "service_client/technicien/" . $id_tech);
 
         }
+
+    }
+
+
+    public function offres()
+    {
+        // load models
+        //Offre
+        $this->loadModel('Offre');
+        $offres = Offre::find_all();
+
+        // load views
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/service_client/includes/sidebar.php';
+        require APP . 'view/service_client/gestion_offres.php';
+        require APP . 'view/_templates/footer.php';
+
+
+        if (isset($_POST['paramOffre'])) {
+
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
+
+                //we are looping around the checkbox array and processing it's values
+                foreach ($array_id as $value_id) {
+                    $offre_to_param = Offre::find_by_id($value_id);
+
+                    if (isset($_POST['contenu'])) {
+                        $offre_to_param->update_detail($_POST['contenu']);
+                    }
+
+                    if (isset($_POST['titre'])) {
+                        $offre_to_param->update_titre($_POST['titre']);
+                    }
+
+                    if (isset($_POST['prix'])) {
+                        $offre_to_param->update_prix($_POST['prix']);
+                    }
+                }
+            }
+
+            header("Location: " . URL . "service_client/offres");
+
+        }
+
+        if (isset($_POST['addOffre'])) {
+
+            // Save new capteur
+            $new_offre = new Offre();
+            $new_offre->add_new_offre($_POST['titre'], $_POST['prix'], $_POST['contenu']);
+
+            header("Location: " . URL . "service_client/offres");
+
+        }
+
+        if (isset($_POST['deleteOffre'])) {
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
+
+                //we are looping around the checkbox array and processing it's values
+                foreach ($array_id as $value_id) {
+
+                    $offre_to_delete = Offre::find_by_id($value_id);
+                    $offre_to_delete->remove_offer();
+
+                }
+            }
+
+            header("Location: " . URL . "service_client/offres");
+
+        }
+
 
     }
 

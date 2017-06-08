@@ -23,12 +23,12 @@
         </form>
     </div>
 
-    <div class="notificationClient" style="display: none;">
+    <div class="notificationClient" style="display: none">
 
         <h4 class="spacer-large">Envoyer une notification</h4>
 
         <form method="POST" action="<?php echo URL; ?>service_client/gestion_client" class="form spacer-small">
-            <div class="checkBoxTransfer" ></div>
+            <div class="checkBoxTransfer" style="display: none"></div>
             <div id="arrayCheckbox" style="display: none" ></div>
             <input type="text" name="titre" placeholder="Titre">
 

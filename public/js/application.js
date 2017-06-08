@@ -164,3 +164,19 @@ $('#feature3').hover(
         $(this).animate({'top':'+=20px','left':'+=20px', 'height':'-=40px' });
     }
 );
+
+$(".paramOffre_btn").click(function(event) {
+
+    $(".paramOffre").toggle();
+
+    $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
+});
+
+    $(".addOffre_btn").click(function(event) {
+
+    $(".addOffre").toggle();
+
+    $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
+
+});

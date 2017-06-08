@@ -473,6 +473,10 @@ button[name="off"] {
     text-align : center;
 }
 
+.colonne {
+    text-align : center;
+}
+
 .slider {
   width: 100%;
   height: 400px;
