@@ -157,7 +157,7 @@ class Service_client extends Controller
         }
     }
 
-    public function technicien()
+    public function technicien($id_tech)
     {
         $this->loadModel('Mission');
 
