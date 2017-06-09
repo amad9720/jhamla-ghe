@@ -84,12 +84,19 @@ $(document).ready(function()
 
 
         $('#bouton_supprimer').show();
+        $('#titre_contenu')
 
         var num = String("#"+$(this).val());
         var content = $(""+num+"").text();
         var numero=String($(this).val());
         console.log(content);
         tinymce.activeEditor.setContent('<span>'+content+'</span>');
+
+    });
+
+
+    $("select[name='type_role']").change(function () {
+        $('#bouton_role').toggle();
 
     });
 
@@ -112,10 +119,13 @@ $(document).ready(function()
         $(".form_profil").toggle();
     });
 
-    $(".Modifier_btn").click(function(event){
-        $(".modifier").toggle();
+    $(".Mission_client_btn").click(function(event){
+        $(".Suivi").toggle();
     });
 
+    $(".Facture_btn").click(function(event){
+        $(".Factures").toggle();
+    });
 
     });
 

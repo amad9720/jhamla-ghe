@@ -9,7 +9,7 @@
 	<p>Pays : <?php echo $client->pays ?></p>
 </div>
 <img src="<?php echo $client->photo ?>" alt="Photo_Profil" height="100" width="100"> 
-<button name ="Mission_btn" class="Mission_btn">Suivi des missions</button>
+<button name ="Mission_client_btn" class="Mission_client_btn">Suivi des missions</button>
 <button name="Modifier_client_btn" class="Modifier_client_btn">Modifier profil</button>
 <button name="Facture_btn" class="Facture_btn">Factures</button>
 <div class="form_profil">

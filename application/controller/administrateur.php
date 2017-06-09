@@ -14,17 +14,19 @@ class Administrateur extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://egghome/administrateur/index (which is the default page)
      */
-    // public function index()
-    // {
-    //     // load a models
+     public function index()
+     {
+         // load a models
         
-    //     // load views
-    //     require APP . 'view/_templates/head.php';
-    //     require APP . 'view/_templates/header.php';
-    //     require APP . 'view/administrateur/index.php';
-    //     require APP . 'view/_templates/footer.php';
-    // }
-        public function gestion_offre()
+         // load views
+         require APP . 'view/_templates/head.php';
+         require APP . 'view/_templates/header.php';
+         require APP . 'view/administrateur/index.php';
+         require APP . 'view/_templates/footer.php';
+     }
+
+
+    public function gestion_offre()
     {
         // load a models
         
@@ -97,8 +99,8 @@ class Administrateur extends Controller
          if (isset($_POST['create_content'])) {
 
             $page = Page::find_by_id($_POST['nom_contenu']);
-            $page->titre = $_POST['title'];
-            $page->contenu = $_POST['content'];
+            $page->titre = htmlentities($_POST['title']);
+            $page->contenu = htmlentities($_POST['content']);
             
             $page->update();
 
@@ -132,7 +134,11 @@ class Administrateur extends Controller
 
         //Page
         $this->loadModel('typecapteur');
-        $capteurs = typecapteur::get_all_capteurs();
+        $capteurs = typecapteur::get_all_capteurs()
+
+            //Role
+        $this->loadModel('Role');
+        $roles = role::get_all_roles();
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
@@ -153,6 +159,24 @@ class Administrateur extends Controller
             $capteur = new TypeCapteur();
             $capteur->type = $_POST['nom_du_capteur'];
             $capteur->create();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+        if (isset($_POST['add_role'])) {
+
+            $role = role::find_by_id($_POST['type_role']);
+            $role->delete();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+        if (isset($_POST['delete_role'])) {
+
+            $role = role::find_by_id($_POST['type_role']);
+            $role->delete();
 
             header("Location: " . URL . "administrateur/save_capteurs");
 

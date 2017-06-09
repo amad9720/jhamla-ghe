@@ -261,6 +261,7 @@ class Client extends Controller {
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/profil.php';
+        require APP . 'view/_templates/footer.php';
 
         //code to manage the actions
         if (isset($_POST['modif_profil'])) {

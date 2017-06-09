@@ -195,28 +195,38 @@ class Service_client extends Controller
                 $array_id = $_POST['checkBoxArray'];
                 foreach ($array_id as $small_value_id) {
 
-                    $end_mission = Mission::find_by_id($small_value_id);
-                    $end_mission->set_end_mission();
-                    header("Location: " . URL . "service_client/technicien/" . $id_tech);
+
+                    if (isset($_POST['end_mission'])) {
+                        if (isset($_POST['checkBoxArray'])) {
+                            $array_id = $_POST['checkBoxArray'];
+                            foreach ($array_id as $small_value_id) {
+
+                                $end_mission = Mission::find_by_id($small_value_id);
+                                $end_mission->set_end_mission();
+                                header("Location: " . URL . "service_client/technicien/" . $id_tech);
+                            }
+                        }
+                    }
+
+
+                    if (isset($_POST['modifier_profil'])) {
+                        $technicien = Technicien::find_by_id($id_tech);
+                        $technicien->nom = $_POST['nom'];
+                        $technicien->prenom = $_POST['prenom'];
+                        $technicien->telephone = $_POST['tel'];
+                        $technicien->localisation = $_POST['lieu'];
+                        var_dump($technicien);
+                        $technicien->update();
+
+                        header("Location: " . URL . "service_client/technicien/" . $id_tech);
+
+                    }
+
                 }
             }
         }
-
-
-        if (isset($_POST['modifier_profil'])) {
-            $technicien = Technicien::find_by_id($id_tech);
-            $technicien->nom = $_POST['nom'];
-            $technicien->prenom = $_POST['prenom'];
-            $technicien->telephone = $_POST['tel'];
-            $technicien->localisation = $_POST['lieu'];
-            var_dump($technicien);
-            $technicien->update();
-
-            header("Location: " . URL . "service_client/technicien/" . $id_tech);
-
-        }
-
     }
+
 
 
     public function offres()
