@@ -10,7 +10,7 @@ class Technicien extends Db_object
     public $id_utilisateur;
 
     protected static $db_table = "technicien"; 
-    protected static $db_table_fields = array("id", "nom", "prenom", "localisation", "telephone", "id_utilisateur");
+    protected static $db_table_fields = array("nom", "prenom", "localisation", "telephone", "id_utilisateur");
 
 
     /**
@@ -29,7 +29,7 @@ class Technicien extends Db_object
     }
     
      
-    public static function add_technicians(){
+    public function add_technicians(){
 
         $sql = "SELECT * FROM technicien WHERE nom = {$this->nom} AND prenom = {$this->prenom}";
         $results = self::find_by_query($sql);
@@ -40,6 +40,12 @@ class Technicien extends Db_object
         }
         else return false;
         
+    }
+
+    public static function find_technicien($id){
+        $sql = "SELECT * FROM technicien WHERE technicien.id = '{$id}'";
+        $results = self::find_by_query($sql);
+        return $results;
     }
        
 

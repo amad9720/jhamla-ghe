@@ -11,7 +11,7 @@ class Notification extends Db_object
     public $prenom;
 
     protected static $db_table = "notification"; 
-    protected static $db_table_fields = array("id", "id_client", "titre", "contenu");
+    protected static $db_table_fields = array("id_client", "titre", "contenu");
 
 
     /**
@@ -47,7 +47,7 @@ class Notification extends Db_object
     public function send_notification($id_client, $titre, $contenu) {
         if (empty($this->id)) {
 
-            $this->id_piece = $id_client;
+            $this->id_client = $id_client;
             $this->titre = $titre;
             $this->contenu = $contenu;
 

@@ -117,8 +117,8 @@ class Administrateur extends Controller
          if (isset($_POST['create_content'])) {
 
             $page = Page::find_by_id($_POST['nom_contenu']);
-            $page->titre = $_POST['title'];
-            $page->contenu = $_POST['content'];
+            $page->titre = htmlentities($_POST['title']);
+            $page->contenu = htmlentities($_POST['content']);
             
             $page->update();
 
@@ -158,6 +158,10 @@ class Administrateur extends Controller
         $this->loadModel('typecapteur');
         $capteurs = typecapteur::get_all_capteurs();
 
+        //Role
+        $this->loadModel('Role');
+        $roles = role::get_all_roles();
+
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
         require APP . 'view/administrateur/gestion_capteur.php';
@@ -181,6 +185,54 @@ class Administrateur extends Controller
             header("Location: " . URL . "administrateur/save_capteurs");
 
         }
+
+        if (isset($_POST['add_role'])) {
+
+            $role = role::find_by_id($_POST['type_role']);
+            $role->delete();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+        if (isset($_POST['delete_role'])) {
+
+            $role = role::find_by_id($_POST['type_role']);
+            $role->delete();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+
+
+    }
+
+    public function gestion_nouveaute() {
+        require APP . 'core/modelform.php';
+        
+        $this->loadModel('Nouveaute');
+        $nouveautes = new Nouveaute();
+        $n = $nouveautes->get_last_nouveautes(10, 0);
+
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/administrateur/includes/sidebar.php';
+        require APP. 'view/administrateur/gestion_nouveaute.php';
+        require APP . 'view/_templates/footer.php';
+
+        if (isset($_POST['titre'])) {
+            $nouveaute = new Nouveaute();
+            $nouveaute->titre = htmlspecialchars($_POST['titre']);
+            $nouveaute->description = $_POST['description'];
+            $nouveaute->slider_id = htmlspecialchars($_POST['slider_id']);
+            $nouveaute->date = date("Y-m-d H:i:s");
+            $nouveaute->set_file($_FILES['image']);
+            $nouveaute->save_nouveaute_and_image();
+
+            
+        }
+        //echo '<pre>'; print_r($n); echo '</pre>';
+
 
     }
 

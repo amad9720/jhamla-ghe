@@ -13,9 +13,42 @@ class Client extends Controller {
 
         // load views
         //require APP . 'view/_templates/header.php';
+        $this->loadModel('Nouveaute');
+        $this->loadModel('Capteur');
+        $this->loadModel('TypeCapteur');
+
+        $array_etat = array(1 => "ON", 0 => "OFF");
+
+        //code to manage the actions
+        if (isset($_POST['on'])) {
+
+        
+            $capteur_to_on = Capteur::find_by_id($_POST['on']);
+            $capteur_to_on->activer_capteur();
+            
+            header("Location: " . URL . "client/#card_{$_POST['on']}");
+
+        }
+
+        if (isset($_POST['off'])) {
+
+            $capteur_to_off = Capteur::find_by_id($_POST['off']);
+            $capteur_to_off->desactiver_capteur();
+
+            header("Location: " . URL . "client/#card_{$_POST['off']}");
+            
+        }
+
+
+        $nouveautes = new Nouveaute();
+        $n = $nouveautes->get_last_nouveautes(10, 0);
+
+        $capteurs = Capteur::get_capteurs_favoris();
+
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/index.php';
+        require APP . 'view/_templates/footer.php';
     }
     
     /**
@@ -222,7 +255,10 @@ class Client extends Controller {
         //Mission
         $this->loadModel('Mission');
 
+        $this->loadModel('Technicien');
+
         $end_missions = Mission::fetch_end_missions_client(2); /*we take client 2 as an example*/
+
         $process_missions = Mission::fetch_process_missions_client(2);
 
         //Infos personnelles
@@ -238,16 +274,17 @@ class Client extends Controller {
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/client/profil.php';
+        require APP . 'view/_templates/footer.php';
 
         //code to manage the actions
-        if (isset($_POST['Envoyer'])) {
+        if (isset($_POST['modif_profil'])) {
             $client = Utilisateur::find_utilisateur(4);
             $client->nom = $_POST['nom'];
             $client->prenom = $_POST['prenom'];
             $client->email = $_POST['email'];
             $client->adresse = $_POST['adresse'];
             $client->pays = $_POST['pays'];
-            $client->type = $_POST['type'];
+            $client->ville = $_POST['ville'];
             $client->nom_utilisateur = $_POST['nom_utilisateur'];
             $client->mdp = $_POST['mdp'];
             $client->photo = $_POST['photo'];

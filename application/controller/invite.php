@@ -60,7 +60,6 @@ class Invite extends Controller
         //load models
         //Utilisateur
         $this->loadModel('Utilisateur');
-
         require APP . 'view/_templates/head.php';
         require APP . 'view/connexion.php';
         require APP . 'view/_templates/footer.php';
@@ -146,4 +145,3 @@ class Invite extends Controller
             header("Location: " . URL . "invite/index");
         }
     }
-}

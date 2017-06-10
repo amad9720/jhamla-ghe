@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
+
+-- Généré le :  Mer 31 Mai 2017 à 09:46
+
 -- Généré le :  Ven 02 Juin 2017 à 09:11
+
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.0.15
 
@@ -112,8 +116,7 @@ INSERT INTO `facture` (`id`, `date`, `pdf`, `id_client`, `id_offre`) VALUES
 
 CREATE TABLE `mission` (
   `id` int(11) NOT NULL,
-  `date_debut` datetime DEFAULT NULL,
-  `date_fin` datetime DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `etat` tinyint(4) DEFAULT NULL,
   `motif` varchar(45) DEFAULT NULL,
   `id_technicien` int(11) NOT NULL,
@@ -124,8 +127,8 @@ CREATE TABLE `mission` (
 -- Contenu de la table `mission`
 --
 
-INSERT INTO `mission` (`id`, `date_debut`, `date_fin`, `etat`, `motif`, `id_technicien`, `id_client`) VALUES
-(1, '2017-05-04 10:00:00', '2017-05-05 16:00:00', 0, 'Panne capteur température', 1, 2);
+INSERT INTO `mission` (`id`, `date`,`etat`, `motif`, `id_technicien`, `id_client`) VALUES
+(1, '2017-05-04 10:00:00', 0, 'Panne capteur température', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -584,3 +587,4 @@ ALTER TABLE `technicien`
 ALTER TABLE `utilisateur`
   ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+

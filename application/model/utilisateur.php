@@ -89,7 +89,7 @@ class Utilisateur extends Db_object
 
     
     public static function show_clients(){
-        $sql = "SELECT * FROM utilisateur u WHERE u.id_role = 1 GROUP BY u.nom"; /*vérifier le numéro du role client*/
+        $sql = "SELECT * FROM utilisateur u WHERE u.id_role = '1' "; /*vérifier le numéro du role client*/
         $results = self::find_by_query($sql);
         return $results;
     }

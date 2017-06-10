@@ -17,4 +17,15 @@ class Role extends Db_object
         
     }
 
+
+
+    public static function get_all_roles()
+    {
+
+        $result = self::find_all();
+        return $result;
+    }
+
+
+
 }

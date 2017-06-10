@@ -59,7 +59,7 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * Uncomment before pushing to Heroku
  * Comment the configuration for  Localhost
  */
-//
+
 	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 	// $server = $url["host"];
@@ -83,20 +83,24 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 	$db = "mydbC";
 
 
-//config Hugo
-	 // $server = "localhost";
-	 // $username = "root";
-	 // $password = "";
-	 // $db = "mydb";
-
+////config Hugo
+//	  $server = "localhost";
+//	  $username = "root";
+//	  $password = "";
+//	  $db = "mydb";
 
 
 //config Louis
-	  // $server = "localhost";
-	  // $username = "root";
-	  // $password = "";
-	  // $db = "mydbC";
+//	  $server = "localhost";
+//	  $username = "root";
+//	  $password = "";
+//	  $db = "mydbC";
 
+//Config Azénor
+//	  $server = "localhost";
+//	  $username = "root";
+//	  $password = "";
+//	  $db = "mydbC";
 
 
 define('DB_TYPE', 'mysql');

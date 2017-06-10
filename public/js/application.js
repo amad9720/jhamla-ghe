@@ -1,8 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function()
+{
 	//Allow us to activate the text editor anytime we use a textarea tag
 	tinymce.init({selector:'textarea'});
 
-	
+
 	$(".addCapteur_btn").click(function(event) {
 		$(".addCapteur").toggle();
 	});
@@ -10,11 +11,11 @@ $(document).ready(function(){
     $(".addRoom_btn").click(function(event) {
         $(".addRoom").toggle();
     });
-	
+
     $(".Mission_btn").click(function(event) {
         $(".Suivi").toggle();
     });
-	
+
     $(".Modifier_btn").click(function(event) {
         $(".form_profil").toggle();
     });
@@ -43,11 +44,35 @@ $(document).ready(function(){
         }
     });
 
-    
+    $(".paramClient_btn").click(function(event) {
+
+        var offre = $("input:checked", "td").parent().siblings("#offre").text();
+        $(".paramClient").toggle();
+
+        $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
+    });
+
+    $(".notificationClient_btn").click(function(event) {
+
+        $(".notificationClient").toggle();
+
+        $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
+
+    });
+
+    // $(".detail_btn").click(function(event) {
+    //
+    //     $(".detail").toggle();
+    //
+    //     $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+    //
+    // });
+
     var off = $(".green-text", "div.card-content").filter(function() {
        return $(this).text() === String('OFF');
     });
-    
+
     off.css("color", "red");
 
     $(".piece_name").click(function(event) {
@@ -59,12 +84,19 @@ $(document).ready(function(){
 
 
         $('#bouton_supprimer').show();
+        $('#titre_contenu')
 
         var num = String("#"+$(this).val());
         var content = $(""+num+"").text();
         var numero=String($(this).val());
         console.log(content);
         tinymce.activeEditor.setContent('<span>'+content+'</span>');
+
+    });
+
+
+    $("select[name='type_role']").change(function () {
+        $('#bouton_role').toggle();
 
     });
 
@@ -83,7 +115,17 @@ $(document).ready(function(){
         $(".modifier").toggle();
     });
 
+    $(".Modifier_client_btn").click(function(event){
+        $(".form_profil").toggle();
+    });
 
+    $(".Mission_client_btn").click(function(event){
+        $(".Suivi").toggle();
+    });
+
+    $(".Facture_btn").click(function(event){
+        $(".Factures").toggle();
+    });
 
     });
 
@@ -132,3 +174,19 @@ $('#feature3').hover(
         $(this).animate({'top':'+=20px','left':'+=20px', 'height':'-=40px' });
     }
 );
+
+$(".paramOffre_btn").click(function(event) {
+
+    $(".paramOffre").toggle();
+
+    $("input:checked", "td").clone().appendTo("#arrayCheckbox");
+
+});
+
+    $(".addOffre_btn").click(function(event) {
+
+    $(".addOffre").toggle();
+
+    $("input:checked", "td").clone().appendTo(".checkBoxTransfer");
+
+});

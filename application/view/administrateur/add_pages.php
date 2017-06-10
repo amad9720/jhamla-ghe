@@ -29,7 +29,7 @@
             <div class="form-batch">
 
                 <label for="title">Titre</label><br>
-                <input type="text" name="titre" placeholder="Titre du contenu"> <br>
+                <input id="titre_contenu" type="text" name="titre" placeholder="Titre du contenu"> <br>
 
 
 
