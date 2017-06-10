@@ -102,6 +102,24 @@ class Client extends Controller {
 
         }
 
+        if(isset($_POST['favorisCapteur'])) {
+            if (isset($_POST['checkBoxArray'])) {
+                $array_id = $_POST['checkBoxArray'];
+            
+                //we are looping around the checkbox array and processing it's values
+                foreach($array_id as $value_id ){
+                
+                    $capteur_to_favoris = Capteur::find_by_id($value_id);
+
+                    $capteur_to_favoris->capteur_switch_favoris(); 
+
+                }
+            }
+
+            header("Location: " . URL . "client/gestion_capteurs");
+
+        }
+
         if (isset($_POST['paramCapteur'])) {
 
             if (isset($_POST['checkBoxArray'])) {

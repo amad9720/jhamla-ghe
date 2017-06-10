@@ -141,11 +141,11 @@ class Utilisateur extends Db_object
      * @param  [type] $mdp             [description]
      * @return [type]                  [description]
      */
-    public static function verify_user($nom_utilisateur, $mdp) {
+    public static function verify_user($email, $mdp) {
 
         $sql = "SELECT * 
                 FROM utilisateur 
-                WHERE nom_utilisateur = '{$nom_utilisateur}' AND mdp = '{$mdp}' 
+                WHERE email = '{$email}' AND mdp = '{$mdp}' 
                 LIMIT 1 ";
 
         $user = self::find_by_query($sql);

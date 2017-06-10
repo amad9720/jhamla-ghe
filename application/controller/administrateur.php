@@ -54,7 +54,7 @@ class Administrateur extends Controller
         if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         //loadModels
-        //Role
+        //utilisateur
         $this->loadModel('Utilisateur');
         
         //Role
