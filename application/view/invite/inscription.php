@@ -46,15 +46,6 @@
             <label for="post_status">Mot de Passe</label><br>
             <input type="password"   name="user_password" required>
         </div>
-        
-        <div class="form-batch">
-            <select name="user_role">
-				<option disabled selected>Role</option>
-				<?php foreach ($roles as $role): ?>
-				<option value=<?php echo $role->id; ?> ><?php echo $role->role; ?></option>	
-				<?php endforeach ?>
-			</select><br/>
-        </div>
 
         <div class="form-batch">
             <select name="user_offre">

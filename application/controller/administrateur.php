@@ -76,17 +76,17 @@ class Administrateur extends Controller
 
             $user = new Utilisateur();
 
-            $user->nom = $_POST['user_nom'];
-            $user->prenom = $_POST['user_prenom'];
+            $user->nom = htmlentities($_POST['user_nom']);
+            $user->prenom = htmlentities($_POST['user_prenom']);
             $user->set_file($_FILES['user_image']);
-            $user->adresse = $_POST['user_address'];
-            $user->nom_utilisateur = $_POST['user_username'];
-            $user->mdp = $_POST['user_password'];
-            $user->ville = $_POST['user_ville'];
-            $user->pays = $_POST['user_pays'];
+            $user->adresse = htmlentities($_POST['user_address']);
+            $user->nom_utilisateur = htmlentities($_POST['user_username']);
+            $user->mdp = htmlentities($_POST['user_password']);
+            $user->ville = htmlentities($_POST['user_ville']);
+            $user->pays = htmlentities($_POST['user_pays']);
             $user->id_offre = $_POST['user_offre'];
             $user->id_role = $_POST['user_role'];
-            $user->email = $_POST['user_email'];
+            $user->email = htmlentities($_POST['user_email']);
 
             $user->save_user_and_image();
 

@@ -76,9 +76,14 @@ class Invite extends Controller
             $username = trim($_POST['username']); 
             $password = trim($_POST['password']);
 
+            $hashFormat = "$2y$10$"; //this is the blowfish type of salt format
+            $salt = "iusesomecrazystrings22"; // should be 22 characters long
+            $hashF_and_salt = $hashFormat.$salt;
+            $randSalt = crypt($password, $hashF_and_salt);
+
             //This function will check if the user exist in the db... 
             //The result of the checks will be retrned in the $user_found variable (matched or not)
-            $user_found = Utilisateur::verify_user($username, $password);
+            $user_found = Utilisateur::verify_user($username, $randSalt);
 
             if ($user_found) {
 
@@ -114,5 +119,31 @@ class Invite extends Controller
         require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/inscription.php';
+
+        if(isset($_POST['create_user'])) {
+
+            $hashFormat = "$2y$10$"; //this is the blowfish type of salt format
+            $salt = "iusesomecrazystrings22"; // should be 22 characters long
+            $hashF_and_salt = $hashFormat.$salt;
+            $randSalt = crypt(trim($_POST['user_password']), $hashF_and_salt);
+        
+            $user = new Utilisateur();
+
+            $user->nom = htmlentities($_POST['user_nom']);
+            $user->prenom = htmlentities($_POST['user_prenom']);
+            $user->set_file($_FILES['user_image']);
+            $user->adresse = htmlentities($_POST['user_address']);
+            $user->nom_utilisateur = htmlentities($_POST['user_username']);
+            $user->mdp = $randSalt;
+            $user->ville = htmlentities($_POST['user_ville']);
+            $user->pays = htmlentities($_POST['user_pays']);
+            $user->id_offre = $_POST['user_offre'];
+            $user->id_role = $_POST['user_role'];
+            $user->email = htmlentities($_POST['user_email']);
+
+            $user->save_user_and_image();
+
+            header("Location: " . URL . "invite/index");
+        }
     }
 }
