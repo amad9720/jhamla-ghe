@@ -35,3 +35,4 @@ class Invite extends Controller
         require APP . 'view/invite/index.php';
         require APP . 'view/_templates/footer.php';
     }
+}
