@@ -146,6 +146,30 @@ class Administrateur extends Controller
 
     }
 
+
+    public function save_capteur()
+    {
+
+        //To make sure that only registered users can come to this page
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
+        //loadModels
+
+        //Page
+        $this->loadModel('typecapteur');
+        $capteurs = typecapteur::get_all_capteurs();
+
+        //Role
+        $this->loadModel('Role');
+        $roles = role::get_all_roles();
+
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/administrateur/includes/sidebar.php';
+        require APP . 'view/administrateur/gestion_capteur.php';
+        require APP . 'view/_templates/footer.php';
+
+    }
     public function save_capteurs(){
 
         //To make sure that only registered users can come to this page 
