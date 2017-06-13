@@ -19,7 +19,7 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         // load a models
         
@@ -35,7 +35,7 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         // load a models
         
@@ -48,10 +48,10 @@ class Administrateur extends Controller
 
     public function save_client()
     {
-
+        global $database;
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
         //utilisateur
@@ -81,7 +81,7 @@ class Administrateur extends Controller
             $user->set_file($_FILES['user_image']);
             $user->adresse = htmlentities($_POST['user_address']);
             $user->nom_utilisateur = htmlentities($_POST['user_username']);
-            $user->mdp = htmlentities($_POST['user_password']);
+            $user->mdp = $database->crypter($_POST['user_password']);
             $user->ville = htmlentities($_POST['user_ville']);
             $user->pays = htmlentities($_POST['user_pays']);
             $user->id_offre = $_POST['user_offre'];
@@ -102,7 +102,7 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
         //Page
@@ -150,13 +150,13 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
 
         //Page
-        $this->loadModel('typecapteur');
-        $capteurs = typecapteur::get_all_capteurs();
+        $this->loadModel('typeCapteur');
+        $capteurs = Typecapteur::get_all_capteurs();
 
         //Role
         $this->loadModel('Role');
@@ -217,7 +217,7 @@ class Administrateur extends Controller
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
-        require APP. 'view/administrateur/gestion_nouveaute.php';
+        require APP . 'view/administrateur/gestion_nouveaute.php';
         require APP . 'view/_templates/footer.php';
 
         if (isset($_POST['titre'])) {
@@ -229,12 +229,6 @@ class Administrateur extends Controller
             $nouveaute->set_file($_FILES['image']);
             $nouveaute->save_nouveaute_and_image();
 
-            
         }
-        //echo '<pre>'; print_r($n); echo '</pre>';
-
-
     }
-
-
 }

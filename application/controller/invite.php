@@ -61,6 +61,7 @@ class Invite extends Controller
 
     public function connexion() {
         global $database;
+        global $session;
 
         //load models
         //Utilisateur
@@ -76,27 +77,27 @@ class Invite extends Controller
 
         // case 2 : the user is not logged in, he can access the page to identify via the form
         if (isset($_POST['submit']) && ($_POST['user_password'] != "") && ($_POST['user_email'] != "")) {
-            echo "string";
+            
             //trim — Strip whitespace (or other characters) from the beginning and end of a string (see Dash)
-            echo $email = trim($_POST['user_email']); 
-            echo $password = $database->crypter($_POST['user_password']);
+            $email = trim($_POST['user_email']); 
+            $password = $database->crypter($_POST['user_password']);
 
             //This function will check if the user exist in the db... 
             //The result of the checks will be retrned in the $user_found variable (matched or not)
             $user_found = Utilisateur::verify_user($email, $password);
-            var_dump($user_found);
+            
             if ($user_found) {
 
                 $session->login($user_found);
 
                 switch ($session->role) {
-                    case 1:
+                    case CLIENT:
                         header("Location: " . URL . "client/");
                         break;
-                    case 2:
+                    case SERVICE_CLIENT:
                         header("Location: " . URL . "service_client/");
                         break;
-                    case 3:
+                    case ADMIN:
                         header("Location: " . URL . "administrateur/");
                         break;
                     default:
@@ -105,12 +106,21 @@ class Invite extends Controller
                 }
                 
             } else 
-                $info_message = "Unable to login... Check your credentials";
-
+                echo $session->message = "Unable to login... Check your credentials";
         }else {
-            $info_message = "Please, Login";
+            echo $session->message = "Please, Login";
             $email = "";
             $password = "";
+        }
+    }
+
+    public function deconnexion() {
+        global $session;
+
+        if (isset($_GET['deconnect'])) {
+            $session->logout();
+            $session->message = "Vous etes deconnecté" ;
+            header("Location: " . URL . "invite/");
         }
     }
 
@@ -143,7 +153,8 @@ class Invite extends Controller
             $user->ville = htmlentities($_POST['user_ville']);
             $user->pays = htmlentities($_POST['user_pays']);
             $user->id_offre = $_POST['user_offre'];
-            $user->id_role = 1;
+            $user->id_role = CLIENT;
+            $user->statut = 0;
             $user->email = htmlentities($_POST['user_email']);
 
             $user->save_user_and_image();

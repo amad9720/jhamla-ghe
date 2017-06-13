@@ -66,7 +66,13 @@
                     <td id="nom"><?php echo $utilisateur->nom ?></td>
                     <td id="prenom"><?php echo $utilisateur->prenom ?></td>
                     <td id="offre"><?php echo $utilisateur->offre ?></td>
-                    <td id="statut"> <?php echo $utilisateur->statut ?></td>
+                    <td id="statut">  
+                        <?php if ($utilisateur->statut == 1): ?>
+                            <?php echo "Inscris" ?>
+                        <?php else: ?>
+                            <?php echo "Non inscris" ?>
+                        <?php endif ?>
+                    </td>
                 </tr>
             <?php endforeach ?>
             </tbody>

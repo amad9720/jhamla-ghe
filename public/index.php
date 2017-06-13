@@ -26,6 +26,11 @@ if (file_exists(ROOT . 'vendor/autoload.php')) {
     require ROOT . 'vendor/autoload.php';
 }
 
+//Roles Const
+define('CLIENT', 1);
+define('SERVICE_CLIENT', 2);
+define('ADMIN', 3);
+
 // load application config (error reporting etc.)
 require APP . 'config/config.php';
 

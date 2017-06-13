@@ -9,7 +9,7 @@ class Client extends Controller {
     public function index(){
         //To make sure that only registered users can come to this page
         global $session; 
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         //require APP . 'view/_templates/header.php';
@@ -59,7 +59,7 @@ class Client extends Controller {
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
 
         // load models
@@ -160,13 +160,13 @@ class Client extends Controller {
      */
     public function ma_maison(){
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // loadModels
         
         //Piece
         $this->loadModel('Piece');
-        $pieces_client = Piece::get_room_client(2); // pour linstant on urilise le client 2 pour test
+        $pieces_client = Piece::get_room_client($session->user_id); // pour linstant on urilise le client $session->user_id pour test
         
         //Capteur
         $this->loadModel('Capteur');
@@ -222,7 +222,7 @@ class Client extends Controller {
             // Save new room
             $new_room = new Piece();
             $new_room->nom = $_POST['piece'];
-            $new_room->id_client = 2;
+            $new_room->id_client = $session->user_id;
 
             
             $new_room->add_room();
@@ -239,7 +239,7 @@ class Client extends Controller {
 
     public function contact(){
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -253,7 +253,7 @@ class Client extends Controller {
      */
     public function suivi_energetique() {
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -267,7 +267,7 @@ class Client extends Controller {
      */
     public function profil() {
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
         
         // load models
         //Mission
@@ -275,18 +275,18 @@ class Client extends Controller {
 
         $this->loadModel('Technicien');
 
-        $end_missions = Mission::fetch_end_missions_client(2); /*we take client 2 as an example*/
+        $end_missions = Mission::fetch_end_missions_client($session->user_id); /*we take client $session->user_id as an example*/
 
-        $process_missions = Mission::fetch_process_missions_client(2);
+        $process_missions = Mission::fetch_process_missions_client($session->user_id);
 
         //Infos personnelles
         $this->loadModel('Utilisateur');
-        $client = Utilisateur::find_utilisateur(2);
+        $client = Utilisateur::find_utilisateur($session->user_id);
 
      
         //Factures
         $this->loadModel('Facture');
-        $factures = Facture::show_facture(2); /*we take client 4 as an example*/
+        $factures = Facture::show_facture($session->user_id); 
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -296,7 +296,7 @@ class Client extends Controller {
 
         //code to manage the actions
         if (isset($_POST['modif_profil'])) {
-            $client = Utilisateur::find_utilisateur(4);
+            $client = Utilisateur::find_utilisateur($session->user_id);
             $client->nom = $_POST['nom'];
             $client->prenom = $_POST['prenom'];
             $client->email = $_POST['email'];
