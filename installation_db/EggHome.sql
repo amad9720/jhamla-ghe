@@ -2,12 +2,8 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:8889
-
--- Généré le :  Mer 31 Mai 2017 à 09:46
-
--- Généré le :  Ven 02 Juin 2017 à 09:11
-
+-- Client :  localhost:8880
+-- Généré le :  Mar 13 Juin 2017 à 21:30
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.0.15
 
@@ -37,14 +33,24 @@ CREATE TABLE `capteur` (
 
 INSERT INTO `capteur` (`id`, `etat`, `id_piece`, `id_type`) VALUES
 (1, 1, 5, 1),
-(5, 1, 3, 4),
-(8, 1, 5, 6),
+(5, 1, 7, 4),
+(8, 1, 6, 6),
 (9, 1, 6, 2),
-(10, 1, 3, 1),
+(10, 1, 7, 1),
 (11, 1, 5, 3),
-(13, 0, 2, 6),
-(14, 1, 0, 5),
-(15, 0, 2, 2);
+(13, 1, 2, 6),
+(14, 1, 7, 5),
+(15, 0, 11, 2),
+(16, 1, 11, 2),
+(19, 1, 9, 4),
+(20, 0, 9, 6),
+(23, 0, 2, 7),
+(24, 0, 5, 3),
+(25, 0, 5, 4),
+(26, 0, 9, 8),
+(27, 0, 11, 7),
+(29, 1, 2, 8),
+(30, 1, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -72,7 +78,17 @@ INSERT INTO `donnee` (`id`, `date`, `valeur`, `id_capteur`) VALUES
 (15, '2017-05-18 15:17:29', 12, 11),
 (17, '2017-05-18 23:27:02', 5, 13),
 (18, '2017-05-18 23:28:11', 0, 14),
-(19, '2017-05-18 23:28:30', 9, 15);
+(19, '2017-05-18 23:28:30', 9, 15),
+(20, '2017-05-19 23:18:13', 9, 16),
+(23, '2017-05-22 10:40:37', 45, 19),
+(24, '2017-05-22 10:40:48', 5, 20),
+(27, '2017-05-22 10:42:00', 0, 23),
+(28, '2017-05-22 10:42:32', 0, 24),
+(29, '2017-05-22 10:43:12', 5, 25),
+(30, '2017-05-22 10:43:44', 5, 26),
+(31, '2017-05-22 10:44:03', 53, 27),
+(33, '2017-05-22 11:21:38', 1000, 29),
+(34, '2017-05-22 11:21:54', 10, 30);
 
 -- --------------------------------------------------------
 
@@ -116,8 +132,7 @@ INSERT INTO `facture` (`id`, `date`, `pdf`, `id_client`, `id_offre`) VALUES
 
 CREATE TABLE `mission` (
   `id` int(11) NOT NULL,
-  `date_debut` datetime DEFAULT NULL,
-  `date_fin` datetime DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `etat` tinyint(4) DEFAULT NULL,
   `motif` varchar(45) DEFAULT NULL,
   `id_technicien` int(11) NOT NULL,
@@ -128,8 +143,15 @@ CREATE TABLE `mission` (
 -- Contenu de la table `mission`
 --
 
-INSERT INTO `mission` (`id`, `date_debut`, `date_fin`, `etat`, `motif`, `id_technicien`, `id_client`) VALUES
-(1, '2017-05-04 10:00:00', '2017-05-05 16:00:00', 0, 'Panne capteur température', 1, 2);
+INSERT INTO `mission` (`id`, `date`, `etat`, `motif`, `id_technicien`, `id_client`) VALUES
+(1, '2017-05-04 10:00:00', 1, 'Panne capteur température', 1, 2),
+(2, '2017-05-12 16:00:00', 0, 'Panne passerelle EggHome', 1, 2),
+(8, '2017-05-09 00:00:00', 0, 'Panne camera 2', 1, 3),
+(9, '2017-05-18 00:00:00', 0, 'Panne capteur luminosite', 1, 3),
+(12, '2017-06-13 00:00:00', 1, 'Panne eau', 12, 2),
+(13, '2017-06-14 00:00:00', 0, 'Probleme Capteur', 12, 3),
+(14, '2017-06-21 00:00:00', 1, 'Panne eau', 13, 3),
+(15, '2017-06-14 00:00:00', 1, 'Panne camera 2', 13, 2);
 
 -- --------------------------------------------------------
 
@@ -149,7 +171,7 @@ CREATE TABLE `notification` (
 --
 
 INSERT INTO `notification` (`id`, `id_client`, `contenu`, `titre`) VALUES
-(1, 2, 'Notre technicien a réparé votre capteur', 'Réparation capteur');
+(1, 2, 'Notre technicien a réparé votre capteur', 'Capteur fini');
 
 -- --------------------------------------------------------
 
@@ -186,7 +208,8 @@ CREATE TABLE `offre` (
 INSERT INTO `offre` (`id`, `date`, `detail`, `prix`, `titre`) VALUES
 (1, '2017-05-01 08:00:00', 'Ce pack comprend : une passerelle EggHome, un détecteur d\'ouverture de porte et fenêtre, un détecteur de mouvement, une caméra de surveillance sans fil.', 10, 'Pack EggHo standard'),
 (2, '2017-05-15 08:00:00', 'Ce pack comprend en plus du contenu du pack EggHome standard : une capteur d\'humidité et e température, un détecteur de fumée / gaz.', 20, 'Pack EggHome +'),
-(3, '2017-05-15 08:00:00', 'Ce pack comprend en plus du contenu du pack EggHome standard : deux capteurs d\'humidité et ed température, un détecteur de fumée / gaz, deux capteurs de luminosité.', 30, 'Pack EggHome ++');
+(3, '2017-05-15 08:00:00', 'Ce pack comprend en plus du contenu du pack EggHome standard : deux capteurs d\'humidité et ed température, un détecteur de fumée / gaz, deux capteurs de luminosité.', 30, 'Pack EggHome ++'),
+(4, '2017-05-15 08:00:00', 'service client', 30, 'SO');
 
 -- --------------------------------------------------------
 
@@ -196,9 +219,20 @@ INSERT INTO `offre` (`id`, `date`, `detail`, `prix`, `titre`) VALUES
 
 CREATE TABLE `page` (
   `id` int(11) NOT NULL,
-  `titre` varchar(45) DEFAULT NULL,
-  `contenu` varchar(45) DEFAULT NULL
+  `nom` text NOT NULL,
+  `titre` text,
+  `contenu` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `page`
+--
+
+INSERT INTO `page` (`id`, `nom`, `titre`, `contenu`) VALUES
+(1, '', 'Egghome titre', '<p>Egghome</p>'),
+(2, '', 'Egghome subtitle', '<p>EggHome votre maison devient votre nid dou'),
+(3, '', 'Egghome titre', '<p>le titre ici</p>'),
+(4, '', 'numero sc', '<p>098765432</p>');
 
 -- --------------------------------------------------------
 
@@ -209,7 +243,7 @@ CREATE TABLE `page` (
 CREATE TABLE `panne` (
   `id` int(11) NOT NULL,
   `titre` varchar(50) NOT NULL,
-  `contenu` varchar(1000) NOT NULL,
+  `contenu` varchar(100) NOT NULL,
   `id_client` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -218,8 +252,7 @@ CREATE TABLE `panne` (
 --
 
 INSERT INTO `panne` (`id`, `titre`, `contenu`, `id_client`) VALUES
-(1, 'Panne capteur de température', 'Mon capteur de température est en panne, il ne s\'allume plus', 2),
-(2, 'Panne CeMAC', 'Mon CeMAC surchauffe', 4);
+(1, 'Panne 1', 'cocntenu panne 1', 2);
 
 -- --------------------------------------------------------
 
@@ -239,8 +272,9 @@ CREATE TABLE `piece` (
 
 INSERT INTO `piece` (`id`, `nom`, `id_client`) VALUES
 (2, 'Chambre Johana', 2),
-(3, 'Chambre Marc', 2),
-(5, 'Salle de bain', 2);
+(5, 'Salle de bain', 2),
+(9, 'Chambre de Azenor', 2),
+(11, 'Chambre de Amadou', 2);
 
 -- --------------------------------------------------------
 
@@ -273,7 +307,7 @@ CREATE TABLE `technicien` (
   `nom` varchar(45) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
   `localisation` varchar(45) DEFAULT NULL,
-  `telephone` int(11) DEFAULT NULL,
+  `telephone` varchar(50) DEFAULT NULL,
   `id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -282,7 +316,9 @@ CREATE TABLE `technicien` (
 --
 
 INSERT INTO `technicien` (`id`, `nom`, `prenom`, `localisation`, `telephone`, `id_utilisateur`) VALUES
-(1, 'Lombard', 'Théo', 'Nice', 678953545, 1);
+(1, 'Lombard', 'Théo', 'Nice', '678953545', 1),
+(12, 'Sow', 'Ousmane', 'Guinee', '06 78 95 35 45', 0),
+(13, 'Ly', 'Azenor', 'Paris', '06 78 95 35 45', 0);
 
 -- --------------------------------------------------------
 
@@ -304,7 +340,7 @@ INSERT INTO `type_capteurs` (`id`, `type`) VALUES
 (2, 'Détecteur de présence'),
 (3, 'Détecteur de fumée'),
 (4, 'Capteur de luminosité'),
-(5, 'Détecteur ouverture portes et fenêtres'),
+(5, 'Ouverture portes et fenêtres'),
 (6, 'Caméra de surveillance'),
 (7, 'Capteur d\'humidité'),
 (8, 'Détecteur de gaz');
@@ -319,26 +355,27 @@ CREATE TABLE `utilisateur` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
-  `statut` tinyint(1) DEFAULT NULL,
   `adresse` varchar(45) DEFAULT NULL,
   `nom_utilisateur` varchar(45) DEFAULT NULL,
-  `mdp` varchar(45) DEFAULT NULL,
+  `mdp` varchar(200) DEFAULT NULL,
   `photo` varchar(45) DEFAULT NULL,
   `ville` varchar(45) DEFAULT NULL,
   `pays` varchar(45) DEFAULT NULL,
   `id_role` int(11) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `id_offre` int(11) DEFAULT NULL
+  `id_offre` int(11) DEFAULT NULL,
+  `statut` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `statut`, `adresse`, `nom_utilisateur`, `mdp`, `photo`, `ville`, `pays`, `id_role`, `email`, `id_offre`) VALUES
-(1, 'Prevost', 'Clarisse', NULL, '7 rue du château', 'clarisse_prevost', 'nany', NULL, 'Nice', 'France', 2, 'clarisse.prevost@gmail.com', NULL),
-(2, 'Perez', 'Pauline', 1, '24 chemin Spagnon', 'pauline_perez', 'popol', '', 'Antibes', 'France', 1, 'pauline.perez@gmail.com', 3),
-(4, 'Huyng', 'Benjamin', 1, '14 rue louis lumière', 'Benjamin_Huynh', 'phucuong', '', 'Toulouse', 'France', 1, 'phuphu@gmail.com', 1);
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `adresse`, `nom_utilisateur`, `mdp`, `photo`, `ville`, `pays`, `id_role`, `email`, `id_offre`, `statut`) VALUES
+(1, 'Prevost', 'Clarisse', '7 rue du château', 'clarisse_prevost', 'nany', NULL, 'Nice', 'France', 2, 'clarisse.prevost@gmail.com', NULL, NULL),
+(2, 'Perez', 'Pauline', '24 chemin Spagnon', 'pauline_perez', 'popol', NULL, 'Antibes', 'France', 1, 'pauline.perez@gmail.com', 3, 1),
+(10, 'Ly', 'Oumar', '2 cour pere damien Boulogne', 'oumar454', '$2y$10$iusesomecrazystrings2utH/tgQ8kzR5Aw6O30Z3ONmzBdL5l8bi', 'white-tiger-white-tiger-cat-predator.jpg', 'Bussy-Saint-Georges', 'France', 2, 'oumarly@gmail.com', 2, 0),
+(11, 'Le Quinio', 'Az&eacute;nor', '2 rues des ameriques', 'azenor', '$2y$10$iusesomecrazystrings2u8etkFELR6kTHaxngoAoZhh2tvDSU9iK', 'Mindset.pdf', 'Paris', 'France', 2, 'azenor@gmail.com', 3, 0);
 
 --
 -- Index pour les tables exportées
@@ -456,12 +493,12 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `donnee`
 --
 ALTER TABLE `donnee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT pour la table `donnee_energetique`
 --
@@ -476,7 +513,7 @@ ALTER TABLE `facture`
 -- AUTO_INCREMENT pour la table `mission`
 --
 ALTER TABLE `mission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pour la table `notification`
 --
@@ -491,22 +528,22 @@ ALTER TABLE `nouveaute`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `panne`
 --
 ALTER TABLE `panne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `piece`
 --
 ALTER TABLE `piece`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `role`
 --
@@ -516,12 +553,12 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `technicien`
 --
 ALTER TABLE `technicien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Contraintes pour les tables exportées
 --
@@ -530,19 +567,19 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  ADD CONSTRAINT `fk_Capteur_Type_capteurs1` FOREIGN KEY (`id_type`) REFERENCES `type_capteurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Capteur_Type_capteurs1` FOREIGN KEY (`id_type`) REFERENCES `type_capteurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `donnee`
 --
 ALTER TABLE `donnee`
-  ADD CONSTRAINT `fk_Donnée_Capteur1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Donnée_Capteur1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `donnee_energetique`
 --
 ALTER TABLE `donnee_energetique`
-  ADD CONSTRAINT `fk_Données énergétiques_Client1` FOREIGN KEY (`id_client`) REFERENCES `utilisateur` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Données énergétiques_Client1` FOREIGN KEY (`id_client`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `facture`
@@ -552,17 +589,10 @@ ALTER TABLE `facture`
   ADD CONSTRAINT `fk_facture_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `mission`
---
-ALTER TABLE `mission`
-  ADD CONSTRAINT `fk_Mission_Client1` FOREIGN KEY (`id_client`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Mission_Technicien1` FOREIGN KEY (`id_technicien`) REFERENCES `technicien` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `notification`
 --
 ALTER TABLE `notification`
-  ADD CONSTRAINT `fk_Notification_Utilisateur1` FOREIGN KEY (`id_client`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Noctification_Utilisateur1` FOREIGN KEY (`id_client`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `panne`
@@ -577,19 +607,8 @@ ALTER TABLE `piece`
   ADD CONSTRAINT `fk_Pièce_Client1` FOREIGN KEY (`id_client`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `technicien`
---
-ALTER TABLE `technicien`
-  ADD CONSTRAINT `fk_Technicien_Utilisateur1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-<<<<<<< HEAD
   ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-=======
-ADD CONSTRAINT `fk_Utilisateur_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
+  ADD CONSTRAINT `fk_utilisateur_offre1` FOREIGN KEY (`id_offre`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

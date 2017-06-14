@@ -14,18 +14,29 @@ class Administrateur extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://egghome/administrateur/index (which is the default page)
      */
-    // public function index()
-    // {
-    //     // load a models
-        
-    //     // load views
-    //     require APP . 'view/_templates/head.php';
-    //     require APP . 'view/_templates/header.php';
-    //     require APP . 'view/administrateur/index.php';
-    //     require APP . 'view/_templates/footer.php';
-    // }
-        public function gestion_offre()
+    public function index()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+
+        // load a models
+        
+        // load views
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/administrateur/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
+    
+    public function gestion_offre()
+    {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+
         // load a models
         
         // load views
@@ -37,9 +48,13 @@ class Administrateur extends Controller
 
     public function save_client()
     {
+        global $database;
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
-        //Role
+        //utilisateur
         $this->loadModel('Utilisateur');
         
         //Role
@@ -61,17 +76,17 @@ class Administrateur extends Controller
 
             $user = new Utilisateur();
 
-            $user->nom = $_POST['user_nom'];
-            $user->prenom = $_POST['user_prenom'];
+            $user->nom = htmlentities($_POST['user_nom']);
+            $user->prenom = htmlentities($_POST['user_prenom']);
             $user->set_file($_FILES['user_image']);
-            $user->adresse = $_POST['user_address'];
-            $user->nom_utilisateur = $_POST['user_username'];
-            $user->mdp = $_POST['user_password'];
-            $user->ville = $_POST['user_ville'];
-            $user->pays = $_POST['user_pays'];
+            $user->adresse = htmlentities($_POST['user_address']);
+            $user->nom_utilisateur = htmlentities($_POST['user_username']);
+            $user->mdp = $database->crypter($_POST['user_password']);
+            $user->ville = htmlentities($_POST['user_ville']);
+            $user->pays = htmlentities($_POST['user_pays']);
             $user->id_offre = $_POST['user_offre'];
             $user->id_role = $_POST['user_role'];
-            $user->email = $_POST['user_email'];
+            $user->email = htmlentities($_POST['user_email']);
 
             $user->save_user_and_image();
 
@@ -84,6 +99,11 @@ class Administrateur extends Controller
 
     public function add_pages()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+
         //loadModels
         //Page
         $this->loadModel('Page');
@@ -97,8 +117,8 @@ class Administrateur extends Controller
          if (isset($_POST['create_content'])) {
 
             $page = Page::find_by_id($_POST['nom_contenu']);
-            $page->titre = $_POST['title'];
-            $page->contenu = $_POST['content'];
+            $page->titre = htmlentities($_POST['title']);
+            $page->contenu = htmlentities($_POST['content']);
             
             $page->update();
 
@@ -128,11 +148,19 @@ class Administrateur extends Controller
 
     public function save_capteurs(){
 
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+
         //loadModels
 
         //Page
-        $this->loadModel('typecapteur');
-        $capteurs = typecapteur::get_all_capteurs();
+        $this->loadModel('typeCapteur');
+        $capteurs = Typecapteur::get_all_capteurs();
+
+        //Role
+        $this->loadModel('Role');
+        $roles = role::get_all_roles();
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
@@ -158,6 +186,24 @@ class Administrateur extends Controller
 
         }
 
+        if (isset($_POST['add_role'])) {
+
+            $role = role::find_by_id($_POST['type_role']);
+            $role->delete();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
+        if (isset($_POST['delete_role'])) {
+
+            $role = role::find_by_id($_POST['type_role']);
+            $role->delete();
+
+            header("Location: " . URL . "administrateur/save_capteurs");
+
+        }
+
 
 
     }
@@ -171,7 +217,7 @@ class Administrateur extends Controller
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
-        require APP. 'view/administrateur/gestion_nouveaute.php';
+        require APP . 'view/administrateur/gestion_nouveaute.php';
         require APP . 'view/_templates/footer.php';
 
         if (isset($_POST['titre'])) {
@@ -182,12 +228,7 @@ class Administrateur extends Controller
             $nouveaute->date = date("Y-m-d H:i:s");
             $nouveaute->set_file($_FILES['image']);
             $nouveaute->save_nouveaute_and_image();
-
             //header("Location: " . URL . "/administrateur/gestion_nouveaute/?state=inserted");
         }
-
-
     }
-
-
 }

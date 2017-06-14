@@ -21,7 +21,40 @@
 					</tr>
 				<?php endforeach ?>
 			</tbody>
+			</form>
 		</table>
+
+		<button name="Modifier_client_btn" class="Modifier_client_btn">Ajouter Technicien</button>
+		
+		<div style="display: none;" class="form_profil">
+			<form method="post" enctype="multipart/form-data" action="<?php echo URL; ?>service_client/gestion_technicien">    
+		        <div class="form-batch">
+		            <label for="post_tags">Nom</label><br>
+		            <input type="text"  name="tech_nom" required>
+		        </div>
+		        
+		        <div class="form-batch">
+		            <label for="post_tags">Prenom</label><br>
+		            <input type="text"  name="tech_prenom" required>
+		        </div>
+		        
+		        <div class="form-batch">
+		            <label for="post_tags">Telephone</label><br>
+		            <input type="tel"  name="tech_tel" >
+		        </div>
+		        
+		        <div class="form-batch">
+		            <label for="author">localisation</label><br>
+		            <input type="text"  name="tech_localisation" >
+		        </div>
+
+		        <div class="form-batch">
+		            <input type="submit" value="Inscrire Technicien" name="create_tech" >
+		        </div>
+		    </form>	
+		</div>
+
+		
 	</div>
 
 </div>

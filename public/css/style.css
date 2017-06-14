@@ -33,6 +33,10 @@ header .brand {
     float: left;
 }
 
+header .brand a {
+    text-decoration: none;
+}
+
 body {
     margin-bottom: -40px;
     margin: 0 0 40px;
@@ -469,7 +473,11 @@ button[name="off"] {
     margin-left: 5px;
 }
 
-#statut, #identifiant, #nom, #prenom, #offre, #titre, #client{
+#statut, #identifiant, #nom, #prenom, #offre, #titre, #client, #contenu, #motif, #technicien {
+    text-align : center;
+}
+
+.colonne {
     text-align : center;
 }
 
@@ -518,3 +526,4 @@ button[name="off"] {
 .content-box {
     padding: 10px;
 }
+

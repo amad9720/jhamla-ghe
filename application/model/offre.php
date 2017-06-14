@@ -41,6 +41,39 @@ class Offre extends Db_object
         }
     }
 
+    public function update_detail($detail) {
+        $this->detail = $detail;
+        return $this->update();
+    }
+
+    public function update_titre($titre) {
+        $this->titre = $titre;
+        return $this->update();
+    }
+
+    public function update_prix($prix) {
+        $this->prix = $prix;
+        return $this->update();
+    }
+
+    public function add_new_offre($titre, $prix, $detail) {
+
+        if (empty($this->id)) {
+
+            $this->titre = $titre;
+            $this->prix = $prix;
+            $this->detail = $detail;
+
+            return $this->create();
+        }
+        else return false;
+    }
+
+    public function remove_offer() {
+
+        $this->delete();
+    }
+
         public function add_offre() {
         if (empty($this->id) /*&& !empty($this->id_client)*/ )
             return $this->create() ? true : false;

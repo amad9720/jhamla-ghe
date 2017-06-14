@@ -30,7 +30,6 @@ class Invite extends Controller
         // endforeach; 
 
         // load views
-        require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/index.php';
         require APP . 'view/_templates/footer.php';
@@ -41,102 +40,126 @@ class Invite extends Controller
         $this->loadModel("Offre");
         $offres = Offre::get_offres();
 
-        require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/offres.php';
         require APP . 'view/_templates/footer.php';
     }
 
-    public function gestion_technicien()
-    {
-        $this->loadModel('Mission');
-
-
-        $this->loadModel('Utilisateur');
-        $clients = Utilisateur::show_clients();
-
-        $this->loadModel('Technicien');
-        $clients = Technicien::show_techniciens();
-
-
-
-        if (isset($_POST['checkBoxArray'])){
-
-            $array_id = $_POST['checkBoxArray'];
-
-            if (isset($_POST['Profil'])) {
-                foreach ($array_id as $value_id) {
-                    $techniciens_selected = Technicien::find_by_id($value_id);
-
-                    $end_missions = Mission::fetch_end_missions_technicien($value_id);
-                    $process_missions = Mission::fetch_process_missions_technicien($value_id);
-
-
-                }
-            }
-
-
-            if (isset($_POST['Modifier'])) {
-                foreach ($array_id as $value_id) {
-                    $technicien = Technicien::find_by_id($value_id);
-                    $technicien->nom = $_POST['nom'];
-                    $technicien->prenom = $_POST['prenom'];
-                    $technicien->tel = $_POST['tel'];
-                    $technicien->lieu = $_POST['lieu'];
-                    $technicien->update();
-                }
-            }
-
-            if (isset($_POST['Supprimer'])) {
-                foreach ($array_id as $value_id) {
-                    $technicien = Technicien::find_by_id($value_id);
-                    $technicien->delete();
-                }
-            }
-
-            if (isset($_POST['Add_mission'])) {
-                foreach ($array_id as $value_id) {
-                    $mission = new Mission();
-                    $mission->add_new_mission($value_id, $_POST['id_client'], $_POST['date'], $_POST['motif']);
-                }
-            }
-
-
-            if (isset($_POST['small_checkBoxArray'])){
-                $array_id = $_POST['small_checkBoxArray'];
-                if(isset($_POST['End_mission'])){	
-                    foreach($small_array_id as $small_value_id){
-
-                        $end_mission = Mission::find_by_id($small_array_id);
-                        $end_mission->set_end_mission();
-                    }
-                }
-            }
-        }
-    }
-
-
-
-    public function dashboard()
-    {
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/dashboard/sidebar.php';
-        require APP . 'view/dashboard/objets.php';
-    }
-
-    public function connexion() {
-
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/connexion.php';
-        require APP . 'view/_templates/footer.php';
-    }
-
     public function egghome() {
 
-        require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/egghome.php';
         require APP . 'view/_templates/footer.php';
     }
 
+    public function contact() {
+
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invite/contact.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
+    public function connexion() {
+        global $database;
+        global $session;
+
+        //load models
+        //Utilisateur
+        $this->loadModel('Utilisateur');
+
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/invite/connexion.php';
+        require APP . 'view/_templates/footer.php';
+
+        // case 1 : the user is already logged in... and so, he can't access this page
+        global $session;
+        if ($session->is_signed_in()) header("Location: " . URL . "invite/");
+
+        // case 2 : the user is not logged in, he can access the page to identify via the form
+        if (isset($_POST['submit']) && ($_POST['user_password'] != "") && ($_POST['user_email'] != "")) {
+            
+            //trim — Strip whitespace (or other characters) from the beginning and end of a string (see Dash)
+            $email = trim($_POST['user_email']); 
+            $password = $database->crypter($_POST['user_password']);
+
+            //This function will check if the user exist in the db... 
+            //The result of the checks will be retrned in the $user_found variable (matched or not)
+            $user_found = Utilisateur::verify_user($email, $password);
+            
+            if ($user_found) {
+
+                $session->login($user_found);
+
+                switch ($session->role) {
+                    case CLIENT:
+                        header("Location: " . URL . "client/");
+                        break;
+                    case SERVICE_CLIENT:
+                        header("Location: " . URL . "service_client/");
+                        break;
+                    case ADMIN:
+                        header("Location: " . URL . "administrateur/");
+                        break;
+                    default:
+                        header("Location: " . URL . "invite/");
+                        break;
+                }
+                
+            } else 
+                echo $session->message = "Unable to login... Check your credentials";
+        }else {
+            echo $session->message = "Please, Login";
+            $email = "";
+            $password = "";
+        }
+    }
+
+    public function deconnexion() {
+        global $session;
+
+        if (isset($_GET['deconnect'])) {
+            $session->logout();
+            $session->message = "Vous etes deconnecté" ;
+            header("Location: " . URL . "invite/");
+        }
+    }
+
+    public function inscription()
+    {
+        global $database;
+
+        //loadModels
+        //utilisateur
+        $this->loadModel('Utilisateur');
+
+        //Offre
+        $this->loadModel('Offre');
+        $offres = Offre::find_all();
+
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invite/inscription.php';
+        require APP . 'view/_templates/footer.php';
+
+        if(isset($_POST['create_user'])) {
+        
+            $user = new Utilisateur();
+
+            $user->nom = htmlentities($_POST['user_nom']);
+            $user->prenom = htmlentities($_POST['user_prenom']);
+            $user->set_file($_FILES['user_image']);
+            $user->adresse = htmlentities($_POST['user_address']);
+            $user->nom_utilisateur = htmlentities($_POST['user_username']);
+            $user->mdp = $database->crypter($_POST['user_password']);
+            $user->ville = htmlentities($_POST['user_ville']);
+            $user->pays = htmlentities($_POST['user_pays']);
+            $user->id_offre = $_POST['user_offre'];
+            $user->id_role = CLIENT;
+            $user->statut = 0;
+            $user->email = htmlentities($_POST['user_email']);
+
+            $user->save_user_and_image();
+
+            header("Location: " . URL . "invite/index");
+        }
+    }
 }

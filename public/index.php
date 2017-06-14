@@ -26,6 +26,11 @@ if (file_exists(ROOT . 'vendor/autoload.php')) {
     require ROOT . 'vendor/autoload.php';
 }
 
+//Roles Const
+define('CLIENT', 1);
+define('SERVICE_CLIENT', 2);
+define('ADMIN', 3);
+
 // load application config (error reporting etc.)
 require APP . 'config/config.php';
 
@@ -41,12 +46,18 @@ require APP . 'libs/lib.php';
 require APP . 'core/database/database.php';
 require APP . 'core/database/database_object.php';
 
+//load the session class
+require APP . 'core/session/session.php';
+
 // load application class
 require APP . 'core/application.php';
 require APP . 'core/controller.php';
 
 //lauching the database
 $database = new Database();
+
+//Start a Session
+$session = new Session();
 
 // start the application
 $app = new Application();

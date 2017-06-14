@@ -36,7 +36,7 @@ class Database {
 	 * @return [PDOstatement]      
 	 */
 	public function query($sql) {
-
+		
         $query = $this->connection->prepare($sql);
         $result = $query->execute();
 
@@ -61,6 +61,15 @@ class Database {
 
 		//Returns the auto generated id used in the latest query
 		return $this->connection->lastInsertId();
+	}
+
+	public function crypter($string) {
+		$hashFormat = "$2y$10$"; //this is the blowfish type of salt format
+        $salt = "iusesomecrazystrings22";
+        $hashF_and_salt = $hashFormat.$salt;
+        $randSalt = crypt(trim($string), $hashF_and_salt);
+
+        return $randSalt;
 	}
 
 }

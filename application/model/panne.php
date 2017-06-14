@@ -6,7 +6,7 @@
  * Date: 02/06/2017
  * Time: 11:22
  */
-class panne
+class Panne extends Db_object
 {
     public $id;
     public $titre;
@@ -34,7 +34,7 @@ class panne
 
         foreach ($pannes as $panne) {
             $panne->nom = $panne->find_client()->nom;
-            $panne->prenom = $panne>find_client()->prenom;
+            $panne->prenom = $panne->find_client()->prenom;
 
         }
 

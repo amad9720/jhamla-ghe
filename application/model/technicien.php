@@ -41,6 +41,12 @@ class Technicien extends Db_object
         else return false;
         
     }
+
+    public static function find_technicien($id){
+        $sql = "SELECT * FROM technicien WHERE technicien.id = '{$id}'";
+        $results = self::find_by_query($sql);
+        return $results;
+    }
        
 
 }
