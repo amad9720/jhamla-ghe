@@ -1,16 +1,15 @@
-
+	
 <div classe="container">
 
-        <div id="block">
+        <div id="container-offre">
 		<?php foreach ($offres as $offre) : ?>
-            <form method="post" action="traitement.php" >
+            <form method="post" action="traitement.php" class="form-offre">
 			<div class="offre">
 		
-                <h4><?php echo $offre->titre ?></h4>
-				<p><?php echo $offre->detail ?></p></br>
-				<p><?php echo $offre->prix ?> €</p></br>
-	
-				<input type="submit" value="souscrir" />   
+                <h3><?php echo $offre->titre ?></h3>
+				<?php echo $offre->detail ?>
+				<p class="price"><?php echo $offre->prix ?> €</p>
+				<input type="submit" value="SOUSCRIRE" />   
                 </div>
 			</form>
 		<?php endforeach ?>

@@ -64,6 +64,24 @@ body {
         zoom: 100%;
     }
 
+    .offre {
+        display: inline-block!important;
+        margin: none ;
+        vertical-align: top;
+
+
+    }
+
+    .form-offre {
+    width: 33%!important;
+    display: inline-block;
+}
+
+    #container-offre {
+        width: 90%;
+        margin: auto;
+    }
+
 
 
     .public-index-description {
@@ -525,5 +543,43 @@ button[name="off"] {
 
 .content-box {
     padding: 10px;
+}
+
+.offre {
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.offre h3 {
+    padding: 20px;
+    background-color: #349e8a;
+    color: white;
+}
+
+.offre ul {
+    list-style: none;
+}
+
+.offre li {
+    height: 50px;
+    line-height: 50px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.offre li:last-child {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.offre input[type="submit"] {
+    background-color: #ccc;
+    height: 50px;
+    width: 98%;
+}
+
+.offre .price {
+    font-size: 2em;
 }
 
