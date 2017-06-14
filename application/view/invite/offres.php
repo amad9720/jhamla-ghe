@@ -8,7 +8,7 @@
 		
                 <h3><?php echo $offre->titre ?></h3>
 				<?php echo $offre->detail ?>
-				<p class="price"><?php echo $offre->prix ?> €</p>
+				<p class="price"><?php echo $offre->prix ?> €</p><p class="month">/mois</p>
 				<input type="submit" value="SOUSCRIRE" />   
                 </div>
 			</form>

@@ -579,7 +579,22 @@ button[name="off"] {
     width: 98%;
 }
 
+
+.offre p {
+    display: inline-block;
+}
+
+
 .offre .price {
     font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+.offre .month {
+    color: #4e4e4e;
+    margin-left: 3px;
+
+}
+
 
