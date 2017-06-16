@@ -110,7 +110,6 @@ class Client extends Controller {
                 foreach($array_id as $value_id ){
                 
                     $capteur_to_favoris = Capteur::find_by_id($value_id);
-
                     $capteur_to_favoris->capteur_switch_favoris(); 
 
                 }

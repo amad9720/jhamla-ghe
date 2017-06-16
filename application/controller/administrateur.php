@@ -194,8 +194,7 @@ class Administrateur extends Controller
     }
 
     public function gestion_nouveaute() {
-        require APP . 'core/modelform.php';
-        
+            
         $this->loadModel('Nouveaute');
         $nouveautes = new Nouveaute();
         $n = $nouveautes->get_last_nouveautes(10, 0);
