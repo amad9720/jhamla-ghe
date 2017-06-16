@@ -153,7 +153,7 @@ class Service_client extends Controller
         $techniciens = Technicien::show_techniciens();
 
         require APP . 'view/_templates/head.php';
-        //require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/service_client/includes/sidebar.php';
         require APP . 'view/service_client/gestion_technicien.php';
         require APP . 'view/_templates/footer.php';
         
@@ -259,7 +259,7 @@ class Service_client extends Controller
 
 
         require APP . 'view/_templates/head.php';
-        require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/service_client/includes/sidebar.php';
         require APP . 'view/service_client/technicien.php';
         require APP . 'view/_templates/footer.php';
 

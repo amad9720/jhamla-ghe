@@ -8,11 +8,15 @@
 	<p>Ville : <?php echo $client->ville ?></p>
 	<p>Pays : <?php echo $client->pays ?></p>
 </div>
-<img src="<?php echo $client->photo ?>" alt="Photo_Profil" height="100" width="100"> 
+<img src="<?php echo URL ?>/img/<?php echo $client->photo; ?>" alt="Photo_Profil" height="100" width="100">
+
+</br></br>
+
 <button name ="Mission_client_btn" class="Mission_client_btn">Suivi des missions</button>
 <button name="Modifier_client_btn" class="Modifier_client_btn">Modifier profil</button>
 <button name="Facture_btn" class="Facture_btn">Factures</button>
-<div class="form_profil">
+
+<div style="display: none;" class="form_profil">
 	<p>Modification du profil</p>
 	<form method="post" action="<?php echo URL; ?>client/profil">
 		<p> <label for="nom"> Nom: </label> <input type="text" name="nom" id="nom" maxlength="50" size="40" placeholder="Votre Nom" autofocus /> </p>
@@ -28,7 +32,7 @@
 	</form>
 </div>
 
-<div class="Suivi">
+<div style="display: none;"  class="Suivi">
 	</br><h3>Suivi des missions</h3>
 	</br><p>Missions en cours</p>
 	<table class="process_missions">
@@ -71,7 +75,8 @@
 	</table>
 </div>
 </br></br> 
-<div class="Factures">
+
+<div style="display: none;" class="Factures">
 	<h3>Mes Factures</h3>
 	<table class="factures">
 		<thead>

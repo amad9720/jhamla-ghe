@@ -240,6 +240,13 @@ class Client extends Controller {
     public function contact(){
         global $session;
         if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //load Model
+        //Page
+        $this->loadModel('Page');
+
+        $infos = Page::get_page_par_nom("Informations de contact");
+
+        var_dump($infos);
 
         // load views
         require APP . 'view/_templates/head.php';
