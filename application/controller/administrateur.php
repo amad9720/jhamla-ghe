@@ -14,20 +14,29 @@ class Administrateur extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://egghome/administrateur/index (which is the default page)
      */
-     public function index()
-     {
-         // load a models
+    public function index()
+    {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
+        // load a models
         
-         // load views
-         require APP . 'view/_templates/head.php';
-         require APP . 'view/_templates/header.php';
-         require APP . 'view/administrateur/index.php';
-         require APP . 'view/_templates/footer.php';
-     }
-
-
+        // load views
+        require APP . 'view/_templates/head.php';
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/administrateur/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
+    
     public function gestion_offre()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         // load a models
         
         // load views
@@ -39,6 +48,10 @@ class Administrateur extends Controller
 
     public function save_client()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         //loadModels
         //Role
@@ -63,17 +76,17 @@ class Administrateur extends Controller
 
             $user = new Utilisateur();
 
-            $user->nom = $_POST['user_nom'];
-            $user->prenom = $_POST['user_prenom'];
+            $user->nom = htmlentities($_POST['user_nom']);
+            $user->prenom = htmlentities($_POST['user_prenom']);
             $user->set_file($_FILES['user_image']);
-            $user->adresse = $_POST['user_address'];
-            $user->nom_utilisateur = $_POST['user_username'];
-            $user->mdp = $_POST['user_password'];
-            $user->ville = $_POST['user_ville'];
-            $user->pays = $_POST['user_pays'];
+            $user->adresse = htmlentities($_POST['user_address']);
+            $user->nom_utilisateur = htmlentities($_POST['user_username']);
+            $user->mdp = htmlentities($_POST['user_password']);
+            $user->ville = htmlentities($_POST['user_ville']);
+            $user->pays = htmlentities($_POST['user_pays']);
             $user->id_offre = $_POST['user_offre'];
             $user->id_role = $_POST['user_role'];
-            $user->email = $_POST['user_email'];
+            $user->email = htmlentities($_POST['user_email']);
 
             $user->save_user_and_image();
 
@@ -86,6 +99,11 @@ class Administrateur extends Controller
 
     public function add_pages()
     {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         //loadModels
         //Page
         $this->loadModel('Page');
@@ -130,13 +148,17 @@ class Administrateur extends Controller
 
     public function save_capteurs(){
 
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         //loadModels
 
         //Page
         $this->loadModel('typecapteur');
-        $capteurs = typecapteur::get_all_capteurs()
+        $capteurs = typecapteur::get_all_capteurs();
 
-            //Role
+        //Role
         $this->loadModel('Role');
         $roles = role::get_all_roles();
 

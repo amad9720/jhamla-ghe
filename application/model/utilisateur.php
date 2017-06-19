@@ -17,6 +17,7 @@ class Utilisateur extends Db_object
     public $statut;
 
     public $offre;
+    public $role;
 
     public $image_placeholder = "http://placehold.it/400x400&text=image";
 
@@ -142,7 +143,10 @@ class Utilisateur extends Db_object
      */
     public static function verify_user($nom_utilisateur, $mdp) {
 
-        $sql = "SELECT * FROM utilisateur WHERE nom_utilisateur = '{$nom_utilisateur}' AND mdp = '{$mdp}' LIMIT 1 ";
+        $sql = "SELECT * 
+                FROM utilisateur 
+                WHERE nom_utilisateur = '{$nom_utilisateur}' AND mdp = '{$mdp}' 
+                LIMIT 1 ";
 
         $user = self::find_by_query($sql);
         return $user = (!empty($user)) ? array_shift($user) : $user; //see find_user_by_id() method...
@@ -191,4 +195,5 @@ class Utilisateur extends Db_object
         $this->id_offre = $id_offre;
         return $this->update();
     }
+
 }

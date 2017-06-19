@@ -105,7 +105,7 @@
 
         <h2><span class="fontawesome-lock"></span>Sign In</h2>
 
-        <form action="<?php echo URL; ?>client/" method="POST">
+        <form action="<?php echo URL; ?>invite/connexion" method="POST">
 
             <fieldset>
 

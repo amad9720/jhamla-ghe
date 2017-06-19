@@ -7,6 +7,9 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/index (which is the default page)
      */
     public function index(){
+        //To make sure that only registered users can come to this page
+        global $session; 
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         // load views
         //require APP . 'view/_templates/header.php';
@@ -53,6 +56,11 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/gestion_capteurs 
      */
     public function gestion_capteurs() {
+
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
 
         // load models
         //Capteurs
@@ -126,7 +134,6 @@ class Client extends Controller {
             header("Location: " . URL . "client/gestion_capteurs");
 
         }
-
     }
 
     /**
@@ -134,18 +141,29 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/ma_maison 
      */
     public function ma_maison(){
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         // loadModels
         
         //Piece
         $this->loadModel('Piece');
-        $pieces_client = Piece::get_room_client(2); // pour linstant on urilise le client 2 pour test
+        $pieces_client = Piece::get_room_client(2); // pour linstant on utilise le client 2 pour test
         
         //Capteur
         $this->loadModel('Capteur');
 
         //typeCapteur
         $this->loadModel('TypeCapteur');
+
+        //Donnee
+        $this->loadModel('Donnee');
+        $trames = Donnee::recuperer_trame();
+        $trames_tab = Donnee::tableau_trame($trames);
+        for($i=0, $size=count($trames_tab); $i<$size; $i++){
+            $trame_d = Donnee::décoder_trame($trames_tab[$i]);
+            $trame_d -> ajouter_trame_BDD();
+        }
 
         $array_etat = array(1 => "ON", 0 => "OFF");
 
@@ -202,9 +220,7 @@ class Client extends Controller {
 
             header("Location: " . URL . "client/ma_maison");
             
-        }
-
-        
+        }        
     }
 
     /**
@@ -213,6 +229,8 @@ class Client extends Controller {
      */
 
     public function contact(){
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -225,6 +243,8 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/suivi_energetique 
      */
     public function suivi_energetique() {
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -237,6 +257,8 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/profil 
      */
     public function profil() {
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
         
         // load models
         //Mission
@@ -278,12 +300,5 @@ class Client extends Controller {
             $client->update();
 
         }
-    }
-
-    public function inscription()
-    {
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/client/inscription.php';
     }
 }

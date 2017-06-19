@@ -34,13 +34,16 @@ class Service_client extends Controller
 //            $pannes_select[] = $panne_select;
 //
 //            header("Location: " . URL . "service_client/index");
-
         //}
 
     }
 
     public function gestion_client()
     {
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
         // load models
         //Utilisateur
         $this->loadModel('Utilisateur');
@@ -137,6 +140,15 @@ class Service_client extends Controller
     public function gestion_technicien()
     {
 
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
+        $this->loadModel('Mission');
+
+        $this->loadModel('Utilisateur');
+        $clients = Utilisateur::show_clients();
+
         $this->loadModel('Technicien');
         $techniciens = Technicien::show_techniciens();
 
@@ -146,12 +158,55 @@ class Service_client extends Controller
         require APP . 'view/_templates/footer.php';
 
 
-        if (isset($_POST['checkBoxArray'])) {
+        if (isset($_POST['checkBoxArray'])){
             $array_id = $_POST['checkBoxArray'];
+
+            if (isset($_POST['Profil'])) {
+                foreach ($array_id as $value_id) {
+                    $techniciens_selected = Technicien::find_by_id($value_id);
+
+                    $end_missions = Mission::fetch_end_missions_technicien($value_id);
+                    $process_missions = Mission::fetch_process_missions_technicien($value_id);
+
+
+                }
+            }
+
+
+            if (isset($_POST['Modifier'])) {
+                foreach ($array_id as $value_id) {
+                    $technicien = Technicien::find_by_id($value_id);
+                    $technicien->nom = $_POST['nom'];
+                    $technicien->prenom = $_POST['prenom'];
+                    $technicien->tel = $_POST['tel'];
+                    $technicien->lieu = $_POST['lieu'];
+                    $technicien->update();
+                }
+            }
+
             if (isset($_POST['Supprimer'])) {
                 foreach ($array_id as $value_id) {
                     $technicien = Technicien::find_by_id($value_id);
                     $technicien->delete();
+                }
+            }
+
+            if (isset($_POST['Add_mission'])) {
+                foreach ($array_id as $value_id) {
+                    $mission = new Mission();
+                    $mission->add_new_mission($value_id, $_POST['id_client'], $_POST['date'], $_POST['motif']);
+                }
+            }
+
+
+            if (isset($_POST['small_checkBoxArray'])){
+                $array_id = $_POST['small_checkBoxArray'];
+                if(isset($_POST['End_mission'])){   
+                    foreach($small_array_id as $small_value_id){
+
+                        $end_mission = Mission::find_by_id($small_array_id);
+                        $end_mission->set_end_mission();
+                    }
                 }
             }
         }
@@ -159,6 +214,12 @@ class Service_client extends Controller
 
     public function technicien($id_tech)
     {
+        
+        //To make sure that only registered users can come to this page 
+        global $session;
+        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+
+
         $this->loadModel('Mission');
 
         $this->loadModel('Utilisateur');
@@ -299,5 +360,4 @@ class Service_client extends Controller
 
 
     }
-
 }
