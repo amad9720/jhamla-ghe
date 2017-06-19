@@ -109,7 +109,7 @@
 
     </table>
 
-    <form class="form" method="POST" action="<?php echo URL; ?>service_client/gestion_client">
+    <form class="form" method="POST" action="<?php echo URL; ?>service_client/gestion_client" enctype="multipart/form-data">
             <label>Choisir Client</label>
             <select name="client">
                 <option disabled selected>client</option>

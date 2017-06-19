@@ -165,13 +165,25 @@ class Client extends Controller {
         
         //Piece
         $this->loadModel('Piece');
+
+
         $pieces_client = Piece::get_room_client($session->user_id); // pour linstant on urilise le client $session->user_id pour test
+
         
         //Capteur
         $this->loadModel('Capteur');
 
         //typeCapteur
         $this->loadModel('TypeCapteur');
+
+        //Donnee
+        $this->loadModel('Donnee');
+        $trames = Donnee::recuperer_trame();
+        $trames_tab = Donnee::tableau_trame($trames);
+        for($i=0, $size=count($trames_tab); $i<$size; $i++){
+            $trame_d = Donnee::décoder_trame($trames_tab[$i]);
+            $trame_d -> ajouter_trame_BDD();
+        }
 
         $array_etat = array(1 => "ON", 0 => "OFF");
 
