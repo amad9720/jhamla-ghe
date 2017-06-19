@@ -108,3 +108,17 @@
         </form>
 
     </table>
+
+    <form class="form" method="POST" action="<?php echo URL; ?>service_client/gestion_client">
+            <label>Choisir Client</label>
+            <select name="client">
+                <option disabled selected>client</option>
+                <?php foreach ($clients as $client): ?>
+                    <option value=<?php echo $client->id; ?> ><?php echo $client->nom; ?></option>
+                <?php endforeach ?>
+            </select><br/>
+
+            <br/>
+            <input type="file" name="pdf">
+            <input type="submit" name="sendPdf" value="Envoyer" >
+    </form>

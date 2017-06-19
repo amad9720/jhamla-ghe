@@ -59,7 +59,7 @@ class Client extends Controller {
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
 
         // load models
@@ -159,7 +159,7 @@ class Client extends Controller {
      */
     public function ma_maison(){
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // loadModels
         
@@ -238,7 +238,7 @@ class Client extends Controller {
 
     public function contact(){
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
         //load Model
         //Page
         $this->loadModel('Page');
@@ -273,7 +273,7 @@ class Client extends Controller {
      */
     public function profil() {
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
         
         // load models
         //Mission

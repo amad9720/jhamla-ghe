@@ -8,7 +8,7 @@
 			<li><a href="<?php echo URL; ?>client/gestion_capteurs">Capteurs</a></li>
 			<li><a href="<?php echo URL; ?>client/suivi_energetique">Suivi </a></li>
 			<li><a href="<?php echo URL; ?>client/contact">Contact</a></li>
-			<li><a href="<?php echo URL; ?>client/profil">Profile</a></li>
+			<li><a href="<?php echo URL; ?>client/profil">Profil</a></li>
 			<li><a href="<?php echo URL;?>invite/deconnexion?deconnect=true">Deconnexion</a></li>
 		</ul>
 	</nav>

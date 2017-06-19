@@ -208,11 +208,12 @@ class Administrateur extends Controller
             $nouveaute = new Nouveaute();
             $nouveaute->titre = htmlspecialchars($_POST['titre']);
             $nouveaute->description = $_POST['description'];
-            $nouveaute->slider_id = htmlspecialchars($_POST['slider_id']);
+            $nouveaute->slider_id = $_POST['slider_id'];
             $nouveaute->date = date("Y-m-d H:i:s");
             $nouveaute->set_file($_FILES['image']);
             $nouveaute->save_nouveaute_and_image();
 
+            header("Location: " . URL . "administrateur/gestion_nouveaute");
         }
     }
 }

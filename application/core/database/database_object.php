@@ -187,4 +187,31 @@ class Db_object {
 		}
 
 	}
+
+	public function set_pdf($file) {
+
+		//first we check if a file is uploaded (if the super_global $_FILES isnt empty)
+		if (empty($file) || !$file || !is_array($file)) {
+
+			$this->errors[] = "There was no file uploaded here";
+			return false;
+
+		//if it's not empty we check if there is no error while uploading it (for that we check the error field of the $_FILES[])
+		}elseif ($file['error'] != 0) {
+
+			//If there is an error, we collect it inside our custom error array
+			$this->errors[] = $this->upload_errors_array[$file['error']];
+			return false;
+
+		}else {
+
+			//If there is no error we collect all the properties of the file in our object properties (by using the $_FILES fields)
+
+			//basename return the name of a file when given the complete path of the file. (see dash for exemples)
+			$this->pdf = basename($file['name']); 
+			$this->tmp_path = $file['tmp_name'];
+
+		}
+
+	}
 }
