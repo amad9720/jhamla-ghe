@@ -4,8 +4,6 @@
         <select name="type_capteurs">
             <option disabled selected>Type de capteur</option>
             <?php foreach ($capteurs as $capteur): ?>
-
-
                 <option id="type_de_capteur" value="<?php echo $capteur->id; ?>"><?php echo $capteur->type; ?></option>
             <?php endforeach ?>
 
@@ -22,11 +20,8 @@
 
         <select name="role">
             <option disabled selected>roles</option>
-            <?php foreach ($roles as $role):
-                ?>
-
-
-                <option id="type_de_role" value="<?php echo $role->id; ?>"><?php echo $role->type; ?></option>
+            <?php foreach ($roles as $role):?>
+                <option id="type_de_role" value="<?php echo $role->id; ?>"><?php echo $role->role; ?></option>
             <?php endforeach ?>
 
         </select>

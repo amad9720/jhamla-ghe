@@ -64,7 +64,7 @@ class Invite extends Controller
         //Utilisateur
         $this->loadModel('Utilisateur');
         require APP . 'view/_templates/head.php';
-        require APP . 'view/connexion.php';
+        require APP . 'view/invite/connexion.php';
         require APP . 'view/_templates/footer.php';
 
         // case 1 : the user is already logged in... and so, he can't access this page

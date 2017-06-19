@@ -66,6 +66,8 @@
 			<th>Pièce</th>
 			<th>Etat</th>
 			<th>Donnée</th>
+			<th>Status</th>
+
 		</tr>
 		</thead>
 
@@ -78,11 +80,19 @@
 				<td id="piece"><?php echo $capteur->piece ?></td>
 				<td><?php echo $capteur->etat ?></td>
 				<td><?php echo $capteur->valeur ?></td>
+				<td>
+					<?php if ($capteur->favoris == 1): ?>
+						<?php echo "Favoris" ?>
+					<?php else: ?>
+						<?php echo "Non Favoris" ?>
+					<?php endif ?>
+				</td>
 			</tr>
 			<?php endforeach ?>
 			</tbody>
 				
 			<input type="submit" name="deleteCapteur" id="submitgestioncapteur" value="Delete" >
+			<input type="submit" name="favorisCapteur" id="submitgestioncapteur" value="Change status" >
 		</form>
 
 	</table>

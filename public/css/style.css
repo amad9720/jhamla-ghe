@@ -4,6 +4,11 @@
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
+p {
+    font-weight: 300;
+    letter-spacing: 1.05px;
+    
+}
 
 header {
     height: 60px;
@@ -33,9 +38,14 @@ header .brand {
     float: left;
 }
 
+header .brand a {
+    text-decoration: none;
+}
+
 body {
     margin-bottom: -40px;
     margin: 0 0 40px;
+    background-color: #EEE;
 }
 
 .container {
@@ -59,6 +69,27 @@ body {
         margin-top: 0px !important;
         zoom: 100%;
     }
+
+    .offre {
+        display: inline-block!important;
+        margin: none ;
+        vertical-align: top;
+
+
+    }
+
+    .form-offre {
+    width: 33%!important;
+    display: inline-block;
+}
+
+    #container-offre {
+        width: 90%;
+        height: 500px;
+        margin: auto;
+    }
+
+
 
 
 
@@ -376,6 +407,7 @@ button[name="off"] {
     color: white;
 }
 
+
 .card {
     background-color: #f0f0f0;
     padding: 10px 10px;
@@ -523,3 +555,101 @@ button[name="off"] {
     padding: 10px;
 }
 
+
+
+
+.offre {
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.offre h3 {
+    padding: 20px;
+    background-color: #349e8a;
+    color: white;
+}
+
+.offre ul {
+    list-style: none;
+}
+
+.offre li {
+    height: 50px;
+    line-height: 50px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.offre li:last-child {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.offre input[type="submit"] {
+    background-color: #ccc;
+    height: 50px;
+    width: 98%;
+}
+
+
+.offre p {
+    display: inline-block;
+}
+
+
+.offre .price {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.offre .month {
+    color: #4e4e4e;
+    margin-left: 3px;
+
+}
+
+.egghome-text {
+    text-align: justify;
+}
+
+.equipe {
+    display: flex;
+    justify-content: space-between; 
+}
+
+
+.photo h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.photo img {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.equipe {
+    margin-top: 30px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.contact-text {
+    display: inline;
+    width: 30%;
+}
+
+.contact-container {
+    height: 200px;
+}

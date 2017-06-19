@@ -24,7 +24,6 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="<?php echo URL; ?>js/slider.js"> </script>
-
 <footer>
         <p class="brand">EggHome 2017</p>
 </footer>

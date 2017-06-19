@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-batch">
-            <input type="submit" value="Ajouter" name="create_user" >
+            <input type="submit" value="S'inscrire" name="create_user" >
         </div>
     </form>	
 	</div>

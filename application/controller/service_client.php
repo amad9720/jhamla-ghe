@@ -42,7 +42,7 @@ class Service_client extends Controller
     {
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
         // load models
         //Utilisateur
@@ -142,7 +142,7 @@ class Service_client extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
         $this->loadModel('Mission');
 
@@ -153,10 +153,34 @@ class Service_client extends Controller
         $techniciens = Technicien::show_techniciens();
 
         require APP . 'view/_templates/head.php';
-        require APP . 'view/client/includes/sidebar.php';
+        //require APP . 'view/client/includes/sidebar.php';
         require APP . 'view/service_client/gestion_technicien.php';
         require APP . 'view/_templates/footer.php';
+        
+        if (isset($_POST['checkBoxArray'])){
+            $array_id = $_POST['checkBoxArray'];
+            if (isset($_POST['Supprimer'])) {
+                foreach ($array_id as $value_id) {
+                    $technicien = Technicien::find_by_id($value_id);
+                    $technicien->delete();
+                }
+            }
+        }
 
+        if (isset($_POST['Voir'])) header("Location: " . URL . "service_client/technicien/". $_POST['Voir']);
+            
+        if (isset($_POST['create_tech'])) {
+        
+            $technicien = new Technicien();
+            $technicien->nom = htmlentities(trim($_POST['tech_nom']));
+            $technicien->prenom = htmlentities(trim($_POST['tech_prenom']));
+            $technicien->telephone = htmlentities(trim($_POST['tech_tel']));
+            $technicien->localisation = htmlentities(trim($_POST['tech_localisation']));
+            $technicien->create();
+
+            header("Location: " . URL . "service_client/gestion_technicien");
+
+        }
 
         if (isset($_POST['checkBoxArray'])){
             $array_id = $_POST['checkBoxArray'];
@@ -167,8 +191,6 @@ class Service_client extends Controller
 
                     $end_missions = Mission::fetch_end_missions_technicien($value_id);
                     $process_missions = Mission::fetch_process_missions_technicien($value_id);
-
-
                 }
             }
 
@@ -176,10 +198,10 @@ class Service_client extends Controller
             if (isset($_POST['Modifier'])) {
                 foreach ($array_id as $value_id) {
                     $technicien = Technicien::find_by_id($value_id);
-                    $technicien->nom = $_POST['nom'];
-                    $technicien->prenom = $_POST['prenom'];
-                    $technicien->tel = $_POST['tel'];
-                    $technicien->lieu = $_POST['lieu'];
+                    $technicien->nom = htmlentities(trim($_POST['nom']));
+                    $technicien->prenom = htmlentities(trim($_POST['prenom']));
+                    $technicien->tel = htmlentities(trim($_POST['tel']));
+                    $technicien->lieu = htmlentities(trim($_POST['lieu']));
                     $technicien->update();
                 }
             }
@@ -217,13 +239,12 @@ class Service_client extends Controller
         
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in()) header("Location: " . URL . "invite/");
+        if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
 
         $this->loadModel('Mission');
 
         $this->loadModel('Utilisateur');
-
 
         $this->loadModel('Technicien');
 
@@ -245,44 +266,38 @@ class Service_client extends Controller
 
         if (isset($_POST['add_mission'])) {
             $mission = new Mission();
-            $mission->add_new_mission($_POST['id_technicien'], $_POST['id_client'], $_POST['date'], $_POST['motif']);
+            $mission->add_new_mission($id_tech, $_POST['id_client'], $_POST['date'], $_POST['motif']);
 
-            header("Location: " . URL . "service_client/technicien?id_technicien=" . $_POST['id_technicien']);
+            header("Location: " . URL . "service_client/technicien/" . $id_tech);
         }
 
+
+        if (isset($_POST['modifier_profil'])) {
+
+            $technicien = Technicien::find_by_id($id_tech);
+
+            $technicien->nom = htmlentities(trim($_POST['nom']));
+            $technicien->prenom = htmlentities(trim($_POST['prenom']));
+            $technicien->telephone = htmlentities(trim($_POST['tel']));
+            $technicien->localisation = htmlentities(trim($_POST['lieu']));
+            
+            $technicien->update();
+
+            header("Location: " . URL . "service_client/technicien/" . $id_tech);
+
+        }
 
         if (isset($_POST['end_mission'])) {
             if (isset($_POST['checkBoxArray'])) {
                 $array_id = $_POST['checkBoxArray'];
+
                 foreach ($array_id as $small_value_id) {
+                   
 
-
-                    if (isset($_POST['end_mission'])) {
-                        if (isset($_POST['checkBoxArray'])) {
-                            $array_id = $_POST['checkBoxArray'];
-                            foreach ($array_id as $small_value_id) {
-
-                                $end_mission = Mission::find_by_id($small_value_id);
-                                $end_mission->set_end_mission();
-                                header("Location: " . URL . "service_client/technicien/" . $id_tech);
-                            }
-                        }
-                    }
-
-
-                    if (isset($_POST['modifier_profil'])) {
-                        $technicien = Technicien::find_by_id($id_tech);
-                        $technicien->nom = $_POST['nom'];
-                        $technicien->prenom = $_POST['prenom'];
-                        $technicien->telephone = $_POST['tel'];
-                        $technicien->localisation = $_POST['lieu'];
-                        var_dump($technicien);
-                        $technicien->update();
-
-                        header("Location: " . URL . "service_client/technicien/" . $id_tech);
-
-                    }
-
+                    $end_mission = Mission::find_by_id($small_value_id);
+                    $end_mission->set_end_mission();
+                    header("Location: " . URL . "service_client/technicien/" . $id_tech);
+                        
                 }
             }
         }

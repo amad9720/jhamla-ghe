@@ -30,8 +30,12 @@ class Mission extends Db_object
     public static function find_all_last_missions() {
         $sql = "SELECT *
                 FROM mission m
-                WHERE m.etat = 0";
+                WHERE m.etat = 0
+                ";
+
         $results = self::find_by_query($sql);
+
+     
 
         foreach ($results as $result) {
             $result->nom_client = $result->find_client()->nom;
@@ -49,6 +53,7 @@ class Mission extends Db_object
                 FROM utilisateur u
                 WHERE u.id = '{$this->id_client}'
                 LIMIT 1 ";
+
         $result = self::find_by_query($sql);
         return array_shift($result);
     }
@@ -58,6 +63,7 @@ class Mission extends Db_object
                 FROM technicien t
                 WHERE t.id = '{$this->id_technicien}'
                 LIMIT 1 ";
+
         $result = self::find_by_query($sql);
         return array_shift($result);
     }

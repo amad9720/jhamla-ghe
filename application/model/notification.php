@@ -38,7 +38,7 @@ class Notification extends Db_object
     public function find_client() {
         $sql = "SELECT *
                 FROM utilisateur
-                WHERE utilisateur.id = '{$this->id_client}'
+                WHERE utilisateur.id = '{$this->id_client}' AND utilisateur.id_role = 1
                 LIMIT 1 ";
         $result = self::find_by_query($sql);
         return array_shift($result);

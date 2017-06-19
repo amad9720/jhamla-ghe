@@ -50,7 +50,7 @@
  						<tr>
  							<td><?php echo $end_mission->date ?></td>
  							<td><?php echo $end_mission->motif ?></td>
- 							<?php  $id_utili = $process_mission->id_client;
+ 							<?php  $id_utili = $end_mission->id_client;
  							$utili = Utilisateur::find_by_id($id_utili); ?>
 
  							<td><?php echo $utili->nom; ?><p> </p><?php echo $utili->prenom ?></td>
@@ -65,7 +65,7 @@
 
  	<div class="modifier" style="display: none;">
  		<h1>Modification des informations</h1>
- 		<form method="post" ><!--action="<?php echo URL; ?>service_client/gestion_technicien">-->
+ 		<form method="post" >
 	 		<p><label for="nom">Nom: </label><input type="text" name="nom" id="nom" maxlenght="50" size="40" placeholder="Votre nom"/></p>
 	 		<p><label for="prenom">Prénom: </label><input type="text" name="prenom" id="prenom" maxlenght="50" size="40" placeholder="Votre prénom"/></p>
 	 		<p><label for="tel">Téléphone: </label><input type="text" name="tel" id="tel" maxlenght="50" size="40" placeholder="Votre téléphone"/></p>
@@ -78,7 +78,7 @@
 	</br>
 	 <div class="add_mission" style="display: none;">
 	 	<h1>Ajouter une nouvelle mission</h1></br>
- 		<form method="post" ><!--action="<?php echo URL; ?>service_client/gestion_technicien">-->
+ 		<form method="post" >
  			<select name="id_client">
  				<option selected disabled>Client</option>
  				<?php foreach ($clients as $client): ?>
