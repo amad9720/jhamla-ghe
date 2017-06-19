@@ -21,30 +21,14 @@ class Administrateur extends Controller
         global $session;
         if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
-        // load a models
+        // // load a models
         
-        // load views
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/administrateur/index.php';
-        require APP . 'view/_templates/footer.php';
+        // // load views
+         
+        header("Location: " . URL . "administrateur/save_client");
+
     }
     
-    public function gestion_offre()
-    {
-
-        //To make sure that only registered users can come to this page 
-        global $session;
-        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
-
-        // load a models
-        
-        // load views
-        require APP . 'view/_templates/head.php';
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/administrateur/gestion_offre.php';
-        require APP . 'view/_templates/footer.php';
-    }
 
     public function save_client()
     {
@@ -155,12 +139,12 @@ class Administrateur extends Controller
         //loadModels
 
         //Page
-        $this->loadModel('typeCapteur');
-        $capteurs = Typecapteur::get_all_capteurs();
+        $this->loadModel('TypeCapteur');
+        $capteurs = TypeCapteur::find_all();
 
         //Role
         $this->loadModel('Role');
-        $roles = role::get_all_roles();
+        $roles = Role::find_all();
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/administrateur/includes/sidebar.php';
@@ -169,7 +153,7 @@ class Administrateur extends Controller
 
         if (isset($_POST['delete_capteur'])) {
 
-            $capteur = typecapteur::find_by_id($_POST['type_capteurs']);
+            $capteur = TypeCapteur::find_by_id($_POST['type_capteurs']);
             $capteur->delete();
 
             header("Location: " . URL . "administrateur/save_capteurs");
@@ -188,8 +172,9 @@ class Administrateur extends Controller
 
         if (isset($_POST['add_role'])) {
 
-            $role = role::find_by_id($_POST['type_role']);
-            $role->delete();
+            $role = new Role();
+            $role->role = htmlentities($_POST['nom_du_role']);
+            $role->create();
 
             header("Location: " . URL . "administrateur/save_capteurs");
 
@@ -197,7 +182,7 @@ class Administrateur extends Controller
 
         if (isset($_POST['delete_role'])) {
 
-            $role = role::find_by_id($_POST['type_role']);
+            $role = Role::find_by_id($_POST['type_role']);
             $role->delete();
 
             header("Location: " . URL . "administrateur/save_capteurs");
@@ -209,8 +194,7 @@ class Administrateur extends Controller
     }
 
     public function gestion_nouveaute() {
-        require APP . 'core/modelform.php';
-        
+            
         $this->loadModel('Nouveaute');
         $nouveautes = new Nouveaute();
         $n = $nouveautes->get_last_nouveautes(10, 0);
@@ -224,11 +208,12 @@ class Administrateur extends Controller
             $nouveaute = new Nouveaute();
             $nouveaute->titre = htmlspecialchars($_POST['titre']);
             $nouveaute->description = $_POST['description'];
-            $nouveaute->slider_id = htmlspecialchars($_POST['slider_id']);
+            $nouveaute->slider_id = $_POST['slider_id'];
             $nouveaute->date = date("Y-m-d H:i:s");
             $nouveaute->set_file($_FILES['image']);
             $nouveaute->save_nouveaute_and_image();
-            //header("Location: " . URL . "/administrateur/gestion_nouveaute/?state=inserted");
+
+            header("Location: " . URL . "administrateur/gestion_nouveaute");
         }
     }
 }

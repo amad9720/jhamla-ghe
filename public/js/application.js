@@ -84,7 +84,7 @@ $(document).ready(function()
 
 
         $('#bouton_supprimer').show();
-        $('#titre_contenu')
+        $('#titre_contenu');
 
         var num = String("#"+$(this).val());
         var content = $(""+num+"").text();

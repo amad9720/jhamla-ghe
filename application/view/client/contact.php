@@ -1,16 +1,14 @@
 <div class="dashboard-content">
     <h2 class="space-large">Contact</h2>
     <div class="contact_info large card">
-        <h5 class="titre_contact">Informations de contact</h5>
-            <p>
-                Informations sur Egghome<br />
-                01 57 43 90 87<br />
-                contact.electronique@egghome.fr<br />
-                Un capteur en panne ?<br />
-                01 57 43 90 87<br />
-                contact.telecom@egghome.fr<br />
-            </p>
 
+        <h4 class="titre_contact"><?php echo $infos[0]->nom; ?></h4>
+
+        <?php foreach ($infos as $info): ?>
+            <p><?php echo $info->titre ?></p><br/>
+            <p><?php echo $info->contenu ?></p><br/>
+        <?php endforeach ?>
+            
     </div>
 
     <p>Formulaire de contact</p>

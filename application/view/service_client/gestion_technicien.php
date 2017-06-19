@@ -1,4 +1,4 @@
-<div class="container">
+<div class="dashboard-content">
 	<div class="Liste">
 		<p>Liste des techniciens</p>
 		<button name ="Supprimer" class="Supprimer_btn">Supprimer</button>

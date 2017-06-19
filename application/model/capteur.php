@@ -184,7 +184,7 @@ class Capteur extends Db_object
 
     public function capteur_switch_favoris($id_capteur) {
 
-        if ($this->favoris === 0) $this->favoris = 1;
+        if ($this->favoris == 0) $this->favoris = 1;
         else $this->favoris = 0;
 
         $this->update();
@@ -193,7 +193,7 @@ class Capteur extends Db_object
     public static function get_capteurs_favoris() {
         $sql = "SELECT * 
                 FROM capteur c 
-                WHERE c.favori = 1";
+                WHERE c.favoris = 1";
 
         $capteurs = self::find_by_query($sql);
 
