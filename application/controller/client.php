@@ -9,7 +9,7 @@ class Client extends Controller {
     public function index(){
         //To make sure that only registered users can come to this page
         global $session; 
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         //require APP . 'view/_templates/header.php';
