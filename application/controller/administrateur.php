@@ -100,10 +100,9 @@ class Administrateur extends Controller
 
          if (isset($_POST['create_content'])) {
 
-            $page = Page::find_by_id($_POST['nom_contenu']);
+            $page = Page::find_by_id(htmlspecialchars($_POST['nom_contenu']));
             $page->titre = htmlentities($_POST['title']);
-            $page->contenu = htmlentities($_POST['content']);
-            
+            $page->contenu = htmlspecialchars($_POST['content']);
             $page->update();
 
             header("Location: " . URL . "administrateur/add_pages");

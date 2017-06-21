@@ -1,9 +1,11 @@
 <div class="dashboard-content">
+    <div class="spacer-large">
+        <h1>Gestion dynamique du contenu</h1>
+    </div>
     <div class="form spacer-small">
         <form action="<?php echo URL; ?>administrateur/add_pages" method="post" enctype="multipart/form-data">
             <label for="nom">Nom</label><br>
             <input type="text" name="nom_page" placeholder="Nom du contenu"> <br>
-
 
 
             <input type="submit" value="Ajouter" name="create_name"><br><br>
@@ -13,7 +15,7 @@
 
             <select name="nom_contenu">
                 <option disabled selected>Nom</option>
-                <?php foreach ($pages as $page):?>
+                <?php foreach ($pages as $page): ?>
                     <option id="contenu_nom" value="<?php echo $page->id; ?>"><?php echo $page->nom; ?></option>
                 <?php endforeach ?>
 
@@ -30,8 +32,6 @@
 
                 <label for="title">Titre</label><br>
                 <input id="titre_contenu" type="text" name="titre" placeholder="Titre du contenu"> <br>
-
-
 
 
                 <label for="contenu">Contenu</label><br><br>
