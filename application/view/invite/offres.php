@@ -1,4 +1,7 @@
 <div class="full-image-wrapper index-img ">
+    <div class="spacer-large">
+        <h1>Offres disponible</h1>
+    </div>
 	<div class="container">
 		<h1 class="public-index-title">Nos offres</h1>
 		<p class="public-index-sub-title">Découvrez l'ensemble de nos offres.</p>

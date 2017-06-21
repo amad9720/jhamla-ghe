@@ -1,4 +1,7 @@
 <div class="dashboard-content">
+    <div class="spacer-large">
+        <h1>Enregistrement d'un client</h1>
+    </div>
 	<div class="form spacer-small">
 	<form method="post" enctype="multipart/form-data" action="<?php echo URL; ?>administrateur/save_client">
         

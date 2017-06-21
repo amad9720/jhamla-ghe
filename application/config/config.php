@@ -95,10 +95,10 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 
 //config Louis
-//	  $server = "localhost";
-//	  $username = "root";
-//	  $password = "";
-//	  $db = "mydbC";
+	  $server = "localhost";
+	  $username = "root";
+	  $password = "";
+	  $db = "mydbC";
 
 //Config Azénor
 //	  $server = "localhost";

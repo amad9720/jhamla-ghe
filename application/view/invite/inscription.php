@@ -1,4 +1,7 @@
 <div class="dashboard-content">
+    <div class="spacer-large">
+        <h1>Formulaire d'inscription</h1>
+    </div>
 	<div class="form signup spacer-small">
 	<form method="post" enctype="multipart/form-data" action="<?php echo URL; ?>invite/inscription">
         
