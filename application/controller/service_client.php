@@ -10,7 +10,11 @@
 class Service_client extends Controller
 {
     public function index()
-    {
+    {   
+        global $session;
+        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/")
+        
+
         // load models
         //Panne
         $this->loadModel('Panne');
@@ -127,7 +131,7 @@ class Service_client extends Controller
 
             $facture->set_pdf($_FILES['pdf']);
             $facture->id_offre = $client->id_offre;
-            $facture->id_client = $cleint->id;
+            $facture->id_client = $client->id;
             $facture->date = date("Y-m-d H:i:s");
 
             $facture->save_facture();
@@ -161,7 +165,7 @@ class Service_client extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
         $this->loadModel('Mission');
 
@@ -258,7 +262,7 @@ class Service_client extends Controller
         
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
 
         $this->loadModel('Mission');
@@ -326,6 +330,9 @@ class Service_client extends Controller
 
     public function offres()
     {
+        global $session;
+        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/")
+        
         // load models
         //Offre
         $this->loadModel('Offre');

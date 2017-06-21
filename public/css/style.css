@@ -409,7 +409,7 @@ button[name="off"] {
 
 
 .card {
-    background-color: #f0f0f0;
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 10px 10px;
     position: relative;
 }

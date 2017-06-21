@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8880
--- Généré le :  Mar 13 Juin 2017 à 21:30
+-- Généré le :  Mer 21 Juin 2017 à 08:54
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.0.15
 
@@ -24,33 +24,33 @@ CREATE TABLE `capteur` (
   `id` int(11) NOT NULL,
   `etat` tinyint(4) DEFAULT NULL,
   `id_piece` int(11) NOT NULL,
-  `id_type` int(11) NOT NULL
+  `id_type` int(11) NOT NULL,
+  `favoris` tinyint(1) NOT NULL DEFAULT '0',
+  `id_client` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `capteur`
 --
 
-INSERT INTO `capteur` (`id`, `etat`, `id_piece`, `id_type`) VALUES
-(1, 1, 5, 1),
-(5, 1, 7, 4),
-(8, 1, 6, 6),
-(9, 1, 6, 2),
-(10, 1, 7, 1),
-(11, 1, 5, 3),
-(13, 1, 2, 6),
-(14, 1, 7, 5),
-(15, 0, 11, 2),
-(16, 1, 11, 2),
-(19, 1, 9, 4),
-(20, 0, 9, 6),
-(23, 0, 2, 7),
-(24, 0, 5, 3),
-(25, 0, 5, 4),
-(26, 0, 9, 8),
-(27, 0, 11, 7),
-(29, 1, 2, 8),
-(30, 1, 2, 4);
+INSERT INTO `capteur` (`id`, `etat`, `id_piece`, `id_type`, `favoris`, `id_client`) VALUES
+(5, 1, 7, 4, 0, 2),
+(8, 1, 6, 6, 1, 2),
+(9, 1, 6, 2, 1, 2),
+(11, 1, 5, 3, 0, 10),
+(13, 1, 2, 6, 0, 2),
+(14, 1, 7, 5, 0, 10),
+(15, 1, 11, 2, 1, 10),
+(16, 1, 11, 2, 0, 2),
+(19, 1, 9, 4, 1, 10),
+(20, 0, 9, 6, 0, 2),
+(23, 1, 2, 7, 1, 2),
+(24, 0, 5, 3, 0, 10),
+(25, 0, 5, 4, 1, 10),
+(26, 0, 9, 8, 0, 2),
+(27, 0, 11, 7, 1, 10),
+(29, 1, 2, 8, 1, 2),
+(30, 1, 2, 4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -70,11 +70,9 @@ CREATE TABLE `donnee` (
 --
 
 INSERT INTO `donnee` (`id`, `date`, `valeur`, `id_capteur`) VALUES
-(1, '2017-05-15 10:00:00', 15, 1),
 (5, '2017-05-15 10:00:00', 80, 5),
 (8, '2017-05-15 10:00:00', 9, 9),
 (13, '2017-05-15 10:00:00', 77, 8),
-(14, '2017-05-18 15:15:58', 10, 10),
 (15, '2017-05-18 15:17:29', 12, 11),
 (17, '2017-05-18 23:27:02', 5, 13),
 (18, '2017-05-18 23:28:11', 0, 14),
@@ -122,7 +120,10 @@ CREATE TABLE `facture` (
 --
 
 INSERT INTO `facture` (`id`, `date`, `pdf`, `id_client`, `id_offre`) VALUES
-(1, '2017-05-01 00:00:00', NULL, 2, 3);
+(1, '2017-05-01 00:00:00', NULL, 2, 3),
+(2, '2017-06-19 11:32:56', '06it.pdf', 2, 3),
+(3, '2017-06-19 11:34:29', '5.1.2.8 Lab - Viewing Network Device MAC Addr', 10, 3),
+(4, '2017-06-19 11:43:57', 'ABR.pdf', 10, 3);
 
 -- --------------------------------------------------------
 
@@ -146,12 +147,13 @@ CREATE TABLE `mission` (
 INSERT INTO `mission` (`id`, `date`, `etat`, `motif`, `id_technicien`, `id_client`) VALUES
 (1, '2017-05-04 10:00:00', 1, 'Panne capteur température', 1, 2),
 (2, '2017-05-12 16:00:00', 0, 'Panne passerelle EggHome', 1, 2),
-(8, '2017-05-09 00:00:00', 0, 'Panne camera 2', 1, 3),
-(9, '2017-05-18 00:00:00', 0, 'Panne capteur luminosite', 1, 3),
+(8, '2017-05-09 00:00:00', 0, 'Panne camera 2', 1, 1),
+(9, '2017-05-18 00:00:00', 0, 'Panne capteur luminosite', 1, 1),
 (12, '2017-06-13 00:00:00', 1, 'Panne eau', 12, 2),
-(13, '2017-06-14 00:00:00', 0, 'Probleme Capteur', 12, 3),
-(14, '2017-06-21 00:00:00', 1, 'Panne eau', 13, 3),
-(15, '2017-06-14 00:00:00', 1, 'Panne camera 2', 13, 2);
+(13, '2017-06-14 00:00:00', 0, 'Probleme Capteur', 12, 1),
+(14, '2017-06-21 00:00:00', 1, 'Panne eau', 13, 1),
+(15, '2017-06-14 00:00:00', 1, 'Panne camera 2', 13, 2),
+(16, '2017-06-21 00:00:00', 1, 'panne', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -171,7 +173,7 @@ CREATE TABLE `notification` (
 --
 
 INSERT INTO `notification` (`id`, `id_client`, `contenu`, `titre`) VALUES
-(1, 2, 'Notre technicien a réparé votre capteur', 'Capteur fini');
+(1, 10, 'Notre technicien a réparé votre capteur', 'Capteur fini');
 
 -- --------------------------------------------------------
 
@@ -181,10 +183,11 @@ INSERT INTO `notification` (`id`, `id_client`, `contenu`, `titre`) VALUES
 
 CREATE TABLE `nouveaute` (
   `id` int(11) NOT NULL,
-  `image` varchar(45) DEFAULT NULL,
+  `image` tinytext,
   `titre` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `date` datetime DEFAULT NULL
+  `description` text,
+  `date` datetime DEFAULT NULL,
+  `slider_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -229,10 +232,10 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`id`, `nom`, `titre`, `contenu`) VALUES
-(1, '', 'Egghome titre', '<p>Egghome</p>'),
-(2, '', 'Egghome subtitle', '<p>EggHome votre maison devient votre nid dou'),
-(3, '', 'Egghome titre', '<p>le titre ici</p>'),
-(4, '', 'numero sc', '<p>098765432</p>');
+(5, 'Informations de contact', 'Informations sur Egghome\r\n', '01 57 43 90 87'),
+(6, 'Informations de contact', 'Mail', 'contact.electronique@egghome.fr'),
+(7, 'Informations de contact', 'Un capteur en panne ?', '01 57 43 90 87'),
+(8, 'Informations de contact', 'Mail ', 'contact.telecom@egghome.fr');
 
 -- --------------------------------------------------------
 
@@ -271,10 +274,10 @@ CREATE TABLE `piece` (
 --
 
 INSERT INTO `piece` (`id`, `nom`, `id_client`) VALUES
-(2, 'Chambre Johana', 2),
-(5, 'Salle de bain', 2),
+(2, 'Chambre Johana', 10),
+(5, 'Salle de bain', 10),
 (9, 'Chambre de Azenor', 2),
-(11, 'Chambre de Amadou', 2);
+(11, 'Chambre de Amadou', 10);
 
 -- --------------------------------------------------------
 
@@ -294,7 +297,8 @@ CREATE TABLE `role` (
 INSERT INTO `role` (`id`, `role`) VALUES
 (1, 'Client'),
 (2, 'Service Client'),
-(3, 'Administrateur');
+(3, 'Administrateur'),
+(4, 'Moderateur');
 
 -- --------------------------------------------------------
 
@@ -336,7 +340,7 @@ CREATE TABLE `type_capteurs` (
 --
 
 INSERT INTO `type_capteurs` (`id`, `type`) VALUES
-(1, 'Capteur de température'),
+(0, 'Capteur de temperature'),
 (2, 'Détecteur de présence'),
 (3, 'Détecteur de fumée'),
 (4, 'Capteur de luminosité'),
@@ -372,10 +376,10 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `adresse`, `nom_utilisateur`, `mdp`, `photo`, `ville`, `pays`, `id_role`, `email`, `id_offre`, `statut`) VALUES
-(1, 'Prevost', 'Clarisse', '7 rue du château', 'clarisse_prevost', 'nany', NULL, 'Nice', 'France', 2, 'clarisse.prevost@gmail.com', NULL, NULL),
-(2, 'Perez', 'Pauline', '24 chemin Spagnon', 'pauline_perez', 'popol', NULL, 'Antibes', 'France', 1, 'pauline.perez@gmail.com', 3, 1),
-(10, 'Ly', 'Oumar', '2 cour pere damien Boulogne', 'oumar454', '$2y$10$iusesomecrazystrings2utH/tgQ8kzR5Aw6O30Z3ONmzBdL5l8bi', 'white-tiger-white-tiger-cat-predator.jpg', 'Bussy-Saint-Georges', 'France', 2, 'oumarly@gmail.com', 2, 0),
-(11, 'Le Quinio', 'Az&eacute;nor', '2 rues des ameriques', 'azenor', '$2y$10$iusesomecrazystrings2u8etkFELR6kTHaxngoAoZhh2tvDSU9iK', 'Mindset.pdf', 'Paris', 'France', 2, 'azenor@gmail.com', 3, 0);
+(1, 'Prevost', 'Clarisse', '7 rue du château', 'clarisse_prevost', '$2y$10$iusesomecrazystrings2utH/tgQ8kzR5Aw6O30Z3ONmzBdL5l8bi', NULL, 'Nice', 'France', 1, 'clarisse.prevost@gmail.com', NULL, NULL),
+(2, 'Perez', 'Pauline', '24 chemin Spagnon', 'pauline_perez', '$2y$10$iusesomecrazystrings2utH/tgQ8kzR5Aw6O30Z3ONmzBdL5l8bi', NULL, 'Antibes', 'France', 1, 'pauline.perez@gmail.com', 3, 1),
+(10, 'Ly', 'Oumar', '2 cour pere damien Boulogne', 'oumar454', '$2y$10$iusesomecrazystrings2utH/tgQ8kzR5Aw6O30Z3ONmzBdL5l8bi', 'white-tiger-white-tiger-cat-predator.jpg', 'Bussy-Saint-Georges', 'France', 1, 'oumarly@gmail.com', 3, 1),
+(11, 'Le Quinio', 'Az&eacute;nor', '2 rues des ameriques', 'azenor', '$2y$10$iusesomecrazystrings2utH/tgQ8kzR5Aw6O30Z3ONmzBdL5l8bi', 'Mindset.pdf', 'Paris', 'France', 2, 'azenor@gmail.com', 3, 0);
 
 --
 -- Index pour les tables exportées
@@ -387,7 +391,8 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `adresse`, `nom_utilisateur`, 
 ALTER TABLE `capteur`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_Capteur_Pièce1_idx` (`id_piece`),
-  ADD KEY `fk_Capteur_Type_capteurs1_idx` (`id_type`);
+  ADD KEY `fk_Capteur_Type_capteurs1_idx` (`id_type`),
+  ADD KEY `id_client` (`id_client`);
 
 --
 -- Index pour la table `donnee`
@@ -508,12 +513,12 @@ ALTER TABLE `donnee_energetique`
 -- AUTO_INCREMENT pour la table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `mission`
 --
 ALTER TABLE `mission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `notification`
 --
@@ -533,7 +538,7 @@ ALTER TABLE `offre`
 -- AUTO_INCREMENT pour la table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `panne`
 --
@@ -548,7 +553,7 @@ ALTER TABLE `piece`
 -- AUTO_INCREMENT pour la table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `technicien`
 --
@@ -567,6 +572,7 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
+  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `piece` (`id_client`),
   ADD CONSTRAINT `fk_Capteur_Type_capteurs1` FOREIGN KEY (`id_type`) REFERENCES `type_capteurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

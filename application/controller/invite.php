@@ -16,18 +16,12 @@ class Invite extends Controller
      */
     public function index()
     {
+        global $session;
+
         // load a models
         $this->loadModel("Nouveaute");
         $nouveautes = Nouveaute::find_all();
         $nouveaute_id = Nouveaute::find_by_id(1);
-
-        // echo $nouveaute_id->image;
-
-        // foreach ($nouveautes as $nouveaute) :
-        //     echo $nouveaute->image;
-        //     echo $nouveaute->filename;
-        //     echo $nouveaute->description;
-        // endforeach; 
 
         // load views
         require APP . 'view/_templates/header.php';
@@ -37,6 +31,8 @@ class Invite extends Controller
 
     public function offres()
     {
+        global $session;
+        
         $this->loadModel("Offre");
         $offres = Offre::get_offres();
 
@@ -47,12 +43,16 @@ class Invite extends Controller
 
     public function egghome() {
 
+        global $session;
+
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/egghome.php';
         require APP . 'view/_templates/footer.php';
     }
 
     public function contact() {
+
+        global $session;
 
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/contact.php';
@@ -127,6 +127,7 @@ class Invite extends Controller
     public function inscription()
     {
         global $database;
+        global $session;
 
         //loadModels
         //utilisateur

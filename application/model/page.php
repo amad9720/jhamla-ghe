@@ -27,7 +27,7 @@ class Page extends Db_object
             ";
         $result = self::find_by_query($sql);
 
-        return array_shift($result);
+        return $result;
     }
 
     public static function get_all_page()

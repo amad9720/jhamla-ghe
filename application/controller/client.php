@@ -16,6 +16,7 @@ class Client extends Controller {
         $this->loadModel('Nouveaute');
         $this->loadModel('Capteur');
         $this->loadModel('TypeCapteur');
+        $this->loadModel('Notification');
 
         $array_etat = array(1 => "ON", 0 => "OFF");
 
@@ -35,15 +36,16 @@ class Client extends Controller {
             $capteur_to_off = Capteur::find_by_id($_POST['off']);
             $capteur_to_off->desactiver_capteur();
 
-            header("Location: " . URL . "client/#card_{$_POST['off']}");
-            
+            header("Location: " . URL . "client/#card_{$_POST['off']}");   
         }
 
 
         $nouveautes = new Nouveaute();
         $n = $nouveautes->get_last_nouveautes(10, 0);
 
-        $capteurs = Capteur::get_capteurs_favoris();
+        $notifications = Notification::find_client_notification($session->user_id);
+
+        $capteurs = Capteur::get_capteurs_favoris($session->user_id);
 
         require APP . 'view/_templates/head.php';
         require APP . 'view/client/includes/sidebar.php';
@@ -143,6 +145,7 @@ class Client extends Controller {
             // Save new capteur
             $new_capteur = new Capteur();
             $new_capteur->add_new_capteur($_POST['piece'], $_POST['type_capteur']);
+            $new_capteur->id_client = $session->user_id;
 
             //save data for the new capteur
             $new_donnee = new Donnee();
@@ -165,13 +168,25 @@ class Client extends Controller {
         
         //Piece
         $this->loadModel('Piece');
+
+
         $pieces_client = Piece::get_room_client($session->user_id); // pour linstant on urilise le client $session->user_id pour test
+
         
         //Capteur
         $this->loadModel('Capteur');
 
         //typeCapteur
         $this->loadModel('TypeCapteur');
+
+        //Donnee
+        $this->loadModel('Donnee');
+        // $trames = Donnee::recuperer_trame();
+        // $trames_tab = Donnee::tableau_trame($trames);
+        // for($i=0, $size=count($trames_tab); $i<$size; $i++){
+        //     $trame_d = Donnee::décoder_trame($trames_tab[$i]);
+        //     $trame_d -> ajouter_trame_BDD();
+        // }
 
         $array_etat = array(1 => "ON", 0 => "OFF");
 
@@ -239,13 +254,12 @@ class Client extends Controller {
     public function contact(){
         global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        
         //load Model
         //Page
         $this->loadModel('Page');
 
         $infos = Page::get_page_par_nom("Informations de contact");
-
-        var_dump($infos);
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -259,7 +273,7 @@ class Client extends Controller {
      */
     public function suivi_energetique() {
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         require APP . 'view/_templates/head.php';

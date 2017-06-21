@@ -78,6 +78,7 @@
 
 <div style="display: none;" class="Factures">
 	<h3>Mes Factures</h3>
+
 	<table class="factures">
 		<thead>
 			<tr class="first">
@@ -89,7 +90,7 @@
 			<?php foreach ($factures as $facture): ?>
 					<tr>
 						<td><?php echo $facture->date ?></td>
-						<td><a href="<?php echo $facture->pdf?>" target=_blank><?php echo $facture->pdf?></a></td>
+						<td><a href="/egghome/<?php echo "public/img/pdf/" . $facture->pdf?>" download><?php echo $facture->pdf?></a></td>
 					</tr>
 			<?php endforeach ?>
 		</tbody>
