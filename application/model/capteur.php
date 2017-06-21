@@ -7,6 +7,7 @@ class Capteur extends Db_object
     public $id;
     public $etat;
     public $id_piece;
+    public $id_client;
     public $id_type;
     public $favoris;
 
@@ -17,7 +18,7 @@ class Capteur extends Db_object
     public $piece;
 
     protected static $db_table = "capteur"; 
-    protected static $db_table_fields = array("etat", "id_piece", "id_type", "favoris");
+    protected static $db_table_fields = array("etat", "id_piece","id_client", "id_type", "favoris");
     /**
      * @param object $db A PDO database connection
      */
@@ -190,10 +191,10 @@ class Capteur extends Db_object
         $this->update();
     }
 
-    public static function get_capteurs_favoris() {
+    public static function get_capteurs_favoris($id_client) {
         $sql = "SELECT * 
                 FROM capteur c 
-                WHERE c.favoris = 1";
+                WHERE c.favoris = 1 AND c.id_client = '{$id_client}' ";
 
         $capteurs = self::find_by_query($sql);
 

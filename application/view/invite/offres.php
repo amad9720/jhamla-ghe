@@ -7,7 +7,7 @@
 		<div class="spacer-large">	</div>
         <div id="container-offre">
 		<?php foreach ($offres as $offre) : ?>
-            <form method="post" action="traitement.php" class="form-offre">
+            <form method="post" action="<?php echo URL; ?>/invite/inscription" class="form-offre">
 			<div class="offre">
 		
                 <h3><?php echo $offre->titre ?></h3>

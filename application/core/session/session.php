@@ -62,7 +62,7 @@ class Session {
 		
 		if ($user) {
 			$this->user_id = $_SESSION['user_id'] = $user->id;
-			$this->username = $_SESSION['username'] = $user->username;
+			$this->username = $_SESSION['username'] = $user->prenom;
 			$this->role = $_SESSION['role'] = $user->id_role;
 			$this->signed_in = true;
 		} 

@@ -56,7 +56,15 @@ class Notification extends Db_object
         else return false;
     }
 
-    public function receive_notification() {
+    public static function find_client_notification($id_client) {
+        $sql = "SELECT *
+                FROM notification n
+                WHERE n.id_client = {$id_client}
+            ";
+
+        $result = self::find_by_query($sql);
+        return $result;
+
 
     }
 }

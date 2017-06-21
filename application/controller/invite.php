@@ -16,21 +16,14 @@ class Invite extends Controller
      */
     public function index()
     {
+        global $session;
+
         // load a models
         $this->loadModel("Nouveaute");
         $nouveautes = Nouveaute::find_all();
         $nouveaute_id = Nouveaute::find_by_id(1);
 
-        // echo $nouveaute_id->image;
-
-        // foreach ($nouveautes as $nouveaute) :
-        //     echo $nouveaute->image;
-        //     echo $nouveaute->filename;
-        //     echo $nouveaute->description;
-        // endforeach; 
-
         // load views
-        require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/index.php';
         require APP . 'view/_templates/footer.php';
@@ -39,10 +32,11 @@ class Invite extends Controller
 
     public function offres()
     {
+        global $session;
+        
         $this->loadModel("Offre");
         $offres = Offre::get_offres();
 
-        require APP . 'view/_templates/head.php';
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/offres.php';
         require APP . 'view/_templates/footer.php';
@@ -51,18 +45,31 @@ class Invite extends Controller
     public function egghome()
     {
 
-        require APP . 'view/_templates/head.php';
+        global $session;
+
         require APP . 'view/_templates/header.php';
         require APP . 'view/invite/egghome.php';
         require APP . 'view/_templates/footer.php';
     }
 
-    public function connexion()
-    {
+	public function contact() {
+
+        global $session;
+
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invite/contact.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
+
+    public function connexion() {
+        global $database;
+        global $session;
 
         //load models
         //Utilisateur
         $this->loadModel('Utilisateur');
+
         require APP . 'view/_templates/head.php';
         require APP . 'view/invite/connexion.php';
         require APP . 'view/_templates/footer.php';
@@ -72,63 +79,78 @@ class Invite extends Controller
         if ($session->is_signed_in()) header("Location: " . URL . "invite/");
 
         // case 2 : the user is not logged in, he can access the page to identify via the form
-        if (isset($_POST['submit'])) {
-
+        if (isset($_POST['submit']) && ($_POST['user_password'] != "") && ($_POST['user_email'] != "")) {
+            
             //trim — Strip whitespace (or other characters) from the beginning and end of a string (see Dash)
-            $username = trim($_POST['username']);
-            $password = trim($_POST['password']);
-
-            $hashFormat = "$2y$10$"; //this is the blowfish type of salt format
-            $salt = "iusesomecrazystrings22"; // should be 22 characters long
-            $hashF_and_salt = $hashFormat . $salt;
-            $randSalt = crypt($password, $hashF_and_salt);
+            $email = trim($_POST['user_email']); 
+            $password = $database->crypter($_POST['user_password']);
 
             //This function will check if the user exist in the db... 
             //The result of the checks will be retrned in the $user_found variable (matched or not)
-            $user_found = Utilisateur::verify_user($username, $randSalt);
-
+            $user_found = Utilisateur::verify_user($email, $password);
+            
             if ($user_found) {
 
                 $session->login($user_found);
 
                 switch ($session->role) {
-                    case 1:
+                    case CLIENT:
                         header("Location: " . URL . "client/");
                         break;
-                    case 2:
+                    case SERVICE_CLIENT:
                         header("Location: " . URL . "service_client/");
                         break;
-                    case 3:
+                    case ADMIN:
                         header("Location: " . URL . "administrateur/");
                         break;
                     default:
                         header("Location: " . URL . "invite/");
                         break;
                 }
-
-            } else
-                $info_message = "Unable to login... Check your credentials";
-
-        } else {
-            $info_message = "Please, Login";
-            $username = "";
+                
+            } else 
+                echo $session->message = "Unable to login... Check your credentials";
+        }else {
+            echo $session->message = "Please, Login";
+            $email = "";
             $password = "";
+        }
+    }
+
+    public function deconnexion() {
+        global $session;
+
+        if (isset($_GET['deconnect'])) {
+            $session->logout();
+            $session->message = "Vous etes deconnecté" ;
+            header("Location: " . URL . "invite/");
         }
     }
 
     public function inscription()
     {
+
         require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/head.php';
         require APP . 'view/invite/inscription.php';
 
-        if (isset($_POST['create_user'])) {
+        global $database;
+        global $session;
 
-            $hashFormat = "$2y$10$"; //this is the blowfish type of salt format
-            $salt = "iusesomecrazystrings22"; // should be 22 characters long
-            $hashF_and_salt = $hashFormat . $salt;
-            $randSalt = crypt(trim($_POST['user_password']), $hashF_and_salt);
+        //loadModels
+        //utilisateur
+        $this->loadModel('Utilisateur');
 
+        //Offre
+        $this->loadModel('Offre');
+        $offres = Offre::find_all();
+
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invite/inscription.php';
+        require APP . 'view/_templates/footer.php';
+
+        if(isset($_POST['create_user'])) {
+        
             $user = new Utilisateur();
 
             $user->nom = htmlentities($_POST['user_nom']);
@@ -136,11 +158,12 @@ class Invite extends Controller
             $user->set_file($_FILES['user_image']);
             $user->adresse = htmlentities($_POST['user_address']);
             $user->nom_utilisateur = htmlentities($_POST['user_username']);
-            $user->mdp = $randSalt;
+            $user->mdp = $database->crypter($_POST['user_password']);
             $user->ville = htmlentities($_POST['user_ville']);
             $user->pays = htmlentities($_POST['user_pays']);
             $user->id_offre = $_POST['user_offre'];
-            $user->id_role = $_POST['user_role'];
+            $user->id_role = CLIENT;
+            $user->statut = 0;
             $user->email = htmlentities($_POST['user_email']);
 
             $user->save_user_and_image();

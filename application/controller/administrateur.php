@@ -19,7 +19,7 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         // // load a models
         
@@ -35,7 +35,7 @@ class Administrateur extends Controller
         global $database;
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
         //utilisateur
@@ -86,7 +86,7 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
         //Page
@@ -134,7 +134,7 @@ class Administrateur extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
 
         //loadModels
 
@@ -194,7 +194,10 @@ class Administrateur extends Controller
     }
 
     public function gestion_nouveaute() {
-            
+        
+        global $session;
+        //if (!$session->is_signed_in() && $session->role != ADMIN) header("Location: " . URL . "problem/");
+
         $this->loadModel('Nouveaute');
         $nouveautes = new Nouveaute();
         $n = $nouveautes->get_last_nouveautes(10, 0);

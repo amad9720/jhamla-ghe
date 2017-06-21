@@ -122,4 +122,29 @@
 		</form>  
 		<?php endforeach ?>
 	</div>
+
+    <div class="afterspace">
+    <div class="spacer-large"></div>    
+    <h1>Notifications</h1>
+    <div class="spacer-large"></div>
+        <table class="table spacer-small">
+            <thead>
+            <tr class="first">
+                <th>Titre</th>
+                <th>Contenu</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($notifications as $notification): ?>
+            <tr>
+                <td><?php echo $notification->titre ?></td>
+                <td><?php echo $notification->contenu ?></td>
+            </tr>
+            <?php endforeach ?>
+            </tbody>
+
+        </table>
+    </div>
+
 </div>
