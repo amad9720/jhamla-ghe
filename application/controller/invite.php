@@ -120,7 +120,7 @@ class Invite extends Controller
     {
         require APP . 'view/_templates/header.php';
         require APP . 'view/_templates/head.php';
-        require APP . 'view/client/inscription.php';
+        require APP . 'view/invite/inscription.php';
 
         if (isset($_POST['create_user'])) {
 

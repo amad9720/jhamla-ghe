@@ -75,12 +75,19 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  */
 
 
-
-////config Hugo
+////config Johanna
   	  $server = "localhost";
 	  $username = "root";
-	  $password = "";
-	  $db = "mydb";
+	  $password = "root";
+	  $db = "mydbC";
+
+
+//
+//////config Hugo
+//  	  $server = "localhost";
+//	  $username = "root";
+//	  $password = "";
+//	  $db = "mydb";
 
 
 //config Louis
