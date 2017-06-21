@@ -181,9 +181,10 @@ class Client extends Controller {
         $this->loadModel('Donnee');
         $trames = Donnee::recuperer_trame();
         $trames_tab = Donnee::tableau_trame($trames);
+        $date = Donnee::get_date();
         for($i=0, $size=count($trames_tab); $i<$size; $i++){
             $trame_d = Donnee::décoder_trame($trames_tab[$i]);
-            $trame_d -> ajouter_trame_BDD();
+            $trame_d -> ajouter_trame_BDD($trame_d, $date);
         }
 
         $array_etat = array(1 => "ON", 0 => "OFF");

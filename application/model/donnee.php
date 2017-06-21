@@ -66,18 +66,61 @@ class Donnee extends Db_object
     public static function décoder_trame($trame)
     {
         // décodage avec sscanf
-        return(list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s"));
+        list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
+        $a = $o.$n;
+        $d = $year.'-'.$month.'-'.$day.' '.$hour.'-'.$min.'-'.$sec;
 
-    }
-
-    public function ajouter_trame_BDD($trame) {
-        $this->valeur = $trame->v;
-        $this->date = date('Y-m-d H:i:s');
-        $this->id_capteur = $trame->n;
-
-        return $this->create();
+        $array = array("address" => $a, "value" => $v, 'date' =>$d);
+        return $array;
     }
 
 
+    public function ajouter_trame_BDD($trame, $date) {
+        if (array_shift($trame)->date > $date) {
+            //foreach($trames as $trame) {
+                $this->valeur = $trame->value;
+                $this->date = $trame->date;
+                $this->id_capteur = $trame->adress;
+                return $this->create();
+            //}
+        }
+    }
+
+    public static function get_date()
+    {
+        $sql = "SELECT *
+                FROM donnee d
+                ORDER BY d.date DESC
+                LIMIT 1";
+        $results = self::find_by_query($sql);
+        return $results->date;
+    }
+
+    public static function getIdAdresse() {
+        $sql = "SELECT *
+                FROM capteur c";
+        $results = self::find_by_query($sql);
+        $ids = array();
+        $n = 0;
+        foreach ($results as $result) {
+            $id = array();
+            $id[0]=$result->id;
+            $id[1]=$result->adress;
+            $ids[$n]=$id;
+            $n = $n + 1;
+        }
+        return $ids;
+    }
+
+    public static function setIdTrame($trames, $ids) {
+        foreach ($trames as $trame) {
+            foreach ($ids as $id) {
+                if ($trame->adress == $id[1]) {
+                    $trame->adress = $id[0];
+                }
+            }
+        }
+        return $trames;
+    }
 
 }
