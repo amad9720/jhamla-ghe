@@ -1,5 +1,5 @@
 <div class="dashboard-content">
-	<div class="form spacer-small">
+	<div class="form signup spacer-small">
 	<form method="post" enctype="multipart/form-data" action="<?php echo URL; ?>invite/inscription">
         
         <div class="form-batch">

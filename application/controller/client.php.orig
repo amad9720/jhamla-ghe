@@ -181,12 +181,21 @@ class Client extends Controller {
 
         //Donnee
         $this->loadModel('Donnee');
+<<<<<<< HEAD
         // $trames = Donnee::recuperer_trame();
         // $trames_tab = Donnee::tableau_trame($trames);
         // for($i=0, $size=count($trames_tab); $i<$size; $i++){
         //     $trame_d = Donnee::décoder_trame($trames_tab[$i]);
         //     $trame_d -> ajouter_trame_BDD();
         // }
+=======
+        $trames = Donnee::recuperer_trame();
+        $trames_tab = Donnee::tableau_trame($trames);
+        for($i=0, $size=count($trames_tab); $i<$size; $i++){
+            $trame_d = Donnee::décoder_trame($trames_tab[$i]);
+            $trame_d -> ajouter_trame_BDD();
+        }
+>>>>>>> 257ca0e9de4a37464cd9cbe8582adb258219d8c1
 
         $array_etat = array(1 => "ON", 0 => "OFF");
 
