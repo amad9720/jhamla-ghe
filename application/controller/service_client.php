@@ -42,12 +42,15 @@ class Service_client extends Controller
     {
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
         // load models
         //Utilisateur
         $this->loadModel('Utilisateur');
         $clients = Utilisateur::find_all_customers();
+
+        //Facture
+        $this->loadModel('Facture');
 
         //Offre
         $this->loadModel('Offre');
@@ -117,6 +120,20 @@ class Service_client extends Controller
 
         }
 
+        if (isset($_POST['sendPdf'])) {
+
+            $client = Utilisateur::find_by_id($_POST['client']);
+            $facture = new Facture();
+
+            $facture->set_pdf($_FILES['pdf']);
+            $facture->id_offre = $client->id_offre;
+            $facture->id_client = $cleint->id;
+            $facture->date = date("Y-m-d H:i:s");
+
+            $facture->save_facture();
+
+        }
+
         if (isset($_POST['acceptClient'])) {
             if (isset($_POST['checkBoxArray'])) {
                 $array_id = $_POST['checkBoxArray'];
@@ -133,6 +150,8 @@ class Service_client extends Controller
             header("Location: " . URL . "service_client/gestion_client");
 
         }
+
+
 
 
     }
@@ -153,7 +172,7 @@ class Service_client extends Controller
         $techniciens = Technicien::show_techniciens();
 
         require APP . 'view/_templates/head.php';
-        //require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/service_client/includes/sidebar.php';
         require APP . 'view/service_client/gestion_technicien.php';
         require APP . 'view/_templates/footer.php';
         
@@ -259,7 +278,7 @@ class Service_client extends Controller
 
 
         require APP . 'view/_templates/head.php';
-        require APP . 'view/client/includes/sidebar.php';
+        require APP . 'view/service_client/includes/sidebar.php';
         require APP . 'view/service_client/technicien.php';
         require APP . 'view/_templates/footer.php';
 

@@ -61,7 +61,11 @@ class Utilisateur extends Db_object
         $clients = self::find_by_query($sql);
 
         foreach ($clients as $client) {
-            $client->offre= $client->find_offre()->titre;
+
+            if ($client->id_offre) 
+                $client->offre= $client->find_offre()->titre;
+            
+
         }
 
         return $clients;

@@ -38,10 +38,13 @@ class Mission extends Db_object
      
 
         foreach ($results as $result) {
-            $result->nom_client = $result->find_client()->nom;
-            $result->prenom_client = $result->find_client()->prenom;
-            $result->nom_technicien = $result->find_technicien()->nom;
-            $result->prenom_technicien = $result->find_technicien()->prenom;
+            
+            if ($result->find_client()) {
+                $result->nom_client = $result->find_client()->nom;
+                $result->prenom_client = $result->find_client()->prenom;
+                $result->nom_technicien = $result->find_technicien()->nom;
+                $result->prenom_technicien = $result->find_technicien()->prenom;
+            }
         }
 
         return $results;

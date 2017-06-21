@@ -5,10 +5,13 @@ class Nouveaute extends Db_object
     public $id;
     public $image;
     public $titre;
-    public $filename;
+    public $date;
+    public $slider_id;
     public $description;
+
     public $upload_directory = "public/img/nouveautes";
     public $tmp_path;
+
     protected static $db_table = "nouveaute"; 
     protected static $db_table_fields = array("image", "titre", "description", "date", "slider_id");
 
@@ -84,7 +87,12 @@ class Nouveaute extends Db_object
     }
 
     public function get_last_nouveautes($limit, $slider_id) {
-        $sql = "SELECT * FROM nouveaute WHERE nouveaute.slider_id = ".$slider_id."  LIMIT ".$limit;
+        $sql = "SELECT * 
+                FROM nouveaute nouv 
+                WHERE slider_id = {$slider_id}
+                LIMIT {$limit} 
+            ";
+
         $result = self::find_by_query($sql);
         return $result;
     }

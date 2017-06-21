@@ -18,9 +18,9 @@
         <input type="submit" id="ajouter_capteur" value="Ajouter" name="add_capteur"><br><br>
 
 
-        <select name="role">
+        <select name="type_role">
             <option disabled selected>roles</option>
-            <?php foreach ($roles as $role):?>
+            <?php foreach ($roles as $role): ?>
                 <option id="type_de_role" value="<?php echo $role->id; ?>"><?php echo $role->role; ?></option>
             <?php endforeach ?>
 

@@ -9,7 +9,7 @@ class Client extends Controller {
     public function index(){
         //To make sure that only registered users can come to this page
         global $session; 
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         //require APP . 'view/_templates/header.php';
@@ -59,7 +59,7 @@ class Client extends Controller {
 
         //To make sure that only registered users can come to this page 
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
 
         // load models
@@ -110,7 +110,6 @@ class Client extends Controller {
                 foreach($array_id as $value_id ){
                 
                     $capteur_to_favoris = Capteur::find_by_id($value_id);
-
                     $capteur_to_favoris->capteur_switch_favoris(); 
 
                 }
@@ -160,7 +159,7 @@ class Client extends Controller {
      */
     public function ma_maison(){
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // loadModels
         
@@ -252,7 +251,14 @@ class Client extends Controller {
 
     public function contact(){
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //load Model
+        //Page
+        $this->loadModel('Page');
+
+        $infos = Page::get_page_par_nom("Informations de contact");
+
+        var_dump($infos);
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -280,7 +286,7 @@ class Client extends Controller {
      */
     public function profil() {
         global $session;
-        if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
         
         // load models
         //Mission

@@ -19,12 +19,12 @@ class Page extends Db_object
 
     }
 
-    public static function get_page_par_nom($titre)
+    public static function get_page_par_nom($nom)
     {
         $sql = "SELECT *
               FROM page p
-              WHERE p.nom='{$nom}'
-              LIMIT 1 ";
+              WHERE p.nom = '{$nom}'
+            ";
         $result = self::find_by_query($sql);
 
         return array_shift($result);
@@ -32,7 +32,6 @@ class Page extends Db_object
 
     public static function get_all_page()
     {
-
         $result = self::find_all();
         return $result;
     }

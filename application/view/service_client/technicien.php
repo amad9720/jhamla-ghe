@@ -1,4 +1,4 @@
-<div class="container">	
+<div class="dashboard-content">
 	<button name ="Modifier" class="Modifier_btn">Modifier Profil</button>
 	<button name ="Add_mission" class="Add_mission_btn">Ajouter Mission</button></br></br>
 
