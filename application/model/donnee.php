@@ -49,7 +49,7 @@ class Donnee extends Db_object
         curl_setopt(
             $ch,
             CURLOPT_URL,
-            "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=9999");
+            "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=008E");
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         $data = curl_exec($ch);
@@ -76,7 +76,7 @@ class Donnee extends Db_object
 
 
     public function ajouter_trame_BDD($trame, $date) {
-        if (array_shift($trame)->date > $date) {
+        if ($trame->date > $date) {
             //foreach($trames as $trame) {
                 $this->valeur = $trame->value;
                 $this->date = $trame->date;
@@ -93,7 +93,7 @@ class Donnee extends Db_object
                 ORDER BY d.date DESC
                 LIMIT 1";
         $results = self::find_by_query($sql);
-        return $results->date;
+        return array_shift($results)->date;
     }
 
     public static function getIdAdresse() {
