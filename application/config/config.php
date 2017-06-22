@@ -94,11 +94,6 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 //  $db = "mydb";
 
 
-//config Louis
-	  $server = "localhost";
-	  $username = "root";
-	  $password = "";
-	  $db = "mydbC";
 
 //Config Azénor
 //	  $server = "localhost";

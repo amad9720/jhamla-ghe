@@ -18,7 +18,7 @@
 
 <div style="display: none;" class="form_profil">
 	<p>Modification du profil</p>
-	<form method="post" action="<?php echo URL; ?>client/profil">
+	<form method="post" action="<?php echo URL; ?>client/profil" class="form profil_form">
 		<p> <label for="nom"> Nom: </label> <input type="text" name="nom" id="nom" maxlength="50" size="40" placeholder="Votre Nom" autofocus /> </p>
 		<p> <label for="prenom"> Prénom: </label> <input type="text" name="prenom" id="prenom" maxlength="50" size="40" placeholder="Votre Prénom"  /> </p>
 		<p> <label for="email"> Email: </label> <input type="text" name="email" id="email" maxlength="150" size="40" placeholder="Votre email"/> </p>
@@ -35,7 +35,8 @@
 <div style="display: none;"  class="Suivi">
 	</br><h3>Suivi des missions</h3>
 	</br><p>Missions en cours</p>
-	<table class="process_missions">
+	<div class="spacer-small">	</div>
+	<table class="process_missions table">
 		<thead>
 			<tr class="first">
 				<th>Date</th>
@@ -55,7 +56,8 @@
 		</tbody>
 	</table>
 	</br></br><p>Missions terminées</p>
-	<table class="end_missions">
+	<div class="spacer-small">	</div>
+	<table class="end_missions table">
 		<thead>
 			<tr class="first">
 				<th>Date</th>
@@ -78,8 +80,8 @@
 
 <div style="display: none;" class="Factures">
 	<h3>Mes Factures</h3>
-
-	<table class="factures">
+	<div class="spacer-small"></div>
+	<table class="factures table">
 		<thead>
 			<tr class="first">
 				<th>Date</th>

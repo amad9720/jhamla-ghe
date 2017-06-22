@@ -43,7 +43,7 @@
                         break;
                 }
             ?>
-            <p class="brand"><?php $_SESSION['user_role'] ?></p>
+            <p><?php $_SESSION['user_role'] ?></p>
         <?php endif ?>
 </footer>
 

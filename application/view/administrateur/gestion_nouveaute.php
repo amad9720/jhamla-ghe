@@ -8,6 +8,7 @@
     <div class="spacer-small"></div>
     <form enctype="multipart/form-data" class="form" action="" method="post">
         <input type="text" name="titre" placeholder="Titre nouveaute"><br>
+        <div class="spacer-large">  </div>
         <textarea name="description" placeholder="description"></textarea><br>
         <select name="slider_id">
             <option value="0">Slider Client</option>
@@ -18,7 +19,7 @@
     </form>
     <div class="spacer-large"></div>
     <table class="table">
-        <tr>
+        <tr class="first">
             <th>Titre</th>
             <th>Image</th>
             <th>Date</th>
