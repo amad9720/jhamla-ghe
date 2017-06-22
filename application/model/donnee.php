@@ -79,7 +79,7 @@ class Donnee extends Db_object
     public static function ajouter_trame_BDD($trames, $date) {
         foreach($trames as $trame) {
 
-             if ($trame["date"] > $date) {
+           //  if ($trame["date"] > $date) {
                 $tramebdd = new Donnee();
                 $tramebdd->valeur = $trame["value"];
                 $tramebdd->date = $trame["date"];
@@ -87,7 +87,7 @@ class Donnee extends Db_object
                 $tramebdd->id_capteur = $trame["id_capteur"];
 
                 $tramebdd->create();
-            }
+            //}
         }
 
     }
