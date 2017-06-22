@@ -18,7 +18,7 @@
 
 <div style="display: none;" class="form_profil">
 	<p>Modification du profil</p>
-	<form method="post" action="<?php echo URL; ?>client/profil">
+	<form method="post" action="<?php echo URL; ?>client/profil" class="form profil_form">
 		<p> <label for="nom"> Nom: </label> <input type="text" name="nom" id="nom" maxlength="50" size="40" placeholder="Votre Nom" autofocus /> </p>
 		<p> <label for="prenom"> Prénom: </label> <input type="text" name="prenom" id="prenom" maxlength="50" size="40" placeholder="Votre Prénom"  /> </p>
 		<p> <label for="email"> Email: </label> <input type="text" name="email" id="email" maxlength="150" size="40" placeholder="Votre email"/> </p>

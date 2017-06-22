@@ -16,7 +16,7 @@
     <div class="contact_info large card">
 
         <h4 class="titre_contact">Formulaire de contact</h4>
-        <form method="post" >
+        <form method="post" class="form">
 
             <fieldset>
                 <legend> Coordonnées</legend>
