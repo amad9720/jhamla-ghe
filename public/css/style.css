@@ -675,3 +675,7 @@ fieldset {
     width: 40%;
     height: 40px;
 }
+
+.form-offre input[type="submit"]:hover {
+    background-color: #349e8a;
+}

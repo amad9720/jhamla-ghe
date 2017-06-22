@@ -15,7 +15,7 @@
  			<p>Téléphone : <?php echo $technicien_selected->telephone ?></p><br/></br>
  			<h2>Missions en cours</h2></br>
  			<form method="POST" >
-	 			<table class="process_missions">
+	 			<table class="process_missions table">
 	 				<thead>
 	 					<tr class="first">
 	 						<td><input type="checkbox" id="selectAllBoxes"></td>
@@ -38,11 +38,12 @@
 	 					<?php endforeach ?>
 	 				</tbody>
 	 			</table>
+	 			<div class="spacer-small">	</div>
 	 			<input type="submit" name="end_mission" value="Fin Mission">
  			</form>
  			</br></br>
  			<h2>Historique des missions</h2></br>
- 			<table class="end_missions">
+ 			<table class="end_missions table">
  				<thead>
  					<tr class="first">
  						<th>Date</th> 						

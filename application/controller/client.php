@@ -1,14 +1,16 @@
 <?php
 
-class Client extends Controller {
+class Client extends Controller
+{
 
     /**
      * PAGE: index (page d'acceuil)
      * This method handles what happens when you move to http://egghome/client/index (which is the default page)
      */
-    public function index(){
+    public function index()
+    {
         //To make sure that only registered users can come to this page
-        global $session; 
+        global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
@@ -23,10 +25,10 @@ class Client extends Controller {
         //code to manage the actions
         if (isset($_POST['on'])) {
 
-        
+
             $capteur_to_on = Capteur::find_by_id($_POST['on']);
             $capteur_to_on->activer_capteur();
-            
+
             header("Location: " . URL . "client/#card_{$_POST['on']}");
 
         }
@@ -36,7 +38,7 @@ class Client extends Controller {
             $capteur_to_off = Capteur::find_by_id($_POST['off']);
             $capteur_to_off->desactiver_capteur();
 
-            header("Location: " . URL . "client/#card_{$_POST['off']}");   
+            header("Location: " . URL . "client/#card_{$_POST['off']}");
         }
 
 
@@ -52,12 +54,13 @@ class Client extends Controller {
         require APP . 'view/client/index.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     /**
      * PAGE: gestion capteurs
-     * This method handles what happens when you move to http://egghome/client/gestion_capteurs 
+     * This method handles what happens when you move to http://egghome/client/gestion_capteurs
      */
-    public function gestion_capteurs() {
+    public function gestion_capteurs()
+    {
 
         //To make sure that only registered users can come to this page 
         global $session;
@@ -87,15 +90,15 @@ class Client extends Controller {
         require APP . 'view/_templates/footer.php';
 
         //code to manage the actions
-        if(isset($_POST['deleteCapteur'])) {
+        if (isset($_POST['deleteCapteur'])) {
             if (isset($_POST['checkBoxArray'])) {
                 $array_id = $_POST['checkBoxArray'];
-            
+
                 //we are looping around the checkbox array and processing it's values
-                foreach($array_id as $value_id ){
-                
+                foreach ($array_id as $value_id) {
+
                     $capteur_to_delete = Capteur::find_by_id($value_id);
-                    $capteur_to_delete->remove_capteur(); 
+                    $capteur_to_delete->remove_capteur();
 
                 }
             }
@@ -104,15 +107,15 @@ class Client extends Controller {
 
         }
 
-        if(isset($_POST['favorisCapteur'])) {
+        if (isset($_POST['favorisCapteur'])) {
             if (isset($_POST['checkBoxArray'])) {
                 $array_id = $_POST['checkBoxArray'];
-            
+
                 //we are looping around the checkbox array and processing it's values
-                foreach($array_id as $value_id ){
-                
+                foreach ($array_id as $value_id) {
+
                     $capteur_to_favoris = Capteur::find_by_id($value_id);
-                    $capteur_to_favoris->capteur_switch_favoris(); 
+                    $capteur_to_favoris->capteur_switch_favoris();
 
                 }
             }
@@ -125,10 +128,10 @@ class Client extends Controller {
 
             if (isset($_POST['checkBoxArray'])) {
                 $array_id = $_POST['checkBoxArray'];
-            
+
                 //we are looping around the checkbox array and processing it's values
-                foreach($array_id as $value_id ){
-                
+                foreach ($array_id as $value_id) {
+
                     $capteur_to_param = Capteur::find_by_id($value_id);
                     echo $capteur_to_param->id_piece;
                     $capteur_to_param->add_capteur_to_room($_POST['piece']);
@@ -158,21 +161,22 @@ class Client extends Controller {
 
     /**
      * PAGE: ma maison
-     * This method handles what happens when you move to http://egghome/client/ma_maison 
+     * This method handles what happens when you move to http://egghome/client/ma_maison
      */
-    public function ma_maison(){
+    public function ma_maison()
+    {
         global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
         // loadModels
-        
+
         //Piece
         $this->loadModel('Piece');
 
 
         $pieces_client = Piece::get_room_client($session->user_id); // pour linstant on urilise le client $session->user_id pour test
 
-        
+
         //Capteur
         $this->loadModel('Capteur');
 
@@ -181,12 +185,35 @@ class Client extends Controller {
 
         //Donnee
         $this->loadModel('Donnee');
-        // $trames = Donnee::recuperer_trame();
-        // $trames_tab = Donnee::tableau_trame($trames);
-        // for($i=0, $size=count($trames_tab); $i<$size; $i++){
-        //     $trame_d = Donnee::décoder_trame($trames_tab[$i]);
-        //     $trame_d -> ajouter_trame_BDD();
-        // }
+        $correspondance = Donnee::getIdAdresse();
+
+        $trames = Donnee::recuperer_trame();
+        $trames_tab = Donnee::tableau_trame($trames);
+        $date = Donnee::get_date();
+        $trames_d = array();
+        for ($i = 0, $size = count($trames_tab); $i < $size; $i++) {
+            $trame_d = Donnee::décoder_trame($trames_tab[$i]);
+            if (strstr($trame_d["date"],"2017")){
+            $trames_d[$i] = $trame_d;
+        }}
+        $trame_final=array();
+        foreach ($trames_d as $tramescore) {
+
+            foreach ($correspondance as $corres) {
+                if ($tramescore["address"] == $corres["adress"]) {
+
+                    $tramescore['id_capteur'] = $corres["id_capteur"];
+                    $trame_final[] = $tramescore;
+                    break;
+
+                }
+            }
+        }
+
+
+
+        Donnee::ajouter_trame_BDD($trame_final,$date);
+
 
         $array_etat = array(1 => "ON", 0 => "OFF");
 
@@ -199,10 +226,10 @@ class Client extends Controller {
         //code to manage the actions
         if (isset($_POST['on'])) {
 
-        
+
             $capteur_to_on = Capteur::find_by_id($_POST['on']);
             $capteur_to_on->activer_capteur();
-            
+
             header("Location: " . URL . "client/ma_maison#card_{$_POST['on']}");
 
         }
@@ -213,7 +240,7 @@ class Client extends Controller {
             $capteur_to_off->desactiver_capteur();
 
             header("Location: " . URL . "client/ma_maison#card_{$_POST['off']}");
-            
+
         }
 
         if (isset($_POST['delete_room'])) {
@@ -222,13 +249,13 @@ class Client extends Controller {
             $room_capteurs = Capteur::get_room_capteurs($room_to_delete->id);
 
             foreach ($room_capteurs as $room_capteur)
-                $room_capteur->remove_capteur_to_room();           
-            
+                $room_capteur->remove_capteur_to_room();
+
 
             $room_to_delete->remove_room();
 
             header("Location: " . URL . "client/ma_maison");
-            
+
         }
 
         if (isset($_POST['addRoom'])) {
@@ -238,23 +265,24 @@ class Client extends Controller {
             $new_room->nom = $_POST['piece'];
             $new_room->id_client = $session->user_id;
 
-            
+
             $new_room->add_room();
 
             header("Location: " . URL . "client/ma_maison");
-            
-        }        
+
+        }
     }
 
     /**
      * PAGE: contact
-     * This method handles what happens when you move to http://egghome/client/contact 
+     * This method handles what happens when you move to http://egghome/client/contact
      */
 
-    public function contact(){
+    public function contact()
+    {
         global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
-        
+
         //load Model
         //Page
         $this->loadModel('Page');
@@ -269,9 +297,10 @@ class Client extends Controller {
 
     /**
      * PAGE: suivi Energetique
-     * This method handles what happens when you move to http://egghome/client/suivi_energetique 
+     * This method handles what happens when you move to http://egghome/client/suivi_energetique
      */
-    public function suivi_energetique() {
+    public function suivi_energetique()
+    {
         global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
 
@@ -283,13 +312,13 @@ class Client extends Controller {
 
     /**
      * PAGE: profil
-     * This method handles what happens when you move to http://egghome/client/profil 
+     * This method handles what happens when you move to http://egghome/client/profil
      */
     public function profil() {
         global $database;
         global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
-        
+
         // load models
         //Mission
         $this->loadModel('Mission');
@@ -304,10 +333,10 @@ class Client extends Controller {
         $this->loadModel('Utilisateur');
         $client = Utilisateur::find_utilisateur($session->user_id);
 
-     
+
         //Factures
         $this->loadModel('Facture');
-        $factures = Facture::show_facture($session->user_id); 
+        $factures = Facture::show_facture($session->user_id);
 
         // load views
         require APP . 'view/_templates/head.php';

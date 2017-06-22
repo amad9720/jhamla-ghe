@@ -129,6 +129,7 @@ class Invite extends Controller
 
     public function inscription()
     {
+
         global $database;
         global $session;
 
@@ -163,7 +164,7 @@ class Invite extends Controller
 
             $user->save_user_and_image();
 
-            header("Location: " . URL . "invite/index");
+            //header("Location: " . URL . "invite/index");
         }
     }
 }

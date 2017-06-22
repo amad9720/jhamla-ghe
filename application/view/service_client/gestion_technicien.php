@@ -5,7 +5,8 @@
     <div class="spacer-large"></div>
 
 	<div class="Liste">
-		<p>Liste des techniciens</p>
+		<h3>Liste des techniciens</h3>
+		<div class="spacer-small">	</div>
 		<button name ="Supprimer" class="Supprimer_btn">Supprimer</button>
 		<table class="table spacer-small">
 			<form method="POST" action="<?php echo URL; ?>service_client/gestion_technicien" class="formulaire">
@@ -32,7 +33,7 @@
 		<button name="Modifier_client_btn" class="Modifier_client_btn">Ajouter Technicien</button>
 		
 		<div style="display: none;" class="form_profil">
-			<form method="post" enctype="multipart/form-data" action="<?php echo URL; ?>service_client/gestion_technicien">    
+			<form class="form" method="post" enctype="multipart/form-data" action="<?php echo URL; ?>service_client/gestion_technicien">    
 		        <div class="form-batch">
 		            <label for="post_tags">Nom</label><br>
 		            <input type="text"  name="tech_nom" required>

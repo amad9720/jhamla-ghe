@@ -1,6 +1,9 @@
 <div class="dashboard-content">
-    <form action="<?php echo URL; ?>administrateur/save_capteurs" method="post" enctype="multipart/form-data">
-
+    <div class="spacer-large">
+        <h1>Gestion dynamique des capteurs et roles</h1>
+    </div>
+    <form action="<?php echo URL; ?>administrateur/save_capteurs" method="post" enctype="multipart/form-data" class="form">
+        <div class="spacer-large">  </div>
         <select name="type_capteurs">
             <option disabled selected>Type de capteur</option>
             <?php foreach ($capteurs as $capteur): ?>

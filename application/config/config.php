@@ -80,6 +80,11 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 	  $password = "root";
 	  $db = "mydbC";
 
+////config Johanna
+//  	  $server = "localhost";
+//	  $username = "root";
+//	  $password = "root";
+//	  $db = "mydbC";
 
 ////config Hugo
   	  // $server = "localhost";
