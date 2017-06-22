@@ -6,9 +6,10 @@ class Donnee extends Db_object
     public $date;
     public $valeur;
     public $id_capteur;
+    public $adress;
 
     protected static $db_table = "donnee"; 
-    protected static $db_table_fields = array("id", "date", "valeur", "id_capteur");
+    protected static $db_table_fields = array( "date", "valeur", "id_capteur","adress");
 
 
     /**
@@ -75,15 +76,20 @@ class Donnee extends Db_object
     }
 
 
-    public function ajouter_trame_BDD($trame, $date) {
-        if ($trame->date > $date) {
-            //foreach($trames as $trame) {
-                $this->valeur = $trame->value;
-                $this->date = $trame->date;
-                $this->id_capteur = $trame->adress;
-                return $this->create();
-            //}
+    public static function ajouter_trame_BDD($trames, $date) {
+        foreach($trames as $trame) {
+
+             if ($trame["date"] > $date) {
+                $tramebdd = new Donnee();
+                $tramebdd->valeur = $trame["value"];
+                $tramebdd->date = $trame["date"];
+                $tramebdd->adress = $trame["address"];
+                $tramebdd->id_capteur = $trame["id_capteur"];
+
+                $tramebdd->create();
+            }
         }
+
     }
 
     public static function get_date()
@@ -104,8 +110,8 @@ class Donnee extends Db_object
         $n = 0;
         foreach ($results as $result) {
             $id = array();
-            $id[0]=$result->id;
-            $id[1]=$result->adress;
+            $id['id_capteur']=$result->id;
+            $id['adress']=$result->adress;
             $ids[$n]=$id;
             $n = $n + 1;
         }
