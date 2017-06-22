@@ -1,5 +1,9 @@
 <div class="dashboard-content">
-    <h2 class="space-large">Contact</h2>
+    
+    <div class="spacer-large"></div>    
+    <h1>Contact</h1>
+    <div class="spacer-large"></div>
+
     <div class="contact_info large card">
 
         <h4 class="titre_contact"><?php echo $infos[0]->nom; ?></h4>

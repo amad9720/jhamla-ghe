@@ -29,7 +29,7 @@ header nav {
     float: right;
 }
 
-header nav a {
+header nav a, button a {
     margin: 0 5px 0 5px;
     text-decoration: none;
 }

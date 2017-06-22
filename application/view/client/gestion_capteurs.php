@@ -1,5 +1,9 @@
 <div class="dashboard-content">
-	<h3>Gestion des capteurs</h3>
+	
+	<div class="spacer-large"></div>    
+    <h1>Gestion Capteurs</h1>
+    <div class="spacer-large"></div>
+
 	<p class="spacer-small">Cette page vous permet d'ajouter / retirer / editer les capteurs connectés présent dans votre domicile</p>
 	
 	<!-- Div for Adding a new capteurs -->

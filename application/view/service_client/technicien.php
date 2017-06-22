@@ -1,4 +1,9 @@
 <div class="dashboard-content">
+
+	<div class="spacer-large"></div> 	
+	<h1>Technicien</h1>
+	<div class="spacer-large"></div>
+
 	<button name ="Modifier" class="Modifier_btn">Modifier Profil</button>
 	<button name ="Add_mission" class="Add_mission_btn">Ajouter Mission</button></br></br>
 

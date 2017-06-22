@@ -1,17 +1,8 @@
 <div class="dashboard-content">
 
-<!--    <div class="detail" >-->
-<!---->
-<!--        <h4 class="spacer-large">Détail de la panne</h4>-->
-<!---->
-<!--        <div class="textHolder" > </div>-->
-<!--        <div id="arrayCheckbox" style="display: none" ></div>-->
-<!--        <p> --><?php //foreach ($pannes_select as $panne_select) : ?>
-<!--                --><?php //echo $panne_select->contenu ?><!-- </br>-->
-<!--            --><?php //endforeach ?>
-<!--        </p>-->
-<!---->
-<!--    </div>-->
+    <div class="spacer-large"></div>    
+    <h1>Acceuil Service Client</h1>
+    <div class="spacer-large"></div>
 
     <h4 class="spacer-large">Dernières pannes signalées</h4>
     <div class="spacer-small"></div>

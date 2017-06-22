@@ -25,26 +25,6 @@
 
 <footer>
         <p class="brand">EggHome 2017</p>
-        <?php $_SESSION['user_role'] = ""; ?>
-        <?php if ($session->is_signed_in()): ?>
-            <p class="brand"><?php echo $_SESSION['username']; ?></p>
-            <?php  switch ($session->role) { 
-                   case CLIENT:
-                        $_SESSION['user_role'] = "Client";
-                        break;
-                    case SERVICE_CLIENT:
-                        $_SESSION['user_role'] = "Service Client";
-                        break;
-                    case ADMIN:
-                        $_SESSION['user_role'] = "Administrateur";
-                        break;
-                    default:
-                        
-                        break;
-                }
-            ?>
-            <p class="brand"><?php $_SESSION['user_role'] ?></p>
-        <?php endif ?>
 </footer>
 
 </body>

@@ -286,6 +286,7 @@ class Client extends Controller {
      * This method handles what happens when you move to http://egghome/client/profil 
      */
     public function profil() {
+        global $database;
         global $session;
         //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
         
@@ -317,14 +318,14 @@ class Client extends Controller {
         //code to manage the actions
         if (isset($_POST['modif_profil'])) {
             $client = Utilisateur::find_utilisateur($session->user_id);
-            $client->nom = $_POST['nom'];
-            $client->prenom = $_POST['prenom'];
-            $client->email = $_POST['email'];
-            $client->adresse = $_POST['adresse'];
-            $client->pays = $_POST['pays'];
-            $client->ville = $_POST['ville'];
-            $client->nom_utilisateur = $_POST['nom_utilisateur'];
-            $client->mdp = $_POST['mdp'];
+            $client->nom = htmlentities($_POST['nom']);
+            $client->prenom = htmlentities($_POST['prenom']);
+            $client->email = htmlentities($_POST['email']);
+            $client->adresse = htmlentities($_POST['adresse']);
+            $client->pays = htmlentities($_POST['pays']);
+            $client->ville = htmlentities($_POST['ville']);
+            $client->nom_utilisateur = htmlentities($_POST['nom_utilisateur']);
+            $client->mdp = $database->crypter(htmlentities($_POST['mdp']));
             $client->photo = $_POST['photo'];
             $client->update();
 

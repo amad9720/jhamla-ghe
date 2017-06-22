@@ -1,5 +1,9 @@
 <div class="dashboard-content">
-	<h3>Gestion de ma Maison</h3>
+	
+    <div class="spacer-large"></div>    
+    <h1>Ma Maison</h1>
+    <div class="spacer-large"></div>
+
 	<div class="spacer-small"></div>
 	<p>Cette page vous permet de gérer votre domicile</p>
 	<div class="spacer-large"></div>

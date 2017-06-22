@@ -1,5 +1,9 @@
 <div class="dashboard-content">
-<h3>Mon profil</h3>
+
+<div class="spacer-large"></div>    
+    <h1>Profil</h1>
+<div class="spacer-large"></div>
+
 <div class="infos">
 	<p>Nom : <?php echo $client->nom ?></p>
 	<p>Prénom :<?php echo $client->prenom ?></p>
@@ -26,7 +30,7 @@
 		<p> <label for="ville"> Pays: </label> <input type="text" name="ville" id="ville" maxlength="50" size="40" placeholder="Votre ville"  /> </p>
 		<p> <label for="pays"> Type: </label> <input type="text" name="pays" id="pays" maxlength="50" size="40" placeholder="Votre pays"  /> </p>
 		<p> <label for="pseudo"> Nom d'utilisateur: </label> <input type="text" name="nom_utilisateur" id="nom_utilisateur" maxlength="50" size="40" placeholder="Votre pseudo"/> </p>
-		<p> <label for="mdp"> Mot de passe: </label> <input type="text" name="mdp" id="mdp" maxlength="50" size="40" placeholder="Votre mdp" autofocus /> </p>
+		<p> <label for="mdp"> Mot de passe: </label> <input type="password" name="mdp" id="mdp" maxlength="50" size="40" placeholder="Votre mdp" autofocus /> </p>
 		<p> <label for="photo"> Photo: </label> <input type="text" name="photo" id="photo" maxlength="200" size="40" placeholder="Votre photo" autofocus /> </p>
 	<input type="submit" name="modif_profil" value="Envoyer" />
 	</form>

@@ -1,4 +1,9 @@
 <div class="dashboard-content">
+
+	<div class="spacer-large"></div>    
+    <h1>Gestion Technicien</h1>
+    <div class="spacer-large"></div>
+
 	<div class="Liste">
 		<p>Liste des techniciens</p>
 		<button name ="Supprimer" class="Supprimer_btn">Supprimer</button>

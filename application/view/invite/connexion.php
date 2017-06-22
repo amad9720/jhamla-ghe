@@ -1,4 +1,8 @@
 <div class="container">
+    
+    <div class="spacer-large"></div>    
+    <h1>Connexion</h1>
+    <div class="spacer-large"></div>
 
     <div id="login">
 

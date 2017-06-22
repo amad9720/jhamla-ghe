@@ -1,5 +1,7 @@
 <div class="dashboard-content">
-    <h3>Gestion des offres</h3>
+    <div class="spacer-large"></div>    
+    <h1>Gestion Offres</h1>
+    <div class="spacer-large"></div>
 
     <div class="paramOffre" style="display: none;">
 

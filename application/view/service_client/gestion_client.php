@@ -1,5 +1,7 @@
 <div class="dashboard-content">
-    <h3>Gestion des clients</h3>
+    <div class="spacer-large"></div>    
+    <h1>Gestion des Clients</h1>
+    <div class="spacer-large"></div>
 
     <div class="paramClient" style="display: none;">
 
