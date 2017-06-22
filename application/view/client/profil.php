@@ -35,7 +35,8 @@
 <div style="display: none;"  class="Suivi">
 	</br><h3>Suivi des missions</h3>
 	</br><p>Missions en cours</p>
-	<table class="process_missions">
+	<div class="spacer-small">	</div>
+	<table class="process_missions table">
 		<thead>
 			<tr class="first">
 				<th>Date</th>
@@ -55,7 +56,8 @@
 		</tbody>
 	</table>
 	</br></br><p>Missions terminées</p>
-	<table class="end_missions">
+	<div class="spacer-small">	</div>
+	<table class="end_missions table">
 		<thead>
 			<tr class="first">
 				<th>Date</th>
@@ -78,8 +80,8 @@
 
 <div style="display: none;" class="Factures">
 	<h3>Mes Factures</h3>
-
-	<table class="factures">
+	<div class="spacer-small"></div>
+	<table class="factures table">
 		<thead>
 			<tr class="first">
 				<th>Date</th>

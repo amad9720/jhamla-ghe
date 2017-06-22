@@ -19,7 +19,7 @@
     </form>
     <div class="spacer-large"></div>
     <table class="table">
-        <tr>
+        <tr class="first">
             <th>Titre</th>
             <th>Image</th>
             <th>Date</th>
