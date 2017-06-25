@@ -8,7 +8,7 @@ class Piece extends Db_object
     public $id_client;
 
     protected static $db_table = "piece"; 
-    protected static $db_table_fields = array("id", "nom", "id_client");
+    protected static $db_table_fields = array("nom", "id_client");
 
 
     /**

@@ -12,7 +12,7 @@ class Service_client extends Controller
     public function index()
     {   
         global $session;
-        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/")
+        if (!$session->is_signed_in() && $_SESSION['role'] != SERVICE_CLIENT) header("Location: " . URL . "problem/");
         
 
         // load models
@@ -46,7 +46,7 @@ class Service_client extends Controller
     {
         //To make sure that only registered users can come to this page 
         global $session;
-        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
         // load models
         //Utilisateur
@@ -165,7 +165,7 @@ class Service_client extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
         $this->loadModel('Mission');
 
@@ -188,6 +188,8 @@ class Service_client extends Controller
                     $technicien->delete();
                 }
             }
+
+            header("Location: " . URL . "service_client/gestion_technicien");
         }
 
         if (isset($_POST['Voir'])) header("Location: " . URL . "service_client/technicien/". $_POST['Voir']);
@@ -204,57 +206,6 @@ class Service_client extends Controller
             header("Location: " . URL . "service_client/gestion_technicien");
 
         }
-
-        if (isset($_POST['checkBoxArray'])){
-            $array_id = $_POST['checkBoxArray'];
-
-            if (isset($_POST['Profil'])) {
-                foreach ($array_id as $value_id) {
-                    $techniciens_selected = Technicien::find_by_id($value_id);
-
-                    $end_missions = Mission::fetch_end_missions_technicien($value_id);
-                    $process_missions = Mission::fetch_process_missions_technicien($value_id);
-                }
-            }
-
-
-            if (isset($_POST['Modifier'])) {
-                foreach ($array_id as $value_id) {
-                    $technicien = Technicien::find_by_id($value_id);
-                    $technicien->nom = htmlentities(trim($_POST['nom']));
-                    $technicien->prenom = htmlentities(trim($_POST['prenom']));
-                    $technicien->tel = htmlentities(trim($_POST['tel']));
-                    $technicien->lieu = htmlentities(trim($_POST['lieu']));
-                    $technicien->update();
-                }
-            }
-
-            if (isset($_POST['Supprimer'])) {
-                foreach ($array_id as $value_id) {
-                    $technicien = Technicien::find_by_id($value_id);
-                    $technicien->delete();
-                }
-            }
-
-            if (isset($_POST['Add_mission'])) {
-                foreach ($array_id as $value_id) {
-                    $mission = new Mission();
-                    $mission->add_new_mission($value_id, $_POST['id_client'], $_POST['date'], $_POST['motif']);
-                }
-            }
-
-
-            if (isset($_POST['small_checkBoxArray'])){
-                $array_id = $_POST['small_checkBoxArray'];
-                if(isset($_POST['End_mission'])){   
-                    foreach($small_array_id as $small_value_id){
-
-                        $end_mission = Mission::find_by_id($small_array_id);
-                        $end_mission->set_end_mission();
-                    }
-                }
-            }
-        }
     }
 
     public function technicien($id_tech)
@@ -262,7 +213,7 @@ class Service_client extends Controller
         
         //To make sure that only registered users can come to this page 
         global $session;
-        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != SERVICE_CLIENT) header("Location: " . URL . "problem/");
 
 
         $this->loadModel('Mission');
@@ -331,7 +282,7 @@ class Service_client extends Controller
     public function offres()
     {
         global $session;
-        //if (!$session->is_signed_in() && $session->role != SERVICE_CLIENT) header("Location: " . URL . "problem/")
+        if (!$session->is_signed_in() && $_SESSION['role'] != SERVICE_CLIENT) header("Location: " . URL . "problem/");
         
         // load models
         //Offre

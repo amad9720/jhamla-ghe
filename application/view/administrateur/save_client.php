@@ -60,15 +60,6 @@
         </div>
 
         <div class="form-batch">
-            <select name="user_offre">
-				<option disabled selected>Offre</option>
-				<?php foreach ($offres as $offre): ?>
-				<option value=<?php echo $offre->id; ?> ><?php echo $offre->titre; ?></option>	
-				<?php endforeach ?>
-			</select><br/>
-        </div>
-
-        <div class="form-batch">
             <input type="submit" value="Ajouter" name="create_user" >
         </div>
     </form>	

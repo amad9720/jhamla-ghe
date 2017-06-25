@@ -11,7 +11,7 @@ class Client extends Controller
     {
         //To make sure that only registered users can come to this page
         global $session;
-        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         //require APP . 'view/_templates/header.php';
@@ -64,13 +64,13 @@ class Client extends Controller
 
         //To make sure that only registered users can come to this page 
         global $session;
-        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != CLIENT ) header("Location: " . URL . "problem/");
 
 
         // load models
         //Capteurs
         $this->loadModel('Capteur');
-        $capteurs = Capteur::find_all_capteur();
+        $capteurs = Capteur::find_capteur_by_client($session->user_id);
 
         //type_capteurs
         $this->loadModel('TypeCapteur');
@@ -78,7 +78,7 @@ class Client extends Controller
 
         //pieces
         $this->loadModel('Piece');
-        $pieces = Piece::find_all();
+        $pieces = Piece::get_room_client($session->user_id);
 
         //donnee
         $this->loadModel('Donnee');
@@ -147,8 +147,9 @@ class Client extends Controller
 
             // Save new capteur
             $new_capteur = new Capteur();
-            $new_capteur->add_new_capteur($_POST['piece'], $_POST['type_capteur']);
             $new_capteur->id_client = $session->user_id;
+            $new_capteur->add_new_capteur($_POST['piece'], $_POST['type_capteur']);
+            
 
             //save data for the new capteur
             $new_donnee = new Donnee();
@@ -166,7 +167,7 @@ class Client extends Controller
     public function ma_maison()
     {
         global $session;
-        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != CLIENT ) header("Location: " . URL . "problem/");
 
         // loadModels
 
@@ -174,7 +175,7 @@ class Client extends Controller
         $this->loadModel('Piece');
 
 
-        $pieces_client = Piece::get_room_client($session->user_id); // pour linstant on urilise le client $session->user_id pour test
+        $pieces_client = Piece::get_room_client($session->user_id);
 
 
         //Capteur
@@ -185,34 +186,43 @@ class Client extends Controller
 
         //Donnee
         $this->loadModel('Donnee');
-        $correspondance = Donnee::getIdAdresse();
 
-        $trames = Donnee::recuperer_trame();
-        $trames_tab = Donnee::tableau_trame($trames);
-        $date = Donnee::get_date();
-        $trames_d = array();
-        for ($i = 0, $size = count($trames_tab); $i < $size; $i++) {
-            $trame_d = Donnee::décoder_trame($trames_tab[$i]);
-            if (strstr($trame_d["date"],"2017")){
-            $trames_d[$i] = $trame_d;
-        }}
-        $trame_final=array();
-        foreach ($trames_d as $tramescore) {
+        //========= Integration =========
+        //
+        //
+        // $correspondance = Donnee::getIdAdresse();
 
-            foreach ($correspondance as $corres) {
-                if ($tramescore["address"] == $corres["adress"]) {
+        // $trames = Donnee::recuperer_trame(); 
+        // $trames_tab = Donnee::tableau_trame($trames);
+        // $date = Donnee::get_date();
+        // $trames_d = array();
+        // $size = count($trames_tab);
 
-                    $tramescore['id_capteur'] = $corres["id_capteur"];
-                    $trame_final[] = $tramescore;
-                    break;
+        // for ($i = 0; $i < $size; $i++) {
+        //     $trame_d = Donnee::décoder_trame($trames_tab[$i]);
 
-                }
-            }
-        }
+        //     if (strstr($trame_d["date"],"2017")){
+        //         $trames_d[$i] = $trame_d;
+        //     }
+        // }
+
+        // $trame_final = array();
+
+        // foreach ($trames_d as $tramescore) {
+
+        //     foreach ($correspondance as $corres) {
+        //         if ($tramescore["address"] == $corres["adress"]) {
+
+        //             $tramescore['id_capteur'] = $corres["id_capteur"];
+        //             $trame_final[] = $tramescore;
+        //             break;
+        //         }
+        //     }
+        // }
 
 
 
-        Donnee::ajouter_trame_BDD($trame_final,$date);
+        // Donnee::ajouter_trame_BDD($trame_final,$date);
 
 
         $array_etat = array(1 => "ON", 0 => "OFF");
@@ -281,7 +291,7 @@ class Client extends Controller
     public function contact()
     {
         global $session;
-        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != CLIENT ) header("Location: " . URL . "problem/");
 
         //load Model
         //Page
@@ -302,7 +312,7 @@ class Client extends Controller
     public function suivi_energetique()
     {
         global $session;
-        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != CLIENT ) header("Location: " . URL . "problem/");
 
         // load views
         require APP . 'view/_templates/head.php';
@@ -317,7 +327,7 @@ class Client extends Controller
     public function profil() {
         global $database;
         global $session;
-        //if (!$session->is_signed_in() && $session->role != CLIENT ) header("Location: " . URL . "problem/");
+        if (!$session->is_signed_in() && $_SESSION['role'] != CLIENT ) header("Location: " . URL . "problem/");
 
         // load models
         //Mission
@@ -355,7 +365,7 @@ class Client extends Controller
             $client->ville = htmlentities($_POST['ville']);
             $client->nom_utilisateur = htmlentities($_POST['nom_utilisateur']);
             $client->mdp = $database->crypter(htmlentities($_POST['mdp']));
-            $client->photo = $_POST['photo'];
+            // $client->photo = $_POST['photo'];
             $client->update();
 
         }

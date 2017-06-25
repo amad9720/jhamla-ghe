@@ -19,7 +19,7 @@
 	<div class="spacer-large"></div>
 	<?php foreach ($pieces_client as $piece): ?>
 		<form method="POST" action="<?php echo URL; ?>client/ma_maison" class="form spacer-small">
-			<button type="submit" name="delete_room" value="<?php echo $piece->id ?>">Delete Piece</button>
+			<button type="submit" name="delete_room" value="<?php echo $piece->id ?>">Supprimer Piece</button>
 		</form>
 		<h3 class="piece_name"><?php echo $piece->nom ?></h3>
 		<div class="card_holder">
@@ -27,35 +27,35 @@
 		<?php foreach ($capteurs_piece as $capteur): ?>
 			<?php $array_holder = array(
 
-                1 => "<div class=\"medium card\">
+                0 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur} °</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} N</p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
                             <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
                             <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
-                        </div>" , 
+                        </div>", 
+
+                1 => "<div class=\"medium card\">
+                            <h5>{$capteur->type}</h5>
+                            <div class=\"spacer-small\"></div>
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
+                                <p class=\"card-main-info\">{$capteur->valeur} °C</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-bottom-text\">{$capteur->date}, France</p>
+                            </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
+                        </div>", 
 
                 2 => "<div class=\"medium card\">
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur} Prt</p>
-                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
-                                <p class=\"card-bottom-text\">{$capteur->date}, France</p>
-                            </div>
-                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
-                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
-                        </div>" ,
-
-                3 => "<div class=\"medium card\">
-                            <h5>{$capteur->type}</h5>
-                            <div class=\"spacer-small\"></div>
-                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur} CO2</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} P</p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
@@ -67,7 +67,7 @@
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur} Watt</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} CO2</p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
@@ -79,7 +79,7 @@
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur}</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} Watt</p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
@@ -91,7 +91,7 @@
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur}</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} Ouverte(s)</p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
@@ -103,7 +103,7 @@
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur} %</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} Active(s)</p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>
@@ -115,7 +115,31 @@
                             <h5>{$capteur->type}</h5>
                             <div class=\"spacer-small\"></div>
                             <div class=\"card-content\" id=\"card_{$capteur->id}\">
-                                <p class=\"card-main-info\">{$capteur->valeur} Tox</p>
+                                <p class=\"card-main-info\">{$capteur->valeur} % H</p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-bottom-text\">{$capteur->date}, France</p>
+                            </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
+                        </div>" ,
+
+                9 => "<div class=\"medium card\">
+                            <h5>{$capteur->type}</h5>
+                            <div class=\"spacer-small\"></div>
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
+                                <p class=\"card-main-info\">{$capteur->valeur} </p>
+                                <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
+                                <p class=\"card-bottom-text\">{$capteur->date}, France</p>
+                            </div>
+                            <button type=\"submit\" name=\"off\" value=\"{$capteur->id}\" >Eteindre </button>
+                            <button type=\"submit\" name=\"on\" value=\"{$capteur->id}\" >Allumer </button>
+                        </div>",
+
+                10 => "<div class=\"medium card\">
+                            <h5>{$capteur->type}</h5>
+                            <div class=\"spacer-small\"></div>
+                            <div class=\"card-content\" id=\"card_{$capteur->id}\">
+                                <p class=\"card-main-info\">{$capteur->valeur} </p>
                                 <p class=\"card-main-info green-text\" >{$array_etat[$capteur->etat]}</p>
                                 <p class=\"card-bottom-text\">{$capteur->date}, France</p>
                             </div>

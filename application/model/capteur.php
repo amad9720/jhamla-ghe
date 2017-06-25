@@ -135,6 +135,7 @@ class Capteur extends Db_object
             $this->etat = 0;
             $this->id_piece = $id_piece;
             $this->id_type = $id_type;
+            $this->favoris = 0;
 
             return $this->create();
         }
@@ -211,6 +212,28 @@ class Capteur extends Db_object
 
         return $capteurs;
     }
+
+    public static function find_capteur_by_client($id_client) {
+
+        $sql = "SELECT *
+                FROM capteur c
+                WHERE c.id_client = '{$id_client}' ";
+
+        // $result contains an array of objects which has properties the columns fetched from the BD by the previous query
+        $capteurs = self::find_by_query($sql);
+
+        foreach ($capteurs as $capteur) {
+            $capteur->type = $capteur->find_type_capteur()->type;
+            $capteur->valeur = $capteur->find_donnee()->valeur;
+            $capteur->date = $capteur->find_donnee()->date;
+            if ($room = $capteur->find_capteur_room($capteur->id_piece))
+                $capteur->piece = $room->nom;
+            else $capteur->piece = "PAS DE PIECE";
+        }
+
+        return $capteurs;
+    }
+
 }
 
 

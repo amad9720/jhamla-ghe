@@ -70,7 +70,7 @@
         </tr>
         </thead>
 
-        <form class="form" method="POST" action="<?php echo URL; ?>service_client/gestion_offres">
+        <form class="form" method="POST" action="<?php echo URL; ?>service_client/offres">
             <tbody>
             <?php foreach ($offres as $offre): ?>
                 <tr>

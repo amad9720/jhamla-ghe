@@ -1,7 +1,11 @@
 $(document).ready(function()
 {
 	//Allow us to activate the text editor anytime we use a textarea tag
-	tinymce.init({selector:'textarea'});
+	tinymce.init({
+        selector:'textarea',
+        entities : '160,nbsp,162,cent,8364,euro,163,pound',
+        entity_encoding : "raw"
+    });
 
 
 	$(".addCapteur_btn").click(function(event) {

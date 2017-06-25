@@ -56,7 +56,7 @@ class Utilisateur extends Db_object
         $sql = "SELECT * 
                 FROM utilisateur u 
                 WHERE u.id_role = 1 
-                GROUP BY u.nom";
+                ";
 
         $clients = self::find_by_query($sql);
 

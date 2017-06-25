@@ -31,7 +31,7 @@
 		<p> <label for="pays"> Type: </label> <input type="text" name="pays" id="pays" maxlength="50" size="40" placeholder="Votre pays"  /> </p>
 		<p> <label for="pseudo"> Nom d'utilisateur: </label> <input type="text" name="nom_utilisateur" id="nom_utilisateur" maxlength="50" size="40" placeholder="Votre pseudo"/> </p>
 		<p> <label for="mdp"> Mot de passe: </label> <input type="password" name="mdp" id="mdp" maxlength="50" size="40" placeholder="Votre mdp" autofocus /> </p>
-		<p> <label for="photo"> Photo: </label> <input type="text" name="photo" id="photo" maxlength="200" size="40" placeholder="Votre photo" autofocus /> </p>
+		
 	<input type="submit" name="modif_profil" value="Envoyer" />
 	</form>
 </div>

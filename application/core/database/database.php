@@ -36,6 +36,8 @@ class Database {
 	 * @return [PDOstatement]      
 	 */
 	public function query($sql) {
+
+		// echo $sql;
         $query = $this->connection->prepare($sql);
         $result = $query->execute();
 

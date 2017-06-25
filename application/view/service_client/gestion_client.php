@@ -70,9 +70,9 @@
                     <td id="offre"><?php echo $utilisateur->offre ?></td>
                     <td id="statut">  
                         <?php if ($utilisateur->statut == 1): ?>
-                            <?php echo "Inscris" ?>
+                            <?php echo "Inscrit" ?>
                         <?php else: ?>
-                            <?php echo "Non inscris" ?>
+                            <?php echo "Non inscrit" ?>
                         <?php endif ?>
                     </td>
                 </tr>

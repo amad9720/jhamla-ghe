@@ -95,8 +95,8 @@
 			<?php endforeach ?>
 			</tbody>
 				
-			<input type="submit" name="deleteCapteur" id="submitgestioncapteur" value="Delete" >
-			<input type="submit" name="favorisCapteur" id="submitgestioncapteur" value="Change status" >
+			<input type="submit" name="deleteCapteur" id="submitgestioncapteur" value="Supprimer" >
+			<input type="submit" name="favorisCapteur" id="submitgestioncapteur" value="Changer status" >
 		</form>
 
 	</table>

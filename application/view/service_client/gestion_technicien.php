@@ -7,9 +7,9 @@
 	<div class="Liste">
 		<h3>Liste des techniciens</h3>
 		<div class="spacer-small">	</div>
-		<button name ="Supprimer" class="Supprimer_btn">Supprimer</button>
 		<table class="table spacer-small">
 			<form method="POST" action="<?php echo URL; ?>service_client/gestion_technicien" class="formulaire">
+			<button name ="Supprimer" class="Supprimer_btn">Supprimer</button>
 			<thead>
 				<tr class="first">
 					<td><input type="checkbox" id="selectAllBoxes"></td>
